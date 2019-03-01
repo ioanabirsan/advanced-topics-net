@@ -235,6 +235,7 @@
             this.Controls.Add(this.label_name);
             this.Name = "FormPersonalAgenda";
             this.Text = "Contact";
+            this.Load += new System.EventHandler(this.FormPersonalAgenda_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

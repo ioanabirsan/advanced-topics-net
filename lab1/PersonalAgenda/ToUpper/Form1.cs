@@ -20,5 +20,10 @@ namespace ToUpper
             text_uppercase.Text = toUpper(inputText);
             text_whitout_spaces.Text = removeSpaces(inputText);
         }
+
+        private void FormEventType_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

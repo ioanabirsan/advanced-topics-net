@@ -21,7 +21,7 @@ namespace PersonalAgenda
         private const string FirstNameRequired = "First name required.";
         private const string FirstNamePattern = @"^[A-Z][a-z'-]+$";
         private const string InvalidFirstNameFormat = "Invalid first name format.";
-        private const string Path = "C:\\facultate\\an3\\sem2\\topici-avansate-net\\personal-agenda.txt";
+        private const string Path = "C:\\facultate\\an3\\sem2\\advanced-topics-net\\lab1\\personal-agenda.txt";
 
         private readonly PersonalAgenda _personalAgenda = new PersonalAgenda();
 
@@ -217,6 +217,11 @@ namespace PersonalAgenda
                     box.Text = string.Empty;
                 }
             }
+        }
+
+        private void FormPersonalAgenda_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
