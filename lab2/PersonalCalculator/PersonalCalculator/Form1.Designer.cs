@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.tableDigits = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonEqual = new System.Windows.Forms.Button();
@@ -65,7 +65,7 @@
             this.tableDigits.ColumnCount = 3;
             this.tableDigits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.27536F));
             this.tableDigits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.72464F));
-            this.tableDigits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableDigits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableDigits.Controls.Add(this.buttonDelete, 0, 3);
             this.tableDigits.Controls.Add(this.buttonEqual, 2, 3);
             this.tableDigits.Controls.Add(this.buttonNine, 2, 2);
@@ -86,7 +86,7 @@
             this.tableDigits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.40845F));
             this.tableDigits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tableDigits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.tableDigits.Size = new System.Drawing.Size(300, 226);
+            this.tableDigits.Size = new System.Drawing.Size(294, 226);
             this.tableDigits.TabIndex = 0;
             this.tableDigits.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -102,9 +102,9 @@
             // 
             // buttonEqual
             // 
-            this.buttonEqual.Location = new System.Drawing.Point(194, 175);
+            this.buttonEqual.Location = new System.Drawing.Point(196, 175);
             this.buttonEqual.Name = "buttonEqual";
-            this.buttonEqual.Size = new System.Drawing.Size(97, 48);
+            this.buttonEqual.Size = new System.Drawing.Size(95, 48);
             this.buttonEqual.TabIndex = 4;
             this.buttonEqual.Text = "=";
             this.buttonEqual.UseVisualStyleBackColor = true;
@@ -112,9 +112,9 @@
             // 
             // buttonNine
             // 
-            this.buttonNine.Location = new System.Drawing.Point(194, 123);
+            this.buttonNine.Location = new System.Drawing.Point(196, 123);
             this.buttonNine.Name = "buttonNine";
-            this.buttonNine.Size = new System.Drawing.Size(96, 46);
+            this.buttonNine.Size = new System.Drawing.Size(95, 46);
             this.buttonNine.TabIndex = 2;
             this.buttonNine.Text = "9";
             this.buttonNine.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             // 
             // buttonEight
             // 
-            this.buttonEight.Location = new System.Drawing.Point(97, 123);
+            this.buttonEight.Location = new System.Drawing.Point(98, 123);
             this.buttonEight.Name = "buttonEight";
             this.buttonEight.Size = new System.Drawing.Size(91, 46);
             this.buttonEight.TabIndex = 2;
@@ -142,9 +142,9 @@
             // 
             // buttonSix
             // 
-            this.buttonSix.Location = new System.Drawing.Point(194, 61);
+            this.buttonSix.Location = new System.Drawing.Point(196, 61);
             this.buttonSix.Name = "buttonSix";
-            this.buttonSix.Size = new System.Drawing.Size(96, 55);
+            this.buttonSix.Size = new System.Drawing.Size(95, 55);
             this.buttonSix.TabIndex = 2;
             this.buttonSix.Text = "6";
             this.buttonSix.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             // 
             // buttonFive
             // 
-            this.buttonFive.Location = new System.Drawing.Point(97, 61);
+            this.buttonFive.Location = new System.Drawing.Point(98, 61);
             this.buttonFive.Name = "buttonFive";
             this.buttonFive.Size = new System.Drawing.Size(91, 55);
             this.buttonFive.TabIndex = 2;
@@ -172,7 +172,7 @@
             // 
             // buttonTwo
             // 
-            this.buttonTwo.Location = new System.Drawing.Point(97, 3);
+            this.buttonTwo.Location = new System.Drawing.Point(98, 3);
             this.buttonTwo.Name = "buttonTwo";
             this.buttonTwo.Size = new System.Drawing.Size(91, 52);
             this.buttonTwo.TabIndex = 2;
@@ -192,7 +192,7 @@
             // 
             // buttonZero
             // 
-            this.buttonZero.Location = new System.Drawing.Point(97, 175);
+            this.buttonZero.Location = new System.Drawing.Point(98, 175);
             this.buttonZero.Name = "buttonZero";
             this.buttonZero.Size = new System.Drawing.Size(91, 48);
             this.buttonZero.TabIndex = 2;
@@ -202,9 +202,9 @@
             // 
             // buttonThree
             // 
-            this.buttonThree.Location = new System.Drawing.Point(194, 3);
+            this.buttonThree.Location = new System.Drawing.Point(196, 3);
             this.buttonThree.Name = "buttonThree";
-            this.buttonThree.Size = new System.Drawing.Size(96, 52);
+            this.buttonThree.Size = new System.Drawing.Size(95, 52);
             this.buttonThree.TabIndex = 2;
             this.buttonThree.Text = "3";
             this.buttonThree.UseVisualStyleBackColor = true;
@@ -314,7 +314,7 @@
             // 
             this.listViewHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewHistory.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.listViewHistory.LabelWrap = false;
             this.listViewHistory.Location = new System.Drawing.Point(434, 67);
             this.listViewHistory.Name = "listViewHistory";
