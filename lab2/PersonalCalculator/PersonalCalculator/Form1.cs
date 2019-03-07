@@ -21,38 +21,32 @@ namespace PersonalCalculator
 
         private void buttonOne_Click(object sender, EventArgs e)
         {
-            string one = buttonOne.Text;
-            textInput.Text += one;
+            textInput.Text += buttonOne.Text;
         }
 
         private void buttonTwo_Click(object sender, EventArgs e)
         {
-            string two = buttonTwo.Text;
-            textInput.Text += two;
+            textInput.Text += buttonTwo.Text;
         }
 
         private void buttonThree_Click(object sender, EventArgs e)
         {
-            string three = buttonThree.Text;
-            textInput.Text += three;
+            textInput.Text += buttonThree.Text;
         }
 
         private void buttonFour_Click(object sender, EventArgs e)
         {
-            string four = buttonFour.Text;
-            textInput.Text += four;
+            textInput.Text += buttonFour.Text;
         }
 
         private void buttonFive_Click(object sender, EventArgs e)
         {
-            string five = buttonFive.Text;
-            textInput.Text += five;
+            textInput.Text += buttonFive.Text;
         }
 
         private void buttonSix_Click(object sender, EventArgs e)
         {
-            string six = buttonSix.Text;
-            textInput.Text += six;
+            textInput.Text += buttonSix.Text;
         }
 
         private void buttonSeven_Click(object sender, EventArgs e)
@@ -63,20 +57,17 @@ namespace PersonalCalculator
 
         private void buttonEight_Click(object sender, EventArgs e)
         {
-            string eight = buttonEight.Text;
-            textInput.Text += eight;
+            textInput.Text += buttonEight.Text;
         }
 
         private void buttonNine_Click(object sender, EventArgs e)
         {
-            string nine = buttonNine.Text;
-            textInput.Text += nine;
+            textInput.Text += buttonNine.Text;
         }
 
         private void buttonZero_Click(object sender, EventArgs e)
         {
-            string zero = buttonZero.Text;
-            textInput.Text += zero;
+            textInput.Text += buttonZero.Text;
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
@@ -88,7 +79,7 @@ namespace PersonalCalculator
             buttonAdd.Enabled = isValidExpression;
             buttonEqual.Enabled = isValidExpression;
 
-            textBoxWarning.Text = !isValidExpression ? "The expression is not valid." : String.Empty;
+            textBoxWarning.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
 
         private void buttonEqual_Click(object sender, EventArgs e)
@@ -127,12 +118,8 @@ namespace PersonalCalculator
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             string s = textInput.Text;
-            s = s.Length > 1 ? s.Substring(0, s.Length - 1) : "0";
+            s = s.Length > 1 ? s.Substring(0, s.Length - 1) : string.Empty;
             textInput.Text = s;
-        }
-
-        private void FormPersonalCalculator_Load(object sender, EventArgs e)
-        {
         }
 
         private void buttonCompute_Click(object sender, EventArgs e)
@@ -157,11 +144,6 @@ namespace PersonalCalculator
             var result = ArithmeticExpression.AddResults(expressions, index);
 
             textOutput.Text = result.ToString();
-        }
-
-        private void textOutput_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

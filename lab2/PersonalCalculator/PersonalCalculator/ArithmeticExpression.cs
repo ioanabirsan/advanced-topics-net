@@ -17,7 +17,7 @@ namespace PersonalCalculator
             return sum;
         }
 
-        public static int GetResult(string expression)
+        private static int GetResult(string expression)
         {
             char[] separators = new char[] {'='};
             string[] values = expression.Split(separators);
@@ -52,7 +52,7 @@ namespace PersonalCalculator
                 return a / b;
             }
 
-            throw new Exception("Illeagal Argument");
+            throw new Exception("Illegal Argument");
         }
     }
 }

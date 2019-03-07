@@ -299,7 +299,6 @@
             this.textOutput.Name = "textOutput";
             this.textOutput.Size = new System.Drawing.Size(297, 41);
             this.textOutput.TabIndex = 5;
-            this.textOutput.TextChanged += new System.EventHandler(this.textOutput_TextChanged);
             // 
             // labelResult
             // 
@@ -383,7 +382,6 @@
             this.Controls.Add(this.tableDigits);
             this.Name = "FormPersonalCalculator";
             this.Text = "Personal Calculator";
-            this.Load += new System.EventHandler(this.FormPersonalCalculator_Load);
             this.tableDigits.ResumeLayout(false);
             this.tableOperations.ResumeLayout(false);
             this.ResumeLayout(false);
