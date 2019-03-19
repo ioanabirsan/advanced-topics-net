@@ -4,7 +4,7 @@ using CarService.Repository.api;
 
 namespace CarService.Repository.impl
 {
-    public class AutoRepository : IAutoRepository
+    public class AutoRepository : IRepository<Auto>
     {
         private readonly CarServiceModelContainer _context;
 

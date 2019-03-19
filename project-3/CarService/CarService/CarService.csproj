@@ -90,11 +90,13 @@
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\api\IAutoRepository.cs" />
-    <Compile Include="Repository\api\IClientRepository.cs" />
-    <Compile Include="Repository\api\ISasiuRepository.cs" />
+    <Compile Include="Repository\api\IRepository.cs" />
     <Compile Include="Repository\impl\AutoRepository.cs" />
     <Compile Include="Repository\impl\ClientRepository.cs" />
+    <Compile Include="Repository\impl\DetaliuComandaRepository.cs" />
+    <Compile Include="Repository\impl\MaterialRepository.cs" />
+    <Compile Include="Repository\impl\MecanicRepository.cs" />
+    <Compile Include="Repository\impl\OperatieRepository.cs" />
     <Compile Include="Repository\impl\SasiuRepository.cs" />
     <Compile Include="Sasiu.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>

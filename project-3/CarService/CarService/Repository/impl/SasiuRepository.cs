@@ -4,7 +4,7 @@ using CarService.Repository.api;
 
 namespace CarService.Repository.impl
 {
-    public class SasiuRepository : ISasiuRepository
+    public class SasiuRepository : IRepository<Sasiu>
     {
         private readonly CarServiceModelContainer _context;
 
