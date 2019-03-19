@@ -1,0 +1,8 @@
+Named instance: SQLAmi
+Instance ID: SQLAMI
+
+Windows authentication mode
+Sql server administrator: DESKTOP-L36VO39\AMI(AMI)
+Password: iceage!@#
+
+Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
