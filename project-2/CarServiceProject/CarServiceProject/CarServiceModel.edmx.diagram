@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc5501fcdc2340e3823f0685d55becab" Name="Diagram1" >
+        <EntityTypeShape EntityType="CarServiceModel.Client" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="CarServiceModel.Auto" Width="1.5" PointX="0.5" PointY="4.125" />
+        <EntityTypeShape EntityType="CarServiceModel.Sasiu" Width="1.5" PointX="0.625" PointY="7.25" />
+        <AssociationConnector Association="CarServiceModel.AutoSasiu" />
+        <AssociationConnector Association="CarServiceModel.ClientAuto" />
+        <EntityTypeShape EntityType="CarServiceModel.Mecanic" Width="1.5" PointX="2.5" PointY="0.75" />
+        <EntityTypeShape EntityType="CarServiceModel.Material" PointX="4.625" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="CarServiceModel.Imagine" Width="1.5" PointX="6.875" PointY="0.875" />
+        <EntityTypeShape EntityType="CarServiceModel.Operatie" Width="1.5" PointX="7.25" PointY="3.75" />
+        <EntityTypeShape EntityType="CarServiceModel.Comanda" Width="1.5" PointX="3.5" PointY="4" />
+        <AssociationConnector Association="CarServiceModel.AutoComanda" />
+        <AssociationConnector Association="CarServiceModel.ClientComanda" />
+        <EntityTypeShape EntityType="CarServiceModel.DetaliuComanda" Width="1.5" PointX="6.75" PointY="7" />
+        <AssociationConnector Association="CarServiceModel.ImagineDetaliuComanda" />
+        <AssociationConnector Association="CarServiceModel.OperatieDetaliuComanda" />
+        <AssociationConnector Association="CarServiceModel.MaterialDetaliuComanda" />
+        <AssociationConnector Association="CarServiceModel.MecanicDetaliuComanda" />
+        <AssociationConnector Association="CarServiceModel.ComandaDetaliuComanda" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

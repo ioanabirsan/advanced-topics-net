@@ -6,3 +6,6 @@ Sql server administrator: DESKTOP-L36VO39\AMI(AMI)
 Password: iceage!@#
 
 Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
+
+Connection string:
+metadata=res://*/CarServiceModel.csdl|res://*/CarServiceModel.ssdl|res://*/CarServiceModel.msl;provider=System.Data.SqlClient;provider connection string="data source=localhost\SQLEXPRESS;initial catalog=AUTO;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"
