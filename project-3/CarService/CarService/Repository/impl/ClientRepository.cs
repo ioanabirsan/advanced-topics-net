@@ -38,20 +38,11 @@ namespace CarService.Repository.impl
 
         public void Update(int id, Client client)
         {
-            if (client == null) return;
+            var toUpdate = _context.Comenzi.Find(client.Id);
 
-            if (!Exists(id)) return;
+            if (toUpdate == null) return;
 
-            var clientToUpdate = _context.Clienti.First(c => c.Id == id);
-            clientToUpdate.Nume = client.Nume;
-            clientToUpdate.Prenume = client.Prenume;
-            clientToUpdate.Adresa = client.Adresa;
-            clientToUpdate.Localitate = client.Localitate;
-            clientToUpdate.Judet = client.Judet;
-            clientToUpdate.Email = client.Email;
-            clientToUpdate.Telefon = client.Telefon;
-
-            _context.SaveChanges();
+            _context.Entry(toUpdate).CurrentValues.SetValues(client);
         }
 
         public bool Exists(int id)

@@ -6,5 +6,6 @@
         int AddAuto(Auto auto, int clientId, int sasiuId);
         int AddSasiu(Sasiu sasiu);
         int AddComanda(Comanda comanda, int clientId, int autoId);
+        void Update(int id, Client client);
     }
 }

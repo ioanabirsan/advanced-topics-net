@@ -98,5 +98,10 @@ namespace CarService.Service.impl
 
             return comanda.Id;
         }
+
+        public void Update(int id, Client client)
+        {
+            _clientRepository.Update(id, client);
+        }
     }
 }

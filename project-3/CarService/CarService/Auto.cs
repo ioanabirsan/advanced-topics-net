@@ -22,6 +22,7 @@ namespace CarService
             this.Comenzi = new HashSet<Comanda>();
         }
     
+        [Key]
         public int Id { get; set; }
         public string NumarAuto { get; set; }
         public string SerieSasiu { get; set; }
