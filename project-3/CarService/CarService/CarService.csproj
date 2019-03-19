@@ -93,7 +93,9 @@
     <Compile Include="Repository\api\IRepository.cs" />
     <Compile Include="Repository\impl\AutoRepository.cs" />
     <Compile Include="Repository\impl\ClientRepository.cs" />
+    <Compile Include="Repository\impl\ComandaRepository.cs" />
     <Compile Include="Repository\impl\DetaliuComandaRepository.cs" />
+    <Compile Include="Repository\impl\ImagineRepository.cs" />
     <Compile Include="Repository\impl\MaterialRepository.cs" />
     <Compile Include="Repository\impl\MecanicRepository.cs" />
     <Compile Include="Repository\impl\OperatieRepository.cs" />

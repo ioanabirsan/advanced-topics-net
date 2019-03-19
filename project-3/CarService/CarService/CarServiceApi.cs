@@ -7,6 +7,7 @@
  * Bibliografie:
  * - https://blog.devart.com/set-identity-and-computed-properties-in-entity-framework-without-triggers.html
  * - https://stackoverflow.com/questions/25894587/how-to-update-record-using-entity-framework-6
+ * - https://stackoverflow.com/questions/25894587/how-to-update-record-using-entity-framework-6
  */
 
 namespace CarService
