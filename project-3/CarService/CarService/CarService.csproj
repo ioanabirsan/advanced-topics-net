@@ -52,7 +52,7 @@
     <Compile Include="Auto.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarServiceApi.cs" />
+    <Compile Include="Service\impl\CarService.cs" />
     <Compile Include="CarServiceModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,6 +103,7 @@
     <Compile Include="Sasiu.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\api\ICarService.cs" />
     <Compile Include="StareComanda.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>

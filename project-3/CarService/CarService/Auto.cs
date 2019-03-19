@@ -7,9 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CarService
 {
-    using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
     
     public partial class Auto
@@ -23,7 +25,13 @@ namespace CarService
         public int Id { get; set; }
         public string NumarAuto { get; set; }
         public string SerieSasiu { get; set; }
+
+        [Required]
+        [Key, ForeignKey("Sasiu")]
         public int SasiuId { get; set; }
+
+        [Required]
+        [Key, ForeignKey("Client")]
         public int ClientId { get; set; }
     
         public virtual Sasiu Sasiu { get; set; }
