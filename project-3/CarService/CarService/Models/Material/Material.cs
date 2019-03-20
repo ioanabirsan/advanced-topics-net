@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarService.Models.Material
+namespace CarService
 {
     [MetadataType(typeof(MaterialMetadata))]
     public partial class Material

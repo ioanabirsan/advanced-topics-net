@@ -35,6 +35,7 @@ namespace CarService.Repository.impl
 
             var imagine = _context.Imagini.First(i => i.Id == id);
             _context.Imagini.Remove(imagine);
+            _context.SaveChanges();
         }
 
         public void Update(Imagine imagine)
@@ -55,6 +56,11 @@ namespace CarService.Repository.impl
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public Imagine FindByTitlu(string titlu)
+        {
+            return _context.Imagini.FirstOrDefault(i => i.Titlu == titlu);
         }
     }
 }

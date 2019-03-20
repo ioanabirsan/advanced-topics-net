@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarService.Models.Client
+namespace CarService
 {
     [MetadataType(typeof(ClientMetadata))]
     public partial class Client

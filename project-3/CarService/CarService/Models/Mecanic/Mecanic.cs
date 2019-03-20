@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarService.Models.Mecanic
+namespace CarService
 {
     [MetadataType(typeof(MecanicMetadata))]
     public partial class Mecanic

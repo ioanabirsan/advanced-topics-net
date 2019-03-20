@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 
-namespace CarService.Models.Client
-{
+namespace CarService { 
+
     public class ClientMetadata
     {
         [Key]
@@ -38,3 +40,4 @@ namespace CarService.Models.Client
         public string Email { get; set; }
     }
 }
+    

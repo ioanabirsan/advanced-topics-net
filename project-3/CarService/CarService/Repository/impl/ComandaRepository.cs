@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CarService.Repository.api;
 
@@ -34,6 +35,7 @@ namespace CarService.Repository.impl
 
             var comanda = _context.Comenzi.First(c => c.Id == id);
             _context.Comenzi.Remove(comanda);
+            _context.SaveChanges();
         }
 
         public void Update(Comanda comanda)
@@ -54,6 +56,23 @@ namespace CarService.Repository.impl
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public StareComanda GetStare(int id)
+        {
+            var comanda = _context.Comenzi.FirstOrDefault(c => c.Id == id);
+
+            if (comanda != null)
+            {
+                return comanda.StareComanda;
+            }
+
+            return StareComanda.InAsteptare;
+        }
+
+        public Comanda FindByDataFinalizare(DateTime data)
+        {
+            return _context.Comenzi.FirstOrDefault(c => c.DataFinalizare.Equals(data));
         }
     }
 }

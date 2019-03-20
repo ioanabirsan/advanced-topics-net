@@ -34,6 +34,7 @@ namespace CarService.Repository.impl
 
             var mecanic = _context.Mecanici.First(m => m.Id == id);
             _context.Mecanici.Remove(mecanic);
+            _context.SaveChanges();
         }
 
         public void Update(Mecanic mecanic)
@@ -54,6 +55,11 @@ namespace CarService.Repository.impl
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public Mecanic FindByName(string nume, string prenume)
+        {
+            return _context.Mecanici.FirstOrDefault(m => m.Nume == nume && m.Prenume == prenume);
         }
     }
 }

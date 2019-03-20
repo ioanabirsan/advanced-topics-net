@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CarService.Repository.api;
 
@@ -34,6 +35,7 @@ namespace CarService.Repository.impl
 
             var detaliuComanda = _context.DetaliiComenzi.First(d => d.Id == id);
             _context.DetaliiComenzi.Remove(detaliuComanda);
+            _context.SaveChanges();
         }
 
         public void Update(DetaliuComanda detaliuComanda)
@@ -54,6 +56,39 @@ namespace CarService.Repository.impl
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public DetaliuComanda FindByComanda(int comandaId)
+        {
+            return _context.DetaliiComenzi.FirstOrDefault(d => d.Comanda.Id == comandaId);
+        }
+
+        public IReadOnlyList<Mecanic> GetMecanici(int comandaId)
+        {
+            var detaliuComanda = _context.DetaliiComenzi.FirstOrDefault(d => d.Comanda.Id == comandaId);
+
+            return detaliuComanda?.Mecanici.ToList();
+        }
+
+        public IReadOnlyList<Operatie> GetOperatii(int comandaId)
+        {
+            var detaliuComanda = _context.DetaliiComenzi.FirstOrDefault(d => d.Comanda.Id == comandaId);
+
+            return detaliuComanda?.Operatii.ToList();
+        }
+
+        public IReadOnlyList<Imagine> GetImagini(int comandaId)
+        {
+            var detaliuComanda = _context.DetaliiComenzi.FirstOrDefault(d => d.Comanda.Id == comandaId);
+
+            return detaliuComanda?.Imagini.ToList();
+        }
+
+        public IReadOnlyList<Material> GetMateriale(int comandaId)
+        {
+            var detaliuComanda = _context.DetaliiComenzi.FirstOrDefault(d => d.Comanda.Id == comandaId);
+
+            return detaliuComanda?.Materiale.ToList();
         }
     }
 }

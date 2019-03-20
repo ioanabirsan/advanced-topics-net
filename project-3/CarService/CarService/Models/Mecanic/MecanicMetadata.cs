@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CarService.Models.Mecanic
+namespace CarService
 {
     public class MecanicMetadata
     {

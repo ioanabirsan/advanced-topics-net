@@ -33,7 +33,9 @@ namespace CarService.Repository.impl
             if (!Exists(id)) return;
 
             var client = _context.Clienti.First(c => c.Id == id);
+
             _context.Clienti.Remove(client);
+            _context.SaveChanges();
         }
 
         public void Update(Client client)
@@ -72,6 +74,14 @@ namespace CarService.Repository.impl
 
             var client = _context.Clienti.First(c => c.Id == id);
             return client.Automobile.ToList();
+        }
+
+        public IReadOnlyList<Comanda> GetOrders(int id)
+        {
+            if (!Exists(id)) return null;
+
+            var client = _context.Clienti.First(c => c.Id == id);
+            return client.Comenzi.ToList();
         }
     }
 }

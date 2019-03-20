@@ -35,6 +35,7 @@ namespace CarService.Repository.impl
 
             var operatie = _context.Operatii.First(o => o.Id == id);
             _context.Operatii.Remove(operatie);
+            _context.SaveChanges();
         }
 
         public void Update(Operatie operatie)
@@ -55,6 +56,11 @@ namespace CarService.Repository.impl
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public Operatie FindByTimpExecutie(decimal timpExecutie)
+        {
+            return _context.Operatii.FirstOrDefault(o => o.TimpExecutie.Equals(timpExecutie));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace CarService.Service.api
@@ -47,7 +48,6 @@ namespace CarService.Service.api
 
         int AddImagine(Imagine imagine, int detaliuComandaId);
         Imagine FindImagineByTitlu(string titlu);
-        Imagine FindImagineByData(System.DateTime data);
         void UpdateImagine(Imagine imagine);
         void DeleteImagine(int id);
 
@@ -57,6 +57,19 @@ namespace CarService.Service.api
         void DeleteOperatie(int id);
 
         int AddComanda(Comanda comanda, int clientId, int autoId);
-        
+        StareComanda GetStareComanda(int id);
+        Comanda FindComandaById(int id);
+        Comanda FindComandaByDataFinalizare(DateTime data);
+        void UpdateComanda(Comanda comanda);
+        void DeleteComanda(int id);
+
+        int AddDetaliuComanda(DetaliuComanda detaliuComanda);
+        DetaliuComanda FindByComanda(int comandaId);
+        IReadOnlyList<Mecanic> GetAllMechanicsForOrder(int orderId);
+        IReadOnlyList<Operatie> GetAllOperationsForOrder(int orderId);
+        IReadOnlyList<Imagine> GetAllImagesForOrder(int orderId);
+        IReadOnlyList<Material> GetAllMaterialsForOrder(int orderId);
+        void UpdateDetaliuComanda(DetaliuComanda detaliuComanda);
+        void DeleteDetaliuComanda(int id);
     }
 }

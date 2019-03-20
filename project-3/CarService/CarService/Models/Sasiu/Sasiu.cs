@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarService.Models.Sasiu
+namespace CarService
 {
     [MetadataType(typeof(SasiuMetadata))]
     public partial class Sasiu

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CarService.Models.Operatie
+namespace CarService
 {
     public class OperatieMetadata
     {
@@ -13,7 +13,6 @@ namespace CarService.Models.Operatie
         public string Denumire { get; set; }
 
         [Required]
-        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid timp executie")]
         public decimal TimpExecutie { get; set; }
 
         [Required]

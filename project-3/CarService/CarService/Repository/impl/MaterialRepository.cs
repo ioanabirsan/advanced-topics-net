@@ -35,6 +35,7 @@ namespace CarService.Repository.impl
 
             var material = _context.Materiale.First(m => m.Id == id);
             _context.Materiale.Remove(material);
+            _context.SaveChanges();
         }
 
         public void Update(Material material)
@@ -55,6 +56,26 @@ namespace CarService.Repository.impl
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public Material FindByDenumire(string denumire)
+        {
+            return _context.Materiale.FirstOrDefault(m => m.Denumire == denumire);
+        }
+
+        public Material FindByCantitate(decimal cantitate)
+        {
+            return _context.Materiale.FirstOrDefault(m => m.Cantitate.Equals(cantitate));
+        }
+
+        public Material FindByPret(decimal pret)
+        {
+            return _context.Materiale.FirstOrDefault(m => m.Pret.Equals(pret));
+        }
+
+        public Material FindByDataAprovizionare(DateTime dataAprovizionare)
+        {
+            return _context.Materiale.FirstOrDefault(m => m.DataAprovizionare.Equals(dataAprovizionare));
         }
     }
 }

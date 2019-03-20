@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CarService.Models.Comanda
+namespace CarService
 {
     public class ComandaMetadata
     {
@@ -30,10 +30,9 @@ namespace CarService.Models.Comanda
         public string Descriere { get; set; }
 
         [Required]
-//        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid valoare piese")]
         public decimal ValoarePiese { get; set; }
 
-//        [Required]
+        [Required]
         public StareComanda StareComanda { get; set; }
 
         [Required]

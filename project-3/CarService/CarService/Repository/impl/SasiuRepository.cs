@@ -55,5 +55,17 @@ namespace CarService.Repository.impl
         {
             _context.SaveChanges();
         }
+
+        public Sasiu FindByCodSasiu(string codSasiu)
+        {
+            return _context.Sasiuri.FirstOrDefault(s => s.CodSasiu == codSasiu);
+        }
+
+        public IReadOnlyList<Auto> GetAutos(int id)
+        {
+            var sasiu = _context.Sasiuri.FirstOrDefault(s => s.Id == id);
+
+            return sasiu?.Automobile.ToList();
+        }
     }
 }

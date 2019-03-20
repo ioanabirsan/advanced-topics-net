@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarService.Models.Comanda
+namespace CarService
 {
     [MetadataType(typeof(ComandaMetadata))]
     public partial class Comanda

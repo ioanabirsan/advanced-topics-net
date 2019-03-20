@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarService.Models.DetaliuComanda
+namespace CarService
 {
     public class DetaliuComandaMetadata
     {
