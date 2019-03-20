@@ -10,19 +10,19 @@
         <EntityTypeShape EntityType="CarServiceModel.Sasiu" Width="1.5" PointX="0.625" PointY="7.25" />
         <AssociationConnector Association="CarServiceModel.AutoSasiu" />
         <AssociationConnector Association="CarServiceModel.ClientAuto" />
-        <EntityTypeShape EntityType="CarServiceModel.Mecanic" Width="1.5" PointX="2.5" PointY="0.75" />
-        <EntityTypeShape EntityType="CarServiceModel.Material" PointX="4.625" PointY="0.75" Width="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarServiceModel.Imagine" Width="1.5" PointX="6.875" PointY="0.875" />
-        <EntityTypeShape EntityType="CarServiceModel.Operatie" Width="1.5" PointX="7.25" PointY="3.75" />
+        <EntityTypeShape EntityType="CarServiceModel.Mecanic" Width="2" PointX="2.5" PointY="0.75" />
+        <EntityTypeShape EntityType="CarServiceModel.Material" PointX="4.625" PointY="0.75" Width="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarServiceModel.Imagine" Width="2" PointX="6.875" PointY="0.875" />
+        <EntityTypeShape EntityType="CarServiceModel.Operatie" Width="2.125" PointX="7.25" PointY="3.75" />
         <EntityTypeShape EntityType="CarServiceModel.Comanda" Width="1.5" PointX="3.5" PointY="4" />
         <AssociationConnector Association="CarServiceModel.AutoComanda" />
         <AssociationConnector Association="CarServiceModel.ClientComanda" />
         <EntityTypeShape EntityType="CarServiceModel.DetaliuComanda" Width="1.5" PointX="6.75" PointY="7" />
         <AssociationConnector Association="CarServiceModel.ImagineDetaliuComanda" />
         <AssociationConnector Association="CarServiceModel.OperatieDetaliuComanda" />
-        <AssociationConnector Association="CarServiceModel.MaterialDetaliuComanda" />
         <AssociationConnector Association="CarServiceModel.MecanicDetaliuComanda" />
         <AssociationConnector Association="CarServiceModel.ComandaDetaliuComanda" />
+        <AssociationConnector Association="CarServiceModel.DetaliuComandaMaterial" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

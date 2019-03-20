@@ -30,10 +30,10 @@ namespace CarService.Models.Comanda
         public string Descriere { get; set; }
 
         [Required]
-        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid valoare piese")]
+//        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid valoare piese")]
         public decimal ValoarePiese { get; set; }
 
-        [Required]
+//        [Required]
         public StareComanda StareComanda { get; set; }
 
         [Required]

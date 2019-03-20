@@ -24,5 +24,6 @@ namespace CarService.Models.Auto
         [Required]
         [Key, ForeignKey("Client")]
         public int ClientId { get; set; }
+
     }
 }

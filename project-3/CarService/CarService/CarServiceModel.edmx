@@ -39,10 +39,6 @@
       <End Role="Operatie" EntitySet="Operatii" />
       <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
     </AssociationSet>
-    <AssociationSet Name="MaterialDetaliuComanda" Association="CarServiceModel.Store.MaterialDetaliuComanda">
-      <End Role="Material" EntitySet="Materiale" />
-      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-    </AssociationSet>
     <AssociationSet Name="MecanicDetaliuComanda" Association="CarServiceModel.Store.MecanicDetaliuComanda">
       <End Role="Mecanic" EntitySet="Mecanici" />
       <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
@@ -50,6 +46,10 @@
     <AssociationSet Name="ComandaDetaliuComanda" Association="CarServiceModel.Store.ComandaDetaliuComanda">
       <End Role="Comanda" EntitySet="Comenzi" />
       <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+    </AssociationSet>
+    <AssociationSet Name="DetaliuComandaMaterial" Association="CarServiceModel.Store.DetaliuComandaMaterial">
+      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+      <End Role="Material" EntitySet="Materiale" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Clienti">
@@ -101,7 +101,7 @@
     <Property Name="Cantitate" Type="decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="Pret" Type="decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="DataAprovizionare" Type="datetime" Nullable="false" />
-    <Property Name="DetaliuComanda_Id" Type="int" Nullable="false" />
+    <Property Name="DetaliuComandaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Imagini">
     <Key>
@@ -112,6 +112,7 @@
     <Property Name="Data" Type="datetime" Nullable="false" />
     <Property Name="Foto" Type="tinyint" Nullable="false" />
     <Property Name="DetaliuComandaId" Type="int" Nullable="false" />
+    <Property Name="Descriere" Type="nvarchar" Nullable="false" MaxLength="256" />
   </EntityType>
   <EntityType Name="Operatii">
     <Key>
@@ -132,7 +133,7 @@
     <Property Name="DataFinalizare" Type="datetime" Nullable="false" />
     <Property Name="KmBord" Type="int" Nullable="false" />
     <Property Name="Descriere" Type="nvarchar" Nullable="false" MaxLength="1024" />
-    <Property Name="ValoarePiese" Type="decimal" StoreGeneratedPattern="Computed" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="ValoarePiese" Type="decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="StareComanda" Type="tinyint" Nullable="false" />
     <Property Name="AutoId" Type="int" Nullable="false" />
     <Property Name="ClientId" Type="int" Nullable="false" />
@@ -216,18 +217,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="MaterialDetaliuComanda">
-    <End Role="Material" Type="CarServiceModel.Store.Materiale" Multiplicity="*" />
-    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="DetaliuComanda">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Material">
-        <PropertyRef Name="DetaliuComanda_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="MecanicDetaliuComanda">
     <End Role="Mecanic" Type="CarServiceModel.Store.Mecanici" Multiplicity="*" />
     <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1" />
@@ -249,6 +238,18 @@
       </Principal>
       <Dependent Role="Comanda">
         <PropertyRef Name="DetaliuComanda_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetaliuComandaMaterial">
+    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1" />
+    <End Role="Material" Type="CarServiceModel.Store.Materiale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetaliuComanda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="DetaliuComandaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -290,10 +291,6 @@
             <End Role="Operatie" EntitySet="Operatii" />
             <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
           </AssociationSet>
-          <AssociationSet Name="MaterialDetaliuComanda" Association="CarServiceModel.MaterialDetaliuComanda">
-            <End Role="Material" EntitySet="Materiale" />
-            <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-          </AssociationSet>
           <AssociationSet Name="MecanicDetaliuComanda" Association="CarServiceModel.MecanicDetaliuComanda">
             <End Role="Mecanic" EntitySet="Mecanici" />
             <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
@@ -301,6 +298,10 @@
           <AssociationSet Name="ComandaDetaliuComanda" Association="CarServiceModel.ComandaDetaliuComanda">
             <End Role="Comanda" EntitySet="Comenzi" />
             <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+          </AssociationSet>
+          <AssociationSet Name="DetaliuComandaMaterial" Association="CarServiceModel.DetaliuComandaMaterial">
+            <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+            <End Role="Material" EntitySet="Materiale" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
@@ -383,7 +384,8 @@
           <Property Name="Cantitate" Type="Decimal" Nullable="false" Precision="10" Scale="2" cg:SetterAccess="Public" />
           <Property Name="Pret" Type="Decimal" Nullable="false" cg:SetterAccess="Public" Precision="10" Scale="2" />
           <Property Name="DataAprovizionare" Type="DateTime" Nullable="false" cg:SetterAccess="Public" />
-          <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.MaterialDetaliuComanda" FromRole="Material" ToRole="DetaliuComanda" />
+          <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.DetaliuComandaMaterial" FromRole="Material" ToRole="DetaliuComanda" />
+          <Property Name="DetaliuComandaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Imagine">
           <Key>
@@ -417,7 +419,7 @@
           <Property Name="DataFinalizare" Type="DateTime" Nullable="false" cg:SetterAccess="Public" />
           <Property Name="KmBord" Type="Int32" Nullable="false" cg:SetterAccess="Public" />
           <Property Name="Descriere" Type="String" Nullable="false" cg:SetterAccess="Public" MaxLength="1024" />
-          <Property Name="ValoarePiese" Type="Decimal" Nullable="false" cg:SetterAccess="Public" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ValoarePiese" Type="Decimal" Nullable="false" cg:SetterAccess="Public" Precision="10" Scale="2" annotation:StoreGeneratedPattern="None" />
           <Property Name="StareComanda" Type="CarServiceModel.StareComanda" Nullable="false" cg:SetterAccess="Public" />
           <NavigationProperty Name="Auto" Relationship="CarServiceModel.AutoComanda" FromRole="Comanda" ToRole="Auto" />
           <Property Name="AutoId" Type="Int32" Nullable="false" cg:SetterAccess="Public" />
@@ -456,9 +458,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Public" />
           <NavigationProperty Name="Imagini" Relationship="CarServiceModel.ImagineDetaliuComanda" FromRole="DetaliuComanda" ToRole="Imagine" />
           <NavigationProperty Name="Operatii" Relationship="CarServiceModel.OperatieDetaliuComanda" FromRole="DetaliuComanda" ToRole="Operatie" />
-          <NavigationProperty Name="Materiale" Relationship="CarServiceModel.MaterialDetaliuComanda" FromRole="DetaliuComanda" ToRole="Material" />
           <NavigationProperty Name="Mecanici" Relationship="CarServiceModel.MecanicDetaliuComanda" FromRole="DetaliuComanda" ToRole="Mecanic" />
           <NavigationProperty Name="Comanda" Relationship="CarServiceModel.ComandaDetaliuComanda" FromRole="DetaliuComanda" ToRole="Comanda" />
+          <NavigationProperty Name="Materiale" Relationship="CarServiceModel.DetaliuComandaMaterial" FromRole="DetaliuComanda" ToRole="Material" />
         </EntityType>
         <Association Name="ImagineDetaliuComanda">
           <End Type="CarServiceModel.Imagine" Role="Imagine" Multiplicity="*" />
@@ -484,10 +486,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MaterialDetaliuComanda">
-          <End Type="CarServiceModel.Material" Role="Material" Multiplicity="*" />
-          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" />
-        </Association>
         <Association Name="MecanicDetaliuComanda">
           <End Type="CarServiceModel.Mecanic" Role="Mecanic" Multiplicity="*" />
           <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" />
@@ -509,6 +507,18 @@
           <Member Name="Executata" Value="2" />
           <Member Name="Refuzata" Value="3" />
         </EnumType>
+        <Association Name="DetaliuComandaMaterial">
+          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" />
+          <End Type="CarServiceModel.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetaliuComanda">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="DetaliuComandaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -567,6 +577,7 @@
           <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
           <ScalarProperty Name="Pret" ColumnName="Pret" />
           <ScalarProperty Name="DataAprovizionare" ColumnName="DataAprovizionare" />
+          <ScalarProperty Name="DetaliuComandaId" ColumnName="DetaliuComandaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -578,6 +589,7 @@
           <ScalarProperty Name="Data" ColumnName="Data" />
           <ScalarProperty Name="Foto" ColumnName="Foto" />
           <ScalarProperty Name="DetaliuComandaId" ColumnName="DetaliuComandaId" />
+          <ScalarProperty Name="Descriere" ColumnName="Descriere" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -614,14 +626,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="MaterialDetaliuComanda" TypeName="CarServiceModel.MaterialDetaliuComanda" StoreEntitySet="Materiale">
-      <EndProperty Name="DetaliuComanda">
-        <ScalarProperty Name="Id" ColumnName="DetaliuComanda_Id" />
-      </EndProperty>
-      <EndProperty Name="Material">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ComandaDetaliuComanda" TypeName="CarServiceModel.ComandaDetaliuComanda" StoreEntitySet="Comenzi">
       <EndProperty Name="DetaliuComanda">
         <ScalarProperty Name="Id" ColumnName="DetaliuComanda_Id" />

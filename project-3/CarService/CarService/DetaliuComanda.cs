@@ -19,8 +19,8 @@ namespace CarService
         {
             this.Imagini = new HashSet<Imagine>();
             this.Operatii = new HashSet<Operatie>();
-            this.Materiale = new HashSet<Material>();
             this.Mecanici = new HashSet<Mecanic>();
+            this.Materiale = new HashSet<Material>();
         }
     
         public int Id { get; set; }
@@ -30,9 +30,9 @@ namespace CarService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Operatie> Operatii { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Material> Materiale { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mecanic> Mecanici { get; set; }
         public virtual Comanda Comanda { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Material> Materiale { get; set; }
     }
 }

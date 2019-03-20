@@ -36,13 +36,14 @@ namespace CarService.Repository.impl
             _context.Clienti.Remove(client);
         }
 
-        public void Update(int id, Client client)
+        public void Update(Client client)
         {
-            var toUpdate = _context.Comenzi.Find(client.Id);
+            var toUpdate = _context.Clienti.Find(client.Id);
 
             if (toUpdate == null) return;
 
             _context.Entry(toUpdate).CurrentValues.SetValues(client);
+            _context.SaveChanges();
         }
 
         public bool Exists(int id)

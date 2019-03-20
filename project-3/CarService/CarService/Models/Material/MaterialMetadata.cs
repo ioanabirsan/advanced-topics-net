@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarService.Models.Material
 {
@@ -23,5 +24,9 @@ namespace CarService.Models.Material
         [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime DataAprovizionare { get; set; }
+
+        [Required]
+        [Key, ForeignKey("DetaliuComanda")]
+        public int DetaliuComandaId { get; set; }
     }
 }

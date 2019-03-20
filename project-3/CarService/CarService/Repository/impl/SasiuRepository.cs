@@ -36,15 +36,13 @@ namespace CarService.Repository.impl
             _context.Sasiuri.Remove(sasiu);
         }
 
-        public void Update(int id, Sasiu sasiu)
+        public void Update(Sasiu sasiu)
         {
-            if (sasiu == null) return;
-            if (!Exists(id)) return;
+            var toUpdate = _context.Sasiuri.Find(sasiu.Id);
 
-            var toUpdate = _context.Sasiuri.First(s => s.Id == id);
-            toUpdate.CodSasiu = sasiu.CodSasiu;
-            toUpdate.Denumire = sasiu.CodSasiu;
+            if (toUpdate == null) return;
 
+            _context.Entry(toUpdate).CurrentValues.SetValues(sasiu);
             _context.SaveChanges();
         }
 

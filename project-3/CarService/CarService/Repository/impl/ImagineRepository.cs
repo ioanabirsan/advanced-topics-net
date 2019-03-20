@@ -37,13 +37,14 @@ namespace CarService.Repository.impl
             _context.Imagini.Remove(imagine);
         }
 
-        public void Update(int id, Imagine imagine)
+        public void Update(Imagine imagine)
         {
             var toUpdate = _context.Imagini.Find(imagine.Id);
 
             if (toUpdate == null) return;
 
             _context.Entry(toUpdate).CurrentValues.SetValues(imagine);
+            _context.SaveChanges();
         }
 
         public bool Exists(int id)

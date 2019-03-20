@@ -70,7 +70,6 @@
     <Compile Include="Models\Operatie\OperatieMetadata.cs" />
     <Compile Include="Models\Sasiu\Sasiu.cs" />
     <Compile Include="Models\Sasiu\SasiuMetadata.cs" />
-    <Compile Include="Models\StareComanda\StareComanda.cs" />
     <Compile Include="Service\impl\CarService.cs" />
     <Compile Include="CarServiceModel.Context.cs">
       <AutoGen>True</AutoGen>

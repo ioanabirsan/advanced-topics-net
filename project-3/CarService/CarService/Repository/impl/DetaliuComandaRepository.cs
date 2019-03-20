@@ -36,18 +36,13 @@ namespace CarService.Repository.impl
             _context.DetaliiComenzi.Remove(detaliuComanda);
         }
 
-        public void Update(int id, DetaliuComanda detaliuComanda)
+        public void Update(DetaliuComanda detaliuComanda)
         {
-            if(detaliuComanda == null) return;
-            if(!Exists(id)) return;
+            var toUpdate = _context.DetaliiComenzi.Find(detaliuComanda.Id);
 
-            var toUpdate = _context.DetaliiComenzi.First(d => d.Id == id);
-            toUpdate.Imagini = detaliuComanda.Imagini;
-            toUpdate.Comanda = detaliuComanda.Comanda;
-            toUpdate.Operatii = detaliuComanda.Operatii;
-            toUpdate.Materiale = detaliuComanda.Materiale;
-            toUpdate.Mecanici = detaliuComanda.Mecanici;
+            if (toUpdate == null) return;
 
+            _context.Entry(toUpdate).CurrentValues.SetValues(detaliuComanda);
             _context.SaveChanges();
         }
 

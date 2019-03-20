@@ -38,16 +38,13 @@ namespace CarService.Repository.impl
             _context.Automobile.Remove(auto);
         }
 
-        public void Update(int id, Auto auto)
+        public void Update(Auto auto)
         {
-            if(auto == null) return;
-     
-            if(!Exists(id)) return;
+            var toUpdate = _context.Automobile.Find(auto.Id);
 
-            var toUpdate = _context.Automobile.First(a => a.Id == id);
-            toUpdate.NumarAuto = auto.NumarAuto;
-            toUpdate.SerieSasiu = auto.SerieSasiu;
+            if (toUpdate == null) return;
 
+            _context.Entry(toUpdate).CurrentValues.SetValues(auto);
             _context.SaveChanges();
         }
 

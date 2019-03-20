@@ -36,13 +36,14 @@ namespace CarService.Repository.impl
             _context.Comenzi.Remove(comanda);
         }
 
-        public void Update(int id, Comanda comanda)
+        public void Update(Comanda comanda)
         {
             var toUpdate = _context.Comenzi.Find(comanda.Id);
 
             if (toUpdate == null) return;
 
             _context.Entry(toUpdate).CurrentValues.SetValues(comanda);
+            _context.SaveChanges();
         }
 
         public bool Exists(int id)

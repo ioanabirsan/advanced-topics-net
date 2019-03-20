@@ -37,17 +37,13 @@ namespace CarService.Repository.impl
             _context.Materiale.Remove(material);
         }
 
-        public void Update(int id, Material material)
+        public void Update(Material material)
         {
-            if(material == null) return;
-            if(!Exists(id)) return;
+            var toUpdate = _context.Materiale.Find(material.Id);
 
-            var toUpdate = _context.Materiale.First(m => m.Id == id);
-            toUpdate.Cantitate = material.Cantitate;
-            toUpdate.DataAprovizionare = material.DataAprovizionare;
-            toUpdate.Denumire = material.Denumire;
-            toUpdate.Pret = material.Pret;
+            if (toUpdate == null) return;
 
+            _context.Entry(toUpdate).CurrentValues.SetValues(material);
             _context.SaveChanges();
         }
 

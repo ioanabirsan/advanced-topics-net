@@ -21,11 +21,11 @@ namespace CarService.Models.Imagine
         public byte Foto { get; set; }
 
         [Required]
-        [MaxLength(256)]
-        public string Descriere { get; set; }
-
-        [Required]
         [Key, ForeignKey("DetaliuComanda")]
         public int DetaliuComandaId { get; set; }
+
+        [Required]
+        [MaxLength(256)]
+        public string Descriere { get; set; }
     }
 }

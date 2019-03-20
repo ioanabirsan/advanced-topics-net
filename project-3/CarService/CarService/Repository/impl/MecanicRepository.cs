@@ -36,15 +36,13 @@ namespace CarService.Repository.impl
             _context.Mecanici.Remove(mecanic);
         }
 
-        public void Update(int id, Mecanic mecanic)
+        public void Update(Mecanic mecanic)
         {
-            if(mecanic == null) return;
-            if(!Exists(id)) return;
+            var toUpdate = _context.Mecanici.Find(mecanic.Id);
 
-            var toUpdate = _context.Mecanici.First(m => m.Id == id);
-            toUpdate.Nume = mecanic.Nume;
-            toUpdate.Prenume = mecanic.Prenume;
+            if (toUpdate == null) return;
 
+            _context.Entry(toUpdate).CurrentValues.SetValues(mecanic);
             _context.SaveChanges();
         }
 

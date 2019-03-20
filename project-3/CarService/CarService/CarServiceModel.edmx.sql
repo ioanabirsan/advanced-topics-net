@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/19/2019 18:42:04
+-- Date Created: 03/20/2019 14:58:57
 -- Generated from EDMX file: C:\facultate\an3\sem2\advanced-topics-net\project-3\CarService\CarService\CarServiceModel.edmx
 -- --------------------------------------------------
 
@@ -35,14 +35,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_OperatieDetaliuComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Operatii] DROP CONSTRAINT [FK_OperatieDetaliuComanda];
 GO
-IF OBJECT_ID(N'[dbo].[FK_MaterialDetaliuComanda]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Materiale] DROP CONSTRAINT [FK_MaterialDetaliuComanda];
-GO
 IF OBJECT_ID(N'[dbo].[FK_MecanicDetaliuComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Mecanici] DROP CONSTRAINT [FK_MecanicDetaliuComanda];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ComandaDetaliuComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Comenzi] DROP CONSTRAINT [FK_ComandaDetaliuComanda];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DetaliuComandaMaterial]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Materiale] DROP CONSTRAINT [FK_DetaliuComandaMaterial];
 GO
 
 -- --------------------------------------------------
@@ -128,7 +128,7 @@ CREATE TABLE [dbo].[Materiale] (
     [Cantitate] decimal(10,2)  NOT NULL,
     [Pret] decimal(10,2)  NOT NULL,
     [DataAprovizionare] datetime  NOT NULL,
-    [DetaliuComanda_Id] int  NOT NULL
+    [DetaliuComandaId] int  NOT NULL
 );
 GO
 
@@ -138,7 +138,8 @@ CREATE TABLE [dbo].[Imagini] (
     [Titlu] nvarchar(15)  NOT NULL,
     [Data] datetime  NOT NULL,
     [Foto] tinyint  NOT NULL,
-    [DetaliuComandaId] int  NOT NULL
+    [DetaliuComandaId] int  NOT NULL,
+    [Descriere] nvarchar(256)  NOT NULL
 );
 GO
 
@@ -325,21 +326,6 @@ ON [dbo].[Operatii]
     ([DetaliuComandaId]);
 GO
 
--- Creating foreign key on [DetaliuComanda_Id] in table 'Materiale'
-ALTER TABLE [dbo].[Materiale]
-ADD CONSTRAINT [FK_MaterialDetaliuComanda]
-    FOREIGN KEY ([DetaliuComanda_Id])
-    REFERENCES [dbo].[DetaliiComenzi]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_MaterialDetaliuComanda'
-CREATE INDEX [IX_FK_MaterialDetaliuComanda]
-ON [dbo].[Materiale]
-    ([DetaliuComanda_Id]);
-GO
-
 -- Creating foreign key on [DetaliuComandaId] in table 'Mecanici'
 ALTER TABLE [dbo].[Mecanici]
 ADD CONSTRAINT [FK_MecanicDetaliuComanda]
@@ -368,6 +354,21 @@ GO
 CREATE INDEX [IX_FK_ComandaDetaliuComanda]
 ON [dbo].[Comenzi]
     ([DetaliuComanda_Id]);
+GO
+
+-- Creating foreign key on [DetaliuComandaId] in table 'Materiale'
+ALTER TABLE [dbo].[Materiale]
+ADD CONSTRAINT [FK_DetaliuComandaMaterial]
+    FOREIGN KEY ([DetaliuComandaId])
+    REFERENCES [dbo].[DetaliiComenzi]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DetaliuComandaMaterial'
+CREATE INDEX [IX_FK_DetaliuComandaMaterial]
+ON [dbo].[Materiale]
+    ([DetaliuComandaId]);
 GO
 
 -- --------------------------------------------------

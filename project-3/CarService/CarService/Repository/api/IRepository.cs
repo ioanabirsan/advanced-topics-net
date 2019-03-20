@@ -8,7 +8,7 @@ namespace CarService.Repository.api
         IReadOnlyList<T> GetAll();
         void Create(T item);
         void Delete(int id);
-        void Update(int id, T item);
+        void Update(T item);
         bool Exists(int id);
         void SaveChanges();
     }
