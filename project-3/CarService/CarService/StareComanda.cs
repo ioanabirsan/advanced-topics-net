@@ -13,8 +13,8 @@ namespace CarService
     
     public enum StareComanda : byte
     {
-        ASTEPTARE = 1,
-        EXECUTATA = 2,
-        REFUZATA = 3
+        InAsteptare = 1,
+        Executata = 2,
+        Refuzata = 3
     }
 }

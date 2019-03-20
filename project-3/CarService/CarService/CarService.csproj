@@ -54,6 +54,23 @@
     </Compile>
     <Compile Include="Models\Auto\AutoMetadata.cs" />
     <Compile Include="Models\Auto\Auto.cs" />
+    <Compile Include="Models\Client\Client.cs" />
+    <Compile Include="Models\Client\ClientMetadata.cs" />
+    <Compile Include="Models\Comanda\Comanda.cs" />
+    <Compile Include="Models\Comanda\ComandaMetadata.cs" />
+    <Compile Include="Models\DetaliuComanda\DetaliuComanda.cs" />
+    <Compile Include="Models\DetaliuComanda\DetaliuComandaMetadata.cs" />
+    <Compile Include="Models\Imagine\Imagine.cs" />
+    <Compile Include="Models\Imagine\ImagineMetadata.cs" />
+    <Compile Include="Models\Material\Material.cs" />
+    <Compile Include="Models\Material\MaterialMetadata.cs" />
+    <Compile Include="Models\Mecanic\Mecanic.cs" />
+    <Compile Include="Models\Mecanic\MecanicMetadata.cs" />
+    <Compile Include="Models\Operatie\Operatie.cs" />
+    <Compile Include="Models\Operatie\OperatieMetadata.cs" />
+    <Compile Include="Models\Sasiu\Sasiu.cs" />
+    <Compile Include="Models\Sasiu\SasiuMetadata.cs" />
+    <Compile Include="Models\StareComanda\StareComanda.cs" />
     <Compile Include="Service\impl\CarService.cs" />
     <Compile Include="CarServiceModel.Context.cs">
       <AutoGen>True</AutoGen>

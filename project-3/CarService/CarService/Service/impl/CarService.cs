@@ -12,6 +12,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using CarService.Repository.impl;
 using CarService.Service.api;
 
@@ -53,6 +54,36 @@ namespace CarService.Service.impl
             _clientRepository.SaveChanges();
 
             return client.Id;
+        }
+
+        public Client FindByName(string nume, string prenume)
+        {
+            if (string.IsNullOrEmpty(nume))
+            {
+                throw new ArgumentException("Nume must not be null or empty");
+            }
+
+            if (string.IsNullOrEmpty(prenume))
+            {
+                throw new ArgumentException("Prenume must not be null or empty");
+            }
+
+            return _clientRepository.FindByName(nume, prenume);
+        }
+
+        public Client FindByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentException("Email must not be null or empty");
+            }
+
+            return _clientRepository.FindByEmail(email);
+        }
+
+        public IReadOnlyList<Auto> GetClientAutos(int clientId)
+        {
+            return _clientRepository.GetAutos(clientId);
         }
 
         public int AddAuto(Auto auto, int clientId, int sasiuId)

@@ -425,11 +425,6 @@
           <Property Name="ClientId" Type="Int32" Nullable="false" cg:SetterAccess="Public" />
           <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.ComandaDetaliuComanda" FromRole="Comanda" ToRole="DetaliuComanda" />
         </EntityType>
-        <EnumType Name="StareComanda" UnderlyingType="Byte">
-          <Member Name="ASTEPTARE" Value="1" />
-          <Member Name="EXECUTATA" Value="2" />
-          <Member Name="REFUZATA" Value="3" />
-        </EnumType>
         <Association Name="AutoComanda">
           <End Type="CarServiceModel.Auto" Role="Auto" Multiplicity="1" />
           <End Type="CarServiceModel.Comanda" Role="Comanda" Multiplicity="*" />
@@ -509,6 +504,11 @@
           <End Type="CarServiceModel.Comanda" Role="Comanda" Multiplicity="1" />
           <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" />
         </Association>
+        <EnumType Name="StareComanda" UnderlyingType="Byte">
+          <Member Name="InAsteptare" Value="1" />
+          <Member Name="Executata" Value="2" />
+          <Member Name="Refuzata" Value="3" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

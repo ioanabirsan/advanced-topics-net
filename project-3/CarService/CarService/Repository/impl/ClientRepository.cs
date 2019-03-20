@@ -54,5 +54,23 @@ namespace CarService.Repository.impl
         {
             _context.SaveChanges();
         }
+
+        public Client FindByName(string nume, string prenume)
+        {
+            return _context.Clienti.FirstOrDefault(c => c.Nume == nume && c.Prenume == prenume);
+        }
+
+        public Client FindByEmail(string email)
+        {
+            return _context.Clienti.FirstOrDefault(c => c.Email == email);
+        }
+
+        public IReadOnlyList<Auto> GetAutos(int id)
+        {
+            if (!Exists(id)) return null;
+
+            var client = _context.Clienti.First(c => c.Id == id);
+            return client.Automobile.ToList();
+        }
     }
 }
