@@ -54,7 +54,7 @@ namespace CarService.Service.impl
                 throw new ArgumentException("Client must not be null");
             }
 
-            if (ExistsEmail(client.Id, client.Email))
+            if (ExistsEmail(client.Email))
             {
                 throw new ArgumentException("Email already exists.");
             }
@@ -65,16 +65,9 @@ namespace CarService.Service.impl
             return client.Id;
         }
 
-        private bool ExistsEmail(int id, string email)
+        private bool ExistsEmail(string email)
         {
-            var client = _clientRepository.GetById(id);
-
-            if (client != null)
-            {
-                return client.Email.Equals(email);
-            }
-
-            return false;
+            return _clientRepository.ContainsEmail(email);
         }
 
         public Client FindClientById(int id)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CarService.Repository.api;
 
@@ -82,6 +83,21 @@ namespace CarService.Repository.impl
 
             var client = _context.Clienti.First(c => c.Id == id);
             return client.Comenzi.ToList();
+        }
+
+        public bool ContainsEmail(string email)
+        {
+            var clienti = GetAll();
+
+            foreach (var client in clienti)
+            {
+                if (client.Email.Equals(email))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
