@@ -19,6 +19,7 @@ namespace CarService
         public System.DateTime Data { get; set; }
         public byte Foto { get; set; }
         public int DetaliuComandaId { get; set; }
+        public string Descriere { get; set; }
     
         public virtual DetaliuComanda DetaliuComanda { get; set; }
     }

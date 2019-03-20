@@ -52,6 +52,8 @@
     <Compile Include="Auto.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Auto\AutoMetadata.cs" />
+    <Compile Include="Models\Auto\Auto.cs" />
     <Compile Include="Service\impl\CarService.cs" />
     <Compile Include="CarServiceModel.Context.cs">
       <AutoGen>True</AutoGen>

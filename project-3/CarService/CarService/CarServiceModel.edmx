@@ -395,6 +395,7 @@
           <Property Name="Foto" Type="Byte" Nullable="false" cg:SetterAccess="Public" />
           <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.ImagineDetaliuComanda" FromRole="Imagine" ToRole="DetaliuComanda" />
           <Property Name="DetaliuComandaId" Type="Int32" Nullable="false" />
+          <Property Name="Descriere" Type="String" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="Operatie">
           <Key>
