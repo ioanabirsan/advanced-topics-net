@@ -22,10 +22,8 @@ namespace CarService
         public string Descriere { get; set; }
         public decimal ValoarePiese { get; set; }
         public StareComanda StareComanda { get; set; }
-        public int AutoId { get; set; }
         public int ClientId { get; set; }
     
-        public virtual Auto Auto { get; set; }
         public virtual Client Client { get; set; }
         public virtual DetaliuComanda DetaliuComanda { get; set; }
     }

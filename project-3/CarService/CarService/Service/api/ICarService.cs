@@ -20,7 +20,6 @@ namespace CarService.Service.api
         Auto FindAutoById(int id);
         Auto FindAutoBySerieSasiu(string serieSasiu);
         Auto FindAutoByNumarAuto(string numarAuto);
-        IReadOnlyList<Comanda> GetAutoOrders(int autoId);
         IReadOnlyList<Auto> GetAllAutos();
         void UpdateAuto(Auto auto);
         void DeleteAuto(int id);
@@ -56,7 +55,7 @@ namespace CarService.Service.api
         void UpdateOperatie(Operatie operatie);
         void DeleteOperatie(int id);
 
-        int AddComanda(Comanda comanda, int clientId, int autoId);
+        int AddComanda(Comanda comanda, int clientId);
         StareComanda GetStareComanda(int id);
         Comanda FindComandaById(int id);
         Comanda FindComandaByDataFinalizare(DateTime data);

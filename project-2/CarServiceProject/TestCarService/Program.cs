@@ -29,37 +29,35 @@ namespace TestCarService
 
             var client = new Client()
             {
-                Adresa = "Adresa123",
-                Email = "test4@test.com",
-                Nume = "Test",
-                Prenume = "test",
+                Adresa = "Str. Palat",
+                Email = "ioana@gmail.com",
+                Nume = "Birsan",
+                Prenume = "Ioana",
                 Judet = "Iasi",
                 Localitate = "Iasi",
-                Telefon = "0407893453347"
+                Telefon = "0040784043489"
             };
-            var clientId = carService.AddClient(client);
+//            var clientId = carService.AddClient(client);
 
-//            client.Adresa = "eunjsk";
-//            carService.UpdateClient(client);
+            var clientToUpdate = carService.FindClientByEmail("ioana@gmail.com");
+            clientToUpdate.Judet = "Suceava";
+//            carService.UpdateClient(clientToUpdate);
 
             var sasiu = new Sasiu()
             {
                 CodSasiu = "4F",
-                Denumire = "TestSasiu"
+                Denumire = "Sasiu Audi"
             };
             var sasiuId = carService.AddSasiu(sasiu);
 
             var auto = new Auto()
             {
-                NumarAuto = "3y5y8y4",
-                SerieSasiu = "64372",
+                NumarAuto = "SV120COR",
+                SerieSasiu = " WAUZZZ4FZ6A111222",
             };
-            var autoId = carService.AddAuto(auto, clientId, sasiuId);
+//            var autoId = carService.AddAuto(auto, clientToUpdate.Id, sasiuId);
 
-            var clientToUpdate = carService.FindClientByEmail("test4@test.com");
-            clientToUpdate.Judet = "Suceava";
-            carService.UpdateClient(clientToUpdate);
-
+            var autoToUpdate = carService.FindAutoByNumarAuto("SV120COR");
             var detaliuComanda = new DetaliuComanda();
 
             var comanda = new Comanda()
@@ -67,18 +65,15 @@ namespace TestCarService
                 DataProgramare = DateTime.Now,
                 DataFinalizare = DateTime.Today,
                 DataSystem = DateTime.UtcNow,
-                Descriere = "test-descriere",
+                Descriere = "Schimbare placute frana fata",
                 KmBord = 10,
-                ValoarePiese = 10m,
+                ValoarePiese = 100m,
                 DetaliuComanda = detaliuComanda
             };
-            var comandaId = carService.AddComanda(comanda, clientId, autoId);
+//            var comandaId = carService.AddComanda(comanda, clientToUpdate.Id);
             
-//            carService.DeleteSasiu(sasiuId);
-//            carService.DeleteClient(clientId);
-//            carService.DeleteAuto(autoId);
-//            carService.DeleteComanda(comandaId);
-
+            carService.DeleteClient(clientToUpdate.Id);
+//            carService.DeleteAuto(autoToUpdate.Id);
             var clients = carService.GetAllClients();
             foreach (var c in clients)
             {

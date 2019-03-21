@@ -36,10 +36,6 @@ namespace CarService
         public StareComanda StareComanda { get; set; }
 
         [Required]
-        [Key, ForeignKey("Auto")]
-        public int AutoId { get; set; }
-
-        [Required]
         [Key, ForeignKey("Client")]
         public int ClientId { get; set; }
     }

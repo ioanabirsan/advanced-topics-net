@@ -67,12 +67,5 @@ namespace CarService.Repository.impl
         {
             return _context.Automobile.FirstOrDefault(a => a.NumarAuto == numarAuto);
         }
-
-        public IReadOnlyList<Comanda> GetComenzi(int id)
-        {
-            var auto = _context.Automobile.FirstOrDefault(a => a.Id == id);
-
-            return auto?.Comenzi.ToList();
-        }
     }
 }

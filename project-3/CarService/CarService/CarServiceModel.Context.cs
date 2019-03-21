@@ -22,11 +22,7 @@ namespace CarService
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Client>()
-                .HasMany(v => v.Automobile)
-                .WithOptional()
-                .WillCascadeOnDelete(true);
+            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Client> Clienti { get; set; }

@@ -151,12 +151,7 @@ namespace CarService.Service.impl
         {
             return _autoRepository.FindByNumarAuto(numarAuto);
         }
-
-        public IReadOnlyList<Comanda> GetAutoOrders(int autoId)
-        {
-            return _autoRepository.GetComenzi(autoId);
-        }
-
+        
         public IReadOnlyList<Auto> GetAllAutos()
         {
             return _autoRepository.GetAll();
@@ -377,7 +372,6 @@ namespace CarService.Service.impl
             {
                 throw new ArgumentException("Operatie must not be null.");
             }
-
             _operatieRepository.Update(operatie);
         }
 
@@ -386,7 +380,7 @@ namespace CarService.Service.impl
             _operatieRepository.Delete(id);
         }
 
-        public int AddComanda(Comanda comanda, int clientId, int autoId)
+        public int AddComanda(Comanda comanda, int clientId)
         {
             if (comanda == null)
             {
@@ -394,7 +388,6 @@ namespace CarService.Service.impl
             }
 
             comanda.ClientId = clientId;
-            comanda.AutoId = autoId;
 
             _comandaRepository.Create(comanda);
             _comandaRepository.SaveChanges();
@@ -423,7 +416,6 @@ namespace CarService.Service.impl
             {
                 throw new ArgumentException("Comanda must not be null.");
             }
-
             _comandaRepository.Update(comanda);
         }
 
@@ -474,7 +466,6 @@ namespace CarService.Service.impl
             {
                 throw new ArgumentException("Detaliu comanda must not be null.");
             }
-
             _detaliuComandaRepository.Update(detaliuComanda);
         }
 

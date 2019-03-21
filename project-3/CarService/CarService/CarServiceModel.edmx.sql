@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/20/2019 21:51:19
+-- Date Created: 03/21/2019 07:28:16
 -- Generated from EDMX file: C:\facultate\an3\sem2\advanced-topics-net\project-3\CarService\CarService\CarServiceModel.edmx
 -- --------------------------------------------------
 
@@ -23,9 +23,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ClientAuto]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Automobile] DROP CONSTRAINT [FK_ClientAuto];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AutoComanda]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Comenzi] DROP CONSTRAINT [FK_AutoComanda];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ClientComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Comenzi] DROP CONSTRAINT [FK_ClientComanda];
 GO
@@ -39,7 +36,7 @@ IF OBJECT_ID(N'[dbo].[FK_MecanicDetaliuComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Mecanici] DROP CONSTRAINT [FK_MecanicDetaliuComanda];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ComandaDetaliuComanda]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Comenzi] DROP CONSTRAINT [FK_ComandaDetaliuComanda];
+    ALTER TABLE [dbo].[DetaliiComenzi] DROP CONSTRAINT [FK_ComandaDetaliuComanda];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DetaliuComandaMaterial]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Materiale] DROP CONSTRAINT [FK_DetaliuComandaMaterial];
@@ -162,15 +159,14 @@ CREATE TABLE [dbo].[Comenzi] (
     [Descriere] nvarchar(1024)  NOT NULL,
     [ValoarePiese] decimal(10,2)  NOT NULL,
     [StareComanda] tinyint  NOT NULL,
-    [AutoId] int  NOT NULL,
-    [ClientId] int  NOT NULL,
-    [DetaliuComanda_Id] int  NOT NULL
+    [ClientId] int  NOT NULL
 );
 GO
 
 -- Creating table 'DetaliiComenzi'
 CREATE TABLE [dbo].[DetaliiComenzi] (
-    [Id] int IDENTITY(1,1) NOT NULL
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Comanda_Id] int  NOT NULL
 );
 GO
 
@@ -242,7 +238,7 @@ ADD CONSTRAINT [FK_AutoSasiu]
     FOREIGN KEY ([SasiuId])
     REFERENCES [dbo].[Sasiuri]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AutoSasiu'
@@ -257,7 +253,7 @@ ADD CONSTRAINT [FK_ClientAuto]
     FOREIGN KEY ([ClientId])
     REFERENCES [dbo].[Clienti]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ClientAuto'
@@ -266,28 +262,13 @@ ON [dbo].[Automobile]
     ([ClientId]);
 GO
 
--- Creating foreign key on [AutoId] in table 'Comenzi'
-ALTER TABLE [dbo].[Comenzi]
-ADD CONSTRAINT [FK_AutoComanda]
-    FOREIGN KEY ([AutoId])
-    REFERENCES [dbo].[Automobile]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_AutoComanda'
-CREATE INDEX [IX_FK_AutoComanda]
-ON [dbo].[Comenzi]
-    ([AutoId]);
-GO
-
 -- Creating foreign key on [ClientId] in table 'Comenzi'
 ALTER TABLE [dbo].[Comenzi]
 ADD CONSTRAINT [FK_ClientComanda]
     FOREIGN KEY ([ClientId])
     REFERENCES [dbo].[Clienti]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ClientComanda'
@@ -302,7 +283,7 @@ ADD CONSTRAINT [FK_ImagineDetaliuComanda]
     FOREIGN KEY ([DetaliuComandaId])
     REFERENCES [dbo].[DetaliiComenzi]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ImagineDetaliuComanda'
@@ -317,7 +298,7 @@ ADD CONSTRAINT [FK_OperatieDetaliuComanda]
     FOREIGN KEY ([DetaliuComandaId])
     REFERENCES [dbo].[DetaliiComenzi]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OperatieDetaliuComanda'
@@ -332,7 +313,7 @@ ADD CONSTRAINT [FK_MecanicDetaliuComanda]
     FOREIGN KEY ([DetaliuComandaId])
     REFERENCES [dbo].[DetaliiComenzi]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_MecanicDetaliuComanda'
@@ -341,19 +322,19 @@ ON [dbo].[Mecanici]
     ([DetaliuComandaId]);
 GO
 
--- Creating foreign key on [DetaliuComanda_Id] in table 'Comenzi'
-ALTER TABLE [dbo].[Comenzi]
+-- Creating foreign key on [Comanda_Id] in table 'DetaliiComenzi'
+ALTER TABLE [dbo].[DetaliiComenzi]
 ADD CONSTRAINT [FK_ComandaDetaliuComanda]
-    FOREIGN KEY ([DetaliuComanda_Id])
-    REFERENCES [dbo].[DetaliiComenzi]
+    FOREIGN KEY ([Comanda_Id])
+    REFERENCES [dbo].[Comenzi]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ComandaDetaliuComanda'
 CREATE INDEX [IX_FK_ComandaDetaliuComanda]
-ON [dbo].[Comenzi]
-    ([DetaliuComanda_Id]);
+ON [dbo].[DetaliiComenzi]
+    ([Comanda_Id]);
 GO
 
 -- Creating foreign key on [DetaliuComandaId] in table 'Materiale'
@@ -362,7 +343,7 @@ ADD CONSTRAINT [FK_DetaliuComandaMaterial]
     FOREIGN KEY ([DetaliuComandaId])
     REFERENCES [dbo].[DetaliiComenzi]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_DetaliuComandaMaterial'

@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="CarServiceModel.Imagine" Width="2" PointX="6.875" PointY="0.875" />
         <EntityTypeShape EntityType="CarServiceModel.Operatie" Width="2.125" PointX="7.25" PointY="3.75" />
         <EntityTypeShape EntityType="CarServiceModel.Comanda" Width="1.5" PointX="3.5" PointY="4" />
-        <AssociationConnector Association="CarServiceModel.AutoComanda" />
         <AssociationConnector Association="CarServiceModel.ClientComanda" />
         <EntityTypeShape EntityType="CarServiceModel.DetaliuComanda" Width="1.5" PointX="6.75" PointY="7" />
         <AssociationConnector Association="CarServiceModel.ImagineDetaliuComanda" />
