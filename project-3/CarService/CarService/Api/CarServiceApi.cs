@@ -13,7 +13,7 @@ namespace CarService.Api
             _context = new CarServiceModelContainer();
         }
 
-        public Client FindClient(string nume, string prenume, string email)
+        public Client FindCustomer(string nume, string prenume, string email)
         {
             if (string.IsNullOrEmpty(nume))
             {
@@ -35,7 +35,7 @@ namespace CarService.Api
             return client;
         }
 
-        public void AddClient(Client client)
+        public void AddCustomer(Client client)
         {
             if (client == null)
             {
@@ -49,6 +49,17 @@ namespace CarService.Api
         public List<Client> GetAllCustomers()
         {
             return _context.Clienti.ToList();
+        }
+
+        public void AddChassis(Sasiu sasiu)
+        {
+            if (sasiu == null)
+            {
+                throw new ArgumentException("Sasiu must not be null.");
+            }
+
+            _context.Sasiuri.Add(sasiu);
+            _context.SaveChanges();
         }
     }
 }

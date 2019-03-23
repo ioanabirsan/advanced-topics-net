@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarServiceForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBoxChassis = new System.Windows.Forms.GroupBox();
+            this.buttonDisplayChassis = new System.Windows.Forms.Button();
+            this.buttonAddChassis = new System.Windows.Forms.Button();
             this.groupBoxOrders = new System.Windows.Forms.GroupBox();
+            this.buttonDisplayOrders = new System.Windows.Forms.Button();
             this.buttonOrderDetails = new System.Windows.Forms.Button();
             this.buttonAddOrder = new System.Windows.Forms.Button();
             this.buttonSelectOrder = new System.Windows.Forms.Button();
@@ -39,6 +44,23 @@
             this.buttonCustomerDetails = new System.Windows.Forms.Button();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
             this.buttonSelectCustomer = new System.Windows.Forms.Button();
+            this.panelAddChassis = new System.Windows.Forms.Panel();
+            this.buttonAddNewChassis = new System.Windows.Forms.Button();
+            this.textBoxChassisName = new System.Windows.Forms.TextBox();
+            this.labelChassisName = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelChassisCode = new System.Windows.Forms.Label();
+            this.textBoxChassisCode = new System.Windows.Forms.TextBox();
+            this.panelAddCustomerCar = new System.Windows.Forms.Panel();
+            this.buttonAddCustomerCar = new System.Windows.Forms.Button();
+            this.dataGridViewChassisOptions = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelChassisSeries = new System.Windows.Forms.Label();
+            this.textBoxChassisSeries = new System.Windows.Forms.TextBox();
+            this.labelChassis = new System.Windows.Forms.Label();
+            this.labelAutoNumber = new System.Windows.Forms.Label();
+            this.textBoxAutoNumber = new System.Windows.Forms.TextBox();
+            this.dataGridViewCustomerCars = new System.Windows.Forms.DataGridView();
             this.panelAddCustomer = new System.Windows.Forms.Panel();
             this.labelAddCustomerDisplayInfo = new System.Windows.Forms.Label();
             this.textBoxAddEmail = new System.Windows.Forms.TextBox();
@@ -66,13 +88,19 @@
             this.labelSearchName = new System.Windows.Forms.Label();
             this.textBoxSearchFirstName = new System.Windows.Forms.TextBox();
             this.textBoxSearchName = new System.Windows.Forms.TextBox();
+            this.contextMenuStripChassisOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBoxChassis.SuspendLayout();
             this.groupBoxOrders.SuspendLayout();
             this.groupBoxCustomers.SuspendLayout();
+            this.panelAddChassis.SuspendLayout();
+            this.panelAddCustomerCar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChassisOptions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerCars)).BeginInit();
             this.panelAddCustomer.SuspendLayout();
             this.panelSearchCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
@@ -88,6 +116,7 @@
             // 
             this.splitContainer1.Panel1.AccessibleName = "LeftPanel";
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.splitContainer1.Panel1.Controls.Add(this.groupBoxChassis);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxOrders);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxCustomers);
             this.splitContainer1.Panel1.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,26 +124,76 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AccessibleName = "RightPanel";
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridViewCustomers);
+            this.splitContainer1.Panel2.Controls.Add(this.panelAddChassis);
+            this.splitContainer1.Panel2.Controls.Add(this.panelAddCustomerCar);
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridViewCustomerCars);
             this.splitContainer1.Panel2.Controls.Add(this.panelAddCustomer);
             this.splitContainer1.Panel2.Controls.Add(this.panelSearchCustomer);
             this.splitContainer1.Size = new System.Drawing.Size(1462, 802);
             this.splitContainer1.SplitterDistance = 262;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBoxChassis
+            // 
+            this.groupBoxChassis.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxChassis.Controls.Add(this.buttonDisplayChassis);
+            this.groupBoxChassis.Controls.Add(this.buttonAddChassis);
+            this.groupBoxChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxChassis.Location = new System.Drawing.Point(12, 519);
+            this.groupBoxChassis.Name = "groupBoxChassis";
+            this.groupBoxChassis.Size = new System.Drawing.Size(243, 143);
+            this.groupBoxChassis.TabIndex = 4;
+            this.groupBoxChassis.TabStop = false;
+            this.groupBoxChassis.Text = "Chassis";
+            // 
+            // buttonDisplayChassis
+            // 
+            this.buttonDisplayChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonDisplayChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDisplayChassis.Location = new System.Drawing.Point(6, 90);
+            this.buttonDisplayChassis.Name = "buttonDisplayChassis";
+            this.buttonDisplayChassis.Size = new System.Drawing.Size(231, 42);
+            this.buttonDisplayChassis.TabIndex = 2;
+            this.buttonDisplayChassis.Text = "View all";
+            this.buttonDisplayChassis.UseVisualStyleBackColor = false;
+            // 
+            // buttonAddChassis
+            // 
+            this.buttonAddChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonAddChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddChassis.Location = new System.Drawing.Point(6, 42);
+            this.buttonAddChassis.Name = "buttonAddChassis";
+            this.buttonAddChassis.Size = new System.Drawing.Size(231, 42);
+            this.buttonAddChassis.TabIndex = 1;
+            this.buttonAddChassis.Text = "Add chassis";
+            this.buttonAddChassis.UseVisualStyleBackColor = false;
+            this.buttonAddChassis.Click += new System.EventHandler(this.buttonAddChassis_Click);
+            // 
             // groupBoxOrders
             // 
             this.groupBoxOrders.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxOrders.Controls.Add(this.buttonDisplayOrders);
             this.groupBoxOrders.Controls.Add(this.buttonOrderDetails);
             this.groupBoxOrders.Controls.Add(this.buttonAddOrder);
             this.groupBoxOrders.Controls.Add(this.buttonSelectOrder);
             this.groupBoxOrders.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxOrders.Location = new System.Drawing.Point(12, 278);
             this.groupBoxOrders.Name = "groupBoxOrders";
-            this.groupBoxOrders.Size = new System.Drawing.Size(243, 189);
+            this.groupBoxOrders.Size = new System.Drawing.Size(243, 235);
             this.groupBoxOrders.TabIndex = 3;
             this.groupBoxOrders.TabStop = false;
             this.groupBoxOrders.Text = "Orders";
+            // 
+            // buttonDisplayOrders
+            // 
+            this.buttonDisplayOrders.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonDisplayOrders.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDisplayOrders.Location = new System.Drawing.Point(6, 185);
+            this.buttonDisplayOrders.Name = "buttonDisplayOrders";
+            this.buttonDisplayOrders.Size = new System.Drawing.Size(231, 42);
+            this.buttonDisplayOrders.TabIndex = 3;
+            this.buttonDisplayOrders.Text = "View all";
+            this.buttonDisplayOrders.UseVisualStyleBackColor = false;
             // 
             // buttonOrderDetails
             // 
@@ -212,6 +291,167 @@
             this.buttonSelectCustomer.UseVisualStyleBackColor = false;
             this.buttonSelectCustomer.Click += new System.EventHandler(this.buttonSelectCustomer_Click);
             // 
+            // panelAddChassis
+            // 
+            this.panelAddChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddChassis.Controls.Add(this.buttonAddNewChassis);
+            this.panelAddChassis.Controls.Add(this.textBoxChassisName);
+            this.panelAddChassis.Controls.Add(this.labelChassisName);
+            this.panelAddChassis.Controls.Add(this.label3);
+            this.panelAddChassis.Controls.Add(this.labelChassisCode);
+            this.panelAddChassis.Controls.Add(this.textBoxChassisCode);
+            this.panelAddChassis.Location = new System.Drawing.Point(86, 30);
+            this.panelAddChassis.Name = "panelAddChassis";
+            this.panelAddChassis.Size = new System.Drawing.Size(436, 201);
+            this.panelAddChassis.TabIndex = 9;
+            // 
+            // buttonAddNewChassis
+            // 
+            this.buttonAddNewChassis.Location = new System.Drawing.Point(28, 149);
+            this.buttonAddNewChassis.Name = "buttonAddNewChassis";
+            this.buttonAddNewChassis.Size = new System.Drawing.Size(111, 34);
+            this.buttonAddNewChassis.TabIndex = 11;
+            this.buttonAddNewChassis.Text = "Add";
+            this.buttonAddNewChassis.UseVisualStyleBackColor = true;
+            this.buttonAddNewChassis.Click += new System.EventHandler(this.buttonAddNewChassis_Click);
+            // 
+            // textBoxChassisName
+            // 
+            this.textBoxChassisName.Location = new System.Drawing.Point(28, 104);
+            this.textBoxChassisName.Name = "textBoxChassisName";
+            this.textBoxChassisName.Size = new System.Drawing.Size(368, 27);
+            this.textBoxChassisName.TabIndex = 10;
+            // 
+            // labelChassisName
+            // 
+            this.labelChassisName.AutoSize = true;
+            this.labelChassisName.Location = new System.Drawing.Point(24, 80);
+            this.labelChassisName.Name = "labelChassisName";
+            this.labelChassisName.Size = new System.Drawing.Size(51, 20);
+            this.labelChassisName.TabIndex = 9;
+            this.labelChassisName.Text = "Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 20);
+            this.label3.TabIndex = 8;
+            // 
+            // labelChassisCode
+            // 
+            this.labelChassisCode.AutoSize = true;
+            this.labelChassisCode.Location = new System.Drawing.Point(24, 13);
+            this.labelChassisCode.Name = "labelChassisCode";
+            this.labelChassisCode.Size = new System.Drawing.Size(45, 20);
+            this.labelChassisCode.TabIndex = 3;
+            this.labelChassisCode.Text = "Code";
+            // 
+            // textBoxChassisCode
+            // 
+            this.textBoxChassisCode.Location = new System.Drawing.Point(28, 41);
+            this.textBoxChassisCode.Name = "textBoxChassisCode";
+            this.textBoxChassisCode.Size = new System.Drawing.Size(93, 27);
+            this.textBoxChassisCode.TabIndex = 1;
+            // 
+            // panelAddCustomerCar
+            // 
+            this.panelAddCustomerCar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddCustomerCar.Controls.Add(this.buttonAddCustomerCar);
+            this.panelAddCustomerCar.Controls.Add(this.dataGridViewChassisOptions);
+            this.panelAddCustomerCar.Controls.Add(this.label2);
+            this.panelAddCustomerCar.Controls.Add(this.labelChassisSeries);
+            this.panelAddCustomerCar.Controls.Add(this.textBoxChassisSeries);
+            this.panelAddCustomerCar.Controls.Add(this.labelChassis);
+            this.panelAddCustomerCar.Controls.Add(this.labelAutoNumber);
+            this.panelAddCustomerCar.Controls.Add(this.textBoxAutoNumber);
+            this.panelAddCustomerCar.Location = new System.Drawing.Point(86, 463);
+            this.panelAddCustomerCar.Name = "panelAddCustomerCar";
+            this.panelAddCustomerCar.Size = new System.Drawing.Size(1022, 327);
+            this.panelAddCustomerCar.TabIndex = 9;
+            // 
+            // buttonAddCustomerCar
+            // 
+            this.buttonAddCustomerCar.Location = new System.Drawing.Point(28, 203);
+            this.buttonAddCustomerCar.Name = "buttonAddCustomerCar";
+            this.buttonAddCustomerCar.Size = new System.Drawing.Size(110, 35);
+            this.buttonAddCustomerCar.TabIndex = 10;
+            this.buttonAddCustomerCar.Text = "Add";
+            this.buttonAddCustomerCar.UseVisualStyleBackColor = true;
+            this.buttonAddCustomerCar.Click += new System.EventHandler(this.buttonAddCustomerCar_Click);
+            // 
+            // dataGridViewChassisOptions
+            // 
+            this.dataGridViewChassisOptions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewChassisOptions.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewChassisOptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewChassisOptions.Location = new System.Drawing.Point(495, 41);
+            this.dataGridViewChassisOptions.Name = "dataGridViewChassisOptions";
+            this.dataGridViewChassisOptions.RowTemplate.Height = 24;
+            this.dataGridViewChassisOptions.Size = new System.Drawing.Size(496, 150);
+            this.dataGridViewChassisOptions.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 20);
+            this.label2.TabIndex = 8;
+            // 
+            // labelChassisSeries
+            // 
+            this.labelChassisSeries.AutoSize = true;
+            this.labelChassisSeries.Location = new System.Drawing.Point(30, 87);
+            this.labelChassisSeries.Name = "labelChassisSeries";
+            this.labelChassisSeries.Size = new System.Drawing.Size(108, 20);
+            this.labelChassisSeries.TabIndex = 6;
+            this.labelChassisSeries.Text = "Chassis series";
+            // 
+            // textBoxChassisSeries
+            // 
+            this.textBoxChassisSeries.Location = new System.Drawing.Point(28, 110);
+            this.textBoxChassisSeries.Name = "textBoxChassisSeries";
+            this.textBoxChassisSeries.Size = new System.Drawing.Size(323, 27);
+            this.textBoxChassisSeries.TabIndex = 5;
+            // 
+            // labelChassis
+            // 
+            this.labelChassis.AutoSize = true;
+            this.labelChassis.Location = new System.Drawing.Point(491, 13);
+            this.labelChassis.Name = "labelChassis";
+            this.labelChassis.Size = new System.Drawing.Size(62, 20);
+            this.labelChassis.TabIndex = 4;
+            this.labelChassis.Text = "Chassis";
+            // 
+            // labelAutoNumber
+            // 
+            this.labelAutoNumber.AutoSize = true;
+            this.labelAutoNumber.Location = new System.Drawing.Point(24, 13);
+            this.labelAutoNumber.Name = "labelAutoNumber";
+            this.labelAutoNumber.Size = new System.Drawing.Size(104, 20);
+            this.labelAutoNumber.TabIndex = 3;
+            this.labelAutoNumber.Text = "Auto number";
+            // 
+            // textBoxAutoNumber
+            // 
+            this.textBoxAutoNumber.Location = new System.Drawing.Point(28, 41);
+            this.textBoxAutoNumber.Name = "textBoxAutoNumber";
+            this.textBoxAutoNumber.Size = new System.Drawing.Size(201, 27);
+            this.textBoxAutoNumber.TabIndex = 1;
+            // 
+            // dataGridViewCustomerCars
+            // 
+            this.dataGridViewCustomerCars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCustomerCars.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewCustomerCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomerCars.Location = new System.Drawing.Point(86, 186);
+            this.dataGridViewCustomerCars.Name = "dataGridViewCustomerCars";
+            this.dataGridViewCustomerCars.RowTemplate.Height = 24;
+            this.dataGridViewCustomerCars.Size = new System.Drawing.Size(1022, 223);
+            this.dataGridViewCustomerCars.TabIndex = 2;
+            // 
             // panelAddCustomer
             // 
             this.panelAddCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -232,7 +472,7 @@
             this.panelAddCustomer.Controls.Add(this.labelAddName);
             this.panelAddCustomer.Controls.Add(this.textBoxAddFirstName);
             this.panelAddCustomer.Controls.Add(this.textBoxAddName);
-            this.panelAddCustomer.Location = new System.Drawing.Point(87, 30);
+            this.panelAddCustomer.Location = new System.Drawing.Point(86, 30);
             this.panelAddCustomer.Name = "panelAddCustomer";
             this.panelAddCustomer.Size = new System.Drawing.Size(427, 567);
             this.panelAddCustomer.TabIndex = 1;
@@ -378,6 +618,7 @@
             // panelSearchCustomer
             // 
             this.panelSearchCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelSearchCustomer.Controls.Add(this.dataGridViewCustomers);
             this.panelSearchCustomer.Controls.Add(this.labelSearchDisplayInfo);
             this.panelSearchCustomer.Controls.Add(this.buttonSearchCustomer);
             this.panelSearchCustomer.Controls.Add(this.labelSearchEmail);
@@ -457,16 +698,22 @@
             this.textBoxSearchName.Size = new System.Drawing.Size(201, 27);
             this.textBoxSearchName.TabIndex = 1;
             // 
+            // contextMenuStripChassisOptions
+            // 
+            this.contextMenuStripChassisOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripChassisOptions.Name = "contextMenuStripChassisOptions";
+            this.contextMenuStripChassisOptions.Size = new System.Drawing.Size(61, 4);
+            // 
             // dataGridViewCustomers
             // 
             this.dataGridViewCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCustomers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomers.Location = new System.Drawing.Point(86, 30);
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewCustomers.Name = "dataGridViewCustomers";
             this.dataGridViewCustomers.RowTemplate.Height = 24;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(1022, 567);
-            this.dataGridViewCustomers.TabIndex = 2;
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(1022, 427);
+            this.dataGridViewCustomers.TabIndex = 10;
             // 
             // CarServiceForm
             // 
@@ -485,8 +732,15 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBoxChassis.ResumeLayout(false);
             this.groupBoxOrders.ResumeLayout(false);
             this.groupBoxCustomers.ResumeLayout(false);
+            this.panelAddChassis.ResumeLayout(false);
+            this.panelAddChassis.PerformLayout();
+            this.panelAddCustomerCar.ResumeLayout(false);
+            this.panelAddCustomerCar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChassisOptions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerCars)).EndInit();
             this.panelAddCustomer.ResumeLayout(false);
             this.panelAddCustomer.PerformLayout();
             this.panelSearchCustomer.ResumeLayout(false);
@@ -535,6 +789,29 @@
         private System.Windows.Forms.TextBox textBoxAddFirstName;
         private System.Windows.Forms.TextBox textBoxAddName;
         private System.Windows.Forms.Button buttonDisplayCustomers;
+       // private System.Windows.Forms.DataGridView dataGridViewCustomers;
+        private System.Windows.Forms.DataGridView dataGridViewCustomerCars;
+        private System.Windows.Forms.Panel panelAddCustomerCar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelChassisSeries;
+        private System.Windows.Forms.TextBox textBoxChassisSeries;
+        private System.Windows.Forms.Label labelChassis;
+        private System.Windows.Forms.Label labelAutoNumber;
+        private System.Windows.Forms.TextBox textBoxAutoNumber;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripChassisOptions;
+        private System.Windows.Forms.DataGridView dataGridViewChassisOptions;
+        private System.Windows.Forms.Button buttonAddCustomerCar;
+        private System.Windows.Forms.GroupBox groupBoxChassis;
+        private System.Windows.Forms.Button buttonDisplayChassis;
+        private System.Windows.Forms.Button buttonAddChassis;
+        private System.Windows.Forms.Button buttonDisplayOrders;
+        private System.Windows.Forms.Panel panelAddChassis;
+        private System.Windows.Forms.Button buttonAddNewChassis;
+        private System.Windows.Forms.TextBox textBoxChassisName;
+        private System.Windows.Forms.Label labelChassisName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelChassisCode;
+        private System.Windows.Forms.TextBox textBoxChassisCode;
         private System.Windows.Forms.DataGridView dataGridViewCustomers;
     }
 }
