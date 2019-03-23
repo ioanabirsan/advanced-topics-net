@@ -124,6 +124,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\CarServiceApi.cs" />
     <Compile Include="Auto.cs">
       <DependentUpon>CarServiceModel.tt</DependentUpon>
     </Compile>
