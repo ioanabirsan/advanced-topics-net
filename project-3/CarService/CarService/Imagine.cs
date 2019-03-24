@@ -14,13 +14,19 @@ namespace CarService
     
     public partial class Imagine
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Imagine()
+        {
+            this.DetaliiComenzi = new HashSet<DetaliuComanda>();
+        }
+    
         public int Id { get; set; }
         public string Titlu { get; set; }
         public System.DateTime Data { get; set; }
         public byte Foto { get; set; }
-        public int DetaliuComandaId { get; set; }
         public string Descriere { get; set; }
     
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetaliuComanda> DetaliiComenzi { get; set; }
     }
 }

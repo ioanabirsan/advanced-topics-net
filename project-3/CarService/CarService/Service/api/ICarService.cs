@@ -31,13 +31,13 @@ namespace CarService.Service.api
         void UpdateSasiu(Sasiu sasiu);
         void DeleteSasiu(int id);
 
-        int AddMecanic(Mecanic mecanic, int detaliuComandaId);
+        int AddMecanic(Mecanic mecanic);
         Mecanic FindMecanicByName(string nume, string prenume);
         Mecanic FindMecanicById(int id);
         void UpdateMecanic(Mecanic mecanic);
         void DeleteMecanic(int id);
 
-        int AddMaterial(Material material, int detaliuComandaId);
+        int AddMaterial(Material material);
         Material FindMaterialByDenumire(string denumire);
         Material FindMaterialByCantitate(decimal cantitate);
         Material FindMaterialByPret(decimal pret);
@@ -45,12 +45,12 @@ namespace CarService.Service.api
         void UpdateMaterial(Material material);
         void DeleteMaterial(int id);
 
-        int AddImagine(Imagine imagine, int detaliuComandaId);
+        int AddImagine(Imagine imagine);
         Imagine FindImagineByTitlu(string titlu);
         void UpdateImagine(Imagine imagine);
         void DeleteImagine(int id);
 
-        int AddOperatie(Operatie operatie, int detaliuComandaId);
+        int AddOperatie(Operatie operatie);
         Operatie FindOperatieByTimpExecutie(decimal timpExecutie);
         void UpdateOperatie(Operatie operatie);
         void DeleteOperatie(int id);

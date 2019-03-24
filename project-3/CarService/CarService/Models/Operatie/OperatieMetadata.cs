@@ -14,9 +14,5 @@ namespace CarService
 
         [Required]
         public decimal TimpExecutie { get; set; }
-
-        [Required]
-        [Key, ForeignKey("DetaliuComanda")]
-        public int DetaliuComandaId { get; set; }
     }
 }

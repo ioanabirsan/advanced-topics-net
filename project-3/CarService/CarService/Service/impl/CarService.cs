@@ -216,14 +216,13 @@ namespace CarService.Service.impl
             _sasiuRepository.Delete(id);
         }
 
-        public int AddMecanic(Mecanic mecanic, int detaliuComandaId)
+        public int AddMecanic(Mecanic mecanic)
         {
             if (mecanic == null)
             {
                 throw new ArgumentException("Mecanic must not be null.");
             }
-
-            mecanic.DetaliuComandaId = detaliuComandaId;
+            
             _mecanicRepository.Create(mecanic);
             _mecanicRepository.SaveChanges();
 
@@ -255,14 +254,13 @@ namespace CarService.Service.impl
             _mecanicRepository.Delete(id);
         }
 
-        public int AddMaterial(Material material, int detaliuComandaId)
+        public int AddMaterial(Material material)
         {
             if (material == null)
             {
                 throw new ArgumentException("Material must not be null.");
             }
-
-            material.DetaliuComandaId = detaliuComandaId;
+           
             _materialRepository.Create(material);
             _materialRepository.SaveChanges();
 
@@ -309,14 +307,13 @@ namespace CarService.Service.impl
             _materialRepository.Delete(id);
         }
 
-        public int AddImagine(Imagine imagine, int detaliuComandaId)
+        public int AddImagine(Imagine imagine)
         {
             if (imagine == null)
             {
                 throw new ArgumentException("Imagine must not be null.");
             }
-
-            imagine.DetaliuComandaId = detaliuComandaId;
+            
             _imagineRepository.Create(imagine);
             _imagineRepository.SaveChanges();
 
@@ -347,14 +344,13 @@ namespace CarService.Service.impl
             _imagineRepository.Delete(id);
         }
 
-        public int AddOperatie(Operatie operatie, int detaliuComandaId)
+        public int AddOperatie(Operatie operatie)
         {
             if (operatie == null)
             {
                 throw new ArgumentException("Operatie must not be null.");
             }
-
-            operatie.DetaliuComandaId = detaliuComandaId;
+            
             _operatieRepository.Create(operatie);
             _operatieRepository.SaveChanges();
 

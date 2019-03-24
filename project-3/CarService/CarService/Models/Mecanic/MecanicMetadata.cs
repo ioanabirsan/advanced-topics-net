@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarService
 {
@@ -15,9 +14,5 @@ namespace CarService
         [Required]
         [MaxLength(15)]
         public string Prenume { get; set; }
-
-        [Required]
-        [Key, ForeignKey("DetaliuComanda")]
-        public int DetaliuComandaId { get; set; }
     }
 }

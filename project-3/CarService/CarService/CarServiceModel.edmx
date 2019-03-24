@@ -15,6 +15,10 @@
     <EntitySet Name="Operatii" EntityType="CarServiceModel.Store.Operatii" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Comenzi" EntityType="CarServiceModel.Store.Comenzi" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetaliiComenzi" EntityType="CarServiceModel.Store.DetaliiComenzi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaterialDetaliuComanda" EntityType="CarServiceModel.Store.MaterialDetaliuComanda" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OperatieDetaliuComanda" EntityType="CarServiceModel.Store.OperatieDetaliuComanda" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ImagineDetaliuComanda" EntityType="CarServiceModel.Store.ImagineDetaliuComanda" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MecanicDetaliuComanda" EntityType="CarServiceModel.Store.MecanicDetaliuComanda" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="AutoSasiu" Association="CarServiceModel.Store.AutoSasiu">
       <End Role="Auto" EntitySet="Automobile" />
       <End Role="Sasiu" EntitySet="Sasiuri" />
@@ -27,25 +31,41 @@
       <End Role="Client" EntitySet="Clienti" />
       <End Role="Comanda" EntitySet="Comenzi" />
     </AssociationSet>
-    <AssociationSet Name="ImagineDetaliuComanda" Association="CarServiceModel.Store.ImagineDetaliuComanda">
-      <End Role="Imagine" EntitySet="Imagini" />
-      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-    </AssociationSet>
-    <AssociationSet Name="OperatieDetaliuComanda" Association="CarServiceModel.Store.OperatieDetaliuComanda">
-      <End Role="Operatie" EntitySet="Operatii" />
-      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-    </AssociationSet>
-    <AssociationSet Name="MecanicDetaliuComanda" Association="CarServiceModel.Store.MecanicDetaliuComanda">
-      <End Role="Mecanic" EntitySet="Mecanici" />
-      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-    </AssociationSet>
     <AssociationSet Name="ComandaDetaliuComanda" Association="CarServiceModel.Store.ComandaDetaliuComanda">
       <End Role="Comanda" EntitySet="Comenzi" />
       <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
     </AssociationSet>
-    <AssociationSet Name="DetaliuComandaMaterial" Association="CarServiceModel.Store.DetaliuComandaMaterial">
-      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+    <AssociationSet Name="FK_MaterialDetaliuComanda_Material" Association="CarServiceModel.Store.FK_MaterialDetaliuComanda_Material">
       <End Role="Material" EntitySet="Materiale" />
+      <End Role="MaterialDetaliuComanda" EntitySet="MaterialDetaliuComanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaterialDetaliuComanda_DetaliuComanda" Association="CarServiceModel.Store.FK_MaterialDetaliuComanda_DetaliuComanda">
+      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+      <End Role="MaterialDetaliuComanda" EntitySet="MaterialDetaliuComanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperatieDetaliuComanda_Operatie" Association="CarServiceModel.Store.FK_OperatieDetaliuComanda_Operatie">
+      <End Role="Operatie" EntitySet="Operatii" />
+      <End Role="OperatieDetaliuComanda" EntitySet="OperatieDetaliuComanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperatieDetaliuComanda_DetaliuComanda" Association="CarServiceModel.Store.FK_OperatieDetaliuComanda_DetaliuComanda">
+      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+      <End Role="OperatieDetaliuComanda" EntitySet="OperatieDetaliuComanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImagineDetaliuComanda_Imagine" Association="CarServiceModel.Store.FK_ImagineDetaliuComanda_Imagine">
+      <End Role="Imagine" EntitySet="Imagini" />
+      <End Role="ImagineDetaliuComanda" EntitySet="ImagineDetaliuComanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImagineDetaliuComanda_DetaliuComanda" Association="CarServiceModel.Store.FK_ImagineDetaliuComanda_DetaliuComanda">
+      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+      <End Role="ImagineDetaliuComanda" EntitySet="ImagineDetaliuComanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MecanicDetaliuComanda_Mecanic" Association="CarServiceModel.Store.FK_MecanicDetaliuComanda_Mecanic">
+      <End Role="Mecanic" EntitySet="Mecanici" />
+      <End Role="MecanicDetaliuComanda" EntitySet="MecanicDetaliuComanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MecanicDetaliuComanda_DetaliuComanda" Association="CarServiceModel.Store.FK_MecanicDetaliuComanda_DetaliuComanda">
+      <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+      <End Role="MecanicDetaliuComanda" EntitySet="MecanicDetaliuComanda" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Clienti">
@@ -86,7 +106,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nume" Type="nvarchar" Nullable="false" MaxLength="15" />
     <Property Name="Prenume" Type="nvarchar" Nullable="false" MaxLength="15" />
-    <Property Name="DetaliuComandaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Materiale">
     <Key>
@@ -97,7 +116,6 @@
     <Property Name="Cantitate" Type="decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="Pret" Type="decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="DataAprovizionare" Type="datetime" Nullable="false" />
-    <Property Name="DetaliuComandaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Imagini">
     <Key>
@@ -107,7 +125,6 @@
     <Property Name="Titlu" Type="nvarchar" Nullable="false" MaxLength="15" />
     <Property Name="Data" Type="datetime" Nullable="false" />
     <Property Name="Foto" Type="tinyint" Nullable="false" />
-    <Property Name="DetaliuComandaId" Type="int" Nullable="false" />
     <Property Name="Descriere" Type="nvarchar" Nullable="false" MaxLength="256" />
   </EntityType>
   <EntityType Name="Operatii">
@@ -117,7 +134,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Denumire" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="TimpExecutie" Type="decimal" Nullable="false" Precision="6" Scale="2" />
-    <Property Name="DetaliuComandaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Comenzi">
     <Key>
@@ -139,6 +155,38 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Comanda_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaterialDetaliuComanda">
+    <Key>
+      <PropertyRef Name="Materiale_Id" />
+      <PropertyRef Name="DetaliiComenzi_Id" />
+    </Key>
+    <Property Name="Materiale_Id" Type="int" Nullable="false" />
+    <Property Name="DetaliiComenzi_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperatieDetaliuComanda">
+    <Key>
+      <PropertyRef Name="Operatii_Id" />
+      <PropertyRef Name="DetaliiComenzi_Id" />
+    </Key>
+    <Property Name="Operatii_Id" Type="int" Nullable="false" />
+    <Property Name="DetaliiComenzi_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImagineDetaliuComanda">
+    <Key>
+      <PropertyRef Name="Imagini_Id" />
+      <PropertyRef Name="DetaliiComenzi_Id" />
+    </Key>
+    <Property Name="Imagini_Id" Type="int" Nullable="false" />
+    <Property Name="DetaliiComenzi_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MecanicDetaliuComanda">
+    <Key>
+      <PropertyRef Name="Mecanici_Id" />
+      <PropertyRef Name="DetaliiComenzi_Id" />
+    </Key>
+    <Property Name="Mecanici_Id" Type="int" Nullable="false" />
+    <Property Name="DetaliiComenzi_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="AutoSasiu">
     <End Role="Auto" Type="CarServiceModel.Store.Automobile" Multiplicity="*" />
@@ -182,48 +230,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ImagineDetaliuComanda">
-    <End Role="Imagine" Type="CarServiceModel.Store.Imagini" Multiplicity="*" />
-    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <ReferentialConstraint>
-      <Principal Role="DetaliuComanda">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Imagine">
-        <PropertyRef Name="DetaliuComandaId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="OperatieDetaliuComanda">
-    <End Role="Operatie" Type="CarServiceModel.Store.Operatii" Multiplicity="*" />
-    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <ReferentialConstraint>
-      <Principal Role="DetaliuComanda">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Operatie">
-        <PropertyRef Name="DetaliuComandaId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="MecanicDetaliuComanda">
-    <End Role="Mecanic" Type="CarServiceModel.Store.Mecanici" Multiplicity="*" />
-    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <ReferentialConstraint>
-      <Principal Role="DetaliuComanda">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Mecanic">
-        <PropertyRef Name="DetaliuComandaId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ComandaDetaliuComanda">
     <End Role="Comanda" Type="CarServiceModel.Store.Comenzi" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -238,17 +244,99 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DetaliuComandaMaterial">
-    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Material" Type="CarServiceModel.Store.Materiale" Multiplicity="*" />
+  <Association Name="FK_MaterialDetaliuComanda_Material">
+    <End Role="Material" Type="CarServiceModel.Store.Materiale" Multiplicity="1" />
+    <End Role="MaterialDetaliuComanda" Type="CarServiceModel.Store.MaterialDetaliuComanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MaterialDetaliuComanda">
+        <PropertyRef Name="Materiale_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaterialDetaliuComanda_DetaliuComanda">
+    <End Role="MaterialDetaliuComanda" Type="CarServiceModel.Store.MaterialDetaliuComanda" Multiplicity="*" />
+    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="DetaliuComanda">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Material">
-        <PropertyRef Name="DetaliuComandaId" />
+      <Dependent Role="MaterialDetaliuComanda">
+        <PropertyRef Name="DetaliiComenzi_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperatieDetaliuComanda_Operatie">
+    <End Role="Operatie" Type="CarServiceModel.Store.Operatii" Multiplicity="1" />
+    <End Role="OperatieDetaliuComanda" Type="CarServiceModel.Store.OperatieDetaliuComanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operatie">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OperatieDetaliuComanda">
+        <PropertyRef Name="Operatii_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperatieDetaliuComanda_DetaliuComanda">
+    <End Role="OperatieDetaliuComanda" Type="CarServiceModel.Store.OperatieDetaliuComanda" Multiplicity="*" />
+    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DetaliuComanda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OperatieDetaliuComanda">
+        <PropertyRef Name="DetaliiComenzi_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImagineDetaliuComanda_Imagine">
+    <End Role="Imagine" Type="CarServiceModel.Store.Imagini" Multiplicity="1" />
+    <End Role="ImagineDetaliuComanda" Type="CarServiceModel.Store.ImagineDetaliuComanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Imagine">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImagineDetaliuComanda">
+        <PropertyRef Name="Imagini_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImagineDetaliuComanda_DetaliuComanda">
+    <End Role="ImagineDetaliuComanda" Type="CarServiceModel.Store.ImagineDetaliuComanda" Multiplicity="*" />
+    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DetaliuComanda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImagineDetaliuComanda">
+        <PropertyRef Name="DetaliiComenzi_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MecanicDetaliuComanda_Mecanic">
+    <End Role="Mecanic" Type="CarServiceModel.Store.Mecanici" Multiplicity="1" />
+    <End Role="MecanicDetaliuComanda" Type="CarServiceModel.Store.MecanicDetaliuComanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mecanic">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MecanicDetaliuComanda">
+        <PropertyRef Name="Mecanici_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MecanicDetaliuComanda_DetaliuComanda">
+    <End Role="MecanicDetaliuComanda" Type="CarServiceModel.Store.MecanicDetaliuComanda" Multiplicity="*" />
+    <End Role="DetaliuComanda" Type="CarServiceModel.Store.DetaliiComenzi" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DetaliuComanda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MecanicDetaliuComanda">
+        <PropertyRef Name="DetaliiComenzi_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -278,25 +366,25 @@
             <End Role="Comanda" EntitySet="Comenzi" />
           </AssociationSet>
           <EntitySet Name="DetaliiComenzi" EntityType="CarServiceModel.DetaliuComanda" />
-          <AssociationSet Name="ImagineDetaliuComanda" Association="CarServiceModel.ImagineDetaliuComanda">
-            <End Role="Imagine" EntitySet="Imagini" />
+          <AssociationSet Name="ComandaDetaliuComanda" Association="CarServiceModel.ComandaDetaliuComanda">
+            <End Role="Comanda" EntitySet="Comenzi" />
+            <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+          </AssociationSet>
+          <AssociationSet Name="MaterialDetaliuComanda" Association="CarServiceModel.MaterialDetaliuComanda">
+            <End Role="Material" EntitySet="Materiale" />
             <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
           </AssociationSet>
           <AssociationSet Name="OperatieDetaliuComanda" Association="CarServiceModel.OperatieDetaliuComanda">
             <End Role="Operatie" EntitySet="Operatii" />
             <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
           </AssociationSet>
+          <AssociationSet Name="ImagineDetaliuComanda" Association="CarServiceModel.ImagineDetaliuComanda">
+            <End Role="Imagine" EntitySet="Imagini" />
+            <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
+          </AssociationSet>
           <AssociationSet Name="MecanicDetaliuComanda" Association="CarServiceModel.MecanicDetaliuComanda">
             <End Role="Mecanic" EntitySet="Mecanici" />
             <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-          </AssociationSet>
-          <AssociationSet Name="ComandaDetaliuComanda" Association="CarServiceModel.ComandaDetaliuComanda">
-            <End Role="Comanda" EntitySet="Comenzi" />
-            <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-          </AssociationSet>
-          <AssociationSet Name="DetaliuComandaMaterial" Association="CarServiceModel.DetaliuComandaMaterial">
-            <End Role="DetaliuComanda" EntitySet="DetaliiComenzi" />
-            <End Role="Material" EntitySet="Materiale" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
@@ -372,8 +460,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Public" />
           <Property Name="Nume" Type="String" Nullable="false" MaxLength="15" cg:SetterAccess="Public" />
           <Property Name="Prenume" Type="String" Nullable="false" MaxLength="15" cg:SetterAccess="Public" />
-          <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.MecanicDetaliuComanda" FromRole="Mecanic" ToRole="DetaliuComanda" />
-          <Property Name="DetaliuComandaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetaliiComenzi" Relationship="CarServiceModel.MecanicDetaliuComanda" FromRole="Mecanic" ToRole="DetaliuComanda" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -384,8 +471,7 @@
           <Property Name="Cantitate" Type="Decimal" Nullable="false" Precision="10" Scale="2" cg:SetterAccess="Public" />
           <Property Name="Pret" Type="Decimal" Nullable="false" cg:SetterAccess="Public" Precision="10" Scale="2" />
           <Property Name="DataAprovizionare" Type="DateTime" Nullable="false" cg:SetterAccess="Public" />
-          <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.DetaliuComandaMaterial" FromRole="Material" ToRole="DetaliuComanda" />
-          <Property Name="DetaliuComandaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetaliiComenzi" Relationship="CarServiceModel.MaterialDetaliuComanda" FromRole="Material" ToRole="DetaliuComanda" />
         </EntityType>
         <EntityType Name="Imagine">
           <Key>
@@ -395,9 +481,8 @@
           <Property Name="Titlu" Type="String" Nullable="false" MaxLength="15" cg:SetterAccess="Public" />
           <Property Name="Data" Type="DateTime" Nullable="false" cg:SetterAccess="Public" />
           <Property Name="Foto" Type="Byte" Nullable="false" cg:SetterAccess="Public" />
-          <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.ImagineDetaliuComanda" FromRole="Imagine" ToRole="DetaliuComanda" />
-          <Property Name="DetaliuComandaId" Type="Int32" Nullable="false" />
           <Property Name="Descriere" Type="String" Nullable="false" MaxLength="256" />
+          <NavigationProperty Name="DetaliiComenzi" Relationship="CarServiceModel.ImagineDetaliuComanda" FromRole="Imagine" ToRole="DetaliuComanda" />
         </EntityType>
         <EntityType Name="Operatie">
           <Key>
@@ -406,8 +491,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Public" />
           <Property Name="Denumire" Type="String" Nullable="false" MaxLength="256" cg:SetterAccess="Public" />
           <Property Name="TimpExecutie" Type="Decimal" Nullable="false" cg:SetterAccess="Public" Precision="6" Scale="2" />
-          <NavigationProperty Name="DetaliuComanda" Relationship="CarServiceModel.OperatieDetaliuComanda" FromRole="Operatie" ToRole="DetaliuComanda" />
-          <Property Name="DetaliuComandaId" Type="Int32" Nullable="false" cg:SetterAccess="Public" />
+          <NavigationProperty Name="DetaliiComenzi" Relationship="CarServiceModel.OperatieDetaliuComanda" FromRole="Operatie" ToRole="DetaliuComanda" />
         </EntityType>
         <EntityType Name="Comanda">
           <Key>
@@ -445,56 +529,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" cg:SetterAccess="Public" />
-          <NavigationProperty Name="Imagini" Relationship="CarServiceModel.ImagineDetaliuComanda" FromRole="DetaliuComanda" ToRole="Imagine" />
-          <NavigationProperty Name="Operatii" Relationship="CarServiceModel.OperatieDetaliuComanda" FromRole="DetaliuComanda" ToRole="Operatie" />
-          <NavigationProperty Name="Mecanici" Relationship="CarServiceModel.MecanicDetaliuComanda" FromRole="DetaliuComanda" ToRole="Mecanic" />
           <NavigationProperty Name="Comanda" Relationship="CarServiceModel.ComandaDetaliuComanda" FromRole="DetaliuComanda" ToRole="Comanda" />
-          <NavigationProperty Name="Materiale" Relationship="CarServiceModel.DetaliuComandaMaterial" FromRole="DetaliuComanda" ToRole="Material" />
+          <NavigationProperty Name="Materiale" Relationship="CarServiceModel.MaterialDetaliuComanda" FromRole="DetaliuComanda" ToRole="Material" />
+          <NavigationProperty Name="Operatii" Relationship="CarServiceModel.OperatieDetaliuComanda" FromRole="DetaliuComanda" ToRole="Operatie" />
+          <NavigationProperty Name="Imagini" Relationship="CarServiceModel.ImagineDetaliuComanda" FromRole="DetaliuComanda" ToRole="Imagine" />
+          <NavigationProperty Name="Mecanici" Relationship="CarServiceModel.MecanicDetaliuComanda" FromRole="DetaliuComanda" ToRole="Mecanic" />
         </EntityType>
-        <Association Name="ImagineDetaliuComanda">
-          <End Type="CarServiceModel.Imagine" Role="Imagine" Multiplicity="*" >
-          </End>
-          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <ReferentialConstraint>
-            <Principal Role="DetaliuComanda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Imagine">
-              <PropertyRef Name="DetaliuComandaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="OperatieDetaliuComanda">
-          <End Type="CarServiceModel.Operatie" Role="Operatie" Multiplicity="*" ></End>
-          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <ReferentialConstraint>
-            <Principal Role="DetaliuComanda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Operatie">
-              <PropertyRef Name="DetaliuComandaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="MecanicDetaliuComanda">
-          <End Type="CarServiceModel.Mecanic" Role="Mecanic" Multiplicity="*" >
-          </End>
-          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <ReferentialConstraint>
-            <Principal Role="DetaliuComanda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Mecanic">
-              <PropertyRef Name="DetaliuComandaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ComandaDetaliuComanda">
           <End Type="CarServiceModel.Comanda" Role="Comanda" Multiplicity="1" >
             <OnDelete Action="Cascade" />
@@ -507,20 +547,21 @@
           <Member Name="Executata" Value="2" />
           <Member Name="Refuzata" Value="3" />
         </EnumType>
-        <Association Name="DetaliuComandaMaterial">
-          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="CarServiceModel.Material" Role="Material" Multiplicity="*" >
-          </End>
-          <ReferentialConstraint>
-            <Principal Role="DetaliuComanda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Material">
-              <PropertyRef Name="DetaliuComandaId" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="MaterialDetaliuComanda">
+          <End Type="CarServiceModel.Material" Role="Material" Multiplicity="*" />
+          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="*" />
+        </Association>
+        <Association Name="OperatieDetaliuComanda">
+          <End Type="CarServiceModel.Operatie" Role="Operatie" Multiplicity="*" />
+          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="*" />
+        </Association>
+        <Association Name="ImagineDetaliuComanda">
+          <End Type="CarServiceModel.Imagine" Role="Imagine" Multiplicity="*" />
+          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="*" />
+        </Association>
+        <Association Name="MecanicDetaliuComanda">
+          <End Type="CarServiceModel.Mecanic" Role="Mecanic" Multiplicity="*" />
+          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -568,7 +609,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nume" ColumnName="Nume" />
           <ScalarProperty Name="Prenume" ColumnName="Prenume" />
-          <ScalarProperty Name="DetaliuComandaId" ColumnName="DetaliuComandaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -580,7 +620,6 @@
           <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
           <ScalarProperty Name="Pret" ColumnName="Pret" />
           <ScalarProperty Name="DataAprovizionare" ColumnName="DataAprovizionare" />
-          <ScalarProperty Name="DetaliuComandaId" ColumnName="DetaliuComandaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -591,7 +630,6 @@
           <ScalarProperty Name="Titlu" ColumnName="Titlu" />
           <ScalarProperty Name="Data" ColumnName="Data" />
           <ScalarProperty Name="Foto" ColumnName="Foto" />
-          <ScalarProperty Name="DetaliuComandaId" ColumnName="DetaliuComandaId" />
           <ScalarProperty Name="Descriere" ColumnName="Descriere" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -602,7 +640,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Denumire" ColumnName="Denumire" />
           <ScalarProperty Name="TimpExecutie" ColumnName="TimpExecutie" />
-          <ScalarProperty Name="DetaliuComandaId" ColumnName="DetaliuComandaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -634,6 +671,38 @@
       </EndProperty>
       <EndProperty Name="DetaliuComanda">
         <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MaterialDetaliuComanda" TypeName="CarServiceModel.MaterialDetaliuComanda" StoreEntitySet="MaterialDetaliuComanda">
+      <EndProperty Name="Material">
+        <ScalarProperty Name="Id" ColumnName="Materiale_Id" />
+      </EndProperty>
+      <EndProperty Name="DetaliuComanda">
+        <ScalarProperty Name="Id" ColumnName="DetaliiComenzi_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OperatieDetaliuComanda" TypeName="CarServiceModel.OperatieDetaliuComanda" StoreEntitySet="OperatieDetaliuComanda">
+      <EndProperty Name="Operatie">
+        <ScalarProperty Name="Id" ColumnName="Operatii_Id" />
+      </EndProperty>
+      <EndProperty Name="DetaliuComanda">
+        <ScalarProperty Name="Id" ColumnName="DetaliiComenzi_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ImagineDetaliuComanda" TypeName="CarServiceModel.ImagineDetaliuComanda" StoreEntitySet="ImagineDetaliuComanda">
+      <EndProperty Name="Imagine">
+        <ScalarProperty Name="Id" ColumnName="Imagini_Id" />
+      </EndProperty>
+      <EndProperty Name="DetaliuComanda">
+        <ScalarProperty Name="Id" ColumnName="DetaliiComenzi_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MecanicDetaliuComanda" TypeName="CarServiceModel.MecanicDetaliuComanda" StoreEntitySet="MecanicDetaliuComanda">
+      <EndProperty Name="Mecanic">
+        <ScalarProperty Name="Id" ColumnName="Mecanici_Id" />
+      </EndProperty>
+      <EndProperty Name="DetaliuComanda">
+        <ScalarProperty Name="Id" ColumnName="DetaliiComenzi_Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

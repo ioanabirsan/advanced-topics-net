@@ -14,11 +14,17 @@ namespace CarService
     
     public partial class Mecanic
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Mecanic()
+        {
+            this.DetaliiComenzi = new HashSet<DetaliuComanda>();
+        }
+    
         public int Id { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
-        public int DetaliuComandaId { get; set; }
     
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetaliuComanda> DetaliiComenzi { get; set; }
     }
 }

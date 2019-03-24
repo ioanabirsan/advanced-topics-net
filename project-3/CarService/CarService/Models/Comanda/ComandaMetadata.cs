@@ -28,8 +28,7 @@ namespace CarService
         [Required]
         [MaxLength(1024)]
         public string Descriere { get; set; }
-
-        [Required]
+        
         public decimal ValoarePiese { get; set; }
 
         [Required]

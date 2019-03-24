@@ -14,13 +14,19 @@ namespace CarService
     
     public partial class Material
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Material()
+        {
+            this.DetaliiComenzi = new HashSet<DetaliuComanda>();
+        }
+    
         public int Id { get; set; }
         public string Denumire { get; set; }
         public decimal Cantitate { get; set; }
         public decimal Pret { get; set; }
         public System.DateTime DataAprovizionare { get; set; }
-        public int DetaliuComandaId { get; set; }
     
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetaliuComanda> DetaliiComenzi { get; set; }
     }
 }

@@ -31,12 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarServiceForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonAddMechanic = new System.Windows.Forms.Button();
+            this.buttonAddOperation = new System.Windows.Forms.Button();
+            this.groupBoxDetails = new System.Windows.Forms.GroupBox();
+            this.buttonAddMaterial = new System.Windows.Forms.Button();
             this.groupBoxChassis = new System.Windows.Forms.GroupBox();
-            this.buttonDisplayChassis = new System.Windows.Forms.Button();
             this.buttonAddChassis = new System.Windows.Forms.Button();
             this.groupBoxOrders = new System.Windows.Forms.GroupBox();
             this.buttonDisplayOrders = new System.Windows.Forms.Button();
-            this.buttonOrderDetails = new System.Windows.Forms.Button();
             this.buttonAddOrder = new System.Windows.Forms.Button();
             this.buttonSelectOrder = new System.Windows.Forms.Button();
             this.groupBoxCustomers = new System.Windows.Forms.GroupBox();
@@ -44,13 +46,59 @@
             this.buttonCustomerDetails = new System.Windows.Forms.Button();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
             this.buttonSelectCustomer = new System.Windows.Forms.Button();
-            this.panelAddChassis = new System.Windows.Forms.Panel();
-            this.buttonAddNewChassis = new System.Windows.Forms.Button();
-            this.textBoxChassisName = new System.Windows.Forms.TextBox();
-            this.labelChassisName = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelChassisCode = new System.Windows.Forms.Label();
-            this.textBoxChassisCode = new System.Windows.Forms.TextBox();
+            this.panelAddMaterial = new System.Windows.Forms.Panel();
+            this.dateTimePickerAddMaterialDateSupply = new System.Windows.Forms.DateTimePicker();
+            this.labelAddMaterialDateSupply = new System.Windows.Forms.Label();
+            this.textBoxAddMaterialPrice = new System.Windows.Forms.TextBox();
+            this.labelAddMaterialPrice = new System.Windows.Forms.Label();
+            this.buttonAddNewMaterial = new System.Windows.Forms.Button();
+            this.textBoxAddMaterialQuantity = new System.Windows.Forms.TextBox();
+            this.labelAddMaterialQuantity = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelAddMaterialName = new System.Windows.Forms.Label();
+            this.textBoxAddMaterialName = new System.Windows.Forms.TextBox();
+            this.panelAddOperation = new System.Windows.Forms.Panel();
+            this.buttonAddNewOperation = new System.Windows.Forms.Button();
+            this.textBoxAddOperationExecutionTime = new System.Windows.Forms.TextBox();
+            this.labelAddOperationExecutionTime = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxAddOperationName = new System.Windows.Forms.TextBox();
+            this.panelAddMechanic = new System.Windows.Forms.Panel();
+            this.buttonAddNewMechanic = new System.Windows.Forms.Button();
+            this.textBoxAddMechanicFirstName = new System.Windows.Forms.TextBox();
+            this.labelAddMechanicFirstName = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelAddMechanicName = new System.Windows.Forms.Label();
+            this.textBoxAddMechanicName = new System.Windows.Forms.TextBox();
+            this.panelAddOrder = new System.Windows.Forms.Panel();
+            this.dataGridViewAddOrderSelectClient = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxAddOrderKm = new System.Windows.Forms.TextBox();
+            this.labelAddOrderKm = new System.Windows.Forms.Label();
+            this.comboBoxAddOrderInService = new System.Windows.Forms.ComboBox();
+            this.comboBoxAddOrderState = new System.Windows.Forms.ComboBox();
+            this.groupBoxCommandDetails = new System.Windows.Forms.GroupBox();
+            this.buttonAddDetailsImage = new System.Windows.Forms.Button();
+            this.buttonAddDetailsMechanic = new System.Windows.Forms.Button();
+            this.buttonAddDetailsOperation = new System.Windows.Forms.Button();
+            this.buttonAddDetailsMaterial = new System.Windows.Forms.Button();
+            this.dataGridViewAddDetailsImages = new System.Windows.Forms.DataGridView();
+            this.dataGridViewAddDetailsMechanics = new System.Windows.Forms.DataGridView();
+            this.dataGridViewAddDetailsOperations = new System.Windows.Forms.DataGridView();
+            this.dataGridViewAddDetailsMaterials = new System.Windows.Forms.DataGridView();
+            this.textBoxAddOrderPiecesValue = new System.Windows.Forms.TextBox();
+            this.labelAddOrderPiecesValue = new System.Windows.Forms.Label();
+            this.labelAddOrderState = new System.Windows.Forms.Label();
+            this.labelAddOrderInService = new System.Windows.Forms.Label();
+            this.labelAddOrderDescription = new System.Windows.Forms.Label();
+            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
+            this.buttonAddNewOrder = new System.Windows.Forms.Button();
+            this.textBoxAddOrderDescription = new System.Windows.Forms.TextBox();
+            this.labelAddOrderEndDate = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelAddOrderStartDate = new System.Windows.Forms.Label();
             this.panelAddCustomerCar = new System.Windows.Forms.Panel();
             this.buttonAddCustomerCar = new System.Windows.Forms.Button();
             this.dataGridViewChassisOptions = new System.Windows.Forms.DataGridView();
@@ -62,6 +110,13 @@
             this.textBoxAutoNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewCustomerCars = new System.Windows.Forms.DataGridView();
             this.panelAddCustomer = new System.Windows.Forms.Panel();
+            this.panelAddChassis = new System.Windows.Forms.Panel();
+            this.buttonAddNewChassis = new System.Windows.Forms.Button();
+            this.textBoxChassisName = new System.Windows.Forms.TextBox();
+            this.labelChassisName = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelChassisCode = new System.Windows.Forms.Label();
+            this.textBoxChassisCode = new System.Windows.Forms.TextBox();
             this.labelAddCustomerDisplayInfo = new System.Windows.Forms.Label();
             this.textBoxAddEmail = new System.Windows.Forms.TextBox();
             this.labelAddEmail = new System.Windows.Forms.Label();
@@ -80,6 +135,7 @@
             this.textBoxAddFirstName = new System.Windows.Forms.TextBox();
             this.textBoxAddName = new System.Windows.Forms.TextBox();
             this.panelSearchCustomer = new System.Windows.Forms.Panel();
+            this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
             this.labelSearchDisplayInfo = new System.Windows.Forms.Label();
             this.buttonSearchCustomer = new System.Windows.Forms.Button();
             this.labelSearchEmail = new System.Windows.Forms.Label();
@@ -88,22 +144,47 @@
             this.labelSearchName = new System.Windows.Forms.Label();
             this.textBoxSearchFirstName = new System.Windows.Forms.TextBox();
             this.textBoxSearchName = new System.Windows.Forms.TextBox();
-            this.contextMenuStripChassisOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
+            this.buttonAddImage = new System.Windows.Forms.Button();
+            this.buttonDisplayDetails = new System.Windows.Forms.Button();
+            this.panelAddNewImage = new System.Windows.Forms.Panel();
+            this.buttonAddNewImage = new System.Windows.Forms.Button();
+            this.labelAddImageDate = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelAddImageTitle = new System.Windows.Forms.Label();
+            this.textBoxAddImageTitle = new System.Windows.Forms.TextBox();
+            this.dateTimePickerAddImageDate = new System.Windows.Forms.DateTimePicker();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.buttonAddImagePhotoUpload = new System.Windows.Forms.Button();
+            this.labelAddImageDescription = new System.Windows.Forms.Label();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
+            this.textBoxAddImageDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBoxDetails.SuspendLayout();
             this.groupBoxChassis.SuspendLayout();
             this.groupBoxOrders.SuspendLayout();
             this.groupBoxCustomers.SuspendLayout();
-            this.panelAddChassis.SuspendLayout();
+            this.panelAddMaterial.SuspendLayout();
+            this.panelAddOperation.SuspendLayout();
+            this.panelAddMechanic.SuspendLayout();
+            this.panelAddOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectClient)).BeginInit();
+            this.groupBoxCommandDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsImages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMechanics)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsOperations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMaterials)).BeginInit();
             this.panelAddCustomerCar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChassisOptions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerCars)).BeginInit();
             this.panelAddCustomer.SuspendLayout();
+            this.panelAddChassis.SuspendLayout();
             this.panelSearchCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
+            this.panelAddNewImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -116,6 +197,7 @@
             // 
             this.splitContainer1.Panel1.AccessibleName = "LeftPanel";
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.splitContainer1.Panel1.Controls.Add(this.groupBoxDetails);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxChassis);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxOrders);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxCustomers);
@@ -124,7 +206,11 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AccessibleName = "RightPanel";
-            this.splitContainer1.Panel2.Controls.Add(this.panelAddChassis);
+            this.splitContainer1.Panel2.Controls.Add(this.panelAddNewImage);
+            this.splitContainer1.Panel2.Controls.Add(this.panelAddMaterial);
+            this.splitContainer1.Panel2.Controls.Add(this.panelAddOperation);
+            this.splitContainer1.Panel2.Controls.Add(this.panelAddMechanic);
+            this.splitContainer1.Panel2.Controls.Add(this.panelAddOrder);
             this.splitContainer1.Panel2.Controls.Add(this.panelAddCustomerCar);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewCustomerCars);
             this.splitContainer1.Panel2.Controls.Add(this.panelAddCustomer);
@@ -133,35 +219,75 @@
             this.splitContainer1.SplitterDistance = 262;
             this.splitContainer1.TabIndex = 0;
             // 
+            // buttonAddMechanic
+            // 
+            this.buttonAddMechanic.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonAddMechanic.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddMechanic.Location = new System.Drawing.Point(6, 122);
+            this.buttonAddMechanic.Name = "buttonAddMechanic";
+            this.buttonAddMechanic.Size = new System.Drawing.Size(231, 42);
+            this.buttonAddMechanic.TabIndex = 1;
+            this.buttonAddMechanic.Text = "Add mechanic";
+            this.buttonAddMechanic.UseVisualStyleBackColor = false;
+            this.buttonAddMechanic.Click += new System.EventHandler(this.buttonAddMechanic_Click);
+            // 
+            // buttonAddOperation
+            // 
+            this.buttonAddOperation.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonAddOperation.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddOperation.Location = new System.Drawing.Point(6, 74);
+            this.buttonAddOperation.Name = "buttonAddOperation";
+            this.buttonAddOperation.Size = new System.Drawing.Size(231, 42);
+            this.buttonAddOperation.TabIndex = 1;
+            this.buttonAddOperation.Text = "Add operation";
+            this.buttonAddOperation.UseVisualStyleBackColor = false;
+            this.buttonAddOperation.Click += new System.EventHandler(this.buttonAddOperation_Click);
+            // 
+            // groupBoxDetails
+            // 
+            this.groupBoxDetails.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxDetails.Controls.Add(this.buttonDisplayDetails);
+            this.groupBoxDetails.Controls.Add(this.buttonAddImage);
+            this.groupBoxDetails.Controls.Add(this.buttonAddMechanic);
+            this.groupBoxDetails.Controls.Add(this.buttonAddOperation);
+            this.groupBoxDetails.Controls.Add(this.buttonAddMaterial);
+            this.groupBoxDetails.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxDetails.Location = new System.Drawing.Point(12, 523);
+            this.groupBoxDetails.Name = "groupBoxDetails";
+            this.groupBoxDetails.Size = new System.Drawing.Size(243, 267);
+            this.groupBoxDetails.TabIndex = 5;
+            this.groupBoxDetails.TabStop = false;
+            this.groupBoxDetails.Text = "Details";
+            // 
+            // buttonAddMaterial
+            // 
+            this.buttonAddMaterial.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonAddMaterial.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddMaterial.Location = new System.Drawing.Point(6, 26);
+            this.buttonAddMaterial.Name = "buttonAddMaterial";
+            this.buttonAddMaterial.Size = new System.Drawing.Size(231, 42);
+            this.buttonAddMaterial.TabIndex = 1;
+            this.buttonAddMaterial.Text = "Add material";
+            this.buttonAddMaterial.UseVisualStyleBackColor = false;
+            this.buttonAddMaterial.Click += new System.EventHandler(this.buttonAddMaterial_Click);
+            // 
             // groupBoxChassis
             // 
             this.groupBoxChassis.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBoxChassis.Controls.Add(this.buttonDisplayChassis);
             this.groupBoxChassis.Controls.Add(this.buttonAddChassis);
             this.groupBoxChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxChassis.Location = new System.Drawing.Point(12, 519);
+            this.groupBoxChassis.Location = new System.Drawing.Point(12, 440);
             this.groupBoxChassis.Name = "groupBoxChassis";
-            this.groupBoxChassis.Size = new System.Drawing.Size(243, 143);
+            this.groupBoxChassis.Size = new System.Drawing.Size(243, 74);
             this.groupBoxChassis.TabIndex = 4;
             this.groupBoxChassis.TabStop = false;
             this.groupBoxChassis.Text = "Chassis";
-            // 
-            // buttonDisplayChassis
-            // 
-            this.buttonDisplayChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonDisplayChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisplayChassis.Location = new System.Drawing.Point(6, 90);
-            this.buttonDisplayChassis.Name = "buttonDisplayChassis";
-            this.buttonDisplayChassis.Size = new System.Drawing.Size(231, 42);
-            this.buttonDisplayChassis.TabIndex = 2;
-            this.buttonDisplayChassis.Text = "View all";
-            this.buttonDisplayChassis.UseVisualStyleBackColor = false;
             // 
             // buttonAddChassis
             // 
             this.buttonAddChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonAddChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddChassis.Location = new System.Drawing.Point(6, 42);
+            this.buttonAddChassis.Location = new System.Drawing.Point(6, 26);
             this.buttonAddChassis.Name = "buttonAddChassis";
             this.buttonAddChassis.Size = new System.Drawing.Size(231, 42);
             this.buttonAddChassis.TabIndex = 1;
@@ -173,13 +299,12 @@
             // 
             this.groupBoxOrders.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxOrders.Controls.Add(this.buttonDisplayOrders);
-            this.groupBoxOrders.Controls.Add(this.buttonOrderDetails);
             this.groupBoxOrders.Controls.Add(this.buttonAddOrder);
             this.groupBoxOrders.Controls.Add(this.buttonSelectOrder);
             this.groupBoxOrders.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOrders.Location = new System.Drawing.Point(12, 278);
+            this.groupBoxOrders.Location = new System.Drawing.Point(12, 257);
             this.groupBoxOrders.Name = "groupBoxOrders";
-            this.groupBoxOrders.Size = new System.Drawing.Size(243, 235);
+            this.groupBoxOrders.Size = new System.Drawing.Size(243, 177);
             this.groupBoxOrders.TabIndex = 3;
             this.groupBoxOrders.TabStop = false;
             this.groupBoxOrders.Text = "Orders";
@@ -188,40 +313,30 @@
             // 
             this.buttonDisplayOrders.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonDisplayOrders.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisplayOrders.Location = new System.Drawing.Point(6, 185);
+            this.buttonDisplayOrders.Location = new System.Drawing.Point(6, 122);
             this.buttonDisplayOrders.Name = "buttonDisplayOrders";
             this.buttonDisplayOrders.Size = new System.Drawing.Size(231, 42);
             this.buttonDisplayOrders.TabIndex = 3;
             this.buttonDisplayOrders.Text = "View all";
             this.buttonDisplayOrders.UseVisualStyleBackColor = false;
             // 
-            // buttonOrderDetails
-            // 
-            this.buttonOrderDetails.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonOrderDetails.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOrderDetails.Location = new System.Drawing.Point(6, 137);
-            this.buttonOrderDetails.Name = "buttonOrderDetails";
-            this.buttonOrderDetails.Size = new System.Drawing.Size(231, 42);
-            this.buttonOrderDetails.TabIndex = 2;
-            this.buttonOrderDetails.Text = "Order details";
-            this.buttonOrderDetails.UseVisualStyleBackColor = false;
-            // 
             // buttonAddOrder
             // 
             this.buttonAddOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonAddOrder.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddOrder.Location = new System.Drawing.Point(6, 89);
+            this.buttonAddOrder.Location = new System.Drawing.Point(6, 74);
             this.buttonAddOrder.Name = "buttonAddOrder";
             this.buttonAddOrder.Size = new System.Drawing.Size(231, 42);
             this.buttonAddOrder.TabIndex = 1;
             this.buttonAddOrder.Text = "Add order";
             this.buttonAddOrder.UseVisualStyleBackColor = false;
+            this.buttonAddOrder.Click += new System.EventHandler(this.buttonAddOrder_Click);
             // 
             // buttonSelectOrder
             // 
             this.buttonSelectOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonSelectOrder.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSelectOrder.Location = new System.Drawing.Point(6, 41);
+            this.buttonSelectOrder.Location = new System.Drawing.Point(6, 26);
             this.buttonSelectOrder.Name = "buttonSelectOrder";
             this.buttonSelectOrder.Size = new System.Drawing.Size(231, 42);
             this.buttonSelectOrder.TabIndex = 0;
@@ -238,7 +353,7 @@
             this.groupBoxCustomers.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCustomers.Location = new System.Drawing.Point(12, 30);
             this.groupBoxCustomers.Name = "groupBoxCustomers";
-            this.groupBoxCustomers.Size = new System.Drawing.Size(243, 242);
+            this.groupBoxCustomers.Size = new System.Drawing.Size(243, 221);
             this.groupBoxCustomers.TabIndex = 0;
             this.groupBoxCustomers.TabStop = false;
             this.groupBoxCustomers.Text = "Customers";
@@ -247,7 +362,7 @@
             // 
             this.buttonDisplayCustomers.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonDisplayCustomers.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisplayCustomers.Location = new System.Drawing.Point(6, 185);
+            this.buttonDisplayCustomers.Location = new System.Drawing.Point(6, 170);
             this.buttonDisplayCustomers.Name = "buttonDisplayCustomers";
             this.buttonDisplayCustomers.Size = new System.Drawing.Size(231, 42);
             this.buttonDisplayCustomers.TabIndex = 3;
@@ -259,7 +374,7 @@
             // 
             this.buttonCustomerDetails.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonCustomerDetails.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCustomerDetails.Location = new System.Drawing.Point(6, 137);
+            this.buttonCustomerDetails.Location = new System.Drawing.Point(6, 122);
             this.buttonCustomerDetails.Name = "buttonCustomerDetails";
             this.buttonCustomerDetails.Size = new System.Drawing.Size(231, 42);
             this.buttonCustomerDetails.TabIndex = 2;
@@ -271,7 +386,7 @@
             // 
             this.buttonAddCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonAddCustomer.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddCustomer.Location = new System.Drawing.Point(6, 89);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(6, 74);
             this.buttonAddCustomer.Name = "buttonAddCustomer";
             this.buttonAddCustomer.Size = new System.Drawing.Size(231, 42);
             this.buttonAddCustomer.TabIndex = 1;
@@ -283,7 +398,7 @@
             // 
             this.buttonSelectCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonSelectCustomer.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSelectCustomer.Location = new System.Drawing.Point(6, 41);
+            this.buttonSelectCustomer.Location = new System.Drawing.Point(6, 26);
             this.buttonSelectCustomer.Name = "buttonSelectCustomer";
             this.buttonSelectCustomer.Size = new System.Drawing.Size(231, 42);
             this.buttonSelectCustomer.TabIndex = 0;
@@ -291,69 +406,526 @@
             this.buttonSelectCustomer.UseVisualStyleBackColor = false;
             this.buttonSelectCustomer.Click += new System.EventHandler(this.buttonSelectCustomer_Click);
             // 
-            // panelAddChassis
+            // panelAddMaterial
             // 
-            this.panelAddChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelAddChassis.Controls.Add(this.buttonAddNewChassis);
-            this.panelAddChassis.Controls.Add(this.textBoxChassisName);
-            this.panelAddChassis.Controls.Add(this.labelChassisName);
-            this.panelAddChassis.Controls.Add(this.label3);
-            this.panelAddChassis.Controls.Add(this.labelChassisCode);
-            this.panelAddChassis.Controls.Add(this.textBoxChassisCode);
-            this.panelAddChassis.Location = new System.Drawing.Point(86, 30);
-            this.panelAddChassis.Name = "panelAddChassis";
-            this.panelAddChassis.Size = new System.Drawing.Size(436, 201);
-            this.panelAddChassis.TabIndex = 9;
+            this.panelAddMaterial.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddMaterial.Controls.Add(this.dateTimePickerAddMaterialDateSupply);
+            this.panelAddMaterial.Controls.Add(this.labelAddMaterialDateSupply);
+            this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialPrice);
+            this.panelAddMaterial.Controls.Add(this.labelAddMaterialPrice);
+            this.panelAddMaterial.Controls.Add(this.buttonAddNewMaterial);
+            this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialQuantity);
+            this.panelAddMaterial.Controls.Add(this.labelAddMaterialQuantity);
+            this.panelAddMaterial.Controls.Add(this.label13);
+            this.panelAddMaterial.Controls.Add(this.labelAddMaterialName);
+            this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialName);
+            this.panelAddMaterial.Location = new System.Drawing.Point(86, 30);
+            this.panelAddMaterial.Name = "panelAddMaterial";
+            this.panelAddMaterial.Size = new System.Drawing.Size(443, 275);
+            this.panelAddMaterial.TabIndex = 13;
             // 
-            // buttonAddNewChassis
+            // dateTimePickerAddMaterialDateSupply
             // 
-            this.buttonAddNewChassis.Location = new System.Drawing.Point(28, 149);
-            this.buttonAddNewChassis.Name = "buttonAddNewChassis";
-            this.buttonAddNewChassis.Size = new System.Drawing.Size(111, 34);
-            this.buttonAddNewChassis.TabIndex = 11;
-            this.buttonAddNewChassis.Text = "Add";
-            this.buttonAddNewChassis.UseVisualStyleBackColor = true;
-            this.buttonAddNewChassis.Click += new System.EventHandler(this.buttonAddNewChassis_Click);
+            this.dateTimePickerAddMaterialDateSupply.Location = new System.Drawing.Point(28, 179);
+            this.dateTimePickerAddMaterialDateSupply.Name = "dateTimePickerAddMaterialDateSupply";
+            this.dateTimePickerAddMaterialDateSupply.Size = new System.Drawing.Size(288, 27);
+            this.dateTimePickerAddMaterialDateSupply.TabIndex = 24;
             // 
-            // textBoxChassisName
+            // labelAddMaterialDateSupply
             // 
-            this.textBoxChassisName.Location = new System.Drawing.Point(28, 104);
-            this.textBoxChassisName.Name = "textBoxChassisName";
-            this.textBoxChassisName.Size = new System.Drawing.Size(368, 27);
-            this.textBoxChassisName.TabIndex = 10;
+            this.labelAddMaterialDateSupply.AutoSize = true;
+            this.labelAddMaterialDateSupply.Location = new System.Drawing.Point(24, 153);
+            this.labelAddMaterialDateSupply.Name = "labelAddMaterialDateSupply";
+            this.labelAddMaterialDateSupply.Size = new System.Drawing.Size(94, 20);
+            this.labelAddMaterialDateSupply.TabIndex = 14;
+            this.labelAddMaterialDateSupply.Text = "Date supply";
             // 
-            // labelChassisName
+            // textBoxAddMaterialPrice
             // 
-            this.labelChassisName.AutoSize = true;
-            this.labelChassisName.Location = new System.Drawing.Point(24, 80);
-            this.labelChassisName.Name = "labelChassisName";
-            this.labelChassisName.Size = new System.Drawing.Size(51, 20);
-            this.labelChassisName.TabIndex = 9;
-            this.labelChassisName.Text = "Name";
+            this.textBoxAddMaterialPrice.Location = new System.Drawing.Point(165, 104);
+            this.textBoxAddMaterialPrice.Name = "textBoxAddMaterialPrice";
+            this.textBoxAddMaterialPrice.Size = new System.Drawing.Size(111, 27);
+            this.textBoxAddMaterialPrice.TabIndex = 13;
             // 
-            // label3
+            // labelAddMaterialPrice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 100);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 20);
-            this.label3.TabIndex = 8;
+            this.labelAddMaterialPrice.AutoSize = true;
+            this.labelAddMaterialPrice.Location = new System.Drawing.Point(165, 80);
+            this.labelAddMaterialPrice.Name = "labelAddMaterialPrice";
+            this.labelAddMaterialPrice.Size = new System.Drawing.Size(47, 20);
+            this.labelAddMaterialPrice.TabIndex = 12;
+            this.labelAddMaterialPrice.Text = "Price";
             // 
-            // labelChassisCode
+            // buttonAddNewMaterial
             // 
-            this.labelChassisCode.AutoSize = true;
-            this.labelChassisCode.Location = new System.Drawing.Point(24, 13);
-            this.labelChassisCode.Name = "labelChassisCode";
-            this.labelChassisCode.Size = new System.Drawing.Size(45, 20);
-            this.labelChassisCode.TabIndex = 3;
-            this.labelChassisCode.Text = "Code";
+            this.buttonAddNewMaterial.Location = new System.Drawing.Point(28, 225);
+            this.buttonAddNewMaterial.Name = "buttonAddNewMaterial";
+            this.buttonAddNewMaterial.Size = new System.Drawing.Size(111, 34);
+            this.buttonAddNewMaterial.TabIndex = 11;
+            this.buttonAddNewMaterial.Text = "Add";
+            this.buttonAddNewMaterial.UseVisualStyleBackColor = true;
+            this.buttonAddNewMaterial.Click += new System.EventHandler(this.buttonAddNewMaterial_Click);
             // 
-            // textBoxChassisCode
+            // textBoxAddMaterialQuantity
             // 
-            this.textBoxChassisCode.Location = new System.Drawing.Point(28, 41);
-            this.textBoxChassisCode.Name = "textBoxChassisCode";
-            this.textBoxChassisCode.Size = new System.Drawing.Size(93, 27);
-            this.textBoxChassisCode.TabIndex = 1;
+            this.textBoxAddMaterialQuantity.Location = new System.Drawing.Point(28, 104);
+            this.textBoxAddMaterialQuantity.Name = "textBoxAddMaterialQuantity";
+            this.textBoxAddMaterialQuantity.Size = new System.Drawing.Size(111, 27);
+            this.textBoxAddMaterialQuantity.TabIndex = 10;
+            // 
+            // labelAddMaterialQuantity
+            // 
+            this.labelAddMaterialQuantity.AutoSize = true;
+            this.labelAddMaterialQuantity.Location = new System.Drawing.Point(24, 80);
+            this.labelAddMaterialQuantity.Name = "labelAddMaterialQuantity";
+            this.labelAddMaterialQuantity.Size = new System.Drawing.Size(72, 20);
+            this.labelAddMaterialQuantity.TabIndex = 9;
+            this.labelAddMaterialQuantity.Text = "Quantity";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(24, 100);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(0, 20);
+            this.label13.TabIndex = 8;
+            // 
+            // labelAddMaterialName
+            // 
+            this.labelAddMaterialName.AutoSize = true;
+            this.labelAddMaterialName.Location = new System.Drawing.Point(24, 13);
+            this.labelAddMaterialName.Name = "labelAddMaterialName";
+            this.labelAddMaterialName.Size = new System.Drawing.Size(51, 20);
+            this.labelAddMaterialName.TabIndex = 3;
+            this.labelAddMaterialName.Text = "Name";
+            // 
+            // textBoxAddMaterialName
+            // 
+            this.textBoxAddMaterialName.Location = new System.Drawing.Point(28, 41);
+            this.textBoxAddMaterialName.Name = "textBoxAddMaterialName";
+            this.textBoxAddMaterialName.Size = new System.Drawing.Size(368, 27);
+            this.textBoxAddMaterialName.TabIndex = 1;
+            // 
+            // panelAddOperation
+            // 
+            this.panelAddOperation.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddOperation.Controls.Add(this.buttonAddNewOperation);
+            this.panelAddOperation.Controls.Add(this.textBoxAddOperationExecutionTime);
+            this.panelAddOperation.Controls.Add(this.labelAddOperationExecutionTime);
+            this.panelAddOperation.Controls.Add(this.label9);
+            this.panelAddOperation.Controls.Add(this.label10);
+            this.panelAddOperation.Controls.Add(this.textBoxAddOperationName);
+            this.panelAddOperation.Location = new System.Drawing.Point(86, 30);
+            this.panelAddOperation.Name = "panelAddOperation";
+            this.panelAddOperation.Size = new System.Drawing.Size(443, 211);
+            this.panelAddOperation.TabIndex = 25;
+            this.panelAddOperation.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAddOperation_Paint);
+            // 
+            // buttonAddNewOperation
+            // 
+            this.buttonAddNewOperation.Location = new System.Drawing.Point(26, 159);
+            this.buttonAddNewOperation.Name = "buttonAddNewOperation";
+            this.buttonAddNewOperation.Size = new System.Drawing.Size(111, 34);
+            this.buttonAddNewOperation.TabIndex = 11;
+            this.buttonAddNewOperation.Text = "Add";
+            this.buttonAddNewOperation.UseVisualStyleBackColor = true;
+            this.buttonAddNewOperation.Click += new System.EventHandler(this.buttonAddNewOperation_Click);
+            // 
+            // textBoxAddOperationExecutionTime
+            // 
+            this.textBoxAddOperationExecutionTime.Location = new System.Drawing.Point(28, 104);
+            this.textBoxAddOperationExecutionTime.Name = "textBoxAddOperationExecutionTime";
+            this.textBoxAddOperationExecutionTime.Size = new System.Drawing.Size(111, 27);
+            this.textBoxAddOperationExecutionTime.TabIndex = 10;
+            // 
+            // labelAddOperationExecutionTime
+            // 
+            this.labelAddOperationExecutionTime.AutoSize = true;
+            this.labelAddOperationExecutionTime.Location = new System.Drawing.Point(24, 80);
+            this.labelAddOperationExecutionTime.Name = "labelAddOperationExecutionTime";
+            this.labelAddOperationExecutionTime.Size = new System.Drawing.Size(118, 20);
+            this.labelAddOperationExecutionTime.TabIndex = 9;
+            this.labelAddOperationExecutionTime.Text = "Execution time";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 100);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 20);
+            this.label9.TabIndex = 8;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(24, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Name";
+            // 
+            // textBoxAddOperationName
+            // 
+            this.textBoxAddOperationName.Location = new System.Drawing.Point(28, 41);
+            this.textBoxAddOperationName.Name = "textBoxAddOperationName";
+            this.textBoxAddOperationName.Size = new System.Drawing.Size(368, 27);
+            this.textBoxAddOperationName.TabIndex = 1;
+            // 
+            // panelAddMechanic
+            // 
+            this.panelAddMechanic.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddMechanic.Controls.Add(this.buttonAddNewMechanic);
+            this.panelAddMechanic.Controls.Add(this.textBoxAddMechanicFirstName);
+            this.panelAddMechanic.Controls.Add(this.labelAddMechanicFirstName);
+            this.panelAddMechanic.Controls.Add(this.label7);
+            this.panelAddMechanic.Controls.Add(this.labelAddMechanicName);
+            this.panelAddMechanic.Controls.Add(this.textBoxAddMechanicName);
+            this.panelAddMechanic.Location = new System.Drawing.Point(86, 30);
+            this.panelAddMechanic.Name = "panelAddMechanic";
+            this.panelAddMechanic.Size = new System.Drawing.Size(374, 213);
+            this.panelAddMechanic.TabIndex = 26;
+            // 
+            // buttonAddNewMechanic
+            // 
+            this.buttonAddNewMechanic.Location = new System.Drawing.Point(26, 159);
+            this.buttonAddNewMechanic.Name = "buttonAddNewMechanic";
+            this.buttonAddNewMechanic.Size = new System.Drawing.Size(111, 34);
+            this.buttonAddNewMechanic.TabIndex = 11;
+            this.buttonAddNewMechanic.Text = "Add";
+            this.buttonAddNewMechanic.UseVisualStyleBackColor = true;
+            this.buttonAddNewMechanic.Click += new System.EventHandler(this.buttonAddNewMechanic_Click);
+            // 
+            // textBoxAddMechanicFirstName
+            // 
+            this.textBoxAddMechanicFirstName.Location = new System.Drawing.Point(28, 104);
+            this.textBoxAddMechanicFirstName.Name = "textBoxAddMechanicFirstName";
+            this.textBoxAddMechanicFirstName.Size = new System.Drawing.Size(224, 27);
+            this.textBoxAddMechanicFirstName.TabIndex = 10;
+            // 
+            // labelAddMechanicFirstName
+            // 
+            this.labelAddMechanicFirstName.AutoSize = true;
+            this.labelAddMechanicFirstName.Location = new System.Drawing.Point(24, 80);
+            this.labelAddMechanicFirstName.Name = "labelAddMechanicFirstName";
+            this.labelAddMechanicFirstName.Size = new System.Drawing.Size(86, 20);
+            this.labelAddMechanicFirstName.TabIndex = 9;
+            this.labelAddMechanicFirstName.Text = "First name";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 20);
+            this.label7.TabIndex = 8;
+            // 
+            // labelAddMechanicName
+            // 
+            this.labelAddMechanicName.AutoSize = true;
+            this.labelAddMechanicName.Location = new System.Drawing.Point(24, 13);
+            this.labelAddMechanicName.Name = "labelAddMechanicName";
+            this.labelAddMechanicName.Size = new System.Drawing.Size(51, 20);
+            this.labelAddMechanicName.TabIndex = 3;
+            this.labelAddMechanicName.Text = "Name";
+            // 
+            // textBoxAddMechanicName
+            // 
+            this.textBoxAddMechanicName.Location = new System.Drawing.Point(28, 41);
+            this.textBoxAddMechanicName.Name = "textBoxAddMechanicName";
+            this.textBoxAddMechanicName.Size = new System.Drawing.Size(224, 27);
+            this.textBoxAddMechanicName.TabIndex = 1;
+            // 
+            // panelAddOrder
+            // 
+            this.panelAddOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddOrder.Controls.Add(this.dataGridViewAddOrderSelectClient);
+            this.panelAddOrder.Controls.Add(this.label4);
+            this.panelAddOrder.Controls.Add(this.textBoxAddOrderKm);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderKm);
+            this.panelAddOrder.Controls.Add(this.comboBoxAddOrderInService);
+            this.panelAddOrder.Controls.Add(this.comboBoxAddOrderState);
+            this.panelAddOrder.Controls.Add(this.groupBoxCommandDetails);
+            this.panelAddOrder.Controls.Add(this.textBoxAddOrderPiecesValue);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderPiecesValue);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderState);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderInService);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderDescription);
+            this.panelAddOrder.Controls.Add(this.dateTimePickerEndDate);
+            this.panelAddOrder.Controls.Add(this.dateTimePickerStartDate);
+            this.panelAddOrder.Controls.Add(this.buttonAddNewOrder);
+            this.panelAddOrder.Controls.Add(this.textBoxAddOrderDescription);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderEndDate);
+            this.panelAddOrder.Controls.Add(this.label5);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderStartDate);
+            this.panelAddOrder.Location = new System.Drawing.Point(27, 30);
+            this.panelAddOrder.Name = "panelAddOrder";
+            this.panelAddOrder.Size = new System.Drawing.Size(1142, 733);
+            this.panelAddOrder.TabIndex = 12;
+            // 
+            // dataGridViewAddOrderSelectClient
+            // 
+            this.dataGridViewAddOrderSelectClient.AccessibleName = "";
+            this.dataGridViewAddOrderSelectClient.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddOrderSelectClient.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAddOrderSelectClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddOrderSelectClient.Location = new System.Drawing.Point(28, 41);
+            this.dataGridViewAddOrderSelectClient.Name = "dataGridViewAddOrderSelectClient";
+            this.dataGridViewAddOrderSelectClient.RowTemplate.Height = 24;
+            this.dataGridViewAddOrderSelectClient.Size = new System.Drawing.Size(291, 102);
+            this.dataGridViewAddOrderSelectClient.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AccessibleName = "labelAddOrderClient";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 20);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Client";
+            // 
+            // textBoxAddOrderKm
+            // 
+            this.textBoxAddOrderKm.Enabled = false;
+            this.textBoxAddOrderKm.Location = new System.Drawing.Point(575, 170);
+            this.textBoxAddOrderKm.Name = "textBoxAddOrderKm";
+            this.textBoxAddOrderKm.Size = new System.Drawing.Size(176, 27);
+            this.textBoxAddOrderKm.TabIndex = 26;
+            this.textBoxAddOrderKm.Text = "0";
+            // 
+            // labelAddOrderKm
+            // 
+            this.labelAddOrderKm.AutoSize = true;
+            this.labelAddOrderKm.Location = new System.Drawing.Point(571, 144);
+            this.labelAddOrderKm.Name = "labelAddOrderKm";
+            this.labelAddOrderKm.Size = new System.Drawing.Size(34, 20);
+            this.labelAddOrderKm.TabIndex = 25;
+            this.labelAddOrderKm.Text = "Km";
+            // 
+            // comboBoxAddOrderInService
+            // 
+            this.comboBoxAddOrderInService.FormattingEnabled = true;
+            this.comboBoxAddOrderInService.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.comboBoxAddOrderInService.Location = new System.Drawing.Point(425, 169);
+            this.comboBoxAddOrderInService.Name = "comboBoxAddOrderInService";
+            this.comboBoxAddOrderInService.Size = new System.Drawing.Size(121, 28);
+            this.comboBoxAddOrderInService.TabIndex = 24;
+            // 
+            // comboBoxAddOrderState
+            // 
+            this.comboBoxAddOrderState.FormattingEnabled = true;
+            this.comboBoxAddOrderState.Items.AddRange(new object[] {
+            "Waiting",
+            "In execution",
+            "Rejected"});
+            this.comboBoxAddOrderState.Location = new System.Drawing.Point(988, 42);
+            this.comboBoxAddOrderState.Name = "comboBoxAddOrderState";
+            this.comboBoxAddOrderState.Size = new System.Drawing.Size(121, 28);
+            this.comboBoxAddOrderState.TabIndex = 23;
+            // 
+            // groupBoxCommandDetails
+            // 
+            this.groupBoxCommandDetails.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxCommandDetails.Controls.Add(this.buttonAddDetailsImage);
+            this.groupBoxCommandDetails.Controls.Add(this.buttonAddDetailsMechanic);
+            this.groupBoxCommandDetails.Controls.Add(this.buttonAddDetailsOperation);
+            this.groupBoxCommandDetails.Controls.Add(this.buttonAddDetailsMaterial);
+            this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsImages);
+            this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsMechanics);
+            this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsOperations);
+            this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsMaterials);
+            this.groupBoxCommandDetails.Location = new System.Drawing.Point(28, 227);
+            this.groupBoxCommandDetails.Name = "groupBoxCommandDetails";
+            this.groupBoxCommandDetails.Size = new System.Drawing.Size(1081, 478);
+            this.groupBoxCommandDetails.TabIndex = 22;
+            this.groupBoxCommandDetails.TabStop = false;
+            this.groupBoxCommandDetails.Text = "Details";
+            // 
+            // buttonAddDetailsImage
+            // 
+            this.buttonAddDetailsImage.Location = new System.Drawing.Point(397, 418);
+            this.buttonAddDetailsImage.Name = "buttonAddDetailsImage";
+            this.buttonAddDetailsImage.Size = new System.Drawing.Size(209, 36);
+            this.buttonAddDetailsImage.TabIndex = 7;
+            this.buttonAddDetailsImage.Text = "Add selected image";
+            this.buttonAddDetailsImage.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddDetailsMechanic
+            // 
+            this.buttonAddDetailsMechanic.Location = new System.Drawing.Point(31, 418);
+            this.buttonAddDetailsMechanic.Name = "buttonAddDetailsMechanic";
+            this.buttonAddDetailsMechanic.Size = new System.Drawing.Size(209, 36);
+            this.buttonAddDetailsMechanic.TabIndex = 6;
+            this.buttonAddDetailsMechanic.Text = "Add selected mechanic";
+            this.buttonAddDetailsMechanic.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddDetailsOperation
+            // 
+            this.buttonAddDetailsOperation.Location = new System.Drawing.Point(397, 209);
+            this.buttonAddDetailsOperation.Name = "buttonAddDetailsOperation";
+            this.buttonAddDetailsOperation.Size = new System.Drawing.Size(209, 36);
+            this.buttonAddDetailsOperation.TabIndex = 5;
+            this.buttonAddDetailsOperation.Text = "Add selected operation";
+            this.buttonAddDetailsOperation.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddDetailsMaterial
+            // 
+            this.buttonAddDetailsMaterial.Location = new System.Drawing.Point(34, 206);
+            this.buttonAddDetailsMaterial.Name = "buttonAddDetailsMaterial";
+            this.buttonAddDetailsMaterial.Size = new System.Drawing.Size(209, 36);
+            this.buttonAddDetailsMaterial.TabIndex = 4;
+            this.buttonAddDetailsMaterial.Text = "Add selected material";
+            this.buttonAddDetailsMaterial.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewAddDetailsImages
+            // 
+            this.dataGridViewAddDetailsImages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddDetailsImages.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAddDetailsImages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddDetailsImages.Location = new System.Drawing.Point(397, 263);
+            this.dataGridViewAddDetailsImages.Name = "dataGridViewAddDetailsImages";
+            this.dataGridViewAddDetailsImages.RowTemplate.Height = 24;
+            this.dataGridViewAddDetailsImages.Size = new System.Drawing.Size(337, 134);
+            this.dataGridViewAddDetailsImages.TabIndex = 3;
+            // 
+            // dataGridViewAddDetailsMechanics
+            // 
+            this.dataGridViewAddDetailsMechanics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddDetailsMechanics.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAddDetailsMechanics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddDetailsMechanics.Location = new System.Drawing.Point(34, 263);
+            this.dataGridViewAddDetailsMechanics.Name = "dataGridViewAddDetailsMechanics";
+            this.dataGridViewAddDetailsMechanics.RowTemplate.Height = 24;
+            this.dataGridViewAddDetailsMechanics.Size = new System.Drawing.Size(337, 134);
+            this.dataGridViewAddDetailsMechanics.TabIndex = 2;
+            // 
+            // dataGridViewAddDetailsOperations
+            // 
+            this.dataGridViewAddDetailsOperations.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddDetailsOperations.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAddDetailsOperations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddDetailsOperations.Location = new System.Drawing.Point(397, 51);
+            this.dataGridViewAddDetailsOperations.Name = "dataGridViewAddDetailsOperations";
+            this.dataGridViewAddDetailsOperations.RowTemplate.Height = 24;
+            this.dataGridViewAddDetailsOperations.Size = new System.Drawing.Size(337, 134);
+            this.dataGridViewAddDetailsOperations.TabIndex = 1;
+            // 
+            // dataGridViewAddDetailsMaterials
+            // 
+            this.dataGridViewAddDetailsMaterials.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddDetailsMaterials.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAddDetailsMaterials.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddDetailsMaterials.Location = new System.Drawing.Point(31, 51);
+            this.dataGridViewAddDetailsMaterials.Name = "dataGridViewAddDetailsMaterials";
+            this.dataGridViewAddDetailsMaterials.RowTemplate.Height = 24;
+            this.dataGridViewAddDetailsMaterials.Size = new System.Drawing.Size(337, 134);
+            this.dataGridViewAddDetailsMaterials.TabIndex = 0;
+            // 
+            // textBoxAddOrderPiecesValue
+            // 
+            this.textBoxAddOrderPiecesValue.Enabled = false;
+            this.textBoxAddOrderPiecesValue.Location = new System.Drawing.Point(774, 170);
+            this.textBoxAddOrderPiecesValue.Name = "textBoxAddOrderPiecesValue";
+            this.textBoxAddOrderPiecesValue.Size = new System.Drawing.Size(100, 27);
+            this.textBoxAddOrderPiecesValue.TabIndex = 21;
+            // 
+            // labelAddOrderPiecesValue
+            // 
+            this.labelAddOrderPiecesValue.AutoSize = true;
+            this.labelAddOrderPiecesValue.Location = new System.Drawing.Point(770, 147);
+            this.labelAddOrderPiecesValue.Name = "labelAddOrderPiecesValue";
+            this.labelAddOrderPiecesValue.Size = new System.Drawing.Size(98, 20);
+            this.labelAddOrderPiecesValue.TabIndex = 20;
+            this.labelAddOrderPiecesValue.Text = "Pieces value";
+            // 
+            // labelAddOrderState
+            // 
+            this.labelAddOrderState.AutoSize = true;
+            this.labelAddOrderState.Location = new System.Drawing.Point(987, 18);
+            this.labelAddOrderState.Name = "labelAddOrderState";
+            this.labelAddOrderState.Size = new System.Drawing.Size(45, 20);
+            this.labelAddOrderState.TabIndex = 18;
+            this.labelAddOrderState.Text = "State";
+            // 
+            // labelAddOrderInService
+            // 
+            this.labelAddOrderInService.AutoSize = true;
+            this.labelAddOrderInService.Location = new System.Drawing.Point(421, 144);
+            this.labelAddOrderInService.Name = "labelAddOrderInService";
+            this.labelAddOrderInService.Size = new System.Drawing.Size(80, 20);
+            this.labelAddOrderInService.TabIndex = 15;
+            this.labelAddOrderInService.Text = "In service";
+            // 
+            // labelAddOrderDescription
+            // 
+            this.labelAddOrderDescription.AutoSize = true;
+            this.labelAddOrderDescription.Location = new System.Drawing.Point(24, 144);
+            this.labelAddOrderDescription.Name = "labelAddOrderDescription";
+            this.labelAddOrderDescription.Size = new System.Drawing.Size(93, 20);
+            this.labelAddOrderDescription.TabIndex = 14;
+            this.labelAddOrderDescription.Text = "Description";
+            // 
+            // dateTimePickerEndDate
+            // 
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(670, 43);
+            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(288, 27);
+            this.dateTimePickerEndDate.TabIndex = 13;
+            // 
+            // dateTimePickerStartDate
+            // 
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(356, 43);
+            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(288, 27);
+            this.dateTimePickerStartDate.TabIndex = 12;
+            // 
+            // buttonAddNewOrder
+            // 
+            this.buttonAddNewOrder.Enabled = false;
+            this.buttonAddNewOrder.Location = new System.Drawing.Point(996, 170);
+            this.buttonAddNewOrder.Name = "buttonAddNewOrder";
+            this.buttonAddNewOrder.Size = new System.Drawing.Size(113, 34);
+            this.buttonAddNewOrder.TabIndex = 11;
+            this.buttonAddNewOrder.Text = "Add";
+            this.buttonAddNewOrder.UseVisualStyleBackColor = true;
+            this.buttonAddNewOrder.Click += new System.EventHandler(this.buttonAddNewOrder_Click);
+            // 
+            // textBoxAddOrderDescription
+            // 
+            this.textBoxAddOrderDescription.Location = new System.Drawing.Point(28, 170);
+            this.textBoxAddOrderDescription.Multiline = true;
+            this.textBoxAddOrderDescription.Name = "textBoxAddOrderDescription";
+            this.textBoxAddOrderDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxAddOrderDescription.Size = new System.Drawing.Size(368, 27);
+            this.textBoxAddOrderDescription.TabIndex = 10;
+            // 
+            // labelAddOrderEndDate
+            // 
+            this.labelAddOrderEndDate.AutoSize = true;
+            this.labelAddOrderEndDate.Location = new System.Drawing.Point(666, 18);
+            this.labelAddOrderEndDate.Name = "labelAddOrderEndDate";
+            this.labelAddOrderEndDate.Size = new System.Drawing.Size(72, 20);
+            this.labelAddOrderEndDate.TabIndex = 9;
+            this.labelAddOrderEndDate.Text = "End date";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 20);
+            this.label5.TabIndex = 8;
+            // 
+            // labelAddOrderStartDate
+            // 
+            this.labelAddOrderStartDate.AutoSize = true;
+            this.labelAddOrderStartDate.Location = new System.Drawing.Point(352, 18);
+            this.labelAddOrderStartDate.Name = "labelAddOrderStartDate";
+            this.labelAddOrderStartDate.Size = new System.Drawing.Size(79, 20);
+            this.labelAddOrderStartDate.TabIndex = 3;
+            this.labelAddOrderStartDate.Text = "Start date";
             // 
             // panelAddCustomerCar
             // 
@@ -368,7 +940,7 @@
             this.panelAddCustomerCar.Controls.Add(this.textBoxAutoNumber);
             this.panelAddCustomerCar.Location = new System.Drawing.Point(86, 463);
             this.panelAddCustomerCar.Name = "panelAddCustomerCar";
-            this.panelAddCustomerCar.Size = new System.Drawing.Size(1022, 327);
+            this.panelAddCustomerCar.Size = new System.Drawing.Size(1022, 262);
             this.panelAddCustomerCar.TabIndex = 9;
             // 
             // buttonAddCustomerCar
@@ -449,12 +1021,13 @@
             this.dataGridViewCustomerCars.Location = new System.Drawing.Point(86, 186);
             this.dataGridViewCustomerCars.Name = "dataGridViewCustomerCars";
             this.dataGridViewCustomerCars.RowTemplate.Height = 24;
-            this.dataGridViewCustomerCars.Size = new System.Drawing.Size(1022, 223);
+            this.dataGridViewCustomerCars.Size = new System.Drawing.Size(1022, 248);
             this.dataGridViewCustomerCars.TabIndex = 2;
             // 
             // panelAddCustomer
             // 
             this.panelAddCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddCustomer.Controls.Add(this.panelAddChassis);
             this.panelAddCustomer.Controls.Add(this.labelAddCustomerDisplayInfo);
             this.panelAddCustomer.Controls.Add(this.textBoxAddEmail);
             this.panelAddCustomer.Controls.Add(this.labelAddEmail);
@@ -476,6 +1049,70 @@
             this.panelAddCustomer.Name = "panelAddCustomer";
             this.panelAddCustomer.Size = new System.Drawing.Size(427, 567);
             this.panelAddCustomer.TabIndex = 1;
+            // 
+            // panelAddChassis
+            // 
+            this.panelAddChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddChassis.Controls.Add(this.buttonAddNewChassis);
+            this.panelAddChassis.Controls.Add(this.textBoxChassisName);
+            this.panelAddChassis.Controls.Add(this.labelChassisName);
+            this.panelAddChassis.Controls.Add(this.label3);
+            this.panelAddChassis.Controls.Add(this.labelChassisCode);
+            this.panelAddChassis.Controls.Add(this.textBoxChassisCode);
+            this.panelAddChassis.Location = new System.Drawing.Point(0, 0);
+            this.panelAddChassis.Name = "panelAddChassis";
+            this.panelAddChassis.Size = new System.Drawing.Size(436, 201);
+            this.panelAddChassis.TabIndex = 9;
+            // 
+            // buttonAddNewChassis
+            // 
+            this.buttonAddNewChassis.Location = new System.Drawing.Point(28, 149);
+            this.buttonAddNewChassis.Name = "buttonAddNewChassis";
+            this.buttonAddNewChassis.Size = new System.Drawing.Size(111, 34);
+            this.buttonAddNewChassis.TabIndex = 11;
+            this.buttonAddNewChassis.Text = "Add";
+            this.buttonAddNewChassis.UseVisualStyleBackColor = true;
+            this.buttonAddNewChassis.Click += new System.EventHandler(this.buttonAddNewChassis_Click);
+            // 
+            // textBoxChassisName
+            // 
+            this.textBoxChassisName.Location = new System.Drawing.Point(28, 104);
+            this.textBoxChassisName.Name = "textBoxChassisName";
+            this.textBoxChassisName.Size = new System.Drawing.Size(368, 27);
+            this.textBoxChassisName.TabIndex = 10;
+            // 
+            // labelChassisName
+            // 
+            this.labelChassisName.AutoSize = true;
+            this.labelChassisName.Location = new System.Drawing.Point(24, 80);
+            this.labelChassisName.Name = "labelChassisName";
+            this.labelChassisName.Size = new System.Drawing.Size(51, 20);
+            this.labelChassisName.TabIndex = 9;
+            this.labelChassisName.Text = "Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 20);
+            this.label3.TabIndex = 8;
+            // 
+            // labelChassisCode
+            // 
+            this.labelChassisCode.AutoSize = true;
+            this.labelChassisCode.Location = new System.Drawing.Point(24, 13);
+            this.labelChassisCode.Name = "labelChassisCode";
+            this.labelChassisCode.Size = new System.Drawing.Size(45, 20);
+            this.labelChassisCode.TabIndex = 3;
+            this.labelChassisCode.Text = "Code";
+            // 
+            // textBoxChassisCode
+            // 
+            this.textBoxChassisCode.Location = new System.Drawing.Point(28, 41);
+            this.textBoxChassisCode.Name = "textBoxChassisCode";
+            this.textBoxChassisCode.Size = new System.Drawing.Size(93, 27);
+            this.textBoxChassisCode.TabIndex = 1;
             // 
             // labelAddCustomerDisplayInfo
             // 
@@ -632,6 +1269,17 @@
             this.panelSearchCustomer.Size = new System.Drawing.Size(1022, 131);
             this.panelSearchCustomer.TabIndex = 0;
             // 
+            // dataGridViewCustomers
+            // 
+            this.dataGridViewCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCustomers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
+            this.dataGridViewCustomers.RowTemplate.Height = 24;
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(1022, 427);
+            this.dataGridViewCustomers.TabIndex = 10;
+            // 
             // labelSearchDisplayInfo
             // 
             this.labelSearchDisplayInfo.AutoSize = true;
@@ -698,22 +1346,139 @@
             this.textBoxSearchName.Size = new System.Drawing.Size(201, 27);
             this.textBoxSearchName.TabIndex = 1;
             // 
-            // contextMenuStripChassisOptions
+            // buttonAddImage
             // 
-            this.contextMenuStripChassisOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStripChassisOptions.Name = "contextMenuStripChassisOptions";
-            this.contextMenuStripChassisOptions.Size = new System.Drawing.Size(61, 4);
+            this.buttonAddImage.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonAddImage.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddImage.Location = new System.Drawing.Point(6, 170);
+            this.buttonAddImage.Name = "buttonAddImage";
+            this.buttonAddImage.Size = new System.Drawing.Size(231, 42);
+            this.buttonAddImage.TabIndex = 2;
+            this.buttonAddImage.Text = "Add image";
+            this.buttonAddImage.UseVisualStyleBackColor = false;
+            this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
             // 
-            // dataGridViewCustomers
+            // buttonDisplayDetails
             // 
-            this.dataGridViewCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewCustomers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomers.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
-            this.dataGridViewCustomers.RowTemplate.Height = 24;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(1022, 427);
-            this.dataGridViewCustomers.TabIndex = 10;
+            this.buttonDisplayDetails.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonDisplayDetails.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDisplayDetails.Location = new System.Drawing.Point(6, 218);
+            this.buttonDisplayDetails.Name = "buttonDisplayDetails";
+            this.buttonDisplayDetails.Size = new System.Drawing.Size(231, 42);
+            this.buttonDisplayDetails.TabIndex = 3;
+            this.buttonDisplayDetails.Text = "View all";
+            this.buttonDisplayDetails.UseVisualStyleBackColor = false;
+            // 
+            // panelAddNewImage
+            // 
+            this.panelAddNewImage.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddNewImage.Controls.Add(this.textBoxAddImageDescription);
+            this.panelAddNewImage.Controls.Add(this.labelAddImageDescription);
+            this.panelAddNewImage.Controls.Add(this.buttonAddImagePhotoUpload);
+            this.panelAddNewImage.Controls.Add(this.pictureBoxImage);
+            this.panelAddNewImage.Controls.Add(this.dateTimePickerAddImageDate);
+            this.panelAddNewImage.Controls.Add(this.buttonAddNewImage);
+            this.panelAddNewImage.Controls.Add(this.labelAddImageDate);
+            this.panelAddNewImage.Controls.Add(this.label12);
+            this.panelAddNewImage.Controls.Add(this.labelAddImageTitle);
+            this.panelAddNewImage.Controls.Add(this.textBoxAddImageTitle);
+            this.panelAddNewImage.Location = new System.Drawing.Point(86, 30);
+            this.panelAddNewImage.Name = "panelAddNewImage";
+            this.panelAddNewImage.Size = new System.Drawing.Size(443, 601);
+            this.panelAddNewImage.TabIndex = 25;
+            // 
+            // buttonAddNewImage
+            // 
+            this.buttonAddNewImage.Location = new System.Drawing.Point(26, 556);
+            this.buttonAddNewImage.Name = "buttonAddNewImage";
+            this.buttonAddNewImage.Size = new System.Drawing.Size(111, 34);
+            this.buttonAddNewImage.TabIndex = 11;
+            this.buttonAddNewImage.Text = "Add";
+            this.buttonAddNewImage.UseVisualStyleBackColor = true;
+            this.buttonAddNewImage.Click += new System.EventHandler(this.buttonAddNewImage_Click);
+            // 
+            // labelAddImageDate
+            // 
+            this.labelAddImageDate.AutoSize = true;
+            this.labelAddImageDate.Location = new System.Drawing.Point(24, 80);
+            this.labelAddImageDate.Name = "labelAddImageDate";
+            this.labelAddImageDate.Size = new System.Drawing.Size(42, 20);
+            this.labelAddImageDate.TabIndex = 9;
+            this.labelAddImageDate.Text = "Date";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(24, 100);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 20);
+            this.label12.TabIndex = 8;
+            // 
+            // labelAddImageTitle
+            // 
+            this.labelAddImageTitle.AutoSize = true;
+            this.labelAddImageTitle.Location = new System.Drawing.Point(24, 13);
+            this.labelAddImageTitle.Name = "labelAddImageTitle";
+            this.labelAddImageTitle.Size = new System.Drawing.Size(43, 20);
+            this.labelAddImageTitle.TabIndex = 3;
+            this.labelAddImageTitle.Text = "Title";
+            // 
+            // textBoxAddImageTitle
+            // 
+            this.textBoxAddImageTitle.Location = new System.Drawing.Point(28, 41);
+            this.textBoxAddImageTitle.Name = "textBoxAddImageTitle";
+            this.textBoxAddImageTitle.Size = new System.Drawing.Size(385, 27);
+            this.textBoxAddImageTitle.TabIndex = 1;
+            // 
+            // dateTimePickerAddImageDate
+            // 
+            this.dateTimePickerAddImageDate.Location = new System.Drawing.Point(28, 106);
+            this.dateTimePickerAddImageDate.Name = "dateTimePickerAddImageDate";
+            this.dateTimePickerAddImageDate.Size = new System.Drawing.Size(288, 27);
+            this.dateTimePickerAddImageDate.TabIndex = 29;
+            // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "CarRepairBlue2.ico");
+            this.imageList.Images.SetKeyName(1, "Atyourservice-Service-Categories-Car-Repair.ico");
+            this.imageList.Images.SetKeyName(2, "car(1).ico");
+            this.imageList.Images.SetKeyName(3, "--breakdown-car-driver-fix-petrol-icon--icon-search-engine-4.png");
+            // 
+            // buttonAddImagePhotoUpload
+            // 
+            this.buttonAddImagePhotoUpload.Location = new System.Drawing.Point(26, 207);
+            this.buttonAddImagePhotoUpload.Name = "buttonAddImagePhotoUpload";
+            this.buttonAddImagePhotoUpload.Size = new System.Drawing.Size(111, 36);
+            this.buttonAddImagePhotoUpload.TabIndex = 33;
+            this.buttonAddImagePhotoUpload.Text = "Upload";
+            this.buttonAddImagePhotoUpload.UseVisualStyleBackColor = true;
+            this.buttonAddImagePhotoUpload.Click += new System.EventHandler(this.buttonAddImagePhotoUpload_Click);
+            // 
+            // labelAddImageDescription
+            // 
+            this.labelAddImageDescription.AutoSize = true;
+            this.labelAddImageDescription.Location = new System.Drawing.Point(26, 146);
+            this.labelAddImageDescription.Name = "labelAddImageDescription";
+            this.labelAddImageDescription.Size = new System.Drawing.Size(93, 20);
+            this.labelAddImageDescription.TabIndex = 34;
+            this.labelAddImageDescription.Text = "Description";
+            // 
+            // pictureBoxImage
+            // 
+            this.pictureBoxImage.Location = new System.Drawing.Point(26, 253);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(385, 284);
+            this.pictureBoxImage.TabIndex = 32;
+            this.pictureBoxImage.TabStop = false;
+            // 
+            // textBoxAddImageDescription
+            // 
+            this.textBoxAddImageDescription.Location = new System.Drawing.Point(28, 171);
+            this.textBoxAddImageDescription.Name = "textBoxAddImageDescription";
+            this.textBoxAddImageDescription.Size = new System.Drawing.Size(385, 27);
+            this.textBoxAddImageDescription.TabIndex = 35;
             // 
             // CarServiceForm
             // 
@@ -732,20 +1497,38 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBoxDetails.ResumeLayout(false);
             this.groupBoxChassis.ResumeLayout(false);
             this.groupBoxOrders.ResumeLayout(false);
             this.groupBoxCustomers.ResumeLayout(false);
-            this.panelAddChassis.ResumeLayout(false);
-            this.panelAddChassis.PerformLayout();
+            this.panelAddMaterial.ResumeLayout(false);
+            this.panelAddMaterial.PerformLayout();
+            this.panelAddOperation.ResumeLayout(false);
+            this.panelAddOperation.PerformLayout();
+            this.panelAddMechanic.ResumeLayout(false);
+            this.panelAddMechanic.PerformLayout();
+            this.panelAddOrder.ResumeLayout(false);
+            this.panelAddOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectClient)).EndInit();
+            this.groupBoxCommandDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsImages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMechanics)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsOperations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMaterials)).EndInit();
             this.panelAddCustomerCar.ResumeLayout(false);
             this.panelAddCustomerCar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChassisOptions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerCars)).EndInit();
             this.panelAddCustomer.ResumeLayout(false);
             this.panelAddCustomer.PerformLayout();
+            this.panelAddChassis.ResumeLayout(false);
+            this.panelAddChassis.PerformLayout();
             this.panelSearchCustomer.ResumeLayout(false);
             this.panelSearchCustomer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
+            this.panelAddNewImage.ResumeLayout(false);
+            this.panelAddNewImage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -758,7 +1541,6 @@
         private System.Windows.Forms.Button buttonAddCustomer;
         private System.Windows.Forms.Button buttonSelectCustomer;
         private System.Windows.Forms.GroupBox groupBoxOrders;
-        private System.Windows.Forms.Button buttonOrderDetails;
         private System.Windows.Forms.Button buttonAddOrder;
         private System.Windows.Forms.Button buttonSelectOrder;
         private System.Windows.Forms.Panel panelSearchCustomer;
@@ -798,11 +1580,9 @@
         private System.Windows.Forms.Label labelChassis;
         private System.Windows.Forms.Label labelAutoNumber;
         private System.Windows.Forms.TextBox textBoxAutoNumber;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripChassisOptions;
         private System.Windows.Forms.DataGridView dataGridViewChassisOptions;
         private System.Windows.Forms.Button buttonAddCustomerCar;
         private System.Windows.Forms.GroupBox groupBoxChassis;
-        private System.Windows.Forms.Button buttonDisplayChassis;
         private System.Windows.Forms.Button buttonAddChassis;
         private System.Windows.Forms.Button buttonDisplayOrders;
         private System.Windows.Forms.Panel panelAddChassis;
@@ -813,6 +1593,77 @@
         private System.Windows.Forms.Label labelChassisCode;
         private System.Windows.Forms.TextBox textBoxChassisCode;
         private System.Windows.Forms.DataGridView dataGridViewCustomers;
+        private System.Windows.Forms.Panel panelAddOrder;
+        private System.Windows.Forms.Label labelAddOrderDescription;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
+        private System.Windows.Forms.Button buttonAddNewOrder;
+        private System.Windows.Forms.TextBox textBoxAddOrderDescription;
+        private System.Windows.Forms.Label labelAddOrderEndDate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelAddOrderStartDate;
+        private System.Windows.Forms.Label labelAddOrderInService;
+        private System.Windows.Forms.Label labelAddOrderState;
+        private System.Windows.Forms.TextBox textBoxAddOrderPiecesValue;
+        private System.Windows.Forms.Label labelAddOrderPiecesValue;
+        private System.Windows.Forms.GroupBox groupBoxCommandDetails;
+        private System.Windows.Forms.ComboBox comboBoxAddOrderState;
+        private System.Windows.Forms.Button buttonAddMechanic;
+        private System.Windows.Forms.Button buttonAddOperation;
+        private System.Windows.Forms.GroupBox groupBoxDetails;
+        private System.Windows.Forms.Button buttonAddMaterial;
+        private System.Windows.Forms.Panel panelAddMaterial;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAddMaterialDateSupply;
+        private System.Windows.Forms.Label labelAddMaterialDateSupply;
+        private System.Windows.Forms.TextBox textBoxAddMaterialPrice;
+        private System.Windows.Forms.Label labelAddMaterialPrice;
+        private System.Windows.Forms.Button buttonAddNewMaterial;
+        private System.Windows.Forms.TextBox textBoxAddMaterialQuantity;
+        private System.Windows.Forms.Label labelAddMaterialQuantity;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelAddMaterialName;
+        private System.Windows.Forms.TextBox textBoxAddMaterialName;
+        private System.Windows.Forms.ComboBox comboBoxAddOrderInService;
+        private System.Windows.Forms.Label labelAddOrderKm;
+        private System.Windows.Forms.TextBox textBoxAddOrderKm;
+        private System.Windows.Forms.DataGridView dataGridViewAddOrderSelectClient;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridViewAddDetailsMaterials;
+        private System.Windows.Forms.DataGridView dataGridViewAddDetailsOperations;
+        private System.Windows.Forms.DataGridView dataGridViewAddDetailsMechanics;
+        private System.Windows.Forms.DataGridView dataGridViewAddDetailsImages;
+        private System.Windows.Forms.Button buttonAddDetailsMaterial;
+        private System.Windows.Forms.Button buttonAddDetailsOperation;
+        private System.Windows.Forms.Button buttonAddDetailsMechanic;
+        private System.Windows.Forms.Button buttonAddDetailsImage;
+        private System.Windows.Forms.Panel panelAddOperation;
+        private System.Windows.Forms.Button buttonAddNewOperation;
+        private System.Windows.Forms.TextBox textBoxAddOperationExecutionTime;
+        private System.Windows.Forms.Label labelAddOperationExecutionTime;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxAddOperationName;
+        private System.Windows.Forms.Panel panelAddMechanic;
+        private System.Windows.Forms.Button buttonAddNewMechanic;
+        private System.Windows.Forms.TextBox textBoxAddMechanicFirstName;
+        private System.Windows.Forms.Label labelAddMechanicFirstName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelAddMechanicName;
+        private System.Windows.Forms.TextBox textBoxAddMechanicName;
+        private System.Windows.Forms.Button buttonAddImage;
+        private System.Windows.Forms.Button buttonDisplayDetails;
+        private System.Windows.Forms.Panel panelAddNewImage;
+        private System.Windows.Forms.Button buttonAddNewImage;
+        private System.Windows.Forms.Label labelAddImageDate;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelAddImageTitle;
+        private System.Windows.Forms.TextBox textBoxAddImageTitle;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAddImageDate;
+        private System.Windows.Forms.ImageList imageList;
+        private System.Windows.Forms.Button buttonAddImagePhotoUpload;
+        private System.Windows.Forms.TextBox textBoxAddImageDescription;
+        private System.Windows.Forms.Label labelAddImageDescription;
+        private System.Windows.Forms.PictureBox pictureBoxImage;
     }
 }
 
