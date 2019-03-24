@@ -24,8 +24,8 @@ namespace CarService
         }
     
         public int Id { get; set; }
+        public int ComandaId { get; set; }
     
-        public virtual Comanda Comanda { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Material> Materiale { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -34,5 +34,6 @@ namespace CarService
         public virtual ICollection<Imagine> Imagini { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mecanic> Mecanici { get; set; }
+        public virtual Comanda Comanda { get; set; }
     }
 }
