@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageImage));
             this.panelAddNewImage = new System.Windows.Forms.Panel();
+            this.labelAddImage = new System.Windows.Forms.Label();
+            this.buttonNewImage = new System.Windows.Forms.Button();
             this.textBoxAddImageDescription = new System.Windows.Forms.TextBox();
             this.labelAddImageDescription = new System.Windows.Forms.Label();
             this.buttonAddImagePhotoUpload = new System.Windows.Forms.Button();
@@ -40,8 +42,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.labelAddImageTitle = new System.Windows.Forms.Label();
             this.textBoxAddImageTitle = new System.Windows.Forms.TextBox();
-            this.buttonNewImage = new System.Windows.Forms.Button();
-            this.labelAddImage = new System.Windows.Forms.Label();
             this.panelAddNewImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
@@ -66,12 +66,31 @@
             this.panelAddNewImage.Size = new System.Drawing.Size(443, 631);
             this.panelAddNewImage.TabIndex = 26;
             // 
+            // labelAddImage
+            // 
+            this.labelAddImage.AutoSize = true;
+            this.labelAddImage.Location = new System.Drawing.Point(26, 604);
+            this.labelAddImage.Name = "labelAddImage";
+            this.labelAddImage.Size = new System.Drawing.Size(0, 17);
+            this.labelAddImage.TabIndex = 37;
+            // 
+            // buttonNewImage
+            // 
+            this.buttonNewImage.Location = new System.Drawing.Point(163, 556);
+            this.buttonNewImage.Name = "buttonNewImage";
+            this.buttonNewImage.Size = new System.Drawing.Size(111, 34);
+            this.buttonNewImage.TabIndex = 36;
+            this.buttonNewImage.Text = "New";
+            this.buttonNewImage.UseVisualStyleBackColor = true;
+            this.buttonNewImage.Click += new System.EventHandler(this.buttonNewImage_Click);
+            // 
             // textBoxAddImageDescription
             // 
             this.textBoxAddImageDescription.Location = new System.Drawing.Point(28, 171);
             this.textBoxAddImageDescription.Name = "textBoxAddImageDescription";
             this.textBoxAddImageDescription.Size = new System.Drawing.Size(385, 22);
             this.textBoxAddImageDescription.TabIndex = 35;
+            this.textBoxAddImageDescription.TextChanged += new System.EventHandler(this.textBoxAddImageDescription_TextChanged);
             // 
             // labelAddImageDescription
             // 
@@ -149,24 +168,7 @@
             this.textBoxAddImageTitle.Name = "textBoxAddImageTitle";
             this.textBoxAddImageTitle.Size = new System.Drawing.Size(385, 22);
             this.textBoxAddImageTitle.TabIndex = 1;
-            // 
-            // buttonNewImage
-            // 
-            this.buttonNewImage.Location = new System.Drawing.Point(163, 556);
-            this.buttonNewImage.Name = "buttonNewImage";
-            this.buttonNewImage.Size = new System.Drawing.Size(111, 34);
-            this.buttonNewImage.TabIndex = 36;
-            this.buttonNewImage.Text = "New";
-            this.buttonNewImage.UseVisualStyleBackColor = true;
-            this.buttonNewImage.Click += new System.EventHandler(this.buttonNewImage_Click);
-            // 
-            // labelAddImage
-            // 
-            this.labelAddImage.AutoSize = true;
-            this.labelAddImage.Location = new System.Drawing.Point(26, 604);
-            this.labelAddImage.Name = "labelAddImage";
-            this.labelAddImage.Size = new System.Drawing.Size(0, 17);
-            this.labelAddImage.TabIndex = 37;
+            this.textBoxAddImageTitle.TextChanged += new System.EventHandler(this.textBoxAddImageTitle_TextChanged);
             // 
             // FormManageImage
             // 

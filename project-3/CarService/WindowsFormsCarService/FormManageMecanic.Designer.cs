@@ -91,6 +91,7 @@
             this.textBoxAddMechanicFirstName.Name = "textBoxAddMechanicFirstName";
             this.textBoxAddMechanicFirstName.Size = new System.Drawing.Size(224, 22);
             this.textBoxAddMechanicFirstName.TabIndex = 10;
+            this.textBoxAddMechanicFirstName.TextChanged += new System.EventHandler(this.textBoxAddMechanicFirstName_TextChanged);
             // 
             // labelAddMechanicFirstName
             // 
@@ -124,6 +125,7 @@
             this.textBoxAddMechanicName.Name = "textBoxAddMechanicName";
             this.textBoxAddMechanicName.Size = new System.Drawing.Size(224, 22);
             this.textBoxAddMechanicName.TabIndex = 1;
+            this.textBoxAddMechanicName.TextChanged += new System.EventHandler(this.textBoxAddMechanicName_TextChanged);
             // 
             // FormManageMecanic
             // 

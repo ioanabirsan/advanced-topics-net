@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CarService;
 using CarService.Api;
@@ -12,6 +13,10 @@ namespace WindowsFormsCarService
     {
         private readonly CarServiceApi _carService;
         private string _imageLocation = "";
+        private string EmailPattern = @"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$";
+        private string NamePattern = @"^[A-Z][A-Za-z -]{2,14}$";
+        private string AutoNumberPattern = @"^([A-Z]{2}[0-9]{3}[A-Z]{3})|([A-Z]{2}[0-9]{8})$";
+        private string ChassisSeriesPattern = @"^[A-Z0-9]{6}[0-9][A-Z][A-Z0-9]{1,17}$";
 
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
@@ -99,6 +104,18 @@ namespace WindowsFormsCarService
 
             labelAddCar.Text = "Car added.";
             labelAddCar.Visible = true;
+
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string queryString = "SELECT * FROM Automobile WHERE ClientId = " + client.Id;
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                dataGridViewCustomerCars.DataSource = dataTable;
+                dataGridViewCustomerCars.Visible = true;
+            }
         }
 
         private void buttonNewSearch_Click(object sender, EventArgs e)
@@ -118,6 +135,58 @@ namespace WindowsFormsCarService
             labelAddCar.Visible = false;
             textBoxChassisSeries.Text = "";
             textBoxAutoNumber.Text = "";
+        }
+
+        private void textBoxSearchName_TextChanged(object sender, EventArgs e)
+        {
+            ValidateSearchField(NamePattern, textBoxSearchName);
+        }
+
+        private void textBoxSearchFirstName_TextChanged(object sender, EventArgs e)
+        {
+            ValidateSearchField(NamePattern, textBoxSearchFirstName);
+        }
+
+        private void textBoxSearchEmail_TextChanged(object sender, EventArgs e)
+        {
+            ValidateSearchField(EmailPattern, textBoxSearchEmail);
+        }
+
+        private void textBoxAutoNumber_TextChanged(object sender, EventArgs e)
+        {
+            ValidateAddCarField(AutoNumberPattern, textBoxAutoNumber);
+        }
+
+        private void textBoxChassisSeries_TextChanged(object sender, EventArgs e)
+        {
+            ValidateAddCarField(ChassisSeriesPattern, textBoxChassisSeries);
+
+            int index = dataGridViewChassisOptions.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewChassisOptions.Rows[index];
+            string codSasiu = selectedRow.Cells[0].Value.ToString();
+            string chassisSeries = textBoxChassisSeries.Text;
+
+            bool isValidExpression = chassisSeries[6].Equals(codSasiu[0]) && chassisSeries[7].Equals(codSasiu[1]);
+            buttonAddCustomerCar.Enabled = isValidExpression;
+            labelAddCar.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void ValidateSearchField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            buttonSearchCustomer.Enabled = isValidExpression;
+            labelSearchDisplayInfo.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void ValidateAddCarField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            buttonAddCustomerCar.Enabled = isValidExpression;
+            labelAddCar.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
     }
 }

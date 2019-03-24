@@ -416,5 +416,11 @@ namespace CarService.Api
         {
             return _context.Operatii.Any(c => c.Id == id);
         }
+
+        public bool ExistsCustomer(string email)
+        {
+            Client client = _context.Clienti.FirstOrDefault(c => c.Email.Equals(email));
+            return client != null;
+        }
     }
 }

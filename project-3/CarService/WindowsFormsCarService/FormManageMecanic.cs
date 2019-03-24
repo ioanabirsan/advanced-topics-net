@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CarService;
 using CarService.Api;
@@ -9,9 +10,7 @@ namespace WindowsFormsCarService
     public partial class FormManageMecanic : Form
     {
         private readonly CarServiceApi _carService;
-
-        private string connectionString =
-            @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
+        private string NamePattern = @"^[A-Z][A-Za-z -]{2,14}$";
 
         public FormManageMecanic()
         {
@@ -32,7 +31,7 @@ namespace WindowsFormsCarService
 
             _carService.AddMecanic(mechanic);
 
-            labelAddMecanic.Text = "Mecanic added.";
+            labelAddMecanic.Text = @"Mecanic added.";
             labelAddMecanic.Visible = true;
         }
 
@@ -41,6 +40,25 @@ namespace WindowsFormsCarService
             labelAddMecanic.Visible = false;
             textBoxAddMechanicFirstName.Text = "";
             textBoxAddMechanicName.Text = "";
+        }
+
+        private void textBoxAddMechanicName_TextChanged(object sender, EventArgs e)
+        {
+            ValidateField(NamePattern, textBoxAddMechanicName);
+        }
+
+        private void textBoxAddMechanicFirstName_TextChanged(object sender, EventArgs e)
+        {
+            ValidateField(NamePattern, textBoxAddMechanicFirstName);
+        }
+
+        private void ValidateField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            buttonAddNewMechanic.Enabled = isValidExpression;
+            labelAddMecanic.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
     }
 }

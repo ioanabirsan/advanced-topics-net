@@ -101,6 +101,7 @@
             this.textBoxAddEmail.Name = "textBoxAddEmail";
             this.textBoxAddEmail.Size = new System.Drawing.Size(344, 22);
             this.textBoxAddEmail.TabIndex = 17;
+            this.textBoxAddEmail.TextChanged += new System.EventHandler(this.textBoxAddEmail_TextChanged);
             // 
             // labelAddEmail
             // 
@@ -126,6 +127,7 @@
             this.textBoxAddPhoneNumber.Name = "textBoxAddPhoneNumber";
             this.textBoxAddPhoneNumber.Size = new System.Drawing.Size(253, 22);
             this.textBoxAddPhoneNumber.TabIndex = 14;
+            this.textBoxAddPhoneNumber.TextChanged += new System.EventHandler(this.textBoxAddPhoneNumber_TextChanged);
             // 
             // textBoxAddCounty
             // 
@@ -133,6 +135,7 @@
             this.textBoxAddCounty.Name = "textBoxAddCounty";
             this.textBoxAddCounty.Size = new System.Drawing.Size(253, 22);
             this.textBoxAddCounty.TabIndex = 13;
+            this.textBoxAddCounty.TextChanged += new System.EventHandler(this.textBoxAddCounty_TextChanged);
             // 
             // textBoxAddCity
             // 
@@ -140,6 +143,7 @@
             this.textBoxAddCity.Name = "textBoxAddCity";
             this.textBoxAddCity.Size = new System.Drawing.Size(253, 22);
             this.textBoxAddCity.TabIndex = 12;
+            this.textBoxAddCity.TextChanged += new System.EventHandler(this.textBoxAddCity_TextChanged);
             // 
             // labelAddCounty
             // 
@@ -192,6 +196,7 @@
             this.textBoxAddAddress.Name = "textBoxAddAddress";
             this.textBoxAddAddress.Size = new System.Drawing.Size(253, 22);
             this.textBoxAddAddress.TabIndex = 5;
+            this.textBoxAddAddress.TextChanged += new System.EventHandler(this.textBoxAddAddress_TextChanged);
             // 
             // labelAddFirstName
             // 
@@ -217,6 +222,7 @@
             this.textBoxAddFirstName.Name = "textBoxAddFirstName";
             this.textBoxAddFirstName.Size = new System.Drawing.Size(254, 22);
             this.textBoxAddFirstName.TabIndex = 2;
+            this.textBoxAddFirstName.TextChanged += new System.EventHandler(this.textBoxAddFirstName_TextChanged);
             // 
             // textBoxAddName
             // 
@@ -224,6 +230,7 @@
             this.textBoxAddName.Name = "textBoxAddName";
             this.textBoxAddName.Size = new System.Drawing.Size(253, 22);
             this.textBoxAddName.TabIndex = 1;
+            this.textBoxAddName.TextChanged += new System.EventHandler(this.textBoxAddName_TextChanged);
             // 
             // FormManageCustomer
             // 

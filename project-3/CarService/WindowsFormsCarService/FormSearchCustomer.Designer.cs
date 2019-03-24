@@ -118,6 +118,7 @@
             this.textBoxSearchEmail.Name = "textBoxSearchEmail";
             this.textBoxSearchEmail.Size = new System.Drawing.Size(323, 22);
             this.textBoxSearchEmail.TabIndex = 5;
+            this.textBoxSearchEmail.TextChanged += new System.EventHandler(this.textBoxSearchEmail_TextChanged);
             // 
             // labelSearchFirstName
             // 
@@ -143,6 +144,7 @@
             this.textBoxSearchFirstName.Name = "textBoxSearchFirstName";
             this.textBoxSearchFirstName.Size = new System.Drawing.Size(216, 22);
             this.textBoxSearchFirstName.TabIndex = 2;
+            this.textBoxSearchFirstName.TextChanged += new System.EventHandler(this.textBoxSearchFirstName_TextChanged);
             // 
             // textBoxSearchName
             // 
@@ -150,6 +152,7 @@
             this.textBoxSearchName.Name = "textBoxSearchName";
             this.textBoxSearchName.Size = new System.Drawing.Size(201, 22);
             this.textBoxSearchName.TabIndex = 1;
+            this.textBoxSearchName.TextChanged += new System.EventHandler(this.textBoxSearchName_TextChanged);
             // 
             // dataGridViewCustomerCars
             // 
@@ -242,6 +245,7 @@
             this.textBoxChassisSeries.Name = "textBoxChassisSeries";
             this.textBoxChassisSeries.Size = new System.Drawing.Size(323, 22);
             this.textBoxChassisSeries.TabIndex = 5;
+            this.textBoxChassisSeries.TextChanged += new System.EventHandler(this.textBoxChassisSeries_TextChanged);
             // 
             // labelChassis
             // 
@@ -267,6 +271,7 @@
             this.textBoxAutoNumber.Name = "textBoxAutoNumber";
             this.textBoxAutoNumber.Size = new System.Drawing.Size(201, 22);
             this.textBoxAutoNumber.TabIndex = 1;
+            this.textBoxAutoNumber.TextChanged += new System.EventHandler(this.textBoxAutoNumber_TextChanged);
             // 
             // entityCommand1
             // 

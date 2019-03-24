@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CarService;
 using CarService.Api;
@@ -10,9 +11,8 @@ namespace WindowsFormsCarService
     {
         private readonly CarServiceApi _carService;
         private string _imageLocation = "";
-
-        private string connectionString =
-            @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
+        private string TitlePattern = @"^[a-z0-9]{1,11}.[a-z]{3}$";
+        private string DescriptionPattern = @"^(\w)|(\s){5,256}$";
 
         public FormManageImage()
         {
@@ -82,6 +82,25 @@ namespace WindowsFormsCarService
             textBoxAddImageDescription.Text = "";
             textBoxAddImageTitle.Text = "";
             pictureBoxImage.Image = null;
+        }
+
+        private void textBoxAddImageTitle_TextChanged(object sender, EventArgs e)
+        {
+            ValidateField(TitlePattern, textBoxAddImageTitle);
+        }
+
+        private void textBoxAddImageDescription_TextChanged(object sender, EventArgs e)
+        {
+            ValidateField(DescriptionPattern, textBoxAddImageDescription);
+        }
+
+        private void ValidateField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            buttonAddNewImage.Enabled = isValidExpression;
+            labelAddImage.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
     }
 }
