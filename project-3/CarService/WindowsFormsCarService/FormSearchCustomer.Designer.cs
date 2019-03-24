@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSearchCustomer));
             this.panelSearchCustomer = new System.Windows.Forms.Panel();
+            this.buttonNewSearch = new System.Windows.Forms.Button();
             this.labelSearchDisplayInfo = new System.Windows.Forms.Label();
             this.buttonSearchCustomer = new System.Windows.Forms.Button();
             this.labelSearchEmail = new System.Windows.Forms.Label();
@@ -40,6 +41,8 @@
             this.textBoxSearchName = new System.Windows.Forms.TextBox();
             this.dataGridViewCustomerCars = new System.Windows.Forms.DataGridView();
             this.panelAddCustomerCar = new System.Windows.Forms.Panel();
+            this.labelAddCar = new System.Windows.Forms.Label();
+            this.buttonNewCar = new System.Windows.Forms.Button();
             this.buttonAddCustomerCar = new System.Windows.Forms.Button();
             this.dataGridViewChassisOptions = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +51,7 @@
             this.labelChassis = new System.Windows.Forms.Label();
             this.labelAutoNumber = new System.Windows.Forms.Label();
             this.textBoxAutoNumber = new System.Windows.Forms.TextBox();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.panelSearchCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerCars)).BeginInit();
             this.panelAddCustomerCar.SuspendLayout();
@@ -57,6 +61,7 @@
             // panelSearchCustomer
             // 
             this.panelSearchCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelSearchCustomer.Controls.Add(this.buttonNewSearch);
             this.panelSearchCustomer.Controls.Add(this.labelSearchDisplayInfo);
             this.panelSearchCustomer.Controls.Add(this.buttonSearchCustomer);
             this.panelSearchCustomer.Controls.Add(this.labelSearchEmail);
@@ -65,10 +70,20 @@
             this.panelSearchCustomer.Controls.Add(this.labelSearchName);
             this.panelSearchCustomer.Controls.Add(this.textBoxSearchFirstName);
             this.panelSearchCustomer.Controls.Add(this.textBoxSearchName);
-            this.panelSearchCustomer.Location = new System.Drawing.Point(2, 46);
+            this.panelSearchCustomer.Location = new System.Drawing.Point(12, 12);
             this.panelSearchCustomer.Name = "panelSearchCustomer";
             this.panelSearchCustomer.Size = new System.Drawing.Size(1022, 131);
             this.panelSearchCustomer.TabIndex = 1;
+            // 
+            // buttonNewSearch
+            // 
+            this.buttonNewSearch.Location = new System.Drawing.Point(831, 78);
+            this.buttonNewSearch.Name = "buttonNewSearch";
+            this.buttonNewSearch.Size = new System.Drawing.Size(142, 36);
+            this.buttonNewSearch.TabIndex = 9;
+            this.buttonNewSearch.Text = "New";
+            this.buttonNewSearch.UseVisualStyleBackColor = true;
+            this.buttonNewSearch.Click += new System.EventHandler(this.buttonNewSearch_Click);
             // 
             // labelSearchDisplayInfo
             // 
@@ -141,15 +156,17 @@
             this.dataGridViewCustomerCars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCustomerCars.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewCustomerCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomerCars.Location = new System.Drawing.Point(2, 220);
+            this.dataGridViewCustomerCars.Location = new System.Drawing.Point(12, 174);
             this.dataGridViewCustomerCars.Name = "dataGridViewCustomerCars";
             this.dataGridViewCustomerCars.RowTemplate.Height = 24;
-            this.dataGridViewCustomerCars.Size = new System.Drawing.Size(1022, 248);
+            this.dataGridViewCustomerCars.Size = new System.Drawing.Size(1022, 301);
             this.dataGridViewCustomerCars.TabIndex = 3;
             // 
             // panelAddCustomerCar
             // 
             this.panelAddCustomerCar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddCustomerCar.Controls.Add(this.labelAddCar);
+            this.panelAddCustomerCar.Controls.Add(this.buttonNewCar);
             this.panelAddCustomerCar.Controls.Add(this.buttonAddCustomerCar);
             this.panelAddCustomerCar.Controls.Add(this.dataGridViewChassisOptions);
             this.panelAddCustomerCar.Controls.Add(this.label2);
@@ -158,14 +175,32 @@
             this.panelAddCustomerCar.Controls.Add(this.labelChassis);
             this.panelAddCustomerCar.Controls.Add(this.labelAutoNumber);
             this.panelAddCustomerCar.Controls.Add(this.textBoxAutoNumber);
-            this.panelAddCustomerCar.Location = new System.Drawing.Point(2, 509);
+            this.panelAddCustomerCar.Location = new System.Drawing.Point(12, 508);
             this.panelAddCustomerCar.Name = "panelAddCustomerCar";
             this.panelAddCustomerCar.Size = new System.Drawing.Size(1022, 262);
             this.panelAddCustomerCar.TabIndex = 10;
             // 
+            // labelAddCar
+            // 
+            this.labelAddCar.AutoSize = true;
+            this.labelAddCar.Location = new System.Drawing.Point(30, 224);
+            this.labelAddCar.Name = "labelAddCar";
+            this.labelAddCar.Size = new System.Drawing.Size(0, 17);
+            this.labelAddCar.TabIndex = 12;
+            // 
+            // buttonNewCar
+            // 
+            this.buttonNewCar.Location = new System.Drawing.Point(165, 169);
+            this.buttonNewCar.Name = "buttonNewCar";
+            this.buttonNewCar.Size = new System.Drawing.Size(110, 35);
+            this.buttonNewCar.TabIndex = 11;
+            this.buttonNewCar.Text = "New";
+            this.buttonNewCar.UseVisualStyleBackColor = true;
+            this.buttonNewCar.Click += new System.EventHandler(this.buttonNewCar_Click);
+            // 
             // buttonAddCustomerCar
             // 
-            this.buttonAddCustomerCar.Location = new System.Drawing.Point(28, 203);
+            this.buttonAddCustomerCar.Location = new System.Drawing.Point(28, 169);
             this.buttonAddCustomerCar.Name = "buttonAddCustomerCar";
             this.buttonAddCustomerCar.Size = new System.Drawing.Size(110, 35);
             this.buttonAddCustomerCar.TabIndex = 10;
@@ -233,12 +268,20 @@
             this.textBoxAutoNumber.Size = new System.Drawing.Size(201, 22);
             this.textBoxAutoNumber.TabIndex = 1;
             // 
+            // entityCommand1
+            // 
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
+            // 
             // FormSearchCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1021, 764);
+            this.ClientSize = new System.Drawing.Size(1045, 786);
             this.Controls.Add(this.panelAddCustomerCar);
             this.Controls.Add(this.dataGridViewCustomerCars);
             this.Controls.Add(this.panelSearchCustomer);
@@ -276,5 +319,9 @@
         private System.Windows.Forms.Label labelChassis;
         private System.Windows.Forms.Label labelAutoNumber;
         private System.Windows.Forms.TextBox textBoxAutoNumber;
+        private System.Windows.Forms.Button buttonNewSearch;
+        private System.Windows.Forms.Button buttonNewCar;
+        private System.Windows.Forms.Label labelAddCar;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
     }
 }

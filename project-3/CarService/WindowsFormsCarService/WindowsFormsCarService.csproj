@@ -59,6 +59,24 @@
     <Compile Include="CarServiceForm.Designer.cs">
       <DependentUpon>CarServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDisplayChassis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayChassis.Designer.cs">
+      <DependentUpon>FormDisplayChassis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayDetails.Designer.cs">
+      <DependentUpon>FormDisplayDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayOrders.Designer.cs">
+      <DependentUpon>FormDisplayOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormManageChassis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,11 +101,11 @@
     <Compile Include="FormManageMaterial.Designer.cs">
       <DependentUpon>FormManageMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormManageMechanic.cs">
+    <Compile Include="FormManageMecanic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormManageMechanic.Designer.cs">
-      <DependentUpon>FormManageMechanic.cs</DependentUpon>
+    <Compile Include="FormManageMecanic.Designer.cs">
+      <DependentUpon>FormManageMecanic.cs</DependentUpon>
     </Compile>
     <Compile Include="FormManageOperation.cs">
       <SubType>Form</SubType>
@@ -118,6 +136,15 @@
     <EmbeddedResource Include="CarServiceForm.resx">
       <DependentUpon>CarServiceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayChassis.resx">
+      <DependentUpon>FormDisplayChassis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayDetails.resx">
+      <DependentUpon>FormDisplayDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayOrders.resx">
+      <DependentUpon>FormDisplayOrders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormManageChassis.resx">
       <DependentUpon>FormManageChassis.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,8 +157,8 @@
     <EmbeddedResource Include="FormManageMaterial.resx">
       <DependentUpon>FormManageMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormManageMechanic.resx">
-      <DependentUpon>FormManageMechanic.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageMecanic.resx">
+      <DependentUpon>FormManageMecanic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormManageOperation.resx">
       <DependentUpon>FormManageOperation.cs</DependentUpon>

@@ -36,21 +36,25 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxAddOperationName = new System.Windows.Forms.TextBox();
+            this.buttonNewOperation = new System.Windows.Forms.Button();
+            this.labelAddOperation = new System.Windows.Forms.Label();
             this.panelAddOperation.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelAddOperation
             // 
             this.panelAddOperation.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddOperation.Controls.Add(this.labelAddOperation);
+            this.panelAddOperation.Controls.Add(this.buttonNewOperation);
             this.panelAddOperation.Controls.Add(this.buttonAddNewOperation);
             this.panelAddOperation.Controls.Add(this.textBoxAddOperationExecutionTime);
             this.panelAddOperation.Controls.Add(this.labelAddOperationExecutionTime);
             this.panelAddOperation.Controls.Add(this.label9);
             this.panelAddOperation.Controls.Add(this.label10);
             this.panelAddOperation.Controls.Add(this.textBoxAddOperationName);
-            this.panelAddOperation.Location = new System.Drawing.Point(3, 2);
+            this.panelAddOperation.Location = new System.Drawing.Point(12, 12);
             this.panelAddOperation.Name = "panelAddOperation";
-            this.panelAddOperation.Size = new System.Drawing.Size(443, 211);
+            this.panelAddOperation.Size = new System.Drawing.Size(443, 245);
             this.panelAddOperation.TabIndex = 26;
             // 
             // buttonAddNewOperation
@@ -103,15 +107,33 @@
             this.textBoxAddOperationName.Size = new System.Drawing.Size(368, 22);
             this.textBoxAddOperationName.TabIndex = 1;
             // 
-            // FormAddOperation
+            // buttonNewOperation
+            // 
+            this.buttonNewOperation.Location = new System.Drawing.Point(160, 159);
+            this.buttonNewOperation.Name = "buttonNewOperation";
+            this.buttonNewOperation.Size = new System.Drawing.Size(111, 34);
+            this.buttonNewOperation.TabIndex = 12;
+            this.buttonNewOperation.Text = "New";
+            this.buttonNewOperation.UseVisualStyleBackColor = true;
+            this.buttonNewOperation.Click += new System.EventHandler(this.buttonNewOperation_Click);
+            // 
+            // labelAddOperation
+            // 
+            this.labelAddOperation.AutoSize = true;
+            this.labelAddOperation.Location = new System.Drawing.Point(25, 209);
+            this.labelAddOperation.Name = "labelAddOperation";
+            this.labelAddOperation.Size = new System.Drawing.Size(0, 17);
+            this.labelAddOperation.TabIndex = 13;
+            // 
+            // FormManageOperation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(442, 210);
+            this.ClientSize = new System.Drawing.Size(470, 269);
             this.Controls.Add(this.panelAddOperation);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormAddOperation";
+            this.Name = "FormManageOperation";
             this.Text = "Add operation";
             this.panelAddOperation.ResumeLayout(false);
             this.panelAddOperation.PerformLayout();
@@ -128,5 +150,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxAddOperationName;
+        private System.Windows.Forms.Button buttonNewOperation;
+        private System.Windows.Forms.Label labelAddOperation;
     }
 }

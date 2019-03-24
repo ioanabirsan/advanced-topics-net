@@ -40,6 +40,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.labelAddImageTitle = new System.Windows.Forms.Label();
             this.textBoxAddImageTitle = new System.Windows.Forms.TextBox();
+            this.buttonNewImage = new System.Windows.Forms.Button();
+            this.labelAddImage = new System.Windows.Forms.Label();
             this.panelAddNewImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +49,8 @@
             // panelAddNewImage
             // 
             this.panelAddNewImage.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddNewImage.Controls.Add(this.labelAddImage);
+            this.panelAddNewImage.Controls.Add(this.buttonNewImage);
             this.panelAddNewImage.Controls.Add(this.textBoxAddImageDescription);
             this.panelAddNewImage.Controls.Add(this.labelAddImageDescription);
             this.panelAddNewImage.Controls.Add(this.buttonAddImagePhotoUpload);
@@ -57,9 +61,9 @@
             this.panelAddNewImage.Controls.Add(this.label12);
             this.panelAddNewImage.Controls.Add(this.labelAddImageTitle);
             this.panelAddNewImage.Controls.Add(this.textBoxAddImageTitle);
-            this.panelAddNewImage.Location = new System.Drawing.Point(0, 0);
+            this.panelAddNewImage.Location = new System.Drawing.Point(12, 12);
             this.panelAddNewImage.Name = "panelAddNewImage";
-            this.panelAddNewImage.Size = new System.Drawing.Size(443, 601);
+            this.panelAddNewImage.Size = new System.Drawing.Size(443, 631);
             this.panelAddNewImage.TabIndex = 26;
             // 
             // textBoxAddImageDescription
@@ -146,14 +150,33 @@
             this.textBoxAddImageTitle.Size = new System.Drawing.Size(385, 22);
             this.textBoxAddImageTitle.TabIndex = 1;
             // 
-            // FormAddImage
+            // buttonNewImage
+            // 
+            this.buttonNewImage.Location = new System.Drawing.Point(163, 556);
+            this.buttonNewImage.Name = "buttonNewImage";
+            this.buttonNewImage.Size = new System.Drawing.Size(111, 34);
+            this.buttonNewImage.TabIndex = 36;
+            this.buttonNewImage.Text = "New";
+            this.buttonNewImage.UseVisualStyleBackColor = true;
+            this.buttonNewImage.Click += new System.EventHandler(this.buttonNewImage_Click);
+            // 
+            // labelAddImage
+            // 
+            this.labelAddImage.AutoSize = true;
+            this.labelAddImage.Location = new System.Drawing.Point(26, 604);
+            this.labelAddImage.Name = "labelAddImage";
+            this.labelAddImage.Size = new System.Drawing.Size(0, 17);
+            this.labelAddImage.TabIndex = 37;
+            // 
+            // FormManageImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 600);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(466, 655);
             this.Controls.Add(this.panelAddNewImage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormAddImage";
+            this.Name = "FormManageImage";
             this.Text = "Add image";
             this.panelAddNewImage.ResumeLayout(false);
             this.panelAddNewImage.PerformLayout();
@@ -175,5 +198,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label labelAddImageTitle;
         private System.Windows.Forms.TextBox textBoxAddImageTitle;
+        private System.Windows.Forms.Button buttonNewImage;
+        private System.Windows.Forms.Label labelAddImage;
     }
 }

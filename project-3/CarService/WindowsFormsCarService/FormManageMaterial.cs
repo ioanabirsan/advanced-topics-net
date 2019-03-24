@@ -19,7 +19,7 @@ namespace WindowsFormsCarService
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
         }
 
         private void buttonAddNewMaterial_Click(object sender, EventArgs e)
@@ -42,6 +42,17 @@ namespace WindowsFormsCarService
             };
 
             _carService.AddMaterial(material);
+
+            labelAddMaterial.Text = "Material added.";
+            labelAddMaterial.Visible = true;
+        }
+
+        private void buttonNewMaterial_Click(object sender, EventArgs e)
+        {
+            labelAddMaterial.Visible = false;
+            textBoxAddMaterialName.Text = "";
+            textBoxAddMaterialPrice.Text = "";
+            textBoxAddMaterialQuantity.Text = "";
         }
     }
 }

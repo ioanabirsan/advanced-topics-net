@@ -40,12 +40,16 @@
             this.label13 = new System.Windows.Forms.Label();
             this.labelAddMaterialName = new System.Windows.Forms.Label();
             this.textBoxAddMaterialName = new System.Windows.Forms.TextBox();
+            this.buttonNewMaterial = new System.Windows.Forms.Button();
+            this.labelAddMaterial = new System.Windows.Forms.Label();
             this.panelAddMaterial.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelAddMaterial
             // 
             this.panelAddMaterial.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddMaterial.Controls.Add(this.labelAddMaterial);
+            this.panelAddMaterial.Controls.Add(this.buttonNewMaterial);
             this.panelAddMaterial.Controls.Add(this.dateTimePickerAddMaterialDateSupply);
             this.panelAddMaterial.Controls.Add(this.labelAddMaterialDateSupply);
             this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialPrice);
@@ -56,9 +60,9 @@
             this.panelAddMaterial.Controls.Add(this.label13);
             this.panelAddMaterial.Controls.Add(this.labelAddMaterialName);
             this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialName);
-            this.panelAddMaterial.Location = new System.Drawing.Point(2, 1);
+            this.panelAddMaterial.Location = new System.Drawing.Point(12, 12);
             this.panelAddMaterial.Name = "panelAddMaterial";
-            this.panelAddMaterial.Size = new System.Drawing.Size(443, 275);
+            this.panelAddMaterial.Size = new System.Drawing.Size(443, 303);
             this.panelAddMaterial.TabIndex = 14;
             // 
             // dateTimePickerAddMaterialDateSupply
@@ -143,15 +147,33 @@
             this.textBoxAddMaterialName.Size = new System.Drawing.Size(368, 22);
             this.textBoxAddMaterialName.TabIndex = 1;
             // 
-            // FormAddMaterial
+            // buttonNewMaterial
+            // 
+            this.buttonNewMaterial.Location = new System.Drawing.Point(165, 225);
+            this.buttonNewMaterial.Name = "buttonNewMaterial";
+            this.buttonNewMaterial.Size = new System.Drawing.Size(111, 34);
+            this.buttonNewMaterial.TabIndex = 25;
+            this.buttonNewMaterial.Text = "New";
+            this.buttonNewMaterial.UseVisualStyleBackColor = true;
+            this.buttonNewMaterial.Click += new System.EventHandler(this.buttonNewMaterial_Click);
+            // 
+            // labelAddMaterial
+            // 
+            this.labelAddMaterial.AutoSize = true;
+            this.labelAddMaterial.Location = new System.Drawing.Point(25, 272);
+            this.labelAddMaterial.Name = "labelAddMaterial";
+            this.labelAddMaterial.Size = new System.Drawing.Size(0, 17);
+            this.labelAddMaterial.TabIndex = 26;
+            // 
+            // FormManageMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(443, 273);
+            this.ClientSize = new System.Drawing.Size(467, 330);
             this.Controls.Add(this.panelAddMaterial);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormAddMaterial";
+            this.Name = "FormManageMaterial";
             this.Text = "Add material";
             this.panelAddMaterial.ResumeLayout(false);
             this.panelAddMaterial.PerformLayout();
@@ -172,5 +194,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label labelAddMaterialName;
         private System.Windows.Forms.TextBox textBoxAddMaterialName;
+        private System.Windows.Forms.Button buttonNewMaterial;
+        private System.Windows.Forms.Label labelAddMaterial;
     }
 }

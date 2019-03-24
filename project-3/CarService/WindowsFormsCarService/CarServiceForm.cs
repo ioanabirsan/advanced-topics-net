@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WindowsFormsCarService
@@ -8,10 +9,8 @@ namespace WindowsFormsCarService
         public CarServiceForm()
         {
             InitializeComponent();
-        }
-
-        private void CarServiceForm_Load(object sender, EventArgs e)
-        {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(65, 0);
         }
 
         private void buttonSelectCustomer_Click(object sender, EventArgs e)
@@ -59,7 +58,7 @@ namespace WindowsFormsCarService
 
         private void buttonAddMechanic_Click(object sender, EventArgs e)
         {
-            FormManageMechanic addMechanicForm = new FormManageMechanic();
+            FormManageMecanic addMechanicForm = new FormManageMecanic();
             addMechanicForm.Show();
         }
 
@@ -67,6 +66,24 @@ namespace WindowsFormsCarService
         {
             FormManageImage addImageForm = new FormManageImage();
             addImageForm.Show();
+        }
+
+        private void buttonDisplayOrders_Click(object sender, EventArgs e)
+        {
+            FormDisplayOrders displayOrdersForm = new FormDisplayOrders();
+            displayOrdersForm.Show();
+        }
+
+        private void buttonDisplayChassis_Click(object sender, EventArgs e)
+        {
+            FormDisplayChassis displayChassisForm = new FormDisplayChassis();
+            displayChassisForm.Show();
+        }
+
+        private void buttonDisplayDetails_Click(object sender, EventArgs e)
+        {
+            FormDisplayDetails displayDetailsForms = new FormDisplayDetails();
+            displayDetailsForms.Show();
         }
     }
 }

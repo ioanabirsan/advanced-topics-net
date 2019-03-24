@@ -22,7 +22,7 @@ namespace WindowsFormsCarService
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
 
             dataGridViewChassisOptions.Visible = false;
             dataGridViewCustomerCars.Visible = false;
@@ -96,6 +96,28 @@ namespace WindowsFormsCarService
             };
 
             _carService.AddAuto(auto);
+
+            labelAddCar.Text = "Car added.";
+            labelAddCar.Visible = true;
+        }
+
+        private void buttonNewSearch_Click(object sender, EventArgs e)
+        {
+            labelSearchDisplayInfo.Visible = false;
+            textBoxSearchName.Text = "";
+            textBoxSearchFirstName.Text = "";
+            textBoxSearchEmail.Text = "";
+
+            panelAddCustomerCar.Visible = false;
+            dataGridViewCustomerCars.Visible = false;
+            dataGridViewChassisOptions.Visible = false;
+        }
+
+        private void buttonNewCar_Click(object sender, EventArgs e)
+        {
+            labelAddCar.Visible = false;
+            textBoxChassisSeries.Text = "";
+            textBoxAutoNumber.Text = "";
         }
     }
 }

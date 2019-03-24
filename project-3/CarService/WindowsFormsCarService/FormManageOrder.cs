@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -21,7 +22,7 @@ namespace WindowsFormsCarService
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
 
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
@@ -77,6 +78,17 @@ namespace WindowsFormsCarService
 
                 dataGridViewAddDetailsImages.DataSource = dataTable;
             }
+
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+                string queryString = "SELECT Id, Descriere FROM Comenzi";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                dataGridViewAddDetailByOrder.DataSource = dataTable;
+            }
         }
 
         private void buttonAddNewOrder_Click(object sender, EventArgs e)
@@ -110,11 +122,67 @@ namespace WindowsFormsCarService
             };
 
             _carService.AddOrder(order);
+
+            labelAddOrder.Text = "Order added.";
+            labelAddOrder.Visible = true;
         }
 
         private void buttonAddDetails_Click(object sender, EventArgs e)
         {
+            List<Material> materials = new List<Material>();
+            List<Operatie> operations = new List<Operatie>();
+            List<Mecanic> mechanics = new List<Mecanic>();
+            List<Imagine> images = new List<Imagine>();
 
+            int index = dataGridViewAddDetailByOrder.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewAddDetailByOrder.Rows[index];
+            int orderId = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+            foreach (DataGridViewRow row in dataGridViewAddDetailsMaterials.SelectedRows)
+            {
+                int id = Convert.ToInt32(row.Cells[0].Value);
+
+                Material material = _carService.FindMaterialById(id);
+                materials.Add(material);
+            }
+
+            foreach (DataGridViewRow row in dataGridViewAddDetailsOperations.SelectedRows)
+            {
+                int id = Convert.ToInt32(row.Cells[0].Value);
+
+                Operatie operation = _carService.FindOperationById(id);
+                operations.Add(operation);
+            }
+
+            foreach (DataGridViewRow row in dataGridViewAddDetailsMechanics.SelectedRows)
+            {
+                int id = Convert.ToInt32(row.Cells[0].Value);
+
+                Mecanic mecanic = _carService.FindMecanicById(id);
+                mechanics.Add(mecanic);
+            }
+
+            foreach (DataGridViewRow row in dataGridViewAddDetailsImages.SelectedRows)
+            {
+                int id = Convert.ToInt32(row.Cells[0].Value);
+
+                Imagine image = _carService.FindImageById(id);
+                images.Add(image);
+            }
+
+            DetaliuComanda orderDetails = new DetaliuComanda()
+            {
+                ComandaId = orderId,
+                Imagini = images,
+                Mecanici = mechanics,
+                Materiale = materials,
+                Operatii = operations
+            };
+
+            _carService.AddOrderDetails(orderDetails);
+
+            labelAddDetails.Text = "Order details added.";
+            labelAddDetails.Visible = true;
         }
     }
 }

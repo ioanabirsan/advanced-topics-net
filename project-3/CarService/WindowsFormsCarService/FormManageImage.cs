@@ -20,7 +20,7 @@ namespace WindowsFormsCarService
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
         }
 
         // https://www.youtube.com/watch?v=sGP6u68k2hc
@@ -62,6 +62,9 @@ namespace WindowsFormsCarService
             };
 
             _carService.AddImage(image);
+
+            labelAddImage.Text = "Image added.";
+            labelAddImage.Visible = true;
         }
 
         // https://stackoverflow.com/questions/3801275/how-to-convert-image-to-byte-array
@@ -71,6 +74,14 @@ namespace WindowsFormsCarService
             ImageConverter _imageConverter = new ImageConverter();
             byte[] xByte = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
             return xByte;
+        }
+
+        private void buttonNewImage_Click(object sender, EventArgs e)
+        {
+            labelAddImage.Visible = false;
+            textBoxAddImageDescription.Text = "";
+            textBoxAddImageTitle.Text = "";
+            pictureBoxImage.Image = null;
         }
     }
 }

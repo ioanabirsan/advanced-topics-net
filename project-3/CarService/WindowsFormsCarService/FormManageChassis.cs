@@ -19,7 +19,7 @@ namespace WindowsFormsCarService
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
         }
 
         private void buttonAddNewChassis_Click(object sender, EventArgs e)
@@ -34,6 +34,16 @@ namespace WindowsFormsCarService
             };
 
             _carService.AddChassis(sasiu);
+
+            labelAddChassis.Text = "Chassis added.";
+            labelAddChassis.Visible = true;
+        }
+
+        private void buttonNewChassis_Click(object sender, EventArgs e)
+        {
+            textBoxChassisCode.Text = "";
+            textBoxChassisName.Text = "";
+            labelAddChassis.Visible = false;
         }
     }
 }

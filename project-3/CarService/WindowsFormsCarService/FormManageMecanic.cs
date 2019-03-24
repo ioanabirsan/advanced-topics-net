@@ -6,20 +6,20 @@ using CarService.Api;
 
 namespace WindowsFormsCarService
 {
-    public partial class FormManageMechanic : Form
+    public partial class FormManageMecanic : Form
     {
         private readonly CarServiceApi _carService;
 
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
 
-        public FormManageMechanic()
+        public FormManageMecanic()
         {
             InitializeComponent();
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
         }
 
         private void buttonAddNewMechanic_Click(object sender, EventArgs e)
@@ -30,7 +30,17 @@ namespace WindowsFormsCarService
                 Prenume = textBoxAddMechanicFirstName.Text
             };
 
-            _carService.AddMechnic(mechanic);
+            _carService.AddMecanic(mechanic);
+
+            labelAddMecanic.Text = "Mecanic added.";
+            labelAddMecanic.Visible = true;
+        }
+
+        private void buttonNewMecanic_Click(object sender, EventArgs e)
+        {
+            labelAddMecanic.Visible = false;
+            textBoxAddMechanicFirstName.Text = "";
+            textBoxAddMechanicName.Text = "";
         }
     }
 }

@@ -555,7 +555,8 @@
         </Association>
         <Association Name="MecanicDetaliuComanda">
           <End Type="CarServiceModel.Mecanic" Role="Mecanic" Multiplicity="*" />
-          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="*" />
+          <End Type="CarServiceModel.DetaliuComanda" Role="DetaliuComanda" Multiplicity="*" >
+          </End>
         </Association>
         <Association Name="ComandaDetaliuComanda">
           <End Type="CarServiceModel.Comanda" Role="Comanda" Multiplicity="1" >

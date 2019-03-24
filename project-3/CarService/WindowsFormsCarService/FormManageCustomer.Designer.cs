@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageCustomer));
             this.panelAddCustomer = new System.Windows.Forms.Panel();
+            this.buttonNewCustomer = new System.Windows.Forms.Button();
             this.labelAddCustomerDisplayInfo = new System.Windows.Forms.Label();
             this.textBoxAddEmail = new System.Windows.Forms.TextBox();
             this.labelAddEmail = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             // panelAddCustomer
             // 
             this.panelAddCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddCustomer.Controls.Add(this.buttonNewCustomer);
             this.panelAddCustomer.Controls.Add(this.labelAddCustomerDisplayInfo);
             this.panelAddCustomer.Controls.Add(this.textBoxAddEmail);
             this.panelAddCustomer.Controls.Add(this.labelAddEmail);
@@ -70,10 +72,20 @@
             this.panelAddCustomer.Controls.Add(this.labelAddName);
             this.panelAddCustomer.Controls.Add(this.textBoxAddFirstName);
             this.panelAddCustomer.Controls.Add(this.textBoxAddName);
-            this.panelAddCustomer.Location = new System.Drawing.Point(1, 0);
+            this.panelAddCustomer.Location = new System.Drawing.Point(12, 12);
             this.panelAddCustomer.Name = "panelAddCustomer";
             this.panelAddCustomer.Size = new System.Drawing.Size(427, 567);
             this.panelAddCustomer.TabIndex = 2;
+            // 
+            // buttonNewCustomer
+            // 
+            this.buttonNewCustomer.Location = new System.Drawing.Point(192, 459);
+            this.buttonNewCustomer.Name = "buttonNewCustomer";
+            this.buttonNewCustomer.Size = new System.Drawing.Size(142, 36);
+            this.buttonNewCustomer.TabIndex = 19;
+            this.buttonNewCustomer.Text = "New";
+            this.buttonNewCustomer.UseVisualStyleBackColor = true;
+            this.buttonNewCustomer.Click += new System.EventHandler(this.buttonNewCustomer_Click);
             // 
             // labelAddCustomerDisplayInfo
             // 
@@ -213,15 +225,15 @@
             this.textBoxAddName.Size = new System.Drawing.Size(253, 22);
             this.textBoxAddName.TabIndex = 1;
             // 
-            // FormAddCustomer
+            // FormManageCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(427, 565);
+            this.ClientSize = new System.Drawing.Size(454, 593);
             this.Controls.Add(this.panelAddCustomer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormAddCustomer";
+            this.Name = "FormManageCustomer";
             this.Text = "Add customer";
             this.panelAddCustomer.ResumeLayout(false);
             this.panelAddCustomer.PerformLayout();
@@ -249,5 +261,6 @@
         private System.Windows.Forms.Label labelAddName;
         private System.Windows.Forms.TextBox textBoxAddFirstName;
         private System.Windows.Forms.TextBox textBoxAddName;
+        private System.Windows.Forms.Button buttonNewCustomer;
     }
 }

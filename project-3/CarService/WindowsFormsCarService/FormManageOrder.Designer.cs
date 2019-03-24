@@ -37,6 +37,7 @@
             this.comboBoxAddOrderInService = new System.Windows.Forms.ComboBox();
             this.comboBoxAddOrderState = new System.Windows.Forms.ComboBox();
             this.groupBoxCommandDetails = new System.Windows.Forms.GroupBox();
+            this.dataGridViewAddDetailByOrder = new System.Windows.Forms.DataGridView();
             this.buttonAddDetails = new System.Windows.Forms.Button();
             this.dataGridViewAddDetailsImages = new System.Windows.Forms.DataGridView();
             this.dataGridViewAddDetailsMechanics = new System.Windows.Forms.DataGridView();
@@ -54,20 +55,22 @@
             this.labelAddOrderEndDate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelAddOrderStartDate = new System.Windows.Forms.Label();
-            this.dataGridViewAddDetailByOrder = new System.Windows.Forms.DataGridView();
+            this.labelAddOrder = new System.Windows.Forms.Label();
+            this.labelAddDetails = new System.Windows.Forms.Label();
             this.panelAddOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectClient)).BeginInit();
             this.groupBoxCommandDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailByOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsImages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMechanics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsOperations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMaterials)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailByOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAddOrder
             // 
             this.panelAddOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddOrder.Controls.Add(this.labelAddOrder);
             this.panelAddOrder.Controls.Add(this.dataGridViewAddOrderSelectClient);
             this.panelAddOrder.Controls.Add(this.label4);
             this.panelAddOrder.Controls.Add(this.textBoxAddOrderKm);
@@ -87,7 +90,7 @@
             this.panelAddOrder.Controls.Add(this.labelAddOrderEndDate);
             this.panelAddOrder.Controls.Add(this.label5);
             this.panelAddOrder.Controls.Add(this.labelAddOrderStartDate);
-            this.panelAddOrder.Location = new System.Drawing.Point(0, 0);
+            this.panelAddOrder.Location = new System.Drawing.Point(12, 12);
             this.panelAddOrder.Name = "panelAddOrder";
             this.panelAddOrder.Size = new System.Drawing.Size(1182, 753);
             this.panelAddOrder.TabIndex = 13;
@@ -117,7 +120,7 @@
             // textBoxAddOrderKm
             // 
             this.textBoxAddOrderKm.Enabled = false;
-            this.textBoxAddOrderKm.Location = new System.Drawing.Point(660, 171);
+            this.textBoxAddOrderKm.Location = new System.Drawing.Point(586, 112);
             this.textBoxAddOrderKm.Name = "textBoxAddOrderKm";
             this.textBoxAddOrderKm.Size = new System.Drawing.Size(176, 22);
             this.textBoxAddOrderKm.TabIndex = 26;
@@ -126,7 +129,7 @@
             // labelAddOrderKm
             // 
             this.labelAddOrderKm.AutoSize = true;
-            this.labelAddOrderKm.Location = new System.Drawing.Point(657, 151);
+            this.labelAddOrderKm.Location = new System.Drawing.Point(583, 90);
             this.labelAddOrderKm.Name = "labelAddOrderKm";
             this.labelAddOrderKm.Size = new System.Drawing.Size(28, 17);
             this.labelAddOrderKm.TabIndex = 25;
@@ -138,7 +141,7 @@
             this.comboBoxAddOrderInService.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.comboBoxAddOrderInService.Location = new System.Drawing.Point(530, 169);
+            this.comboBoxAddOrderInService.Location = new System.Drawing.Point(443, 110);
             this.comboBoxAddOrderInService.Name = "comboBoxAddOrderInService";
             this.comboBoxAddOrderInService.Size = new System.Drawing.Size(121, 24);
             this.comboBoxAddOrderInService.TabIndex = 24;
@@ -158,6 +161,7 @@
             // groupBoxCommandDetails
             // 
             this.groupBoxCommandDetails.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxCommandDetails.Controls.Add(this.labelAddDetails);
             this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailByOrder);
             this.groupBoxCommandDetails.Controls.Add(this.buttonAddDetails);
             this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsImages);
@@ -166,16 +170,27 @@
             this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsMaterials);
             this.groupBoxCommandDetails.Location = new System.Drawing.Point(28, 227);
             this.groupBoxCommandDetails.Name = "groupBoxCommandDetails";
-            this.groupBoxCommandDetails.Size = new System.Drawing.Size(1122, 478);
+            this.groupBoxCommandDetails.Size = new System.Drawing.Size(1122, 507);
             this.groupBoxCommandDetails.TabIndex = 22;
             this.groupBoxCommandDetails.TabStop = false;
             this.groupBoxCommandDetails.Text = "Details";
+            // 
+            // dataGridViewAddDetailByOrder
+            // 
+            this.dataGridViewAddDetailByOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddDetailByOrder.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAddDetailByOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddDetailByOrder.Location = new System.Drawing.Point(761, 162);
+            this.dataGridViewAddDetailByOrder.Name = "dataGridViewAddDetailByOrder";
+            this.dataGridViewAddDetailByOrder.RowTemplate.Height = 24;
+            this.dataGridViewAddDetailByOrder.Size = new System.Drawing.Size(337, 134);
+            this.dataGridViewAddDetailByOrder.TabIndex = 7;
             // 
             // buttonAddDetails
             // 
             this.buttonAddDetails.Location = new System.Drawing.Point(31, 418);
             this.buttonAddDetails.Name = "buttonAddDetails";
-            this.buttonAddDetails.Size = new System.Drawing.Size(209, 36);
+            this.buttonAddDetails.Size = new System.Drawing.Size(132, 36);
             this.buttonAddDetails.TabIndex = 6;
             this.buttonAddDetails.Text = "Add";
             this.buttonAddDetails.UseVisualStyleBackColor = true;
@@ -228,7 +243,7 @@
             // textBoxAddOrderPiecesValue
             // 
             this.textBoxAddOrderPiecesValue.Enabled = false;
-            this.textBoxAddOrderPiecesValue.Location = new System.Drawing.Point(842, 171);
+            this.textBoxAddOrderPiecesValue.Location = new System.Drawing.Point(789, 110);
             this.textBoxAddOrderPiecesValue.Name = "textBoxAddOrderPiecesValue";
             this.textBoxAddOrderPiecesValue.Size = new System.Drawing.Size(100, 22);
             this.textBoxAddOrderPiecesValue.TabIndex = 21;
@@ -236,7 +251,7 @@
             // labelAddOrderPiecesValue
             // 
             this.labelAddOrderPiecesValue.AutoSize = true;
-            this.labelAddOrderPiecesValue.Location = new System.Drawing.Point(839, 151);
+            this.labelAddOrderPiecesValue.Location = new System.Drawing.Point(786, 90);
             this.labelAddOrderPiecesValue.Name = "labelAddOrderPiecesValue";
             this.labelAddOrderPiecesValue.Size = new System.Drawing.Size(88, 17);
             this.labelAddOrderPiecesValue.TabIndex = 20;
@@ -254,7 +269,7 @@
             // labelAddOrderInService
             // 
             this.labelAddOrderInService.AutoSize = true;
-            this.labelAddOrderInService.Location = new System.Drawing.Point(527, 149);
+            this.labelAddOrderInService.Location = new System.Drawing.Point(443, 90);
             this.labelAddOrderInService.Name = "labelAddOrderInService";
             this.labelAddOrderInService.Size = new System.Drawing.Size(68, 17);
             this.labelAddOrderInService.TabIndex = 15;
@@ -285,9 +300,9 @@
             // 
             // buttonAddNewOrder
             // 
-            this.buttonAddNewOrder.Location = new System.Drawing.Point(1037, 163);
+            this.buttonAddNewOrder.Location = new System.Drawing.Point(446, 163);
             this.buttonAddNewOrder.Name = "buttonAddNewOrder";
-            this.buttonAddNewOrder.Size = new System.Drawing.Size(113, 34);
+            this.buttonAddNewOrder.Size = new System.Drawing.Size(118, 34);
             this.buttonAddNewOrder.TabIndex = 11;
             this.buttonAddNewOrder.Text = "Add";
             this.buttonAddNewOrder.UseVisualStyleBackColor = true;
@@ -328,36 +343,42 @@
             this.labelAddOrderStartDate.TabIndex = 3;
             this.labelAddOrderStartDate.Text = "Start date";
             // 
-            // dataGridViewAddDetailByOrder
+            // labelAddOrder
             // 
-            this.dataGridViewAddDetailByOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAddDetailByOrder.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewAddDetailByOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAddDetailByOrder.Location = new System.Drawing.Point(761, 162);
-            this.dataGridViewAddDetailByOrder.Name = "dataGridViewAddDetailByOrder";
-            this.dataGridViewAddDetailByOrder.RowTemplate.Height = 24;
-            this.dataGridViewAddDetailByOrder.Size = new System.Drawing.Size(337, 134);
-            this.dataGridViewAddDetailByOrder.TabIndex = 7;
+            this.labelAddOrder.AutoSize = true;
+            this.labelAddOrder.Location = new System.Drawing.Point(601, 173);
+            this.labelAddOrder.Name = "labelAddOrder";
+            this.labelAddOrder.Size = new System.Drawing.Size(0, 17);
+            this.labelAddOrder.TabIndex = 29;
             // 
-            // FormAddOrder
+            // labelAddDetails
+            // 
+            this.labelAddDetails.AutoSize = true;
+            this.labelAddDetails.Location = new System.Drawing.Point(31, 470);
+            this.labelAddDetails.Name = "labelAddDetails";
+            this.labelAddDetails.Size = new System.Drawing.Size(0, 17);
+            this.labelAddDetails.TabIndex = 9;
+            // 
+            // FormManageOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1180, 750);
+            this.ClientSize = new System.Drawing.Size(1208, 779);
             this.Controls.Add(this.panelAddOrder);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormAddOrder";
+            this.Name = "FormManageOrder";
             this.Text = "Add order";
             this.panelAddOrder.ResumeLayout(false);
             this.panelAddOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectClient)).EndInit();
             this.groupBoxCommandDetails.ResumeLayout(false);
+            this.groupBoxCommandDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailByOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsImages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMechanics)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsOperations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsMaterials)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailByOrder)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,5 +411,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelAddOrderStartDate;
         private System.Windows.Forms.DataGridView dataGridViewAddDetailByOrder;
+        private System.Windows.Forms.Label labelAddOrder;
+        private System.Windows.Forms.Label labelAddDetails;
     }
 }

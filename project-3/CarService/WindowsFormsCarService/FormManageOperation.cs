@@ -19,7 +19,7 @@ namespace WindowsFormsCarService
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
         }
 
         private void buttonAddNewOperation_Click(object sender, EventArgs e)
@@ -34,6 +34,16 @@ namespace WindowsFormsCarService
             };
 
             _carService.AddOperation(operation);
+
+            labelAddOperation.Text = "Operation added.";
+            labelAddOperation.Visible = true;
+        }
+
+        private void buttonNewOperation_Click(object sender, EventArgs e)
+        {
+            labelAddOperation.Visible = false;
+            textBoxAddOperationExecutionTime.Text = "";
+            textBoxAddOperationName.Text = "";
         }
     }
 }

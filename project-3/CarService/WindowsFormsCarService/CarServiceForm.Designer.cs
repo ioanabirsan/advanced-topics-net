@@ -41,12 +41,11 @@
             this.groupBoxOrders = new System.Windows.Forms.GroupBox();
             this.buttonDisplayOrders = new System.Windows.Forms.Button();
             this.buttonAddOrder = new System.Windows.Forms.Button();
-            this.buttonSelectOrder = new System.Windows.Forms.Button();
             this.groupBoxCustomers = new System.Windows.Forms.GroupBox();
             this.buttonDisplayCustomers = new System.Windows.Forms.Button();
-            this.buttonCustomerDetails = new System.Windows.Forms.Button();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
             this.buttonSelectCustomer = new System.Windows.Forms.Button();
+            this.buttonDisplayChassis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -88,7 +87,7 @@
             this.groupBoxDetails.Controls.Add(this.buttonAddOperation);
             this.groupBoxDetails.Controls.Add(this.buttonAddMaterial);
             this.groupBoxDetails.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxDetails.Location = new System.Drawing.Point(12, 523);
+            this.groupBoxDetails.Location = new System.Drawing.Point(12, 478);
             this.groupBoxDetails.Name = "groupBoxDetails";
             this.groupBoxDetails.Size = new System.Drawing.Size(243, 267);
             this.groupBoxDetails.TabIndex = 5;
@@ -105,6 +104,7 @@
             this.buttonDisplayDetails.TabIndex = 3;
             this.buttonDisplayDetails.Text = "View all";
             this.buttonDisplayDetails.UseVisualStyleBackColor = false;
+            this.buttonDisplayDetails.Click += new System.EventHandler(this.buttonDisplayDetails_Click);
             // 
             // buttonAddImage
             // 
@@ -126,7 +126,7 @@
             this.buttonAddMechanic.Name = "buttonAddMechanic";
             this.buttonAddMechanic.Size = new System.Drawing.Size(231, 42);
             this.buttonAddMechanic.TabIndex = 1;
-            this.buttonAddMechanic.Text = "Add mechanic";
+            this.buttonAddMechanic.Text = "Add mecanic";
             this.buttonAddMechanic.UseVisualStyleBackColor = false;
             this.buttonAddMechanic.Click += new System.EventHandler(this.buttonAddMechanic_Click);
             // 
@@ -157,11 +157,12 @@
             // groupBoxChassis
             // 
             this.groupBoxChassis.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxChassis.Controls.Add(this.buttonDisplayChassis);
             this.groupBoxChassis.Controls.Add(this.buttonAddChassis);
             this.groupBoxChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxChassis.Location = new System.Drawing.Point(12, 440);
+            this.groupBoxChassis.Location = new System.Drawing.Point(12, 344);
             this.groupBoxChassis.Name = "groupBoxChassis";
-            this.groupBoxChassis.Size = new System.Drawing.Size(243, 74);
+            this.groupBoxChassis.Size = new System.Drawing.Size(243, 128);
             this.groupBoxChassis.TabIndex = 4;
             this.groupBoxChassis.TabStop = false;
             this.groupBoxChassis.Text = "Chassis";
@@ -183,11 +184,10 @@
             this.groupBoxOrders.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxOrders.Controls.Add(this.buttonDisplayOrders);
             this.groupBoxOrders.Controls.Add(this.buttonAddOrder);
-            this.groupBoxOrders.Controls.Add(this.buttonSelectOrder);
             this.groupBoxOrders.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOrders.Location = new System.Drawing.Point(12, 257);
+            this.groupBoxOrders.Location = new System.Drawing.Point(12, 210);
             this.groupBoxOrders.Name = "groupBoxOrders";
-            this.groupBoxOrders.Size = new System.Drawing.Size(243, 177);
+            this.groupBoxOrders.Size = new System.Drawing.Size(243, 128);
             this.groupBoxOrders.TabIndex = 3;
             this.groupBoxOrders.TabStop = false;
             this.groupBoxOrders.Text = "Orders";
@@ -196,18 +196,19 @@
             // 
             this.buttonDisplayOrders.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonDisplayOrders.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisplayOrders.Location = new System.Drawing.Point(6, 122);
+            this.buttonDisplayOrders.Location = new System.Drawing.Point(6, 74);
             this.buttonDisplayOrders.Name = "buttonDisplayOrders";
             this.buttonDisplayOrders.Size = new System.Drawing.Size(231, 42);
             this.buttonDisplayOrders.TabIndex = 3;
             this.buttonDisplayOrders.Text = "View all";
             this.buttonDisplayOrders.UseVisualStyleBackColor = false;
+            this.buttonDisplayOrders.Click += new System.EventHandler(this.buttonDisplayOrders_Click);
             // 
             // buttonAddOrder
             // 
             this.buttonAddOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonAddOrder.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddOrder.Location = new System.Drawing.Point(6, 74);
+            this.buttonAddOrder.Location = new System.Drawing.Point(6, 26);
             this.buttonAddOrder.Name = "buttonAddOrder";
             this.buttonAddOrder.Size = new System.Drawing.Size(231, 42);
             this.buttonAddOrder.TabIndex = 1;
@@ -215,28 +216,16 @@
             this.buttonAddOrder.UseVisualStyleBackColor = false;
             this.buttonAddOrder.Click += new System.EventHandler(this.buttonAddOrder_Click);
             // 
-            // buttonSelectOrder
-            // 
-            this.buttonSelectOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSelectOrder.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSelectOrder.Location = new System.Drawing.Point(6, 26);
-            this.buttonSelectOrder.Name = "buttonSelectOrder";
-            this.buttonSelectOrder.Size = new System.Drawing.Size(231, 42);
-            this.buttonSelectOrder.TabIndex = 0;
-            this.buttonSelectOrder.Text = "Select order";
-            this.buttonSelectOrder.UseVisualStyleBackColor = false;
-            // 
             // groupBoxCustomers
             // 
             this.groupBoxCustomers.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxCustomers.Controls.Add(this.buttonDisplayCustomers);
-            this.groupBoxCustomers.Controls.Add(this.buttonCustomerDetails);
             this.groupBoxCustomers.Controls.Add(this.buttonAddCustomer);
             this.groupBoxCustomers.Controls.Add(this.buttonSelectCustomer);
             this.groupBoxCustomers.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCustomers.Location = new System.Drawing.Point(12, 30);
             this.groupBoxCustomers.Name = "groupBoxCustomers";
-            this.groupBoxCustomers.Size = new System.Drawing.Size(243, 221);
+            this.groupBoxCustomers.Size = new System.Drawing.Size(243, 174);
             this.groupBoxCustomers.TabIndex = 0;
             this.groupBoxCustomers.TabStop = false;
             this.groupBoxCustomers.Text = "Customers";
@@ -245,24 +234,13 @@
             // 
             this.buttonDisplayCustomers.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonDisplayCustomers.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisplayCustomers.Location = new System.Drawing.Point(6, 170);
+            this.buttonDisplayCustomers.Location = new System.Drawing.Point(6, 122);
             this.buttonDisplayCustomers.Name = "buttonDisplayCustomers";
             this.buttonDisplayCustomers.Size = new System.Drawing.Size(231, 42);
             this.buttonDisplayCustomers.TabIndex = 3;
             this.buttonDisplayCustomers.Text = "View all";
             this.buttonDisplayCustomers.UseVisualStyleBackColor = false;
             this.buttonDisplayCustomers.Click += new System.EventHandler(this.buttonDisplayCustomers_Click);
-            // 
-            // buttonCustomerDetails
-            // 
-            this.buttonCustomerDetails.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonCustomerDetails.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCustomerDetails.Location = new System.Drawing.Point(6, 122);
-            this.buttonCustomerDetails.Name = "buttonCustomerDetails";
-            this.buttonCustomerDetails.Size = new System.Drawing.Size(231, 42);
-            this.buttonCustomerDetails.TabIndex = 2;
-            this.buttonCustomerDetails.Text = "Customer details";
-            this.buttonCustomerDetails.UseVisualStyleBackColor = false;
             // 
             // buttonAddCustomer
             // 
@@ -288,6 +266,18 @@
             this.buttonSelectCustomer.UseVisualStyleBackColor = false;
             this.buttonSelectCustomer.Click += new System.EventHandler(this.buttonSelectCustomer_Click);
             // 
+            // buttonDisplayChassis
+            // 
+            this.buttonDisplayChassis.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonDisplayChassis.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDisplayChassis.Location = new System.Drawing.Point(6, 74);
+            this.buttonDisplayChassis.Name = "buttonDisplayChassis";
+            this.buttonDisplayChassis.Size = new System.Drawing.Size(231, 42);
+            this.buttonDisplayChassis.TabIndex = 2;
+            this.buttonDisplayChassis.Text = "View all";
+            this.buttonDisplayChassis.UseVisualStyleBackColor = false;
+            this.buttonDisplayChassis.Click += new System.EventHandler(this.buttonDisplayChassis_Click);
+            // 
             // CarServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -300,7 +290,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CarServiceForm";
             this.Text = "Car Service";
-            this.Load += new System.EventHandler(this.CarServiceForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -316,12 +305,10 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBoxCustomers;
-        private System.Windows.Forms.Button buttonCustomerDetails;
         private System.Windows.Forms.Button buttonAddCustomer;
         private System.Windows.Forms.Button buttonSelectCustomer;
         private System.Windows.Forms.GroupBox groupBoxOrders;
         private System.Windows.Forms.Button buttonAddOrder;
-        private System.Windows.Forms.Button buttonSelectOrder;
         private System.Windows.Forms.Button buttonDisplayCustomers;
         private System.Windows.Forms.GroupBox groupBoxChassis;
         private System.Windows.Forms.Button buttonAddChassis;
@@ -332,6 +319,7 @@
         private System.Windows.Forms.Button buttonAddMaterial;
         private System.Windows.Forms.Button buttonAddImage;
         private System.Windows.Forms.Button buttonDisplayDetails;
+        private System.Windows.Forms.Button buttonDisplayChassis;
     }
 }
 

@@ -10,16 +10,14 @@ namespace WindowsFormsCarService
     public partial class FormManageCustomer : Form
     {
         private readonly CarServiceApi _carService;
-
-        private string connectionString =
-            @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
+        
         public FormManageCustomer()
         {
             InitializeComponent();
             _carService = new CarServiceApi();
 
             StartPosition = FormStartPosition.Manual;
-            Location = new Point(400, 100);
+            Location = new Point(365, 55);
         }
 
         private void buttonAddNewCustomer_Click(object sender, EventArgs e)
@@ -49,6 +47,18 @@ namespace WindowsFormsCarService
 
             labelAddCustomerDisplayInfo.Text = "Client added.";
             labelAddCustomerDisplayInfo.Visible = true;
+        }
+
+        private void buttonNewCustomer_Click(object sender, EventArgs e)
+        {
+            labelAddCustomerDisplayInfo.Visible = false;
+            textBoxAddName.Text = "";
+            textBoxAddFirstName.Text = "";
+            textBoxAddAddress.Text = "";
+            textBoxAddCity.Text = "";
+            textBoxAddCounty.Text = "";
+            textBoxAddPhoneNumber.Text = "";
+            textBoxAddEmail.Text = "";
         }
     }
 }
