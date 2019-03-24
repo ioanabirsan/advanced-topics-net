@@ -47,42 +47,13 @@
             this.buttonCustomerDetails = new System.Windows.Forms.Button();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
             this.buttonSelectCustomer = new System.Windows.Forms.Button();
-            this.panelAddMechanic = new System.Windows.Forms.Panel();
-            this.buttonAddNewMechanic = new System.Windows.Forms.Button();
-            this.textBoxAddMechanicFirstName = new System.Windows.Forms.TextBox();
-            this.labelAddMechanicFirstName = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.labelAddMechanicName = new System.Windows.Forms.Label();
-            this.textBoxAddMechanicName = new System.Windows.Forms.TextBox();
-            this.panelAddOperation = new System.Windows.Forms.Panel();
-            this.buttonAddNewOperation = new System.Windows.Forms.Button();
-            this.textBoxAddOperationExecutionTime = new System.Windows.Forms.TextBox();
-            this.labelAddOperationExecutionTime = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBoxAddOperationName = new System.Windows.Forms.TextBox();
-            this.panelAddMaterial = new System.Windows.Forms.Panel();
-            this.dateTimePickerAddMaterialDateSupply = new System.Windows.Forms.DateTimePicker();
-            this.labelAddMaterialDateSupply = new System.Windows.Forms.Label();
-            this.textBoxAddMaterialPrice = new System.Windows.Forms.TextBox();
-            this.labelAddMaterialPrice = new System.Windows.Forms.Label();
-            this.buttonAddNewMaterial = new System.Windows.Forms.Button();
-            this.textBoxAddMaterialQuantity = new System.Windows.Forms.TextBox();
-            this.labelAddMaterialQuantity = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.labelAddMaterialName = new System.Windows.Forms.Label();
-            this.textBoxAddMaterialName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBoxDetails.SuspendLayout();
             this.groupBoxChassis.SuspendLayout();
             this.groupBoxOrders.SuspendLayout();
             this.groupBoxCustomers.SuspendLayout();
-            this.panelAddMechanic.SuspendLayout();
-            this.panelAddOperation.SuspendLayout();
-            this.panelAddMaterial.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -104,9 +75,6 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AccessibleName = "RightPanel";
-            this.splitContainer1.Panel2.Controls.Add(this.panelAddMechanic);
-            this.splitContainer1.Panel2.Controls.Add(this.panelAddOperation);
-            this.splitContainer1.Panel2.Controls.Add(this.panelAddMaterial);
             this.splitContainer1.Size = new System.Drawing.Size(1462, 802);
             this.splitContainer1.SplitterDistance = 262;
             this.splitContainer1.TabIndex = 0;
@@ -320,233 +288,6 @@
             this.buttonSelectCustomer.UseVisualStyleBackColor = false;
             this.buttonSelectCustomer.Click += new System.EventHandler(this.buttonSelectCustomer_Click);
             // 
-            // panelAddMechanic
-            // 
-            this.panelAddMechanic.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelAddMechanic.Controls.Add(this.buttonAddNewMechanic);
-            this.panelAddMechanic.Controls.Add(this.textBoxAddMechanicFirstName);
-            this.panelAddMechanic.Controls.Add(this.labelAddMechanicFirstName);
-            this.panelAddMechanic.Controls.Add(this.label7);
-            this.panelAddMechanic.Controls.Add(this.labelAddMechanicName);
-            this.panelAddMechanic.Controls.Add(this.textBoxAddMechanicName);
-            this.panelAddMechanic.Location = new System.Drawing.Point(580, 38);
-            this.panelAddMechanic.Name = "panelAddMechanic";
-            this.panelAddMechanic.Size = new System.Drawing.Size(374, 213);
-            this.panelAddMechanic.TabIndex = 26;
-            // 
-            // buttonAddNewMechanic
-            // 
-            this.buttonAddNewMechanic.Location = new System.Drawing.Point(26, 159);
-            this.buttonAddNewMechanic.Name = "buttonAddNewMechanic";
-            this.buttonAddNewMechanic.Size = new System.Drawing.Size(111, 34);
-            this.buttonAddNewMechanic.TabIndex = 11;
-            this.buttonAddNewMechanic.Text = "Add";
-            this.buttonAddNewMechanic.UseVisualStyleBackColor = true;
-            this.buttonAddNewMechanic.Click += new System.EventHandler(this.buttonAddNewMechanic_Click);
-            // 
-            // textBoxAddMechanicFirstName
-            // 
-            this.textBoxAddMechanicFirstName.Location = new System.Drawing.Point(28, 104);
-            this.textBoxAddMechanicFirstName.Name = "textBoxAddMechanicFirstName";
-            this.textBoxAddMechanicFirstName.Size = new System.Drawing.Size(224, 27);
-            this.textBoxAddMechanicFirstName.TabIndex = 10;
-            // 
-            // labelAddMechanicFirstName
-            // 
-            this.labelAddMechanicFirstName.AutoSize = true;
-            this.labelAddMechanicFirstName.Location = new System.Drawing.Point(24, 80);
-            this.labelAddMechanicFirstName.Name = "labelAddMechanicFirstName";
-            this.labelAddMechanicFirstName.Size = new System.Drawing.Size(86, 20);
-            this.labelAddMechanicFirstName.TabIndex = 9;
-            this.labelAddMechanicFirstName.Text = "First name";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 100);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 20);
-            this.label7.TabIndex = 8;
-            // 
-            // labelAddMechanicName
-            // 
-            this.labelAddMechanicName.AutoSize = true;
-            this.labelAddMechanicName.Location = new System.Drawing.Point(24, 13);
-            this.labelAddMechanicName.Name = "labelAddMechanicName";
-            this.labelAddMechanicName.Size = new System.Drawing.Size(51, 20);
-            this.labelAddMechanicName.TabIndex = 3;
-            this.labelAddMechanicName.Text = "Name";
-            // 
-            // textBoxAddMechanicName
-            // 
-            this.textBoxAddMechanicName.Location = new System.Drawing.Point(28, 41);
-            this.textBoxAddMechanicName.Name = "textBoxAddMechanicName";
-            this.textBoxAddMechanicName.Size = new System.Drawing.Size(224, 27);
-            this.textBoxAddMechanicName.TabIndex = 1;
-            // 
-            // panelAddOperation
-            // 
-            this.panelAddOperation.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelAddOperation.Controls.Add(this.buttonAddNewOperation);
-            this.panelAddOperation.Controls.Add(this.textBoxAddOperationExecutionTime);
-            this.panelAddOperation.Controls.Add(this.labelAddOperationExecutionTime);
-            this.panelAddOperation.Controls.Add(this.label9);
-            this.panelAddOperation.Controls.Add(this.label10);
-            this.panelAddOperation.Controls.Add(this.textBoxAddOperationName);
-            this.panelAddOperation.Location = new System.Drawing.Point(125, 379);
-            this.panelAddOperation.Name = "panelAddOperation";
-            this.panelAddOperation.Size = new System.Drawing.Size(443, 211);
-            this.panelAddOperation.TabIndex = 25;
-            // 
-            // buttonAddNewOperation
-            // 
-            this.buttonAddNewOperation.Location = new System.Drawing.Point(26, 159);
-            this.buttonAddNewOperation.Name = "buttonAddNewOperation";
-            this.buttonAddNewOperation.Size = new System.Drawing.Size(111, 34);
-            this.buttonAddNewOperation.TabIndex = 11;
-            this.buttonAddNewOperation.Text = "Add";
-            this.buttonAddNewOperation.UseVisualStyleBackColor = true;
-            this.buttonAddNewOperation.Click += new System.EventHandler(this.buttonAddNewOperation_Click);
-            // 
-            // textBoxAddOperationExecutionTime
-            // 
-            this.textBoxAddOperationExecutionTime.Location = new System.Drawing.Point(28, 104);
-            this.textBoxAddOperationExecutionTime.Name = "textBoxAddOperationExecutionTime";
-            this.textBoxAddOperationExecutionTime.Size = new System.Drawing.Size(111, 27);
-            this.textBoxAddOperationExecutionTime.TabIndex = 10;
-            // 
-            // labelAddOperationExecutionTime
-            // 
-            this.labelAddOperationExecutionTime.AutoSize = true;
-            this.labelAddOperationExecutionTime.Location = new System.Drawing.Point(24, 80);
-            this.labelAddOperationExecutionTime.Name = "labelAddOperationExecutionTime";
-            this.labelAddOperationExecutionTime.Size = new System.Drawing.Size(118, 20);
-            this.labelAddOperationExecutionTime.TabIndex = 9;
-            this.labelAddOperationExecutionTime.Text = "Execution time";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 100);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 20);
-            this.label9.TabIndex = 8;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(24, 13);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 20);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Name";
-            // 
-            // textBoxAddOperationName
-            // 
-            this.textBoxAddOperationName.Location = new System.Drawing.Point(28, 41);
-            this.textBoxAddOperationName.Name = "textBoxAddOperationName";
-            this.textBoxAddOperationName.Size = new System.Drawing.Size(368, 27);
-            this.textBoxAddOperationName.TabIndex = 1;
-            // 
-            // panelAddMaterial
-            // 
-            this.panelAddMaterial.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelAddMaterial.Controls.Add(this.dateTimePickerAddMaterialDateSupply);
-            this.panelAddMaterial.Controls.Add(this.labelAddMaterialDateSupply);
-            this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialPrice);
-            this.panelAddMaterial.Controls.Add(this.labelAddMaterialPrice);
-            this.panelAddMaterial.Controls.Add(this.buttonAddNewMaterial);
-            this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialQuantity);
-            this.panelAddMaterial.Controls.Add(this.labelAddMaterialQuantity);
-            this.panelAddMaterial.Controls.Add(this.label13);
-            this.panelAddMaterial.Controls.Add(this.labelAddMaterialName);
-            this.panelAddMaterial.Controls.Add(this.textBoxAddMaterialName);
-            this.panelAddMaterial.Location = new System.Drawing.Point(18, 3);
-            this.panelAddMaterial.Name = "panelAddMaterial";
-            this.panelAddMaterial.Size = new System.Drawing.Size(443, 275);
-            this.panelAddMaterial.TabIndex = 13;
-            // 
-            // dateTimePickerAddMaterialDateSupply
-            // 
-            this.dateTimePickerAddMaterialDateSupply.Location = new System.Drawing.Point(28, 179);
-            this.dateTimePickerAddMaterialDateSupply.Name = "dateTimePickerAddMaterialDateSupply";
-            this.dateTimePickerAddMaterialDateSupply.Size = new System.Drawing.Size(288, 27);
-            this.dateTimePickerAddMaterialDateSupply.TabIndex = 24;
-            // 
-            // labelAddMaterialDateSupply
-            // 
-            this.labelAddMaterialDateSupply.AutoSize = true;
-            this.labelAddMaterialDateSupply.Location = new System.Drawing.Point(24, 153);
-            this.labelAddMaterialDateSupply.Name = "labelAddMaterialDateSupply";
-            this.labelAddMaterialDateSupply.Size = new System.Drawing.Size(94, 20);
-            this.labelAddMaterialDateSupply.TabIndex = 14;
-            this.labelAddMaterialDateSupply.Text = "Date supply";
-            // 
-            // textBoxAddMaterialPrice
-            // 
-            this.textBoxAddMaterialPrice.Location = new System.Drawing.Point(165, 104);
-            this.textBoxAddMaterialPrice.Name = "textBoxAddMaterialPrice";
-            this.textBoxAddMaterialPrice.Size = new System.Drawing.Size(111, 27);
-            this.textBoxAddMaterialPrice.TabIndex = 13;
-            // 
-            // labelAddMaterialPrice
-            // 
-            this.labelAddMaterialPrice.AutoSize = true;
-            this.labelAddMaterialPrice.Location = new System.Drawing.Point(165, 80);
-            this.labelAddMaterialPrice.Name = "labelAddMaterialPrice";
-            this.labelAddMaterialPrice.Size = new System.Drawing.Size(47, 20);
-            this.labelAddMaterialPrice.TabIndex = 12;
-            this.labelAddMaterialPrice.Text = "Price";
-            // 
-            // buttonAddNewMaterial
-            // 
-            this.buttonAddNewMaterial.Location = new System.Drawing.Point(28, 225);
-            this.buttonAddNewMaterial.Name = "buttonAddNewMaterial";
-            this.buttonAddNewMaterial.Size = new System.Drawing.Size(111, 34);
-            this.buttonAddNewMaterial.TabIndex = 11;
-            this.buttonAddNewMaterial.Text = "Add";
-            this.buttonAddNewMaterial.UseVisualStyleBackColor = true;
-            // 
-            // textBoxAddMaterialQuantity
-            // 
-            this.textBoxAddMaterialQuantity.Location = new System.Drawing.Point(28, 104);
-            this.textBoxAddMaterialQuantity.Name = "textBoxAddMaterialQuantity";
-            this.textBoxAddMaterialQuantity.Size = new System.Drawing.Size(111, 27);
-            this.textBoxAddMaterialQuantity.TabIndex = 10;
-            // 
-            // labelAddMaterialQuantity
-            // 
-            this.labelAddMaterialQuantity.AutoSize = true;
-            this.labelAddMaterialQuantity.Location = new System.Drawing.Point(24, 80);
-            this.labelAddMaterialQuantity.Name = "labelAddMaterialQuantity";
-            this.labelAddMaterialQuantity.Size = new System.Drawing.Size(72, 20);
-            this.labelAddMaterialQuantity.TabIndex = 9;
-            this.labelAddMaterialQuantity.Text = "Quantity";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(24, 100);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(0, 20);
-            this.label13.TabIndex = 8;
-            // 
-            // labelAddMaterialName
-            // 
-            this.labelAddMaterialName.AutoSize = true;
-            this.labelAddMaterialName.Location = new System.Drawing.Point(24, 13);
-            this.labelAddMaterialName.Name = "labelAddMaterialName";
-            this.labelAddMaterialName.Size = new System.Drawing.Size(51, 20);
-            this.labelAddMaterialName.TabIndex = 3;
-            this.labelAddMaterialName.Text = "Name";
-            // 
-            // textBoxAddMaterialName
-            // 
-            this.textBoxAddMaterialName.Location = new System.Drawing.Point(28, 41);
-            this.textBoxAddMaterialName.Name = "textBoxAddMaterialName";
-            this.textBoxAddMaterialName.Size = new System.Drawing.Size(368, 27);
-            this.textBoxAddMaterialName.TabIndex = 1;
-            // 
             // CarServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -561,19 +302,12 @@
             this.Text = "Car Service";
             this.Load += new System.EventHandler(this.CarServiceForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBoxDetails.ResumeLayout(false);
             this.groupBoxChassis.ResumeLayout(false);
             this.groupBoxOrders.ResumeLayout(false);
             this.groupBoxCustomers.ResumeLayout(false);
-            this.panelAddMechanic.ResumeLayout(false);
-            this.panelAddMechanic.PerformLayout();
-            this.panelAddOperation.ResumeLayout(false);
-            this.panelAddOperation.PerformLayout();
-            this.panelAddMaterial.ResumeLayout(false);
-            this.panelAddMaterial.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -598,31 +332,6 @@
         private System.Windows.Forms.Button buttonAddMaterial;
         private System.Windows.Forms.Button buttonAddImage;
         private System.Windows.Forms.Button buttonDisplayDetails;
-        private System.Windows.Forms.Panel panelAddMechanic;
-        private System.Windows.Forms.Button buttonAddNewMechanic;
-        private System.Windows.Forms.TextBox textBoxAddMechanicFirstName;
-        private System.Windows.Forms.Label labelAddMechanicFirstName;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label labelAddMechanicName;
-        private System.Windows.Forms.TextBox textBoxAddMechanicName;
-        private System.Windows.Forms.Panel panelAddOperation;
-        private System.Windows.Forms.Button buttonAddNewOperation;
-        private System.Windows.Forms.TextBox textBoxAddOperationExecutionTime;
-        private System.Windows.Forms.Label labelAddOperationExecutionTime;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxAddOperationName;
-        private System.Windows.Forms.Panel panelAddMaterial;
-        private System.Windows.Forms.DateTimePicker dateTimePickerAddMaterialDateSupply;
-        private System.Windows.Forms.Label labelAddMaterialDateSupply;
-        private System.Windows.Forms.TextBox textBoxAddMaterialPrice;
-        private System.Windows.Forms.Label labelAddMaterialPrice;
-        private System.Windows.Forms.Button buttonAddNewMaterial;
-        private System.Windows.Forms.TextBox textBoxAddMaterialQuantity;
-        private System.Windows.Forms.Label labelAddMaterialQuantity;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label labelAddMaterialName;
-        private System.Windows.Forms.TextBox textBoxAddMaterialName;
     }
 }
 

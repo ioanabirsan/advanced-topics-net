@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsCarService
 {
-    partial class FormAddMaterial
+    partial class FormManageMaterial
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddMaterial));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageMaterial));
             this.panelAddMaterial = new System.Windows.Forms.Panel();
             this.dateTimePickerAddMaterialDateSupply = new System.Windows.Forms.DateTimePicker();
             this.labelAddMaterialDateSupply = new System.Windows.Forms.Label();

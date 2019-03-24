@@ -8,14 +8,14 @@ using CarService.Api;
 
 namespace WindowsFormsCarService
 {
-    public partial class FormAddOrder : Form
+    public partial class FormManageOrder : Form
     {
         private readonly CarServiceApi _carService;
 
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
 
-        public FormAddOrder()
+        public FormManageOrder()
         {
             InitializeComponent();
             _carService = new CarServiceApi();

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsCarService
 {
-    partial class FormAddCustomer
+    partial class FormManageCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddCustomer));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageCustomer));
             this.panelAddCustomer = new System.Windows.Forms.Panel();
             this.labelAddCustomerDisplayInfo = new System.Windows.Forms.Label();
             this.textBoxAddEmail = new System.Windows.Forms.TextBox();

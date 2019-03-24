@@ -6,7 +6,7 @@ using CarService.Api;
 
 namespace WindowsFormsCarService
 {
-    public partial class FormAddImage : Form
+    public partial class FormManageImage : Form
     {
         private readonly CarServiceApi _carService;
         private string _imageLocation = "";
@@ -14,7 +14,7 @@ namespace WindowsFormsCarService
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
 
-        public FormAddImage()
+        public FormManageImage()
         {
             InitializeComponent();
             _carService = new CarServiceApi();

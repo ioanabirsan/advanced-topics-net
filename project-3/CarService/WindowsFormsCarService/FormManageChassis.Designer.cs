@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsCarService
 {
-    partial class FormAddChassis
+    partial class FormManageChassis
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddChassis));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageChassis));
             this.panelAddChassis = new System.Windows.Forms.Panel();
             this.buttonAddNewChassis = new System.Windows.Forms.Button();
             this.textBoxChassisName = new System.Windows.Forms.TextBox();

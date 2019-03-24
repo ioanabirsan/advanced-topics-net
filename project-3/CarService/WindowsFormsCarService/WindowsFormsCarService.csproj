@@ -59,35 +59,47 @@
     <Compile Include="CarServiceForm.Designer.cs">
       <DependentUpon>CarServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddChassis.cs">
+    <Compile Include="FormManageChassis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddChassis.Designer.cs">
-      <DependentUpon>FormAddChassis.cs</DependentUpon>
+    <Compile Include="FormManageChassis.Designer.cs">
+      <DependentUpon>FormManageChassis.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddCustomer.cs">
+    <Compile Include="FormManageCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddCustomer.Designer.cs">
-      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    <Compile Include="FormManageCustomer.Designer.cs">
+      <DependentUpon>FormManageCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddImage.cs">
+    <Compile Include="FormManageImage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddImage.Designer.cs">
-      <DependentUpon>FormAddImage.cs</DependentUpon>
+    <Compile Include="FormManageImage.Designer.cs">
+      <DependentUpon>FormManageImage.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddMaterial.cs">
+    <Compile Include="FormManageMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddMaterial.Designer.cs">
-      <DependentUpon>FormAddMaterial.cs</DependentUpon>
+    <Compile Include="FormManageMaterial.Designer.cs">
+      <DependentUpon>FormManageMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddOrder.cs">
+    <Compile Include="FormManageMechanic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddOrder.Designer.cs">
-      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    <Compile Include="FormManageMechanic.Designer.cs">
+      <DependentUpon>FormManageMechanic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManageOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManageOperation.Designer.cs">
+      <DependentUpon>FormManageOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManageOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManageOrder.Designer.cs">
+      <DependentUpon>FormManageOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDisplayCustomers.cs">
       <SubType>Form</SubType>
@@ -106,20 +118,26 @@
     <EmbeddedResource Include="CarServiceForm.resx">
       <DependentUpon>CarServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddChassis.resx">
-      <DependentUpon>FormAddChassis.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageChassis.resx">
+      <DependentUpon>FormManageChassis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddCustomer.resx">
-      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageCustomer.resx">
+      <DependentUpon>FormManageCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddImage.resx">
-      <DependentUpon>FormAddImage.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageImage.resx">
+      <DependentUpon>FormManageImage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddMaterial.resx">
-      <DependentUpon>FormAddMaterial.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageMaterial.resx">
+      <DependentUpon>FormManageMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddOrder.resx">
-      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageMechanic.resx">
+      <DependentUpon>FormManageMechanic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManageOperation.resx">
+      <DependentUpon>FormManageOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManageOrder.resx">
+      <DependentUpon>FormManageOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDisplayCustomers.resx">
       <DependentUpon>FormDisplayCustomers.cs</DependentUpon>

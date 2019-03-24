@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsCarService
 {
-    partial class FormAddOrder
+    partial class FormManageOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddOrder));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageOrder));
             this.panelAddOrder = new System.Windows.Forms.Panel();
             this.dataGridViewAddOrderSelectClient = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();

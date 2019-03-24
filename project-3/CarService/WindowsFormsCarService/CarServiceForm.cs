@@ -1,28 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-using CarService;
-using CarService.Api;
 
 namespace WindowsFormsCarService
 {
     public partial class CarServiceForm : Form
     {
-        private readonly CarServiceApi _carService;
-
-        private string connectionString =
-            @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
-
         public CarServiceForm()
         {
             InitializeComponent();
-            _carService = new CarServiceApi();
         }
 
         private void CarServiceForm_Load(object sender, EventArgs e)
         {
-            panelAddMaterial.Visible = false;
-            panelAddOperation.Visible = false;
-            panelAddMechanic.Visible = false;
         }
 
         private void buttonSelectCustomer_Click(object sender, EventArgs e)
@@ -33,7 +22,7 @@ namespace WindowsFormsCarService
 
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
-            FormAddCustomer addCustomerForm = new FormAddCustomer();
+            FormManageCustomer addCustomerForm = new FormManageCustomer();
             addCustomerForm.Show();
         }
 
@@ -46,66 +35,37 @@ namespace WindowsFormsCarService
 
         private void buttonAddChassis_Click(object sender, EventArgs e)
         {
-            FormAddChassis addChassisForm = new FormAddChassis();
+            FormManageChassis addChassisForm = new FormManageChassis();
             addChassisForm.Show();
         }
 
         private void buttonAddOrder_Click(object sender, EventArgs e)
         {
-            FormAddOrder formAddOrder = new FormAddOrder();
+            FormManageOrder formAddOrder = new FormManageOrder();
             formAddOrder.Show();
         }
 
         private void buttonAddMaterial_Click(object sender, EventArgs e)
         {
-            FormAddMaterial addMaterialForm = new FormAddMaterial();
+            FormManageMaterial addMaterialForm = new FormManageMaterial();
             addMaterialForm.Show();
         }
-        
+
         private void buttonAddOperation_Click(object sender, EventArgs e)
         {
-            panelAddOperation.Visible = true;
-
-            panelAddMaterial.Visible = false;
-            panelAddMechanic.Visible = false;
-        }
-
-        private void buttonAddNewOperation_Click(object sender, EventArgs e)
-        {
-            string name = textBoxAddOperationName.Text;
-            string executionTime = textBoxAddOperationExecutionTime.Text;
-
-            Operatie operation = new Operatie()
-            {
-                Denumire = name,
-                TimpExecutie = Convert.ToDecimal(executionTime)
-            };
-
-            _carService.AddOperation(operation);
+            FormManageOperation addOperationForm = new FormManageOperation();
+            addOperationForm.Show();
         }
 
         private void buttonAddMechanic_Click(object sender, EventArgs e)
         {
-            panelAddMechanic.Visible = true;
-
-            panelAddOperation.Visible = false;
-            panelAddMaterial.Visible = false;
-        }
-
-        private void buttonAddNewMechanic_Click(object sender, EventArgs e)
-        {
-            Mecanic mechanic = new Mecanic()
-            {
-                Nume = textBoxAddMechanicName.Text,
-                Prenume = textBoxAddMechanicFirstName.Text
-            };
-
-            _carService.AddMechnic(mechanic);
+            FormManageMechanic addMechanicForm = new FormManageMechanic();
+            addMechanicForm.Show();
         }
 
         private void buttonAddImage_Click(object sender, EventArgs e)
         {
-            FormAddImage addImageForm = new FormAddImage();
+            FormManageImage addImageForm = new FormManageImage();
             addImageForm.Show();
         }
     }

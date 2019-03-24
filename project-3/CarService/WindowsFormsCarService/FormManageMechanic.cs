@@ -6,14 +6,14 @@ using CarService.Api;
 
 namespace WindowsFormsCarService
 {
-    public partial class FormAddChassis : Form
+    public partial class FormManageMechanic : Form
     {
         private readonly CarServiceApi _carService;
 
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
 
-        public FormAddChassis()
+        public FormManageMechanic()
         {
             InitializeComponent();
             _carService = new CarServiceApi();
@@ -22,18 +22,15 @@ namespace WindowsFormsCarService
             Location = new Point(400, 100);
         }
 
-        private void buttonAddNewChassis_Click(object sender, EventArgs e)
+        private void buttonAddNewMechanic_Click(object sender, EventArgs e)
         {
-            var chassisCode = textBoxChassisCode.Text;
-            var chassisName = textBoxChassisName.Text;
-
-            Sasiu sasiu = new Sasiu()
+            Mecanic mechanic = new Mecanic()
             {
-                CodSasiu = chassisCode,
-                Denumire = chassisName
+                Nume = textBoxAddMechanicName.Text,
+                Prenume = textBoxAddMechanicFirstName.Text
             };
 
-            _carService.AddChassis(sasiu);
+            _carService.AddMechnic(mechanic);
         }
     }
 }

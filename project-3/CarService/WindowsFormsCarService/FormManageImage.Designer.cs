@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsCarService
 {
-    partial class FormAddImage
+    partial class FormManageImage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddImage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageImage));
             this.panelAddNewImage = new System.Windows.Forms.Panel();
             this.textBoxAddImageDescription = new System.Windows.Forms.TextBox();
             this.labelAddImageDescription = new System.Windows.Forms.Label();

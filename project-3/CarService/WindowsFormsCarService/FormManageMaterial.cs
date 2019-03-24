@@ -6,14 +6,14 @@ using CarService.Api;
 
 namespace WindowsFormsCarService
 {
-    public partial class FormAddMaterial : Form
+    public partial class FormManageMaterial : Form
     {
         private readonly CarServiceApi _carService;
 
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
 
-        public FormAddMaterial()
+        public FormManageMaterial()
         {
             InitializeComponent();
             _carService = new CarServiceApi();
