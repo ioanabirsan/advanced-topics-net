@@ -24,107 +24,100 @@ namespace WindowsFormsCarService
             StartPosition = FormStartPosition.Manual;
             Location = new Point(365, 55);
 
+            buttonAddNewOrder.Enabled = false;
+        }
+
+        private void FormManageOrder_Load(object sender, EventArgs e)
+        {
+            string getClientsQuery = "SELECT Id, Nume, Prenume FROM Clienti";
+            ExecuteQuery(getClientsQuery, dataGridViewAddOrderSelectClient);
+
+            string getMaterialsQuery = "SELECT Id, Denumire FROM Materiale";
+            ExecuteQuery(getMaterialsQuery, dataGridViewAddDetailsMaterials);
+
+            string getOperationsQuery = "SELECT Id, Denumire FROM Operatii";
+            ExecuteQuery(getOperationsQuery, dataGridViewAddDetailsOperations);
+
+            string getMechanicsQuery = "SELECT Id, Nume, Prenume FROM Mecanici";
+            ExecuteQuery(getMechanicsQuery, dataGridViewAddDetailsMechanics);
+
+            string getImagesQuery = "SELECT Id, Titlu, Data FROM Imagini";
+            ExecuteQuery(getImagesQuery, dataGridViewAddDetailsImages);
+
+            string getOrdersQuery = "SELECT Id, Descriere FROM Comenzi";
+            ExecuteQuery(getOrdersQuery, dataGridViewAddDetailByOrder);
+        }
+
+        private void ExecuteQuery(string query, DataGridView dataGridView)
+        {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                string queryString = "SELECT Id, Nume, Prenume FROM Clienti";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlCon);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
 
-                dataGridViewAddOrderSelectClient.DataSource = dataTable;
-            }
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT Id, Denumire FROM Materiale";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewAddDetailsMaterials.DataSource = dataTable;
-            }
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT Id, Denumire FROM Operatii";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewAddDetailsOperations.DataSource = dataTable;
-            }
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT Id, Nume, Prenume FROM Mecanici";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewAddDetailsMechanics.DataSource = dataTable;
-            }
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT Id, Titlu, Data FROM Imagini";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewAddDetailsImages.DataSource = dataTable;
-            }
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT Id, Descriere FROM Comenzi";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewAddDetailByOrder.DataSource = dataTable;
+                dataGridView.DataSource = dataTable;
             }
         }
 
         private void buttonAddNewOrder_Click(object sender, EventArgs e)
         {
-            string startDateText = dateTimePickerStartDate.Text;
-            string endDateText = dateTimePickerEndDate.Text;
-            string stateText = comboBoxAddOrderState.SelectedItem.ToString();
-            string description = textBoxAddOrderDescription.Text;
-            string inService = comboBoxAddOrderInService.SelectedItem.ToString();
-
-            if (inService.Equals("Yes"))
-            {
-                textBoxAddOrderKm.Enabled = true;
-            }
-
             int index = dataGridViewAddOrderSelectClient.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridViewAddOrderSelectClient.Rows[index];
             string clientIdText = selectedRow.Cells[0].Value.ToString();
             int clientId = Convert.ToInt32(clientIdText);
 
-            Comanda order = new Comanda()
+            string startDate = dateTimePickerStartDate.Text;
+            string endDate = dateTimePickerEndDate.Text;
+            string state = comboBoxAddOrderState.SelectedItem.ToString();
+            string description = textBoxAddOrderDescription.Text;
+
+            if (string.IsNullOrEmpty(description) || string.IsNullOrEmpty(state))
             {
-                ClientId = clientId,
-                DataFinalizare = Convert.ToDateTime(endDateText),
-                DataProgramare = Convert.ToDateTime(startDateText),
-                DataSystem = DateTime.Now,
-                Descriere = description,
-                KmBord = Convert.ToInt32(textBoxAddOrderKm.Text),
-                StareComanda = StareComanda.InAsteptare,
-                ValoarePiese = 0m
-            };
+                labelAddOrder.Text = @"Must complete all mandatory fields.";
+                labelAddOrder.Visible = true;
+                buttonAddNewOrder.Enabled = false;
+            }
+            else
+            {
+                buttonAddNewOrder.Enabled = true;
+                Comanda order = new Comanda()
+                {
+                    ClientId = clientId,
+                    DataFinalizare = Convert.ToDateTime(endDate),
+                    DataProgramare = Convert.ToDateTime(startDate),
+                    DataSystem = DateTime.Now,
+                    Descriere = description,
+                    KmBord = Convert.ToInt32(textBoxAddOrderKm.Text),
+                    StareComanda = getOrderState(state),
+                    ValoarePiese = 0m
+                };
 
-            _carService.AddOrder(order);
+                _carService.AddOrder(order);
 
-            labelAddOrder.Text = "Order added.";
-            labelAddOrder.Visible = true;
+                labelAddOrder.Text = @"Order added.";
+                labelAddOrder.Visible = true;
+            }
+        }
+
+        private StareComanda getOrderState(string state)
+        {
+            if (state.Equals("Waiting"))
+            {
+                return StareComanda.InAsteptare;
+            }
+            if (state.Equals("Executed"))
+            {
+                return StareComanda.Executata;
+            }
+            if (state.Equals("Rejected"))
+            {
+                return StareComanda.Refuzata;
+            }
+
+            return StareComanda.InAsteptare;
         }
 
         private void buttonAddDetails_Click(object sender, EventArgs e)
@@ -181,8 +174,24 @@ namespace WindowsFormsCarService
 
             _carService.AddOrderDetails(orderDetails);
 
-            labelAddDetails.Text = "Order details added.";
+            labelAddDetails.Text = @"Order details added.";
             labelAddDetails.Visible = true;
+        }
+
+        private void checkBoxAddOrderInService_Click(object sender, EventArgs e)
+        {
+            textBoxAddOrderKm.Enabled = checkBoxAddOrderInService.Checked;
+        }
+
+        private void dataGridViewAddOrderSelectClient_SelectionChanged(object sender, EventArgs e)
+        {
+            int index = dataGridViewAddOrderSelectClient.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewAddOrderSelectClient.Rows[index];
+            string clientIdText = selectedRow.Cells[0].Value.ToString();
+            int clientId = Convert.ToInt32(clientIdText);
+
+            string getClientCars = $"SELECT Id, NumarAuto, SerieSasiu FROM Automobile WHERE ClientId = {clientId}";
+            ExecuteQuery(getClientCars, dataGridViewClientCars);
         }
     }
 }

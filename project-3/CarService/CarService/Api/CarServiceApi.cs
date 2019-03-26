@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 
@@ -18,7 +17,7 @@ namespace CarService.Api
             _context = new CarServiceModelContainer();
         }
 
-        public Client FindCustomer(string nume, string prenume, string email)
+        public Client FindCustomer(string nume, string prenume, string phoneNumber)
         {
             if (string.IsNullOrEmpty(nume))
             {
@@ -30,13 +29,13 @@ namespace CarService.Api
                 throw new ArgumentException("Prenume must not be null or empty.");
             }
 
-            if (string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(phoneNumber))
             {
-                throw new ArgumentException("Email must not be null or empty.");
+                throw new ArgumentException("Phone number must not be null or empty");
             }
 
             Client client = _context.Clienti.FirstOrDefault(c =>
-                c.Nume.Equals(nume) && c.Prenume.Equals(prenume) && c.Email.Equals(email));
+                c.Nume.Equals(nume) && c.Prenume.Equals(prenume) && c.Telefon.Equals(phoneNumber));
 
             return client;
         }

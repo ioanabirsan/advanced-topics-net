@@ -33,7 +33,6 @@
             this.buttonNewCustomer = new System.Windows.Forms.Button();
             this.labelAddCustomerDisplayInfo = new System.Windows.Forms.Label();
             this.textBoxAddEmail = new System.Windows.Forms.TextBox();
-            this.labelAddEmail = new System.Windows.Forms.Label();
             this.labelAddPhoneNumber = new System.Windows.Forms.Label();
             this.textBoxAddPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxAddCounty = new System.Windows.Forms.TextBox();
@@ -48,16 +47,17 @@
             this.labelAddName = new System.Windows.Forms.Label();
             this.textBoxAddFirstName = new System.Windows.Forms.TextBox();
             this.textBoxAddName = new System.Windows.Forms.TextBox();
+            this.checkBoxAddClientEmail = new System.Windows.Forms.CheckBox();
             this.panelAddCustomer.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelAddCustomer
             // 
             this.panelAddCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelAddCustomer.Controls.Add(this.checkBoxAddClientEmail);
             this.panelAddCustomer.Controls.Add(this.buttonNewCustomer);
             this.panelAddCustomer.Controls.Add(this.labelAddCustomerDisplayInfo);
             this.panelAddCustomer.Controls.Add(this.textBoxAddEmail);
-            this.panelAddCustomer.Controls.Add(this.labelAddEmail);
             this.panelAddCustomer.Controls.Add(this.labelAddPhoneNumber);
             this.panelAddCustomer.Controls.Add(this.textBoxAddPhoneNumber);
             this.panelAddCustomer.Controls.Add(this.textBoxAddCounty);
@@ -102,15 +102,6 @@
             this.textBoxAddEmail.Size = new System.Drawing.Size(344, 22);
             this.textBoxAddEmail.TabIndex = 17;
             this.textBoxAddEmail.TextChanged += new System.EventHandler(this.textBoxAddEmail_TextChanged);
-            // 
-            // labelAddEmail
-            // 
-            this.labelAddEmail.AutoSize = true;
-            this.labelAddEmail.Location = new System.Drawing.Point(24, 373);
-            this.labelAddEmail.Name = "labelAddEmail";
-            this.labelAddEmail.Size = new System.Drawing.Size(42, 17);
-            this.labelAddEmail.TabIndex = 16;
-            this.labelAddEmail.Text = "Email";
             // 
             // labelAddPhoneNumber
             // 
@@ -232,6 +223,17 @@
             this.textBoxAddName.TabIndex = 1;
             this.textBoxAddName.TextChanged += new System.EventHandler(this.textBoxAddName_TextChanged);
             // 
+            // checkBoxAddClientEmail
+            // 
+            this.checkBoxAddClientEmail.AutoSize = true;
+            this.checkBoxAddClientEmail.Location = new System.Drawing.Point(27, 383);
+            this.checkBoxAddClientEmail.Name = "checkBoxAddClientEmail";
+            this.checkBoxAddClientEmail.Size = new System.Drawing.Size(64, 21);
+            this.checkBoxAddClientEmail.TabIndex = 20;
+            this.checkBoxAddClientEmail.Text = "Email";
+            this.checkBoxAddClientEmail.UseVisualStyleBackColor = true;
+            this.checkBoxAddClientEmail.CheckedChanged += new System.EventHandler(this.checkBoxAddClientEmail_CheckedChanged);
+            // 
             // FormManageCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -253,7 +255,6 @@
         private System.Windows.Forms.Panel panelAddCustomer;
         private System.Windows.Forms.Label labelAddCustomerDisplayInfo;
         private System.Windows.Forms.TextBox textBoxAddEmail;
-        private System.Windows.Forms.Label labelAddEmail;
         private System.Windows.Forms.Label labelAddPhoneNumber;
         private System.Windows.Forms.TextBox textBoxAddPhoneNumber;
         private System.Windows.Forms.TextBox textBoxAddCounty;
@@ -269,5 +270,6 @@
         private System.Windows.Forms.TextBox textBoxAddFirstName;
         private System.Windows.Forms.TextBox textBoxAddName;
         private System.Windows.Forms.Button buttonNewCustomer;
+        private System.Windows.Forms.CheckBox checkBoxAddClientEmail;
     }
 }

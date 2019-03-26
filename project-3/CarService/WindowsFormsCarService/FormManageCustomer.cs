@@ -25,6 +25,8 @@ namespace WindowsFormsCarService
 
             StartPosition = FormStartPosition.Manual;
             Location = new Point(365, 55);
+            buttonAddNewCustomer.Enabled = false;
+            textBoxAddEmail.Enabled = false;
         }
 
         private void buttonAddNewCustomer_Click(object sender, EventArgs e)
@@ -37,23 +39,38 @@ namespace WindowsFormsCarService
             string phoneNumber = textBoxAddPhoneNumber.Text;
             string email = textBoxAddEmail.Text;
 
-            List<Auto> autos = new List<Auto>();
-            Client client = new Client()
+            if (!FieldsCompleted(name, firstName, address, city, county, phoneNumber))
             {
-                Nume = name,
-                Prenume = firstName,
-                Adresa = address,
-                Localitate = city,
-                Judet = county,
-                Telefon = phoneNumber,
-                Email = email,
-                Automobile = autos
-            };
+                buttonAddNewCustomer.Enabled = false;
+                labelAddCustomerDisplayInfo.Text = @"Must complete mandatory fields.";
+                labelAddCustomerDisplayInfo.Visible = true;
+            }
+            else
+            {
+                buttonAddNewCustomer.Enabled = true;
+                List<Auto> autos = new List<Auto>();
+                Client client = new Client()
+                {
+                    Nume = name,
+                    Prenume = firstName,
+                    Adresa = address,
+                    Localitate = city,
+                    Judet = county,
+                    Telefon = phoneNumber,
+                    Email = email,
+                    Automobile = autos
+                };
 
-            _carService.AddCustomer(client);
+                _carService.AddCustomer(client);
 
-            labelAddCustomerDisplayInfo.Text = @"Client added.";
-            labelAddCustomerDisplayInfo.Visible = true;
+                labelAddCustomerDisplayInfo.Text = @"Client added.";
+                labelAddCustomerDisplayInfo.Visible = true;
+            }
+        }
+
+        private bool FieldsCompleted(string name, string firstName, string address, string city, string county, string phoneNumber)
+        {
+            return !string.IsNullOrEmpty(name);
         }
 
         private void buttonNewCustomer_Click(object sender, EventArgs e)
@@ -114,6 +131,11 @@ namespace WindowsFormsCarService
 
             buttonAddNewCustomer.Enabled = isValidExpression;
             labelAddCustomerDisplayInfo.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void checkBoxAddClientEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxAddEmail.Enabled = checkBoxAddClientEmail.Checked;
         }
     }
 }

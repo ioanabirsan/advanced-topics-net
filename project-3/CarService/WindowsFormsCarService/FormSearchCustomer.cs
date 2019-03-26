@@ -12,11 +12,11 @@ namespace WindowsFormsCarService
     public partial class FormSearchCustomer : Form
     {
         private readonly CarServiceApi _carService;
-        private string _imageLocation = "";
         private string EmailPattern = @"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$";
         private string NamePattern = @"^[A-Z][A-Za-z -]{2,14}$";
         private string AutoNumberPattern = @"^([A-Z]{2}[0-9]{3}[A-Z]{3})|([A-Z]{2}[0-9]{8})$";
         private string ChassisSeriesPattern = @"^[A-Z0-9]{6}[0-9][A-Z][A-Z0-9]{1,17}$";
+        private string PhoneNumberPattern = @"^\d{13}$";
 
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
@@ -32,47 +32,58 @@ namespace WindowsFormsCarService
             dataGridViewChassisOptions.Visible = false;
             dataGridViewCustomerCars.Visible = false;
             panelAddCustomerCar.Visible = false;
+            textBoxSearchEmail.Enabled = false;
+            buttonSearchCustomer.Enabled = false;
         }
 
         private void buttonSearchCustomer_Click_1(object sender, EventArgs e)
         {
             string name = textBoxSearchName.Text;
             string firstName = textBoxSearchFirstName.Text;
-            string email = textBoxSearchEmail.Text;
+            string phoneNumber = textBoxSearchPhoneNumber.Text;
 
-            Client client = _carService.FindCustomer(name, firstName, email);
-
-            if (client == null)
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(phoneNumber))
             {
-                labelSearchDisplayInfo.Text = "There is no customer with these specification. Please add new customer.";
+                labelSearchDisplayInfo.Text = @"Must complete all mandatory fields.";
             }
             else
             {
-                labelSearchDisplayInfo.Text = "Customer cars are displayed bellow.";
-                panelAddCustomerCar.Visible = true;
+                buttonSearchCustomer.Enabled = true;
+                Client client = _carService.FindCustomer(name, firstName, phoneNumber);
 
-                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                if (client == null)
                 {
-                    sqlCon.Open();
-                    string queryString = "SELECT CodSasiu, Denumire FROM Sasiuri";
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                    DataTable dataTable = new DataTable();
-                    sqlDataAdapter.Fill(dataTable);
-
-                    dataGridViewChassisOptions.DataSource = dataTable;
-                    dataGridViewChassisOptions.Visible = true;
+                    labelSearchDisplayInfo.Text =
+                        @"There is no customer with these specification. Please add new customer.";
                 }
-
-                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                else
                 {
-                    sqlCon.Open();
-                    string queryString = "SELECT * FROM Automobile WHERE ClientId = " + client.Id;
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                    DataTable dataTable = new DataTable();
-                    sqlDataAdapter.Fill(dataTable);
+                    labelSearchDisplayInfo.Text = @"Customer cars are displayed bellow.";
+                    panelAddCustomerCar.Visible = true;
 
-                    dataGridViewCustomerCars.DataSource = dataTable;
-                    dataGridViewCustomerCars.Visible = true;
+                    using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                    {
+                        sqlCon.Open();
+                        string queryString = "SELECT CodSasiu, Denumire FROM Sasiuri";
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
+                        DataTable dataTable = new DataTable();
+                        sqlDataAdapter.Fill(dataTable);
+
+                        dataGridViewChassisOptions.DataSource = dataTable;
+                        dataGridViewChassisOptions.Visible = true;
+                    }
+
+                    using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                    {
+                        sqlCon.Open();
+                        string queryString = "SELECT * FROM Automobile WHERE ClientId = " + client.Id;
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
+                        DataTable dataTable = new DataTable();
+                        sqlDataAdapter.Fill(dataTable);
+
+                        dataGridViewCustomerCars.DataSource = dataTable;
+                        dataGridViewCustomerCars.Visible = true;
+                    }
                 }
             }
         }
@@ -81,8 +92,8 @@ namespace WindowsFormsCarService
         {
             string name = textBoxSearchName.Text;
             string firstName = textBoxSearchFirstName.Text;
-            string email = textBoxSearchEmail.Text;
-            Client client = _carService.FindCustomer(name, firstName, email);
+            string phoneNumber = textBoxSearchPhoneNumber.Text;
+            Client client = _carService.FindCustomer(name, firstName, phoneNumber);
 
             int index = dataGridViewChassisOptions.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridViewChassisOptions.Rows[index];
@@ -187,6 +198,19 @@ namespace WindowsFormsCarService
 
             buttonAddCustomerCar.Enabled = isValidExpression;
             labelAddCar.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void checkBoxSearchEmail_Click(object sender, EventArgs e)
+        {
+            if (checkBoxSearchEmail.Checked)
+            {
+                textBoxSearchEmail.Enabled = true;
+            }
+        }
+
+        private void textBoxSearchPhoneNumber_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ValidateSearchField(PhoneNumberPattern, textBoxSearchPhoneNumber);
         }
     }
 }

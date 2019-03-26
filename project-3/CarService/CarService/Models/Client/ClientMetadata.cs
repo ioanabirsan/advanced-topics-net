@@ -33,8 +33,7 @@ namespace CarService {
         [RegularExpression(@"^\d{13}$", 
             ErrorMessage = "Invalid phone number.")]
         public string Telefon { get; set; }
-
-        [Required]
+        
         [RegularExpression(@"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$",
             ErrorMessage = "Invalid email.")]
         public string Email { get; set; }

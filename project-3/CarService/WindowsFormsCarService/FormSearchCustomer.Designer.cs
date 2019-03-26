@@ -30,10 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSearchCustomer));
             this.panelSearchCustomer = new System.Windows.Forms.Panel();
+            this.checkBoxSearchEmail = new System.Windows.Forms.CheckBox();
+            this.textBoxSearchPhoneNumber = new System.Windows.Forms.TextBox();
             this.buttonNewSearch = new System.Windows.Forms.Button();
             this.labelSearchDisplayInfo = new System.Windows.Forms.Label();
             this.buttonSearchCustomer = new System.Windows.Forms.Button();
-            this.labelSearchEmail = new System.Windows.Forms.Label();
             this.textBoxSearchEmail = new System.Windows.Forms.TextBox();
             this.labelSearchFirstName = new System.Windows.Forms.Label();
             this.labelSearchName = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@
             this.labelAutoNumber = new System.Windows.Forms.Label();
             this.textBoxAutoNumber = new System.Windows.Forms.TextBox();
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
+            this.labelSearchPhoneNumber = new System.Windows.Forms.Label();
             this.panelSearchCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerCars)).BeginInit();
             this.panelAddCustomerCar.SuspendLayout();
@@ -61,10 +63,12 @@
             // panelSearchCustomer
             // 
             this.panelSearchCustomer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelSearchCustomer.Controls.Add(this.labelSearchPhoneNumber);
+            this.panelSearchCustomer.Controls.Add(this.checkBoxSearchEmail);
+            this.panelSearchCustomer.Controls.Add(this.textBoxSearchPhoneNumber);
             this.panelSearchCustomer.Controls.Add(this.buttonNewSearch);
             this.panelSearchCustomer.Controls.Add(this.labelSearchDisplayInfo);
             this.panelSearchCustomer.Controls.Add(this.buttonSearchCustomer);
-            this.panelSearchCustomer.Controls.Add(this.labelSearchEmail);
             this.panelSearchCustomer.Controls.Add(this.textBoxSearchEmail);
             this.panelSearchCustomer.Controls.Add(this.labelSearchFirstName);
             this.panelSearchCustomer.Controls.Add(this.labelSearchName);
@@ -72,8 +76,27 @@
             this.panelSearchCustomer.Controls.Add(this.textBoxSearchName);
             this.panelSearchCustomer.Location = new System.Drawing.Point(12, 12);
             this.panelSearchCustomer.Name = "panelSearchCustomer";
-            this.panelSearchCustomer.Size = new System.Drawing.Size(1022, 131);
+            this.panelSearchCustomer.Size = new System.Drawing.Size(1022, 177);
             this.panelSearchCustomer.TabIndex = 1;
+            // 
+            // checkBoxSearchEmail
+            // 
+            this.checkBoxSearchEmail.AutoSize = true;
+            this.checkBoxSearchEmail.Location = new System.Drawing.Point(495, 87);
+            this.checkBoxSearchEmail.Name = "checkBoxSearchEmail";
+            this.checkBoxSearchEmail.Size = new System.Drawing.Size(64, 21);
+            this.checkBoxSearchEmail.TabIndex = 12;
+            this.checkBoxSearchEmail.Text = "Email";
+            this.checkBoxSearchEmail.UseVisualStyleBackColor = true;
+            this.checkBoxSearchEmail.Click += new System.EventHandler(this.checkBoxSearchEmail_Click);
+            // 
+            // textBoxSearchPhoneNumber
+            // 
+            this.textBoxSearchPhoneNumber.Location = new System.Drawing.Point(494, 41);
+            this.textBoxSearchPhoneNumber.Name = "textBoxSearchPhoneNumber";
+            this.textBoxSearchPhoneNumber.Size = new System.Drawing.Size(251, 22);
+            this.textBoxSearchPhoneNumber.TabIndex = 10;
+            this.textBoxSearchPhoneNumber.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSearchPhoneNumber_Validating);
             // 
             // buttonNewSearch
             // 
@@ -103,20 +126,11 @@
             this.buttonSearchCustomer.UseVisualStyleBackColor = true;
             this.buttonSearchCustomer.Click += new System.EventHandler(this.buttonSearchCustomer_Click_1);
             // 
-            // labelSearchEmail
-            // 
-            this.labelSearchEmail.AutoSize = true;
-            this.labelSearchEmail.Location = new System.Drawing.Point(475, 13);
-            this.labelSearchEmail.Name = "labelSearchEmail";
-            this.labelSearchEmail.Size = new System.Drawing.Size(42, 17);
-            this.labelSearchEmail.TabIndex = 6;
-            this.labelSearchEmail.Text = "Email";
-            // 
             // textBoxSearchEmail
             // 
-            this.textBoxSearchEmail.Location = new System.Drawing.Point(479, 41);
+            this.textBoxSearchEmail.Location = new System.Drawing.Point(495, 114);
             this.textBoxSearchEmail.Name = "textBoxSearchEmail";
-            this.textBoxSearchEmail.Size = new System.Drawing.Size(323, 22);
+            this.textBoxSearchEmail.Size = new System.Drawing.Size(251, 22);
             this.textBoxSearchEmail.TabIndex = 5;
             this.textBoxSearchEmail.TextChanged += new System.EventHandler(this.textBoxSearchEmail_TextChanged);
             // 
@@ -159,10 +173,10 @@
             this.dataGridViewCustomerCars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCustomerCars.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewCustomerCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomerCars.Location = new System.Drawing.Point(12, 174);
+            this.dataGridViewCustomerCars.Location = new System.Drawing.Point(12, 249);
             this.dataGridViewCustomerCars.Name = "dataGridViewCustomerCars";
             this.dataGridViewCustomerCars.RowTemplate.Height = 24;
-            this.dataGridViewCustomerCars.Size = new System.Drawing.Size(1022, 301);
+            this.dataGridViewCustomerCars.Size = new System.Drawing.Size(1022, 202);
             this.dataGridViewCustomerCars.TabIndex = 3;
             // 
             // panelAddCustomerCar
@@ -281,6 +295,15 @@
             this.entityCommand1.EnablePlanCaching = true;
             this.entityCommand1.Transaction = null;
             // 
+            // labelSearchPhoneNumber
+            // 
+            this.labelSearchPhoneNumber.AutoSize = true;
+            this.labelSearchPhoneNumber.Location = new System.Drawing.Point(492, 13);
+            this.labelSearchPhoneNumber.Name = "labelSearchPhoneNumber";
+            this.labelSearchPhoneNumber.Size = new System.Drawing.Size(99, 17);
+            this.labelSearchPhoneNumber.TabIndex = 13;
+            this.labelSearchPhoneNumber.Text = "PhoneNumber";
+            // 
             // FormSearchCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -308,7 +331,6 @@
         private System.Windows.Forms.Panel panelSearchCustomer;
         private System.Windows.Forms.Label labelSearchDisplayInfo;
         private System.Windows.Forms.Button buttonSearchCustomer;
-        private System.Windows.Forms.Label labelSearchEmail;
         private System.Windows.Forms.TextBox textBoxSearchEmail;
         private System.Windows.Forms.Label labelSearchFirstName;
         private System.Windows.Forms.Label labelSearchName;
@@ -328,5 +350,8 @@
         private System.Windows.Forms.Button buttonNewCar;
         private System.Windows.Forms.Label labelAddCar;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
+        private System.Windows.Forms.TextBox textBoxSearchPhoneNumber;
+        private System.Windows.Forms.CheckBox checkBoxSearchEmail;
+        private System.Windows.Forms.Label labelSearchPhoneNumber;
     }
 }
