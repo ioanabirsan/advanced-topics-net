@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CarService;
 using CarService.Api;
@@ -9,9 +10,7 @@ namespace WindowsFormsCarService
     public partial class FormManageMaterial : Form
     {
         private readonly CarServiceApi _carService;
-
-        private string connectionString =
-            @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
+        private string MaterialNamePattern = @"^[A-Za-z ]{3,50}$";
 
         public FormManageMaterial()
         {
@@ -20,6 +19,7 @@ namespace WindowsFormsCarService
 
             StartPosition = FormStartPosition.Manual;
             Location = new Point(365, 55);
+            buttonAddNewMaterial.Enabled = false;
         }
 
         private void buttonAddNewMaterial_Click(object sender, EventArgs e)
@@ -29,22 +29,30 @@ namespace WindowsFormsCarService
             string priceText = textBoxAddMaterialPrice.Text;
             string dateSupplyText = dateTimePickerAddMaterialDateSupply.Text;
 
-            decimal quantity = Convert.ToDecimal(quantityText);
-            decimal price = Convert.ToDecimal(priceText);
-            DateTime dateSupply = Convert.ToDateTime(dateSupplyText);
-
-            Material material = new Material()
+            if (!FieldsCompleted(name, quantityText, priceText))
             {
-                Denumire = name,
-                Cantitate = quantity,
-                DataAprovizionare = dateSupply,
-                Pret = price
-            };
+                labelAddMaterial.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                Material material = new Material()
+                {
+                    Denumire = name,
+                    Cantitate = Convert.ToDecimal(quantityText),
+                    DataAprovizionare = Convert.ToDateTime(dateSupplyText),
+                    Pret = Convert.ToDecimal(priceText)
+                };
 
-            _carService.AddMaterial(material);
+                _carService.AddMaterial(material);
 
-            labelAddMaterial.Text = "Material added.";
-            labelAddMaterial.Visible = true;
+                labelAddMaterial.Text = @"Material added.";
+                labelAddMaterial.Visible = true;
+            }
+        }
+
+        private bool FieldsCompleted(string name, string quantity, string price)
+        {
+            return !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(quantity) && !string.IsNullOrEmpty(price);
         }
 
         private void buttonNewMaterial_Click(object sender, EventArgs e)
@@ -53,6 +61,15 @@ namespace WindowsFormsCarService
             textBoxAddMaterialName.Text = "";
             textBoxAddMaterialPrice.Text = "";
             textBoxAddMaterialQuantity.Text = "";
+        }
+
+        private void textBoxAddMaterialName_TextChanged(object sender, EventArgs e)
+        {
+            var regex = new Regex(MaterialNamePattern);
+            var isValidExpression = regex.IsMatch(textBoxAddMaterialName.Text);
+
+            buttonAddNewMaterial.Enabled = isValidExpression;
+            labelAddMaterial.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
     }
 }

@@ -41,11 +41,8 @@ namespace WindowsFormsCarService
 
             if (!FieldsCompleted(name, firstName, address, city, county, phoneNumber))
             {
-                buttonAddNewCustomer.Enabled = false;
                 labelAddCustomerDisplayInfo.Text = @"Must complete mandatory fields.";
-                labelAddCustomerDisplayInfo.Visible = true;
-            }
-            else
+            } else
             {
                 buttonAddNewCustomer.Enabled = true;
                 List<Auto> autos = new List<Auto>();
@@ -68,9 +65,15 @@ namespace WindowsFormsCarService
             }
         }
 
-        private bool FieldsCompleted(string name, string firstName, string address, string city, string county, string phoneNumber)
+        private bool FieldsCompleted(string name, string firstName, string address, string city, string county,
+            string phoneNumber)
         {
-            return !string.IsNullOrEmpty(name);
+            return !string.IsNullOrEmpty(name)
+                   && !string.IsNullOrEmpty(firstName)
+                   && !string.IsNullOrEmpty(address)
+                   && !string.IsNullOrEmpty(city)
+                   && !string.IsNullOrEmpty(county)
+                   && !string.IsNullOrEmpty(phoneNumber);
         }
 
         private void buttonNewCustomer_Click(object sender, EventArgs e)
@@ -114,14 +117,13 @@ namespace WindowsFormsCarService
         {
             ValidateField(PhoneNumberPattern, textBoxAddPhoneNumber);
         }
-
-        private void textBoxAddEmail_TextChanged(object sender, EventArgs e)
+        
+        private void checkBoxAddClientEmail_CheckedChanged(object sender, EventArgs e)
         {
-            ValidateField(EmailPattern, textBoxAddEmail);
-
-            bool invalidExpression = _carService.ExistsCustomer(textBoxAddEmail.Text);
-            buttonAddNewCustomer.Enabled = !invalidExpression;
-            labelAddCustomerDisplayInfo.Text = invalidExpression ? "Email is taken." : string.Empty;
+            if (checkBoxAddClientEmail.Checked)
+            {
+                textBoxAddEmail.Enabled = true;
+            }
         }
 
         private void ValidateField(string pattern, TextBox textBox)
@@ -133,9 +135,13 @@ namespace WindowsFormsCarService
             labelAddCustomerDisplayInfo.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
 
-        private void checkBoxAddClientEmail_CheckedChanged(object sender, EventArgs e)
+        private void textBoxAddEmail_TextChanged(object sender, EventArgs e)
         {
-            textBoxAddEmail.Enabled = checkBoxAddClientEmail.Checked;
+            ValidateField(EmailPattern, textBoxAddEmail);
+
+            bool invalidExpression = _carService.ExistsCustomer(textBoxAddEmail.Text);
+            buttonAddNewCustomer.Enabled = !invalidExpression;
+            labelAddCustomerDisplayInfo.Text = invalidExpression ? "Email is taken." : string.Empty;
         }
     }
 }

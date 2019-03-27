@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageChassis));
             this.panelAddChassis = new System.Windows.Forms.Panel();
+            this.labelAddChassis = new System.Windows.Forms.Label();
+            this.buttonNewChassis = new System.Windows.Forms.Button();
             this.buttonAddNewChassis = new System.Windows.Forms.Button();
             this.textBoxChassisName = new System.Windows.Forms.TextBox();
             this.labelChassisName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelChassisCode = new System.Windows.Forms.Label();
             this.textBoxChassisCode = new System.Windows.Forms.TextBox();
-            this.buttonNewChassis = new System.Windows.Forms.Button();
-            this.labelAddChassis = new System.Windows.Forms.Label();
             this.panelAddChassis.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,24 @@
             this.panelAddChassis.Size = new System.Drawing.Size(454, 224);
             this.panelAddChassis.TabIndex = 10;
             // 
+            // labelAddChassis
+            // 
+            this.labelAddChassis.AutoSize = true;
+            this.labelAddChassis.Location = new System.Drawing.Point(25, 196);
+            this.labelAddChassis.Name = "labelAddChassis";
+            this.labelAddChassis.Size = new System.Drawing.Size(0, 17);
+            this.labelAddChassis.TabIndex = 13;
+            // 
+            // buttonNewChassis
+            // 
+            this.buttonNewChassis.Location = new System.Drawing.Point(166, 149);
+            this.buttonNewChassis.Name = "buttonNewChassis";
+            this.buttonNewChassis.Size = new System.Drawing.Size(111, 34);
+            this.buttonNewChassis.TabIndex = 12;
+            this.buttonNewChassis.Text = "New";
+            this.buttonNewChassis.UseVisualStyleBackColor = true;
+            this.buttonNewChassis.Click += new System.EventHandler(this.buttonNewChassis_Click);
+            // 
             // buttonAddNewChassis
             // 
             this.buttonAddNewChassis.Location = new System.Drawing.Point(28, 149);
@@ -73,6 +91,7 @@
             this.textBoxChassisName.Name = "textBoxChassisName";
             this.textBoxChassisName.Size = new System.Drawing.Size(368, 22);
             this.textBoxChassisName.TabIndex = 10;
+            this.textBoxChassisName.TextChanged += new System.EventHandler(this.textBoxChassisName_TextChanged);
             // 
             // labelChassisName
             // 
@@ -106,24 +125,7 @@
             this.textBoxChassisCode.Name = "textBoxChassisCode";
             this.textBoxChassisCode.Size = new System.Drawing.Size(93, 22);
             this.textBoxChassisCode.TabIndex = 1;
-            // 
-            // buttonNewChassis
-            // 
-            this.buttonNewChassis.Location = new System.Drawing.Point(166, 149);
-            this.buttonNewChassis.Name = "buttonNewChassis";
-            this.buttonNewChassis.Size = new System.Drawing.Size(111, 34);
-            this.buttonNewChassis.TabIndex = 12;
-            this.buttonNewChassis.Text = "New";
-            this.buttonNewChassis.UseVisualStyleBackColor = true;
-            this.buttonNewChassis.Click += new System.EventHandler(this.buttonNewChassis_Click);
-            // 
-            // labelAddChassis
-            // 
-            this.labelAddChassis.AutoSize = true;
-            this.labelAddChassis.Location = new System.Drawing.Point(25, 196);
-            this.labelAddChassis.Name = "labelAddChassis";
-            this.labelAddChassis.Size = new System.Drawing.Size(0, 17);
-            this.labelAddChassis.TabIndex = 13;
+            this.textBoxChassisCode.TextChanged += new System.EventHandler(this.textBoxChassisCode_TextChanged);
             // 
             // FormManageChassis
             // 

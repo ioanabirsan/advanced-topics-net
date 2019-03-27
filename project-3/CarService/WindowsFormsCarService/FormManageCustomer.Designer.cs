@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageCustomer));
             this.panelAddCustomer = new System.Windows.Forms.Panel();
+            this.checkBoxAddClientEmail = new System.Windows.Forms.CheckBox();
             this.buttonNewCustomer = new System.Windows.Forms.Button();
             this.labelAddCustomerDisplayInfo = new System.Windows.Forms.Label();
             this.textBoxAddEmail = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.labelAddName = new System.Windows.Forms.Label();
             this.textBoxAddFirstName = new System.Windows.Forms.TextBox();
             this.textBoxAddName = new System.Windows.Forms.TextBox();
-            this.checkBoxAddClientEmail = new System.Windows.Forms.CheckBox();
             this.panelAddCustomer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,17 @@
             this.panelAddCustomer.Name = "panelAddCustomer";
             this.panelAddCustomer.Size = new System.Drawing.Size(427, 567);
             this.panelAddCustomer.TabIndex = 2;
+            // 
+            // checkBoxAddClientEmail
+            // 
+            this.checkBoxAddClientEmail.AutoSize = true;
+            this.checkBoxAddClientEmail.Location = new System.Drawing.Point(27, 383);
+            this.checkBoxAddClientEmail.Name = "checkBoxAddClientEmail";
+            this.checkBoxAddClientEmail.Size = new System.Drawing.Size(64, 21);
+            this.checkBoxAddClientEmail.TabIndex = 20;
+            this.checkBoxAddClientEmail.Text = "Email";
+            this.checkBoxAddClientEmail.UseVisualStyleBackColor = true;
+            this.checkBoxAddClientEmail.CheckedChanged += new System.EventHandler(this.checkBoxAddClientEmail_CheckedChanged);
             // 
             // buttonNewCustomer
             // 
@@ -222,17 +233,6 @@
             this.textBoxAddName.Size = new System.Drawing.Size(253, 22);
             this.textBoxAddName.TabIndex = 1;
             this.textBoxAddName.TextChanged += new System.EventHandler(this.textBoxAddName_TextChanged);
-            // 
-            // checkBoxAddClientEmail
-            // 
-            this.checkBoxAddClientEmail.AutoSize = true;
-            this.checkBoxAddClientEmail.Location = new System.Drawing.Point(27, 383);
-            this.checkBoxAddClientEmail.Name = "checkBoxAddClientEmail";
-            this.checkBoxAddClientEmail.Size = new System.Drawing.Size(64, 21);
-            this.checkBoxAddClientEmail.TabIndex = 20;
-            this.checkBoxAddClientEmail.Text = "Email";
-            this.checkBoxAddClientEmail.UseVisualStyleBackColor = true;
-            this.checkBoxAddClientEmail.CheckedChanged += new System.EventHandler(this.checkBoxAddClientEmail_CheckedChanged);
             // 
             // FormManageCustomer
             // 

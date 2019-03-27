@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageMaterial));
             this.panelAddMaterial = new System.Windows.Forms.Panel();
+            this.labelAddMaterial = new System.Windows.Forms.Label();
+            this.buttonNewMaterial = new System.Windows.Forms.Button();
             this.dateTimePickerAddMaterialDateSupply = new System.Windows.Forms.DateTimePicker();
             this.labelAddMaterialDateSupply = new System.Windows.Forms.Label();
             this.textBoxAddMaterialPrice = new System.Windows.Forms.TextBox();
@@ -40,8 +42,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.labelAddMaterialName = new System.Windows.Forms.Label();
             this.textBoxAddMaterialName = new System.Windows.Forms.TextBox();
-            this.buttonNewMaterial = new System.Windows.Forms.Button();
-            this.labelAddMaterial = new System.Windows.Forms.Label();
             this.panelAddMaterial.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,24 @@
             this.panelAddMaterial.Name = "panelAddMaterial";
             this.panelAddMaterial.Size = new System.Drawing.Size(443, 303);
             this.panelAddMaterial.TabIndex = 14;
+            // 
+            // labelAddMaterial
+            // 
+            this.labelAddMaterial.AutoSize = true;
+            this.labelAddMaterial.Location = new System.Drawing.Point(25, 272);
+            this.labelAddMaterial.Name = "labelAddMaterial";
+            this.labelAddMaterial.Size = new System.Drawing.Size(0, 17);
+            this.labelAddMaterial.TabIndex = 26;
+            // 
+            // buttonNewMaterial
+            // 
+            this.buttonNewMaterial.Location = new System.Drawing.Point(165, 225);
+            this.buttonNewMaterial.Name = "buttonNewMaterial";
+            this.buttonNewMaterial.Size = new System.Drawing.Size(111, 34);
+            this.buttonNewMaterial.TabIndex = 25;
+            this.buttonNewMaterial.Text = "New";
+            this.buttonNewMaterial.UseVisualStyleBackColor = true;
+            this.buttonNewMaterial.Click += new System.EventHandler(this.buttonNewMaterial_Click);
             // 
             // dateTimePickerAddMaterialDateSupply
             // 
@@ -146,24 +164,7 @@
             this.textBoxAddMaterialName.Name = "textBoxAddMaterialName";
             this.textBoxAddMaterialName.Size = new System.Drawing.Size(368, 22);
             this.textBoxAddMaterialName.TabIndex = 1;
-            // 
-            // buttonNewMaterial
-            // 
-            this.buttonNewMaterial.Location = new System.Drawing.Point(165, 225);
-            this.buttonNewMaterial.Name = "buttonNewMaterial";
-            this.buttonNewMaterial.Size = new System.Drawing.Size(111, 34);
-            this.buttonNewMaterial.TabIndex = 25;
-            this.buttonNewMaterial.Text = "New";
-            this.buttonNewMaterial.UseVisualStyleBackColor = true;
-            this.buttonNewMaterial.Click += new System.EventHandler(this.buttonNewMaterial_Click);
-            // 
-            // labelAddMaterial
-            // 
-            this.labelAddMaterial.AutoSize = true;
-            this.labelAddMaterial.Location = new System.Drawing.Point(25, 272);
-            this.labelAddMaterial.Name = "labelAddMaterial";
-            this.labelAddMaterial.Size = new System.Drawing.Size(0, 17);
-            this.labelAddMaterial.TabIndex = 26;
+            this.textBoxAddMaterialName.TextChanged += new System.EventHandler(this.textBoxAddMaterialName_TextChanged);
             // 
             // FormManageMaterial
             // 

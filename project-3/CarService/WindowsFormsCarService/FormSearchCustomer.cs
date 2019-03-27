@@ -42,11 +42,10 @@ namespace WindowsFormsCarService
             string firstName = textBoxSearchFirstName.Text;
             string phoneNumber = textBoxSearchPhoneNumber.Text;
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(phoneNumber))
+            if (!FieldsCompleted(name, firstName, phoneNumber))
             {
-                labelSearchDisplayInfo.Text = @"Must complete all mandatory fields.";
-            }
-            else
+                labelSearchDisplayInfo.Text = @"Must complete mandatory fields";
+            } else
             {
                 buttonSearchCustomer.Enabled = true;
                 Client client = _carService.FindCustomer(name, firstName, phoneNumber);
@@ -61,30 +60,33 @@ namespace WindowsFormsCarService
                     labelSearchDisplayInfo.Text = @"Customer cars are displayed bellow.";
                     panelAddCustomerCar.Visible = true;
 
-                    using (SqlConnection sqlCon = new SqlConnection(connectionString))
-                    {
-                        sqlCon.Open();
-                        string queryString = "SELECT CodSasiu, Denumire FROM Sasiuri";
-                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                        DataTable dataTable = new DataTable();
-                        sqlDataAdapter.Fill(dataTable);
+                    string getChassis = "SELECT CodSasiu, Denumire FROM Sasiuri";
+                    ExecuteQuery(getChassis, dataGridViewChassisOptions);
 
-                        dataGridViewChassisOptions.DataSource = dataTable;
-                        dataGridViewChassisOptions.Visible = true;
-                    }
-
-                    using (SqlConnection sqlCon = new SqlConnection(connectionString))
-                    {
-                        sqlCon.Open();
-                        string queryString = "SELECT * FROM Automobile WHERE ClientId = " + client.Id;
-                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                        DataTable dataTable = new DataTable();
-                        sqlDataAdapter.Fill(dataTable);
-
-                        dataGridViewCustomerCars.DataSource = dataTable;
-                        dataGridViewCustomerCars.Visible = true;
-                    }
+                    string getClientCars = $"SELECT * FROM Automobile WHERE ClientId = {client.Id}";
+                    ExecuteQuery(getClientCars, dataGridViewCustomerCars);
                 }
+            }
+        }
+
+        private bool FieldsCompleted(string name, string firstName, string phoneNumber)
+        {
+            return !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(firstName) &&
+                   !string.IsNullOrEmpty(phoneNumber);
+        }
+
+        private void ExecuteQuery(string query, DataGridView dataGridView)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlCon);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                dataGridView.DataSource = dataTable;
+                dataGridView.Visible = true;
             }
         }
 
