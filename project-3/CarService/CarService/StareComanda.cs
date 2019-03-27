@@ -15,6 +15,7 @@ namespace CarService
     {
         InAsteptare = 1,
         Executata = 2,
-        Refuzata = 3
+        Refuzata = 3,
+        Necunoscuta = 0
     }
 }

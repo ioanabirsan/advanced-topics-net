@@ -26,49 +26,18 @@ namespace WindowsFormsCarService
 
         private void FormDisplayDetails_Load(object sender, EventArgs e)
         {
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT * FROM Mecanici";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
+            string getMechanics = "SELECT * FROM Mecanici";
+            ExecuteQuery(getMechanics, dataGridViewDisplayMechanics);
 
-                dataGridViewDisplayMechanics.DataSource = dataTable;
-            }
+            // if * was selected, images too big would offer an unpleasant UI
+            string getImages = "SELECT Id, Titlu, Descriere FROM Imagini";
+            ExecuteQuery(getImages, dataGridViewDisplayImage);
 
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT * FROM Imagini";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
+            string getMaterials = "SELECT * FROM Materiale";
+            ExecuteQuery(getMaterials, dataGridViewDisplayMaterials);
 
-                dataGridViewDisplayImage.DataSource = dataTable;
-            }
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT * FROM Materiale";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewDisplayMaterials.DataSource = dataTable;
-            }
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT * FROM Operatii";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewDisplayOperations.DataSource = dataTable;
-            }
+            string getOperations = "SELECT * FROM Operatii";
+            ExecuteQuery(getOperations, dataGridViewDisplayOperations);
         }
 
         private void buttonUpdateMecanic_Click_1(object sender, EventArgs e)
@@ -108,7 +77,6 @@ namespace WindowsFormsCarService
 
                 image.Titlu = row.Cells[1].Value.ToString();
                 image.Data = Convert.ToDateTime(row.Cells[2].Value);
-                image.Foto = Convert.ToByte(row.Cells[3].Value);
                 image.Descriere = row.Cells[4].Value.ToString();
 
                 _carService.UpdateImage(image);
@@ -188,6 +156,21 @@ namespace WindowsFormsCarService
 
             // reload to view changes
             FormDisplayDetails_Load(sender, e);
+        }
+
+        private void ExecuteQuery(string query, DataGridView dataGridView)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlCon);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                dataGridView.DataSource = dataTable;
+                dataGridView.Visible = true;
+            }
         }
     }
 }

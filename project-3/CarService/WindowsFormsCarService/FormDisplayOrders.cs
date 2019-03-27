@@ -63,23 +63,17 @@ namespace WindowsFormsCarService
 
         private StareComanda getOrderState(int state)
         {
-            if (state == 1)
+            switch (state)
             {
-                return StareComanda.InAsteptare;
+                case 1:
+                    return StareComanda.InAsteptare;
+                case 2:
+                    return StareComanda.Executata;
+                case 3:
+                    return StareComanda.Refuzata;
+                default:
+                    return StareComanda.Necunoscuta;
             }
-
-            if (state == 2)
-            {
-                return StareComanda.Executata;
-            }
-
-            if (state == 3)
-            {
-                return StareComanda.Refuzata;
-            }
-
-            //todo: create none value for enum
-            return StareComanda.InAsteptare;
         }
 
         private void buttonDeleteOrders_Click(object sender, EventArgs e)

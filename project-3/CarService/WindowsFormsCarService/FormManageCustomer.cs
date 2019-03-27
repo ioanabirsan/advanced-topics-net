@@ -14,8 +14,8 @@ namespace WindowsFormsCarService
         private string EmailPattern = @"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$";
         private string NamePattern = @"^[A-Z][A-Za-z -]{2,14}$";
         private string AddressPattern = @"^[A-Za-z -.,0-9]{5,50}$";
-        private string CityPattern = @"[A-Z][a-z]{3,10}";
-        private string CountyPattern = @"[A-Z][a-z]{3,10}";
+        private string CityPattern = @"[A-Z][a-z]{3,9}$";
+        private string CountyPattern = @"[A-Z][a-z]{3,9}$";
         private string PhoneNumberPattern = @"^\d{13}$";
 
         public FormManageCustomer()
@@ -45,7 +45,7 @@ namespace WindowsFormsCarService
             } else
             {
                 buttonAddNewCustomer.Enabled = true;
-                List<Auto> autos = new List<Auto>();
+                List<Auto> cars = new List<Auto>();
                 Client client = new Client()
                 {
                     Nume = name,
@@ -55,7 +55,7 @@ namespace WindowsFormsCarService
                     Judet = county,
                     Telefon = phoneNumber,
                     Email = email,
-                    Automobile = autos
+                    Automobile = cars
                 };
 
                 _carService.AddCustomer(client);
@@ -120,10 +120,7 @@ namespace WindowsFormsCarService
         
         private void checkBoxAddClientEmail_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxAddClientEmail.Checked)
-            {
-                textBoxAddEmail.Enabled = true;
-            }
+            textBoxAddEmail.Enabled = checkBoxAddClientEmail.Checked;
         }
 
         private void ValidateField(string pattern, TextBox textBox)

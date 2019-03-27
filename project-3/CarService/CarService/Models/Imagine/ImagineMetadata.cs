@@ -17,7 +17,7 @@ namespace CarService
         public System.DateTime Data { get; set; }
 
         [Required]
-        public byte Foto { get; set; }
+        public byte[] Foto { get; set; }
 
         [Required]
         [MaxLength(256)]

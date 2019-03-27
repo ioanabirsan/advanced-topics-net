@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CarService;
 using CarService.Api;
@@ -12,6 +13,11 @@ namespace WindowsFormsCarService
     public partial class FormManageOrder : Form
     {
         private readonly CarServiceApi _carService;
+        private decimal TotalCost = 0m;
+        private decimal ServiceFee = 50m;
+
+        private string OrderDescriptionPattern = @"^[A-Z][A-Za-z -,.0-9]{3,1023}$";
+        private string OrderKmPattern = @"^[1-9][0-9]*$";
 
         private string connectionString =
             @"Data source=localhost\SQLEXPRESS; Initial Catalog=AUTO; Integrated Security=True";
@@ -44,22 +50,8 @@ namespace WindowsFormsCarService
             string getImagesQuery = "SELECT Id, Titlu, Data FROM Imagini";
             ExecuteQuery(getImagesQuery, dataGridViewAddDetailsImages);
 
-            string getOrdersQuery = "SELECT Id, Descriere FROM Comenzi";
+            string getOrdersQuery = "SELECT Id, Descriere, StareComanda FROM Comenzi";
             ExecuteQuery(getOrdersQuery, dataGridViewAddDetailByOrder);
-        }
-
-        private void ExecuteQuery(string query, DataGridView dataGridView)
-        {
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridView.DataSource = dataTable;
-            }
         }
 
         private void buttonAddNewOrder_Click(object sender, EventArgs e)
@@ -77,8 +69,6 @@ namespace WindowsFormsCarService
             if (string.IsNullOrEmpty(description) || string.IsNullOrEmpty(state))
             {
                 labelAddOrder.Text = @"Must complete all mandatory fields.";
-                labelAddOrder.Visible = true;
-                buttonAddNewOrder.Enabled = false;
             }
             else
             {
@@ -92,32 +82,32 @@ namespace WindowsFormsCarService
                     Descriere = description,
                     KmBord = Convert.ToInt32(textBoxAddOrderKm.Text),
                     StareComanda = getOrderState(state),
-                    ValoarePiese = 0m
+                    ValoarePiese = TotalCost
                 };
 
                 _carService.AddOrder(order);
 
                 labelAddOrder.Text = @"Order added.";
                 labelAddOrder.Visible = true;
+
+                string getOrdersQuery = "SELECT Id, Descriere, StareComanda FROM Comenzi";
+                ExecuteQuery(getOrdersQuery, dataGridViewAddDetailByOrder);
             }
         }
 
         private StareComanda getOrderState(string state)
         {
-            if (state.Equals("Waiting"))
+            switch (state)
             {
-                return StareComanda.InAsteptare;
+                case "Waiting":
+                    return StareComanda.InAsteptare;
+                case "Executed":
+                    return StareComanda.Executata;
+                case "Rejected":
+                    return StareComanda.Refuzata;
+                default:
+                    return StareComanda.Necunoscuta;
             }
-            if (state.Equals("Executed"))
-            {
-                return StareComanda.Executata;
-            }
-            if (state.Equals("Rejected"))
-            {
-                return StareComanda.Refuzata;
-            }
-
-            return StareComanda.InAsteptare;
         }
 
         private void buttonAddDetails_Click(object sender, EventArgs e)
@@ -136,6 +126,11 @@ namespace WindowsFormsCarService
                 int id = Convert.ToInt32(row.Cells[0].Value);
 
                 Material material = _carService.FindMaterialById(id);
+                TotalCost += material.Pret;
+
+                material.Cantitate -= 1;
+                _carService.UpdateMaterial(material);
+
                 materials.Add(material);
             }
 
@@ -173,9 +168,12 @@ namespace WindowsFormsCarService
             };
 
             _carService.AddOrderDetails(orderDetails);
-
             labelAddDetails.Text = @"Order details added.";
             labelAddDetails.Visible = true;
+
+            Comanda order = _carService.FindOrderById(orderId);
+            order.ValoarePiese = TotalCost + ServiceFee;
+            _carService.UpdateOrder(order);
         }
 
         private void checkBoxAddOrderInService_Click(object sender, EventArgs e)
@@ -192,6 +190,39 @@ namespace WindowsFormsCarService
 
             string getClientCars = $"SELECT Id, NumarAuto, SerieSasiu FROM Automobile WHERE ClientId = {clientId}";
             ExecuteQuery(getClientCars, dataGridViewClientCars);
+        }
+
+        private void ExecuteQuery(string query, DataGridView dataGridView)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlCon);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                dataGridView.DataSource = dataTable;
+            }
+        }
+
+        private void textBoxAddOrderDescription_TextChanged(object sender, EventArgs e)
+        {
+            Validate(OrderDescriptionPattern, textBoxAddOrderDescription);
+        }
+
+        private void textBoxAddOrderKm_TextChanged(object sender, EventArgs e)
+        {
+            Validate(OrderKmPattern, textBoxAddOrderKm);
+        }
+
+        private void Validate(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            buttonAddNewOrder.Enabled = isValidExpression;
+            labelAddOrder.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
     }
 }

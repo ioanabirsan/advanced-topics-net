@@ -52,8 +52,6 @@
             this.dataGridViewAddDetailsMechanics = new System.Windows.Forms.DataGridView();
             this.dataGridViewAddDetailsOperations = new System.Windows.Forms.DataGridView();
             this.dataGridViewAddDetailsMaterials = new System.Windows.Forms.DataGridView();
-            this.textBoxAddOrderPiecesValue = new System.Windows.Forms.TextBox();
-            this.labelAddOrderPiecesValue = new System.Windows.Forms.Label();
             this.labelAddOrderState = new System.Windows.Forms.Label();
             this.labelAddOrderDescription = new System.Windows.Forms.Label();
             this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
@@ -87,8 +85,6 @@
             this.panelAddOrder.Controls.Add(this.labelAddOrderKm);
             this.panelAddOrder.Controls.Add(this.comboBoxAddOrderState);
             this.panelAddOrder.Controls.Add(this.groupBoxCommandDetails);
-            this.panelAddOrder.Controls.Add(this.textBoxAddOrderPiecesValue);
-            this.panelAddOrder.Controls.Add(this.labelAddOrderPiecesValue);
             this.panelAddOrder.Controls.Add(this.labelAddOrderState);
             this.panelAddOrder.Controls.Add(this.labelAddOrderDescription);
             this.panelAddOrder.Controls.Add(this.dateTimePickerEndDate);
@@ -100,7 +96,7 @@
             this.panelAddOrder.Controls.Add(this.labelAddOrderStartDate);
             this.panelAddOrder.Location = new System.Drawing.Point(12, 12);
             this.panelAddOrder.Name = "panelAddOrder";
-            this.panelAddOrder.Size = new System.Drawing.Size(1182, 753);
+            this.panelAddOrder.Size = new System.Drawing.Size(1182, 776);
             this.panelAddOrder.TabIndex = 13;
             // 
             // checkBoxAddOrderInService
@@ -174,7 +170,7 @@
             this.textBoxAddOrderKm.Name = "textBoxAddOrderKm";
             this.textBoxAddOrderKm.Size = new System.Drawing.Size(161, 22);
             this.textBoxAddOrderKm.TabIndex = 26;
-            this.textBoxAddOrderKm.Text = "0";
+            this.textBoxAddOrderKm.TextChanged += new System.EventHandler(this.textBoxAddOrderKm_TextChanged);
             // 
             // labelAddOrderKm
             // 
@@ -189,12 +185,14 @@
             // 
             this.comboBoxAddOrderState.FormattingEnabled = true;
             this.comboBoxAddOrderState.Items.AddRange(new object[] {
-            "Waiting",
-            "In execution",
-            "Rejected"});
-            this.comboBoxAddOrderState.Location = new System.Drawing.Point(1029, 41);
+            "Executed",
+            "None",
+            "Rejected",
+            "Waiting"});
+            this.comboBoxAddOrderState.Location = new System.Drawing.Point(1029, 109);
             this.comboBoxAddOrderState.Name = "comboBoxAddOrderState";
             this.comboBoxAddOrderState.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxAddOrderState.Sorted = true;
             this.comboBoxAddOrderState.TabIndex = 23;
             // 
             // groupBoxCommandDetails
@@ -214,7 +212,7 @@
             this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsMaterials);
             this.groupBoxCommandDetails.Location = new System.Drawing.Point(28, 300);
             this.groupBoxCommandDetails.Name = "groupBoxCommandDetails";
-            this.groupBoxCommandDetails.Size = new System.Drawing.Size(1122, 434);
+            this.groupBoxCommandDetails.Size = new System.Drawing.Size(1122, 459);
             this.groupBoxCommandDetails.TabIndex = 22;
             this.groupBoxCommandDetails.TabStop = false;
             this.groupBoxCommandDetails.Text = "Details";
@@ -337,27 +335,10 @@
             this.dataGridViewAddDetailsMaterials.Size = new System.Drawing.Size(337, 134);
             this.dataGridViewAddDetailsMaterials.TabIndex = 0;
             // 
-            // textBoxAddOrderPiecesValue
-            // 
-            this.textBoxAddOrderPiecesValue.Enabled = false;
-            this.textBoxAddOrderPiecesValue.Location = new System.Drawing.Point(737, 110);
-            this.textBoxAddOrderPiecesValue.Name = "textBoxAddOrderPiecesValue";
-            this.textBoxAddOrderPiecesValue.Size = new System.Drawing.Size(115, 22);
-            this.textBoxAddOrderPiecesValue.TabIndex = 21;
-            // 
-            // labelAddOrderPiecesValue
-            // 
-            this.labelAddOrderPiecesValue.AutoSize = true;
-            this.labelAddOrderPiecesValue.Location = new System.Drawing.Point(749, 90);
-            this.labelAddOrderPiecesValue.Name = "labelAddOrderPiecesValue";
-            this.labelAddOrderPiecesValue.Size = new System.Drawing.Size(88, 17);
-            this.labelAddOrderPiecesValue.TabIndex = 20;
-            this.labelAddOrderPiecesValue.Text = "Pieces value";
-            // 
             // labelAddOrderState
             // 
             this.labelAddOrderState.AutoSize = true;
-            this.labelAddOrderState.Location = new System.Drawing.Point(1026, 18);
+            this.labelAddOrderState.Location = new System.Drawing.Point(1026, 87);
             this.labelAddOrderState.Name = "labelAddOrderState";
             this.labelAddOrderState.Size = new System.Drawing.Size(41, 17);
             this.labelAddOrderState.TabIndex = 18;
@@ -366,7 +347,7 @@
             // labelAddOrderDescription
             // 
             this.labelAddOrderDescription.AutoSize = true;
-            this.labelAddOrderDescription.Location = new System.Drawing.Point(855, 87);
+            this.labelAddOrderDescription.Location = new System.Drawing.Point(734, 87);
             this.labelAddOrderDescription.Name = "labelAddOrderDescription";
             this.labelAddOrderDescription.Size = new System.Drawing.Size(79, 17);
             this.labelAddOrderDescription.TabIndex = 14;
@@ -374,21 +355,21 @@
             // 
             // dateTimePickerEndDate
             // 
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(735, 43);
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(746, 43);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(288, 22);
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(277, 22);
             this.dateTimePickerEndDate.TabIndex = 13;
             // 
             // dateTimePickerStartDate
             // 
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(443, 43);
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(452, 41);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
-            this.dateTimePickerStartDate.Size = new System.Drawing.Size(288, 22);
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(279, 22);
             this.dateTimePickerStartDate.TabIndex = 12;
             // 
             // buttonAddNewOrder
             // 
-            this.buttonAddNewOrder.Location = new System.Drawing.Point(443, 163);
+            this.buttonAddNewOrder.Location = new System.Drawing.Point(452, 162);
             this.buttonAddNewOrder.Name = "buttonAddNewOrder";
             this.buttonAddNewOrder.Size = new System.Drawing.Size(118, 34);
             this.buttonAddNewOrder.TabIndex = 11;
@@ -398,17 +379,18 @@
             // 
             // textBoxAddOrderDescription
             // 
-            this.textBoxAddOrderDescription.Location = new System.Drawing.Point(858, 107);
+            this.textBoxAddOrderDescription.Location = new System.Drawing.Point(737, 107);
             this.textBoxAddOrderDescription.Multiline = true;
             this.textBoxAddOrderDescription.Name = "textBoxAddOrderDescription";
             this.textBoxAddOrderDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxAddOrderDescription.Size = new System.Drawing.Size(292, 27);
+            this.textBoxAddOrderDescription.Size = new System.Drawing.Size(286, 27);
             this.textBoxAddOrderDescription.TabIndex = 10;
+            this.textBoxAddOrderDescription.TextChanged += new System.EventHandler(this.textBoxAddOrderDescription_TextChanged);
             // 
             // labelAddOrderEndDate
             // 
             this.labelAddOrderEndDate.AutoSize = true;
-            this.labelAddOrderEndDate.Location = new System.Drawing.Point(732, 18);
+            this.labelAddOrderEndDate.Location = new System.Drawing.Point(743, 18);
             this.labelAddOrderEndDate.Name = "labelAddOrderEndDate";
             this.labelAddOrderEndDate.Size = new System.Drawing.Size(65, 17);
             this.labelAddOrderEndDate.TabIndex = 9;
@@ -425,7 +407,7 @@
             // labelAddOrderStartDate
             // 
             this.labelAddOrderStartDate.AutoSize = true;
-            this.labelAddOrderStartDate.Location = new System.Drawing.Point(440, 18);
+            this.labelAddOrderStartDate.Location = new System.Drawing.Point(449, 18);
             this.labelAddOrderStartDate.Name = "labelAddOrderStartDate";
             this.labelAddOrderStartDate.Size = new System.Drawing.Size(70, 17);
             this.labelAddOrderStartDate.TabIndex = 3;
@@ -436,7 +418,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1208, 779);
+            this.ClientSize = new System.Drawing.Size(1208, 800);
             this.Controls.Add(this.panelAddOrder);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormManageOrder";
@@ -471,8 +453,6 @@
         private System.Windows.Forms.DataGridView dataGridViewAddDetailsMechanics;
         private System.Windows.Forms.DataGridView dataGridViewAddDetailsOperations;
         private System.Windows.Forms.DataGridView dataGridViewAddDetailsMaterials;
-        private System.Windows.Forms.TextBox textBoxAddOrderPiecesValue;
-        private System.Windows.Forms.Label labelAddOrderPiecesValue;
         private System.Windows.Forms.Label labelAddOrderState;
         private System.Windows.Forms.Label labelAddOrderDescription;
         private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;

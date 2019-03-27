@@ -34,7 +34,6 @@
             this.buttonNewMaterial = new System.Windows.Forms.Button();
             this.dateTimePickerAddMaterialDateSupply = new System.Windows.Forms.DateTimePicker();
             this.labelAddMaterialDateSupply = new System.Windows.Forms.Label();
-            this.textBoxAddMaterialPrice = new System.Windows.Forms.TextBox();
             this.labelAddMaterialPrice = new System.Windows.Forms.Label();
             this.buttonAddNewMaterial = new System.Windows.Forms.Button();
             this.textBoxAddMaterialQuantity = new System.Windows.Forms.TextBox();
@@ -42,6 +41,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.labelAddMaterialName = new System.Windows.Forms.Label();
             this.textBoxAddMaterialName = new System.Windows.Forms.TextBox();
+            this.textBoxAddMaterialPrice = new System.Windows.Forms.TextBox();
             this.panelAddMaterial.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,13 +99,6 @@
             this.labelAddMaterialDateSupply.TabIndex = 14;
             this.labelAddMaterialDateSupply.Text = "Date supply";
             // 
-            // textBoxAddMaterialPrice
-            // 
-            this.textBoxAddMaterialPrice.Location = new System.Drawing.Point(165, 104);
-            this.textBoxAddMaterialPrice.Name = "textBoxAddMaterialPrice";
-            this.textBoxAddMaterialPrice.Size = new System.Drawing.Size(111, 22);
-            this.textBoxAddMaterialPrice.TabIndex = 13;
-            // 
             // labelAddMaterialPrice
             // 
             this.labelAddMaterialPrice.AutoSize = true;
@@ -131,6 +124,7 @@
             this.textBoxAddMaterialQuantity.Name = "textBoxAddMaterialQuantity";
             this.textBoxAddMaterialQuantity.Size = new System.Drawing.Size(111, 22);
             this.textBoxAddMaterialQuantity.TabIndex = 10;
+            this.textBoxAddMaterialQuantity.TextChanged += new System.EventHandler(this.textBoxAddMaterialQuantity_TextChanged);
             // 
             // labelAddMaterialQuantity
             // 
@@ -166,6 +160,14 @@
             this.textBoxAddMaterialName.TabIndex = 1;
             this.textBoxAddMaterialName.TextChanged += new System.EventHandler(this.textBoxAddMaterialName_TextChanged);
             // 
+            // textBoxAddMaterialPrice
+            // 
+            this.textBoxAddMaterialPrice.Location = new System.Drawing.Point(165, 104);
+            this.textBoxAddMaterialPrice.Name = "textBoxAddMaterialPrice";
+            this.textBoxAddMaterialPrice.Size = new System.Drawing.Size(111, 22);
+            this.textBoxAddMaterialPrice.TabIndex = 13;
+            this.textBoxAddMaterialPrice.TextChanged += new System.EventHandler(this.textBoxAddMaterialPrice_TextChanged);
+            // 
             // FormManageMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -187,7 +189,6 @@
         private System.Windows.Forms.Panel panelAddMaterial;
         private System.Windows.Forms.DateTimePicker dateTimePickerAddMaterialDateSupply;
         private System.Windows.Forms.Label labelAddMaterialDateSupply;
-        private System.Windows.Forms.TextBox textBoxAddMaterialPrice;
         private System.Windows.Forms.Label labelAddMaterialPrice;
         private System.Windows.Forms.Button buttonAddNewMaterial;
         private System.Windows.Forms.TextBox textBoxAddMaterialQuantity;
@@ -197,5 +198,6 @@
         private System.Windows.Forms.TextBox textBoxAddMaterialName;
         private System.Windows.Forms.Button buttonNewMaterial;
         private System.Windows.Forms.Label labelAddMaterial;
+        private System.Windows.Forms.TextBox textBoxAddMaterialPrice;
     }
 }

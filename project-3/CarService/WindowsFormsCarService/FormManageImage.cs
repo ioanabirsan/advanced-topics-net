@@ -21,6 +21,7 @@ namespace WindowsFormsCarService
 
             StartPosition = FormStartPosition.Manual;
             Location = new Point(365, 55);
+            buttonAddNewImage.Enabled = false;
         }
 
         // https://www.youtube.com/watch?v=sGP6u68k2hc
@@ -28,8 +29,10 @@ namespace WindowsFormsCarService
         {
             try
             {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "jpg files(*.jpg)|*.jpg| PNG files(*.png)|*.png| All Files(*.*)|*.*";
+                OpenFileDialog dialog = new OpenFileDialog
+                {
+                    Filter = @"jpg files(*.jpg)|*.jpg| PNG files(*.png)|*.png| All Files(*.*)|*.*"
+                };
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -39,7 +42,7 @@ namespace WindowsFormsCarService
             }
             catch (Exception)
             {
-                MessageBox.Show("An Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"An Error Occured", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -51,28 +54,40 @@ namespace WindowsFormsCarService
             DateTime date = Convert.ToDateTime(dateTimePickerAddImageDate.Text);
 
             Image currentImage = Image.FromFile(_imageLocation);
-            byte photo = ImageToByteArray(currentImage)[0];
+            byte[] photo = ImageToByteArray(currentImage);
 
-            Imagine image = new Imagine()
+            if (!FieldsCompleted(title, description))
             {
-                Data = date,
-                Descriere = description,
-                Titlu = title,
-                Foto = photo
-            };
+                labelAddImage.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                buttonAddNewImage.Enabled = true;
+                Imagine image = new Imagine()
+                {
+                    Data = date,
+                    Descriere = description,
+                    Titlu = title,
+                    Foto = photo
+                };
 
-            _carService.AddImage(image);
+                _carService.AddImage(image);
 
-            labelAddImage.Text = "Image added.";
-            labelAddImage.Visible = true;
+                labelAddImage.Text = @"Image added.";
+                labelAddImage.Visible = true;
+            }
+        }
+
+        private bool FieldsCompleted(string title, string description)
+        {
+            return !string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(description);
         }
 
         // https://stackoverflow.com/questions/3801275/how-to-convert-image-to-byte-array
         private byte[] ImageToByteArray(Image image)
         {
-
-            ImageConverter _imageConverter = new ImageConverter();
-            byte[] xByte = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
+            ImageConverter imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])imageConverter.ConvertTo(image, typeof(byte[]));
             return xByte;
         }
 

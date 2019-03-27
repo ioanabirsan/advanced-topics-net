@@ -19,20 +19,37 @@ namespace WindowsFormsCarService
 
             StartPosition = FormStartPosition.Manual;
             Location = new Point(365, 55);
+            buttonAddNewMechanic.Enabled = false;
         }
 
         private void buttonAddNewMechanic_Click(object sender, EventArgs e)
         {
-            Mecanic mechanic = new Mecanic()
+            string name = textBoxAddMechanicName.Text;
+            string firstName = textBoxAddMechanicFirstName.Text;
+
+            if (!FieldsCompleted(name, firstName))
             {
-                Nume = textBoxAddMechanicName.Text,
-                Prenume = textBoxAddMechanicFirstName.Text
-            };
+                labelAddMecanic.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                buttonAddNewMechanic.Enabled = true;
+                Mecanic mechanic = new Mecanic()
+                {
+                    Nume = textBoxAddMechanicName.Text,
+                    Prenume = textBoxAddMechanicFirstName.Text
+                };
 
-            _carService.AddMecanic(mechanic);
+                _carService.AddMecanic(mechanic);
 
-            labelAddMecanic.Text = @"Mecanic added.";
-            labelAddMecanic.Visible = true;
+                labelAddMecanic.Text = @"Mecanic added.";
+                labelAddMecanic.Visible = true;
+            }
+        }
+
+        private bool FieldsCompleted(string name, string firstName)
+        {
+            return !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(firstName);
         }
 
         private void buttonNewMecanic_Click(object sender, EventArgs e)

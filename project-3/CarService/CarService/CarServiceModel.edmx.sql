@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/24/2019 10:05:43
+-- Date Created: 03/27/2019 13:04:14
 -- Generated from EDMX file: C:\facultate\an3\sem2\advanced-topics-net\project-3\CarService\CarService\CarServiceModel.edmx
 -- --------------------------------------------------
 
@@ -25,9 +25,6 @@ IF OBJECT_ID(N'[dbo].[FK_ClientAuto]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ClientComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Comenzi] DROP CONSTRAINT [FK_ClientComanda];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ComandaDetaliuComanda]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetaliiComenzi] DROP CONSTRAINT [FK_ComandaDetaliuComanda];
 GO
 IF OBJECT_ID(N'[dbo].[FK_MaterialDetaliuComanda_Material]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MaterialDetaliuComanda] DROP CONSTRAINT [FK_MaterialDetaliuComanda_Material];
@@ -52,6 +49,9 @@ IF OBJECT_ID(N'[dbo].[FK_MecanicDetaliuComanda_Mecanic]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_MecanicDetaliuComanda_DetaliuComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MecanicDetaliuComanda] DROP CONSTRAINT [FK_MecanicDetaliuComanda_DetaliuComanda];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ComandaDetaliuComanda]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetaliiComenzi] DROP CONSTRAINT [FK_ComandaDetaliuComanda];
 GO
 
 -- --------------------------------------------------
@@ -156,7 +156,7 @@ CREATE TABLE [dbo].[Imagini] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Titlu] nvarchar(15)  NOT NULL,
     [Data] datetime  NOT NULL,
-    [Foto] tinyint  NOT NULL,
+    [Foto] varbinary(max)  NOT NULL,
     [Descriere] nvarchar(256)  NOT NULL
 );
 GO

@@ -71,5 +71,25 @@ namespace WindowsFormsCarService
             buttonAddNewMaterial.Enabled = isValidExpression;
             labelAddMaterial.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
+
+        private void textBoxAddMaterialQuantity_TextChanged(object sender, EventArgs e)
+        {
+            ValidateInputValue(textBoxAddMaterialQuantity);
+        }
+
+        private void textBoxAddMaterialPrice_TextChanged(object sender, EventArgs e)
+        {
+            ValidateInputValue(textBoxAddMaterialPrice);
+        }
+
+        private void ValidateInputValue(TextBox input)
+        {
+            if (!string.IsNullOrEmpty(input.Text))
+            {
+                bool isValidExpression = Convert.ToDecimal(input.Text) > 0;
+                buttonAddNewMaterial.Enabled = isValidExpression;
+                labelAddMaterial.Text = !isValidExpression ? "Value must be bigger than 0." : string.Empty;
+            }
+        }
     }
 }

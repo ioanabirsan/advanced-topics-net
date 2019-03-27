@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageOperation));
             this.panelAddOperation = new System.Windows.Forms.Panel();
+            this.labelAddOperation = new System.Windows.Forms.Label();
+            this.buttonNewOperation = new System.Windows.Forms.Button();
             this.buttonAddNewOperation = new System.Windows.Forms.Button();
             this.textBoxAddOperationExecutionTime = new System.Windows.Forms.TextBox();
             this.labelAddOperationExecutionTime = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxAddOperationName = new System.Windows.Forms.TextBox();
-            this.buttonNewOperation = new System.Windows.Forms.Button();
-            this.labelAddOperation = new System.Windows.Forms.Label();
             this.panelAddOperation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,24 @@
             this.panelAddOperation.Size = new System.Drawing.Size(443, 245);
             this.panelAddOperation.TabIndex = 26;
             // 
+            // labelAddOperation
+            // 
+            this.labelAddOperation.AutoSize = true;
+            this.labelAddOperation.Location = new System.Drawing.Point(25, 209);
+            this.labelAddOperation.Name = "labelAddOperation";
+            this.labelAddOperation.Size = new System.Drawing.Size(0, 17);
+            this.labelAddOperation.TabIndex = 13;
+            // 
+            // buttonNewOperation
+            // 
+            this.buttonNewOperation.Location = new System.Drawing.Point(160, 159);
+            this.buttonNewOperation.Name = "buttonNewOperation";
+            this.buttonNewOperation.Size = new System.Drawing.Size(111, 34);
+            this.buttonNewOperation.TabIndex = 12;
+            this.buttonNewOperation.Text = "New";
+            this.buttonNewOperation.UseVisualStyleBackColor = true;
+            this.buttonNewOperation.Click += new System.EventHandler(this.buttonNewOperation_Click);
+            // 
             // buttonAddNewOperation
             // 
             this.buttonAddNewOperation.Location = new System.Drawing.Point(26, 159);
@@ -73,6 +91,7 @@
             this.textBoxAddOperationExecutionTime.Name = "textBoxAddOperationExecutionTime";
             this.textBoxAddOperationExecutionTime.Size = new System.Drawing.Size(111, 22);
             this.textBoxAddOperationExecutionTime.TabIndex = 10;
+            this.textBoxAddOperationExecutionTime.TextChanged += new System.EventHandler(this.textBoxAddOperationExecutionTime_TextChanged);
             // 
             // labelAddOperationExecutionTime
             // 
@@ -106,24 +125,7 @@
             this.textBoxAddOperationName.Name = "textBoxAddOperationName";
             this.textBoxAddOperationName.Size = new System.Drawing.Size(368, 22);
             this.textBoxAddOperationName.TabIndex = 1;
-            // 
-            // buttonNewOperation
-            // 
-            this.buttonNewOperation.Location = new System.Drawing.Point(160, 159);
-            this.buttonNewOperation.Name = "buttonNewOperation";
-            this.buttonNewOperation.Size = new System.Drawing.Size(111, 34);
-            this.buttonNewOperation.TabIndex = 12;
-            this.buttonNewOperation.Text = "New";
-            this.buttonNewOperation.UseVisualStyleBackColor = true;
-            this.buttonNewOperation.Click += new System.EventHandler(this.buttonNewOperation_Click);
-            // 
-            // labelAddOperation
-            // 
-            this.labelAddOperation.AutoSize = true;
-            this.labelAddOperation.Location = new System.Drawing.Point(25, 209);
-            this.labelAddOperation.Name = "labelAddOperation";
-            this.labelAddOperation.Size = new System.Drawing.Size(0, 17);
-            this.labelAddOperation.TabIndex = 13;
+            this.textBoxAddOperationName.TextChanged += new System.EventHandler(this.textBoxAddOperationName_TextChanged);
             // 
             // FormManageOperation
             // 

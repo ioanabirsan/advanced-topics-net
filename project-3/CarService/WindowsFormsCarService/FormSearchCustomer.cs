@@ -75,21 +75,6 @@ namespace WindowsFormsCarService
                    !string.IsNullOrEmpty(phoneNumber);
         }
 
-        private void ExecuteQuery(string query, DataGridView dataGridView)
-        {
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridView.DataSource = dataTable;
-                dataGridView.Visible = true;
-            }
-        }
-
         private void buttonAddCustomerCar_Click_1(object sender, EventArgs e)
         {
             string name = textBoxSearchName.Text;
@@ -115,20 +100,12 @@ namespace WindowsFormsCarService
 
             _carService.AddAuto(auto);
 
-            labelAddCar.Text = "Car added.";
+            labelAddCar.Text = @"Car added.";
             labelAddCar.Visible = true;
-
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            {
-                sqlCon.Open();
-                string queryString = "SELECT * FROM Automobile WHERE ClientId = " + client.Id;
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, sqlCon);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                dataGridViewCustomerCars.DataSource = dataTable;
-                dataGridViewCustomerCars.Visible = true;
-            }
+            /*
+            string getClientCars = $"SELECT * FROM Automobile WHERE ClientId = {client.Id}";
+            ExecuteQuery(getClientCars, dataGridViewCustomerCars);
+            */
         }
 
         private void buttonNewSearch_Click(object sender, EventArgs e)
@@ -213,6 +190,21 @@ namespace WindowsFormsCarService
         private void textBoxSearchPhoneNumber_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ValidateSearchField(PhoneNumberPattern, textBoxSearchPhoneNumber);
+        }
+
+        private void ExecuteQuery(string query, DataGridView dataGridView)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            {
+                sqlCon.Open();
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlCon);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                dataGridView.DataSource = dataTable;
+                dataGridView.Visible = true;
+            }
         }
     }
 }
