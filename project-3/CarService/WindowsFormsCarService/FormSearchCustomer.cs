@@ -102,10 +102,9 @@ namespace WindowsFormsCarService
 
             labelAddCar.Text = @"Car added.";
             labelAddCar.Visible = true;
-            /*
+
             string getClientCars = $"SELECT * FROM Automobile WHERE ClientId = {client.Id}";
             ExecuteQuery(getClientCars, dataGridViewCustomerCars);
-            */
         }
 
         private void buttonNewSearch_Click(object sender, EventArgs e)

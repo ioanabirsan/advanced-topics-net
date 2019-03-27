@@ -18,7 +18,6 @@ namespace CarService
         public Client()
         {
             this.Automobile = new HashSet<Auto>();
-            this.Comenzi = new HashSet<Comanda>();
         }
     
         public int Id { get; set; }
@@ -32,7 +31,5 @@ namespace CarService
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auto> Automobile { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comanda> Comenzi { get; set; }
     }
 }

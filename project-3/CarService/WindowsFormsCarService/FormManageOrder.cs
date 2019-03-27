@@ -35,31 +35,31 @@ namespace WindowsFormsCarService
 
         private void FormManageOrder_Load(object sender, EventArgs e)
         {
-            string getClientsQuery = "SELECT Id, Nume, Prenume FROM Clienti";
-            ExecuteQuery(getClientsQuery, dataGridViewAddOrderSelectClient);
+            string getCars = "SELECT * FROM Automobile";
+            ExecuteQuery(getCars, dataGridViewAddOrderSelectCar);
 
-            string getMaterialsQuery = "SELECT Id, Denumire FROM Materiale";
-            ExecuteQuery(getMaterialsQuery, dataGridViewAddDetailsMaterials);
+            string getMaterials = "SELECT Id, Denumire FROM Materiale";
+            ExecuteQuery(getMaterials, dataGridViewAddDetailsMaterials);
 
-            string getOperationsQuery = "SELECT Id, Denumire FROM Operatii";
-            ExecuteQuery(getOperationsQuery, dataGridViewAddDetailsOperations);
+            string getOperations = "SELECT Id, Denumire FROM Operatii";
+            ExecuteQuery(getOperations, dataGridViewAddDetailsOperations);
 
-            string getMechanicsQuery = "SELECT Id, Nume, Prenume FROM Mecanici";
-            ExecuteQuery(getMechanicsQuery, dataGridViewAddDetailsMechanics);
+            string getMechanics = "SELECT Id, Nume, Prenume FROM Mecanici";
+            ExecuteQuery(getMechanics, dataGridViewAddDetailsMechanics);
 
-            string getImagesQuery = "SELECT Id, Titlu, Data FROM Imagini";
-            ExecuteQuery(getImagesQuery, dataGridViewAddDetailsImages);
+            string getImages = "SELECT Id, Titlu, Data FROM Imagini";
+            ExecuteQuery(getImages, dataGridViewAddDetailsImages);
 
-            string getOrdersQuery = "SELECT Id, Descriere, StareComanda FROM Comenzi";
-            ExecuteQuery(getOrdersQuery, dataGridViewAddDetailByOrder);
+            string getOrders = "SELECT Id, Descriere, StareComanda FROM Comenzi";
+            ExecuteQuery(getOrders, dataGridViewAddDetailByOrder);
         }
 
         private void buttonAddNewOrder_Click(object sender, EventArgs e)
         {
-            int index = dataGridViewAddOrderSelectClient.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridViewAddOrderSelectClient.Rows[index];
-            string clientIdText = selectedRow.Cells[0].Value.ToString();
-            int clientId = Convert.ToInt32(clientIdText);
+            int index = dataGridViewAddOrderSelectCar.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewAddOrderSelectCar.Rows[index];
+            string autoIdText = selectedRow.Cells[0].Value.ToString();
+            int autoId = Convert.ToInt32(autoIdText);
 
             string startDate = dateTimePickerStartDate.Text;
             string endDate = dateTimePickerEndDate.Text;
@@ -75,7 +75,7 @@ namespace WindowsFormsCarService
                 buttonAddNewOrder.Enabled = true;
                 Comanda order = new Comanda()
                 {
-                    ClientId = clientId,
+                    AutoId = autoId,
                     DataFinalizare = Convert.ToDateTime(endDate),
                     DataProgramare = Convert.ToDateTime(startDate),
                     DataSystem = DateTime.Now,
@@ -90,7 +90,7 @@ namespace WindowsFormsCarService
                 labelAddOrder.Text = @"Order added.";
                 labelAddOrder.Visible = true;
 
-                string getOrdersQuery = "SELECT Id, Descriere, StareComanda FROM Comenzi";
+                string getOrdersQuery = $"SELECT Id, Descriere, StareComanda FROM Comenzi WHERE AutoId = {autoId}";
                 ExecuteQuery(getOrdersQuery, dataGridViewAddDetailByOrder);
             }
         }
@@ -179,17 +179,6 @@ namespace WindowsFormsCarService
         private void checkBoxAddOrderInService_Click(object sender, EventArgs e)
         {
             textBoxAddOrderKm.Enabled = checkBoxAddOrderInService.Checked;
-        }
-
-        private void dataGridViewAddOrderSelectClient_SelectionChanged(object sender, EventArgs e)
-        {
-            int index = dataGridViewAddOrderSelectClient.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridViewAddOrderSelectClient.Rows[index];
-            string clientIdText = selectedRow.Cells[0].Value.ToString();
-            int clientId = Convert.ToInt32(clientIdText);
-
-            string getClientCars = $"SELECT Id, NumarAuto, SerieSasiu FROM Automobile WHERE ClientId = {clientId}";
-            ExecuteQuery(getClientCars, dataGridViewClientCars);
         }
 
         private void ExecuteQuery(string query, DataGridView dataGridView)

@@ -28,10 +28,10 @@ namespace CarService
         public string Descriere { get; set; }
         public decimal ValoarePiese { get; set; }
         public StareComanda StareComanda { get; set; }
-        public int ClientId { get; set; }
+        public int AutoId { get; set; }
     
-        public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetaliuComanda> DetaliiComenzi { get; set; }
+        public virtual Auto Auto { get; set; }
     }
 }

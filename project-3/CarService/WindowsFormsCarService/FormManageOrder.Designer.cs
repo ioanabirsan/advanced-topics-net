@@ -31,11 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManageOrder));
             this.panelAddOrder = new System.Windows.Forms.Panel();
             this.checkBoxAddOrderInService = new System.Windows.Forms.CheckBox();
-            this.labelAddDetailsCars = new System.Windows.Forms.Label();
-            this.dataGridViewClientCars = new System.Windows.Forms.DataGridView();
             this.labelAddOrder = new System.Windows.Forms.Label();
-            this.dataGridViewAddOrderSelectClient = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridViewAddOrderSelectCar = new System.Windows.Forms.DataGridView();
+            this.labelAddOrderCar = new System.Windows.Forms.Label();
             this.textBoxAddOrderKm = new System.Windows.Forms.TextBox();
             this.labelAddOrderKm = new System.Windows.Forms.Label();
             this.comboBoxAddOrderState = new System.Windows.Forms.ComboBox();
@@ -62,8 +60,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.labelAddOrderStartDate = new System.Windows.Forms.Label();
             this.panelAddOrder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientCars)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectCar)).BeginInit();
             this.groupBoxCommandDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailByOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailsImages)).BeginInit();
@@ -76,11 +73,9 @@
             // 
             this.panelAddOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelAddOrder.Controls.Add(this.checkBoxAddOrderInService);
-            this.panelAddOrder.Controls.Add(this.labelAddDetailsCars);
-            this.panelAddOrder.Controls.Add(this.dataGridViewClientCars);
             this.panelAddOrder.Controls.Add(this.labelAddOrder);
-            this.panelAddOrder.Controls.Add(this.dataGridViewAddOrderSelectClient);
-            this.panelAddOrder.Controls.Add(this.label4);
+            this.panelAddOrder.Controls.Add(this.dataGridViewAddOrderSelectCar);
+            this.panelAddOrder.Controls.Add(this.labelAddOrderCar);
             this.panelAddOrder.Controls.Add(this.textBoxAddOrderKm);
             this.panelAddOrder.Controls.Add(this.labelAddOrderKm);
             this.panelAddOrder.Controls.Add(this.comboBoxAddOrderState);
@@ -96,41 +91,19 @@
             this.panelAddOrder.Controls.Add(this.labelAddOrderStartDate);
             this.panelAddOrder.Location = new System.Drawing.Point(12, 12);
             this.panelAddOrder.Name = "panelAddOrder";
-            this.panelAddOrder.Size = new System.Drawing.Size(1182, 776);
+            this.panelAddOrder.Size = new System.Drawing.Size(1227, 714);
             this.panelAddOrder.TabIndex = 13;
             // 
             // checkBoxAddOrderInService
             // 
             this.checkBoxAddOrderInService.AutoSize = true;
-            this.checkBoxAddOrderInService.Location = new System.Drawing.Point(452, 111);
+            this.checkBoxAddOrderInService.Location = new System.Drawing.Point(465, 99);
             this.checkBoxAddOrderInService.Name = "checkBoxAddOrderInService";
             this.checkBoxAddOrderInService.Size = new System.Drawing.Size(90, 21);
             this.checkBoxAddOrderInService.TabIndex = 32;
             this.checkBoxAddOrderInService.Text = "In service";
             this.checkBoxAddOrderInService.UseVisualStyleBackColor = true;
             this.checkBoxAddOrderInService.Click += new System.EventHandler(this.checkBoxAddOrderInService_Click);
-            // 
-            // labelAddDetailsCars
-            // 
-            this.labelAddDetailsCars.AccessibleName = "labelAddOrderClient";
-            this.labelAddDetailsCars.AutoSize = true;
-            this.labelAddDetailsCars.Location = new System.Drawing.Point(25, 162);
-            this.labelAddDetailsCars.Name = "labelAddDetailsCars";
-            this.labelAddDetailsCars.Size = new System.Drawing.Size(74, 17);
-            this.labelAddDetailsCars.TabIndex = 31;
-            this.labelAddDetailsCars.Text = "Client cars";
-            // 
-            // dataGridViewClientCars
-            // 
-            this.dataGridViewClientCars.AccessibleName = "";
-            this.dataGridViewClientCars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewClientCars.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewClientCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClientCars.Location = new System.Drawing.Point(28, 182);
-            this.dataGridViewClientCars.Name = "dataGridViewClientCars";
-            this.dataGridViewClientCars.RowTemplate.Height = 24;
-            this.dataGridViewClientCars.Size = new System.Drawing.Size(409, 102);
-            this.dataGridViewClientCars.TabIndex = 30;
             // 
             // labelAddOrder
             // 
@@ -140,33 +113,32 @@
             this.labelAddOrder.Size = new System.Drawing.Size(0, 17);
             this.labelAddOrder.TabIndex = 29;
             // 
-            // dataGridViewAddOrderSelectClient
+            // dataGridViewAddOrderSelectCar
             // 
-            this.dataGridViewAddOrderSelectClient.AccessibleName = "";
-            this.dataGridViewAddOrderSelectClient.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAddOrderSelectClient.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewAddOrderSelectClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAddOrderSelectClient.Location = new System.Drawing.Point(28, 41);
-            this.dataGridViewAddOrderSelectClient.Name = "dataGridViewAddOrderSelectClient";
-            this.dataGridViewAddOrderSelectClient.RowTemplate.Height = 24;
-            this.dataGridViewAddOrderSelectClient.Size = new System.Drawing.Size(409, 102);
-            this.dataGridViewAddOrderSelectClient.TabIndex = 28;
-            this.dataGridViewAddOrderSelectClient.SelectionChanged += new System.EventHandler(this.dataGridViewAddOrderSelectClient_SelectionChanged);
+            this.dataGridViewAddOrderSelectCar.AccessibleName = "";
+            this.dataGridViewAddOrderSelectCar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAddOrderSelectCar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAddOrderSelectCar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddOrderSelectCar.Location = new System.Drawing.Point(28, 41);
+            this.dataGridViewAddOrderSelectCar.Name = "dataGridViewAddOrderSelectCar";
+            this.dataGridViewAddOrderSelectCar.RowTemplate.Height = 24;
+            this.dataGridViewAddOrderSelectCar.Size = new System.Drawing.Size(409, 155);
+            this.dataGridViewAddOrderSelectCar.TabIndex = 28;
             // 
-            // label4
+            // labelAddOrderCar
             // 
-            this.label4.AccessibleName = "labelAddOrderClient";
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 17);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Client";
+            this.labelAddOrderCar.AccessibleName = "labelAddOrderCar";
+            this.labelAddOrderCar.AutoSize = true;
+            this.labelAddOrderCar.Location = new System.Drawing.Point(24, 18);
+            this.labelAddOrderCar.Name = "labelAddOrderCar";
+            this.labelAddOrderCar.Size = new System.Drawing.Size(37, 17);
+            this.labelAddOrderCar.TabIndex = 27;
+            this.labelAddOrderCar.Text = "Cars";
             // 
             // textBoxAddOrderKm
             // 
             this.textBoxAddOrderKm.Enabled = false;
-            this.textBoxAddOrderKm.Location = new System.Drawing.Point(570, 110);
+            this.textBoxAddOrderKm.Location = new System.Drawing.Point(604, 100);
             this.textBoxAddOrderKm.Name = "textBoxAddOrderKm";
             this.textBoxAddOrderKm.Size = new System.Drawing.Size(161, 22);
             this.textBoxAddOrderKm.TabIndex = 26;
@@ -175,7 +147,7 @@
             // labelAddOrderKm
             // 
             this.labelAddOrderKm.AutoSize = true;
-            this.labelAddOrderKm.Location = new System.Drawing.Point(567, 90);
+            this.labelAddOrderKm.Location = new System.Drawing.Point(601, 80);
             this.labelAddOrderKm.Name = "labelAddOrderKm";
             this.labelAddOrderKm.Size = new System.Drawing.Size(28, 17);
             this.labelAddOrderKm.TabIndex = 25;
@@ -189,7 +161,7 @@
             "None",
             "Rejected",
             "Waiting"});
-            this.comboBoxAddOrderState.Location = new System.Drawing.Point(1029, 109);
+            this.comboBoxAddOrderState.Location = new System.Drawing.Point(1093, 100);
             this.comboBoxAddOrderState.Name = "comboBoxAddOrderState";
             this.comboBoxAddOrderState.Size = new System.Drawing.Size(121, 24);
             this.comboBoxAddOrderState.Sorted = true;
@@ -210,9 +182,9 @@
             this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsMechanics);
             this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsOperations);
             this.groupBoxCommandDetails.Controls.Add(this.dataGridViewAddDetailsMaterials);
-            this.groupBoxCommandDetails.Location = new System.Drawing.Point(28, 300);
+            this.groupBoxCommandDetails.Location = new System.Drawing.Point(28, 237);
             this.groupBoxCommandDetails.Name = "groupBoxCommandDetails";
-            this.groupBoxCommandDetails.Size = new System.Drawing.Size(1122, 459);
+            this.groupBoxCommandDetails.Size = new System.Drawing.Size(1186, 459);
             this.groupBoxCommandDetails.TabIndex = 22;
             this.groupBoxCommandDetails.TabStop = false;
             this.groupBoxCommandDetails.Text = "Details";
@@ -278,7 +250,7 @@
             this.dataGridViewAddDetailByOrder.Location = new System.Drawing.Point(761, 162);
             this.dataGridViewAddDetailByOrder.Name = "dataGridViewAddDetailByOrder";
             this.dataGridViewAddDetailByOrder.RowTemplate.Height = 24;
-            this.dataGridViewAddDetailByOrder.Size = new System.Drawing.Size(337, 134);
+            this.dataGridViewAddDetailByOrder.Size = new System.Drawing.Size(393, 134);
             this.dataGridViewAddDetailByOrder.TabIndex = 7;
             // 
             // buttonAddDetails
@@ -338,7 +310,7 @@
             // labelAddOrderState
             // 
             this.labelAddOrderState.AutoSize = true;
-            this.labelAddOrderState.Location = new System.Drawing.Point(1026, 87);
+            this.labelAddOrderState.Location = new System.Drawing.Point(1090, 80);
             this.labelAddOrderState.Name = "labelAddOrderState";
             this.labelAddOrderState.Size = new System.Drawing.Size(41, 17);
             this.labelAddOrderState.TabIndex = 18;
@@ -347,7 +319,7 @@
             // labelAddOrderDescription
             // 
             this.labelAddOrderDescription.AutoSize = true;
-            this.labelAddOrderDescription.Location = new System.Drawing.Point(734, 87);
+            this.labelAddOrderDescription.Location = new System.Drawing.Point(787, 80);
             this.labelAddOrderDescription.Name = "labelAddOrderDescription";
             this.labelAddOrderDescription.Size = new System.Drawing.Size(79, 17);
             this.labelAddOrderDescription.TabIndex = 14;
@@ -355,14 +327,14 @@
             // 
             // dateTimePickerEndDate
             // 
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(746, 43);
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(937, 41);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(277, 22);
             this.dateTimePickerEndDate.TabIndex = 13;
             // 
             // dateTimePickerStartDate
             // 
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(452, 41);
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(604, 41);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(279, 22);
             this.dateTimePickerStartDate.TabIndex = 12;
@@ -379,7 +351,7 @@
             // 
             // textBoxAddOrderDescription
             // 
-            this.textBoxAddOrderDescription.Location = new System.Drawing.Point(737, 107);
+            this.textBoxAddOrderDescription.Location = new System.Drawing.Point(789, 100);
             this.textBoxAddOrderDescription.Multiline = true;
             this.textBoxAddOrderDescription.Name = "textBoxAddOrderDescription";
             this.textBoxAddOrderDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -390,7 +362,7 @@
             // labelAddOrderEndDate
             // 
             this.labelAddOrderEndDate.AutoSize = true;
-            this.labelAddOrderEndDate.Location = new System.Drawing.Point(743, 18);
+            this.labelAddOrderEndDate.Location = new System.Drawing.Point(934, 18);
             this.labelAddOrderEndDate.Name = "labelAddOrderEndDate";
             this.labelAddOrderEndDate.Size = new System.Drawing.Size(65, 17);
             this.labelAddOrderEndDate.TabIndex = 9;
@@ -407,7 +379,7 @@
             // labelAddOrderStartDate
             // 
             this.labelAddOrderStartDate.AutoSize = true;
-            this.labelAddOrderStartDate.Location = new System.Drawing.Point(449, 18);
+            this.labelAddOrderStartDate.Location = new System.Drawing.Point(601, 18);
             this.labelAddOrderStartDate.Name = "labelAddOrderStartDate";
             this.labelAddOrderStartDate.Size = new System.Drawing.Size(70, 17);
             this.labelAddOrderStartDate.TabIndex = 3;
@@ -418,7 +390,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1208, 800);
+            this.ClientSize = new System.Drawing.Size(1251, 740);
             this.Controls.Add(this.panelAddOrder);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormManageOrder";
@@ -426,8 +398,7 @@
             this.Load += new System.EventHandler(this.FormManageOrder_Load);
             this.panelAddOrder.ResumeLayout(false);
             this.panelAddOrder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientCars)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddOrderSelectCar)).EndInit();
             this.groupBoxCommandDetails.ResumeLayout(false);
             this.groupBoxCommandDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddDetailByOrder)).EndInit();
@@ -442,8 +413,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panelAddOrder;
-        private System.Windows.Forms.DataGridView dataGridViewAddOrderSelectClient;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridViewAddOrderSelectCar;
+        private System.Windows.Forms.Label labelAddOrderCar;
         private System.Windows.Forms.TextBox textBoxAddOrderKm;
         private System.Windows.Forms.Label labelAddOrderKm;
         private System.Windows.Forms.ComboBox comboBoxAddOrderState;
@@ -465,8 +436,6 @@
         private System.Windows.Forms.DataGridView dataGridViewAddDetailByOrder;
         private System.Windows.Forms.Label labelAddOrder;
         private System.Windows.Forms.Label labelAddDetails;
-        private System.Windows.Forms.DataGridView dataGridViewClientCars;
-        private System.Windows.Forms.Label labelAddDetailsCars;
         private System.Windows.Forms.Label labelAddDetailsOrders;
         private System.Windows.Forms.Label labelAddDetailsImages;
         private System.Windows.Forms.Label labelAddDetailsMechanics;
