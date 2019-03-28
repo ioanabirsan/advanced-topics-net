@@ -28,16 +28,20 @@ namespace WindowsFormsCarService
         {
             string getMechanics = "SELECT * FROM Mecanici";
             ExecuteQuery(getMechanics, dataGridViewDisplayMechanics);
+            dataGridViewDisplayMechanics.Columns[0].ReadOnly = true;
 
             // if * was selected, images too big would offer an unpleasant UI
             string getImages = "SELECT Id, Titlu, Descriere FROM Imagini";
             ExecuteQuery(getImages, dataGridViewDisplayImage);
+            dataGridViewDisplayImage.Columns[0].ReadOnly = true;
 
             string getMaterials = "SELECT * FROM Materiale";
             ExecuteQuery(getMaterials, dataGridViewDisplayMaterials);
+            dataGridViewDisplayMaterials.Columns[0].ReadOnly = true;
 
             string getOperations = "SELECT * FROM Operatii";
             ExecuteQuery(getOperations, dataGridViewDisplayOperations);
+            dataGridViewDisplayOperations.Columns[0].ReadOnly = true;
         }
 
         private void buttonUpdateMecanic_Click_1(object sender, EventArgs e)
@@ -169,7 +173,9 @@ namespace WindowsFormsCarService
                 sqlDataAdapter.Fill(dataTable);
 
                 dataGridView.DataSource = dataTable;
-                dataGridView.Visible = true;
+                dataGridView.EnableHeadersVisualStyles = false;
+                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.LightBlue;
+                
             }
         }
     }

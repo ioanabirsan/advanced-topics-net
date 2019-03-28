@@ -184,6 +184,10 @@ namespace WindowsFormsCarService
             {
                 textBoxSearchEmail.Enabled = true;
             }
+            else
+            {
+                textBoxSearchEmail.Enabled = false;
+            }
         }
 
         private void textBoxSearchPhoneNumber_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -203,6 +207,8 @@ namespace WindowsFormsCarService
 
                 dataGridView.DataSource = dataTable;
                 dataGridView.Visible = true;
+                dataGridView.EnableHeadersVisualStyles = false;
+                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.LightBlue;
             }
         }
     }

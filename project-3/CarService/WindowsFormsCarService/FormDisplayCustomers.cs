@@ -22,6 +22,7 @@ namespace WindowsFormsCarService
 
             StartPosition = FormStartPosition.Manual;
             Location = new Point(365, 55);
+           
         }
 
         private void FormDisplayCustomers_Load(object sender, EventArgs e)
@@ -36,6 +37,10 @@ namespace WindowsFormsCarService
 
                 dataGridViewCustomers.DataSource = dataTable;
             }
+
+            dataGridViewCustomers.EnableHeadersVisualStyles = false;
+            dataGridViewCustomers.ColumnHeadersDefaultCellStyle.BackColor = Color.LightBlue;
+            dataGridViewCustomers.Columns[0].Visible = false;
         }
 
         private void buttonUpdateCustomers_Click(object sender, EventArgs e)

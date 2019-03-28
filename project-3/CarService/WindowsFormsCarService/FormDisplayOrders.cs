@@ -35,7 +35,11 @@ namespace WindowsFormsCarService
                 sqlDataAdapter.Fill(dataTable);
 
                 dataGridViewDisplayOrders.DataSource = dataTable;
-                dataGridViewDisplayOrders.Visible = true;
+                dataGridViewDisplayOrders.EnableHeadersVisualStyles = false;
+                dataGridViewDisplayOrders.ColumnHeadersDefaultCellStyle.BackColor = Color.LightBlue;
+                dataGridViewDisplayOrders.Columns[0].ReadOnly = true;
+                dataGridViewDisplayOrders.Columns[1].ReadOnly = true;
+                dataGridViewDisplayOrders.Columns[8].ReadOnly = true;
             }
         }
 

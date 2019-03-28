@@ -192,6 +192,8 @@ namespace WindowsFormsCarService
                 sqlDataAdapter.Fill(dataTable);
 
                 dataGridView.DataSource = dataTable;
+                dataGridView.EnableHeadersVisualStyles = false;
+                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.LightBlue;
             }
         }
 

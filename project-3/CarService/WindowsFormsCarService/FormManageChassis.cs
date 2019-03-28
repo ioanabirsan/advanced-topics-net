@@ -7,7 +7,6 @@ using CarService.Api;
 
 namespace WindowsFormsCarService
 {
-    // Audi A6 2005-2010
     public partial class FormManageChassis : Form
     {
         private readonly CarServiceApi _carService;
