@@ -1,41 +1,50 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
+using System.Runtime.Serialization;
 
-namespace CarService { 
+namespace CarService
+{
 
+    [DataContract(IsReference = true)]
     public class ClientMetadata
     {
         [Key]
+        [DataMember]
         public int Id { get; set; }
 
         [Required]
         [MaxLength(15)]
+        [DataMember]
         public string Nume { get; set; }
 
         [Required]
         [MaxLength(15)]
+        [DataMember]
         public string Prenume { get; set; }
 
         [Required]
         [MaxLength(50)]
+        [DataMember]
         public string Adresa { get; set; }
 
         [Required]
         [MaxLength(10)]
+        [DataMember]
         public string Localitate { get; set; }
 
         [Required]
         [MaxLength(10)]
+        [DataMember]
         public string Judet { get; set; }
 
         [Required]
         [RegularExpression(@"^\d{13}$", 
             ErrorMessage = "Invalid phone number.")]
+        [DataMember]
         public string Telefon { get; set; }
         
         [RegularExpression(@"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$",
             ErrorMessage = "Invalid email.")]
+        [DataMember]
         public string Email { get; set; }
     }
 }

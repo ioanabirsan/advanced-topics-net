@@ -32,6 +32,7 @@ namespace WindowsFormsCarService
 
             // if * was selected, images too big would offer an unpleasant UI
             string getImages = "SELECT Id, Titlu, Descriere FROM Imagini";
+            //string getImages = "SELECT * FROM Imagini";
             ExecuteQuery(getImages, dataGridViewDisplayImage);
             dataGridViewDisplayImage.Columns[0].ReadOnly = true;
 

@@ -63,10 +63,10 @@ namespace WindowsFormsCarService
 
             string startDate = dateTimePickerStartDate.Text;
             string endDate = dateTimePickerEndDate.Text;
-            string state = comboBoxAddOrderState.SelectedItem.ToString();
             string description = textBoxAddOrderDescription.Text;
-
-            if (string.IsNullOrEmpty(description) || string.IsNullOrEmpty(state))
+            object state = comboBoxAddOrderState.SelectedItem;
+            
+            if (string.IsNullOrEmpty(description) || state == null)
             {
                 labelAddOrder.Text = @"Must complete all mandatory fields.";
             }
@@ -81,7 +81,7 @@ namespace WindowsFormsCarService
                     DataSystem = DateTime.Now,
                     Descriere = description,
                     KmBord = Convert.ToInt32(textBoxAddOrderKm.Text),
-                    StareComanda = getOrderState(state),
+                    StareComanda = getOrderState(Convert.ToString(state)),
                     ValoarePiese = TotalCost
                 };
 
