@@ -1,11 +1,10 @@
 ﻿using System.Data.Entity;
-using Studies.models;
 
 namespace Studies.context
 {
     public class ProductContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
+        public DbSet<models.Product> Products { get; set; }
 
         public ProductContext() : base("name=ProductContext")
         {
@@ -15,7 +14,7 @@ namespace Studies.context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Product>()
+            modelBuilder.Entity<models.Product>()
                 .Map(m =>
                 {
                     m.Properties(p => new {p.SKU, p.Description, p.Price});

@@ -121,10 +121,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="api\IObjectWithState.cs" />
+    <Compile Include="container-models\Customer.cs" />
+    <Compile Include="container-models\CustomerEmail.cs" />
+    <Compile Include="container-models\CustomerEmailMetadata.cs" />
+    <Compile Include="container-models\CustomerMetadata.cs" />
+    <Compile Include="container-models\CustomerType.cs" />
+    <Compile Include="container-models\CustomerTypeMetadata.cs" />
+    <Compile Include="container-models\InterfaceCaseTesting.cs" />
+    <Compile Include="container-models\Model1ContainerContainer.cs" />
+    <Compile Include="container-models\Model1ContainerMetadata.cs" />
+    <Compile Include="container-models\Product.cs" />
+    <Compile Include="container-models\ProductCategory.cs" />
+    <Compile Include="container-models\ProductCategoryMetadata.cs" />
+    <Compile Include="container-models\ProductMetadata.cs" />
     <Compile Include="context\BusinessContext.cs" />
     <Compile Include="context\EmployeeContext.cs" />
     <Compile Include="context\PhotographContext.cs" />
     <Compile Include="context\ProductContext.cs" />
+    <Compile Include="Customer.cs">
+      <DependentUpon>Model1Container.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerEmail.cs">
+      <DependentUpon>Model1Container.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerType.cs">
+      <DependentUpon>Model1Container.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1Container.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1Container.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1Container.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1Container.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1Container.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1Container.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ModelSelfReferences.cs" />
     <Compile Include="models\Business.cs" />
     <Compile Include="models\eCommerce.cs" />
@@ -136,12 +174,42 @@
     <Compile Include="models\Product.cs" />
     <Compile Include="models\Retail.cs" />
     <Compile Include="models\SelfReference.cs" />
+    <Compile Include="container-models\State.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>Model1Container.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>Model1Container.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model1Container.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1Container.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1Container.edmx.diagram">
+      <DependentUpon>Model1Container.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1Container.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1Container.Context.cs</LastGenOutput>
+      <DependentUpon>Model1Container.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1Container.edmx.sql" />
+    <Content Include="Model1Container.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1Container.cs</LastGenOutput>
+      <DependentUpon>Model1Container.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

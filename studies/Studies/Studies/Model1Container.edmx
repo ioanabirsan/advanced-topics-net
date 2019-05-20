@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1Container.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1ContainerStoreContainer">
+    <EntitySet Name="Customers" EntityType="Model1Container.Store.Customers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerEmails" EntityType="Model1Container.Store.CustomerEmails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerTypes" EntityType="Model1Container.Store.CustomerTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="Model1Container.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductCategories" EntityType="Model1Container.Store.ProductCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductProductCategory" EntityType="Model1Container.Store.ProductProductCategory" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CustomerTypeCustomer" Association="Model1Container.Store.CustomerTypeCustomer">
+      <End Role="CustomerType" EntitySet="CustomerTypes" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerEmailCustomer" Association="Model1Container.Store.CustomerEmailCustomer">
+      <End Role="CustomerEmail" EntitySet="CustomerEmails" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductProductCategory_Product" Association="Model1Container.Store.FK_ProductProductCategory_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductProductCategory" EntitySet="ProductProductCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductProductCategory_ProductCategory" Association="Model1Container.Store.FK_ProductProductCategory_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="ProductProductCategory" EntitySet="ProductProductCategory" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustomerTypeId" Type="int" Nullable="false" />
+    <Property Name="CustomerEmailId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerEmails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductProductCategory">
+    <Key>
+      <PropertyRef Name="Products_Id" />
+      <PropertyRef Name="ProductCategories_Id" />
+    </Key>
+    <Property Name="Products_Id" Type="int" Nullable="false" />
+    <Property Name="ProductCategories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CustomerTypeCustomer">
+    <End Role="CustomerType" Type="Model1Container.Store.CustomerTypes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Customer" Type="Model1Container.Store.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustomerTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerEmailCustomer">
+    <End Role="CustomerEmail" Type="Model1Container.Store.CustomerEmails" Multiplicity="*" />
+    <End Role="Customer" Type="Model1Container.Store.Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerEmail">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductProductCategory_Product">
+    <End Role="Product" Type="Model1Container.Store.Products" Multiplicity="1" />
+    <End Role="ProductProductCategory" Type="Model1Container.Store.ProductProductCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductProductCategory">
+        <PropertyRef Name="Products_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductProductCategory_ProductCategory">
+    <End Role="ProductProductCategory" Type="Model1Container.Store.ProductProductCategory" Multiplicity="*" />
+    <End Role="ProductCategory" Type="Model1Container.Store.ProductCategories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductProductCategory">
+        <PropertyRef Name="ProductCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1Container" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1ContainerContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Model1Container.Customer" />
+          <EntitySet Name="CustomerEmails" EntityType="Model1Container.CustomerEmail" />
+          <EntitySet Name="CustomerTypes" EntityType="Model1Container.CustomerType" />
+          <EntitySet Name="Products" EntityType="Model1Container.Product" />
+          <EntitySet Name="ProductCategories" EntityType="Model1Container.ProductCategory" />
+          <AssociationSet Name="CustomerTypeCustomer" Association="Model1Container.CustomerTypeCustomer">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerEmailCustomer" Association="Model1Container.CustomerEmailCustomer">
+            <End Role="CustomerEmail" EntitySet="CustomerEmails" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="ProductProductCategory" Association="Model1Container.ProductProductCategory">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="CustomerType" Relationship="Model1Container.CustomerTypeCustomer" FromRole="Customer" ToRole="CustomerType" />
+          <Property Name="CustomerTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerEmailId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerEmails" Relationship="Model1Container.CustomerEmailCustomer" FromRole="Customer" ToRole="CustomerEmail" />
+        </EntityType>
+        <EntityType Name="CustomerEmail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model1Container.CustomerEmailCustomer" FromRole="CustomerEmail" ToRole="Customer" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Model1Container.CustomerTypeCustomer" FromRole="CustomerType" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" />
+          <NavigationProperty Name="ProductCategories" Relationship="Model1Container.ProductProductCategory" FromRole="Product" ToRole="ProductCategory" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Model1Container.ProductProductCategory" FromRole="ProductCategory" ToRole="Product" />
+        </EntityType>
+        <Association Name="CustomerTypeCustomer">
+          <End Type="Model1Container.CustomerType" Role="CustomerType" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1Container.Customer" Role="Customer" Multiplicity="*" >
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerEmailCustomer">
+          <End Type="Model1Container.CustomerEmail" Role="CustomerEmail" Multiplicity="*" >
+          </End>
+          <End Type="Model1Container.Customer" Role="Customer" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerEmail">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductProductCategory">
+          <End Type="Model1Container.Product" Role="Product" Multiplicity="*" />
+          <End Type="Model1Container.ProductCategory" Role="ProductCategory" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1ContainerStoreContainer" CdmEntityContainer="Model1ContainerContainer">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1Container.Customer)">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerTypeId" ColumnName="CustomerTypeId" />
+          <ScalarProperty Name="CustomerEmailId" ColumnName="CustomerEmailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerEmails">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1Container.CustomerEmail)">
+        <MappingFragment StoreEntitySet="CustomerEmails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1Container.CustomerType)">
+        <MappingFragment StoreEntitySet="CustomerTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1Container.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1Container.ProductCategory)">
+        <MappingFragment StoreEntitySet="ProductCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductProductCategory" TypeName="Model1Container.ProductProductCategory" StoreEntitySet="ProductProductCategory">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Products_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductCategory">
+        <ScalarProperty Name="Id" ColumnName="ProductCategories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

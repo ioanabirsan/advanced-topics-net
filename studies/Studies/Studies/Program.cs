@@ -1,7 +1,5 @@
 using System;
-using System.Linq;
-using Studies.context;
-using Studies.models;
+using System.Collections.Generic;
 
 namespace Studies
 {
@@ -175,6 +173,7 @@ namespace Studies
             }
             */
 
+            /*
             using (var context = new EmployeeContext())
             {
                 var fte = new FullTimeEmployee
@@ -227,6 +226,44 @@ namespace Studies
                 {
                     Console.WriteLine("{0} {1}", hourlyEmployee.FirstName, hourlyEmployee.LastName);
                 }
+            }
+            */
+
+            /*            
+            using (var context = new Model1ContainerContainer())
+            {
+                CustomerType customerType = new CustomerType()
+                {
+                    Description = "Preferat"
+                };
+
+                context.CustomerTypes.Add(customerType);
+
+                Customer customer = new Customer()
+                {
+                    Name = "Jane",
+                    CustomerType = customerType
+                };
+
+                context.Customers.Add(customer);
+
+                CustomerEmail customerEmail = new CustomerEmail()
+                {
+                    Email = "jane@yahoo.com",
+                    Customer = customer
+                };
+
+                context.CustomerEmails.Add(customerEmail);
+
+                context.SaveChanges();
+            }
+            */
+            
+            //InterfaceCaseTesting.TestSaveCustomerTypeGraph();
+
+            using (var context = new Model1ContainerContainer())
+            {
+                InterfaceCaseTesting.CheckForEntitiesWithoutStateInterface(context);
             }
         }
     }
