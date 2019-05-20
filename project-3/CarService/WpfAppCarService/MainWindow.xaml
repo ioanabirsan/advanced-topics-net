@@ -19,7 +19,7 @@
                 <Border Padding="40">
 
                     <StackPanel>
-                        <Grid>
+                        <Grid x:Name="CustomersGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -42,12 +42,68 @@
                                     Background="CornflowerBlue" FontWeight="DemiBold" />
                         </Grid>
 
-                        <DataGrid Name="CustomersDataGrid"
+                        <DataGrid x:Name="CustomersDataGrid"
                                   ItemsSource="{Binding}"
                                   FontWeight="Normal"
                                   Margin="0 30 0 30"
                                   Padding="20"
+                                  Height="500"
                                   VerticalScrollBarVisibility="Visible"
+                                  Visibility="Hidden"
+                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+
+                        <DockPanel x:Name="SearchCustomerDockPanel"
+                                   Visibility="Hidden"
+                                   Margin="0 30 0 30"
+                                   Background="AliceBlue">
+                            <Label DockPanel.Dock="Top" VerticalContentAlignment="Center" FontSize="12">Name</Label>
+                            <TextBox DockPanel.Dock="Top" x:Name="SearchCustomerNameTextBox"
+                                     VerticalContentAlignment="Center" 
+                                     PreviewTextInput="SearchCustomerNameTextBox_OnPreviewTextInput"
+                                     FontSize="12" Width="200" Margin="5" FontWeight="Normal" />
+                            <Label DockPanel.Dock="Top" VerticalContentAlignment="Center" FontSize="12">First name</Label>
+                            <TextBox DockPanel.Dock="Top" x:Name="SearchCustomerFirstNameTextBox"
+                                     VerticalContentAlignment="Center" 
+                                     PreviewTextInput="SearchCustomerFirstNameTextBox_OnPreviewTextInput"
+                                     FontSize="12" Width="200" Margin="5" FontWeight="Normal" />
+                            <Label DockPanel.Dock="Top" VerticalContentAlignment="Center" FontSize="12">Phone number</Label>
+                            <TextBox DockPanel.Dock="Top" x:Name="SearchCustomerPhoneNumberTextBox"
+                                     VerticalContentAlignment="Center" 
+                                     PreviewTextInput="SearchCustomerPhoneNumberTextBox_OnPreviewTextInput"
+                                     FontSize="12" Width="200" Margin="5" FontWeight="Normal" />
+                            <CheckBox DockPanel.Dock="Top" x:Name="SearchCustomerEmailCheckbox"
+                                      VerticalContentAlignment="Center" 
+                                      Click="SearchCustomerEmailCheckbox_OnClick"
+                                      FontSize="12">
+                                Email
+                            </CheckBox>
+                            <TextBox DockPanel.Dock="Top" x:Name="SearchCustomerEmailTextBox"
+                                     VerticalContentAlignment="Center" 
+                                     PreviewTextInput="SearchCustomerEmailTextBox_OnPreviewTextInput"
+                                     FontWeight="Normal" FontSize="12" IsEnabled="False" Width="200"/>
+
+                            <Button Name="FindCustomerButton"  
+                                    DockPanel.Dock="Left" 
+                                    Content="Find" 
+                                    Click="FindCustomerButton_OnClick"
+                                    Background="CornflowerBlue" 
+                                    IsEnabled="False" Width="80"/>
+                            <Button Name="FindNewCustomerButton"  
+                                    DockPanel.Dock="Left" 
+                                    Click="FindNewCustomerButton_OnClick"
+                                    Content="New" 
+                                    Background="CornflowerBlue" Width="80"/>
+                            <Button DockPanel.Dock="Left" Width="80" Visibility="Hidden"/>
+                            <Label Name="SearchDisplayInfoLabel" DockPanel.Dock="Left" VerticalContentAlignment="Center" FontSize="12"></Label>
+                        </DockPanel>
+
+                        <DataGrid x:Name="SearchCustomersDataGrid"
+                                  ItemsSource="{Binding}"
+                                  FontWeight="Normal"
+                                  Margin="0 10 0 10"
+                                  Padding="20"
+                                  VerticalScrollBarVisibility="Visible" 
+                                  Height="200"
                                   Visibility="Hidden"
                                   AlternatingRowBackground="AliceBlue" BorderThickness="2" />
 
@@ -60,7 +116,7 @@
                 <Border Padding="40">
 
                     <StackPanel>
-                        <Grid>
+                        <Grid Name="OrdersGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
