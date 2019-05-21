@@ -19,21 +19,18 @@ namespace CarService
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [DataMember]
-        public virtual ICollection<Material> Materiale { get; set; }
+        public virtual List<Material> Materiale { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [DataMember]
-        public virtual ICollection<Operatie> Operatii { get; set; }
+        public virtual List<Operatie> Operatii { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [DataMember]
-        public virtual ICollection<Imagine> Imagini { get; set; }
+        public virtual List<Imagine> Imagini { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [DataMember]
-        public virtual ICollection<Mecanic> Mecanici { get; set; }
-
-        [DataMember]
-        public virtual Comanda Comanda { get; set; }
+        public virtual List<Mecanic> Mecanici { get; set; }
     }
 }

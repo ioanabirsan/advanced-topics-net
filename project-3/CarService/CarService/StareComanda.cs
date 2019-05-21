@@ -7,15 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Runtime.Serialization;
+
 namespace CarService
 {
     using System;
-    
+    [DataContract]
     public enum StareComanda : byte
     {
+        [EnumMember]
         InAsteptare = 1,
+        [EnumMember]
         Executata = 2,
+        [EnumMember]
         Refuzata = 3,
+        [EnumMember]
         Necunoscuta = 0
     }
 }

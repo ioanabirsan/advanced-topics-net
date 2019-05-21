@@ -17,23 +17,23 @@ namespace CarService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DetaliuComanda()
         {
-            this.Materiale = new HashSet<Material>();
-            this.Operatii = new HashSet<Operatie>();
-            this.Imagini = new HashSet<Imagine>();
-            this.Mecanici = new HashSet<Mecanic>();
+            this.Materiale = new List<Material>();
+            this.Operatii = new List<Operatie>();
+            this.Imagini = new List<Imagine>();
+            this.Mecanici = new List<Mecanic>();
         }
     
         public int Id { get; set; }
         public int ComandaId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Material> Materiale { get; set; }
+        public virtual List<Material> Materiale { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operatie> Operatii { get; set; }
+        public virtual List<Operatie> Operatii { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Imagine> Imagini { get; set; }
+        public virtual List<Imagine> Imagini { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mecanic> Mecanici { get; set; }
+        public virtual List<Mecanic> Mecanici { get; set; }
         public virtual Comanda Comanda { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace CarService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Auto()
         {
-            this.Comenzi = new HashSet<Comanda>();
+            this.Comenzi = new List<Comanda>();
         }
     
         public int Id { get; set; }
@@ -28,7 +28,8 @@ namespace CarService
     
         public virtual Sasiu Sasiu { get; set; }
         public virtual Client Client { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comanda> Comenzi { get; set; }
+        public virtual List<Comanda> Comenzi { get; set; }
     }
 }

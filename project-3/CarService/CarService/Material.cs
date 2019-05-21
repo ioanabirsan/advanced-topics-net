@@ -17,7 +17,7 @@ namespace CarService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Material()
         {
-            this.DetaliiComenzi = new HashSet<DetaliuComanda>();
+            this.DetaliiComenzi = new List<DetaliuComanda>();
         }
     
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace CarService
         public System.DateTime DataAprovizionare { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetaliuComanda> DetaliiComenzi { get; set; }
+        public virtual List<DetaliuComanda> DetaliiComenzi { get; set; }
     }
 }

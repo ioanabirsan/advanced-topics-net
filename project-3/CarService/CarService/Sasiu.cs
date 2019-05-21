@@ -17,7 +17,7 @@ namespace CarService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sasiu()
         {
-            this.Automobile = new HashSet<Auto>();
+            this.Automobile = new List<Auto>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace CarService
         public string Denumire { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Auto> Automobile { get; set; }
+        public virtual List<Auto> Automobile { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
 namespace CarService
@@ -29,5 +30,9 @@ namespace CarService
         [MaxLength(256)]
         [DataMember]
         public string Descriere { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DataMember]
+        public virtual List<DetaliuComanda> DetaliiComenzi { get; set; }
     }
 }
