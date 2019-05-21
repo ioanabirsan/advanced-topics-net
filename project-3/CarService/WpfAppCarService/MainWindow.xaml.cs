@@ -41,6 +41,8 @@ namespace WpfAppCarService
         private decimal _serviceFee = 50m;
         private string OrderDescriptionPattern = @"^[A-Z][A-Za-z -,.0-9]{3,1023}$";
         private string OrderKmPattern = @"^[1-9][0-9]*$";
+        private string ChassisCodePattern = @"^[0-9][A-Z]$";
+        private string ChassisNamePattern = @"^[A-Z][A-Za-z0-9 -]{3,24}$";
 
         public MainWindow()
         {
@@ -78,6 +80,8 @@ namespace WpfAppCarService
         private void ViewAllOrdersButton_OnClick(object sender, RoutedEventArgs e)
         {
             SearchCustomerButtonsStackPanel.Visibility = Visibility.Hidden;
+            AddOrderStackPanel.Visibility = Visibility.Hidden;
+            AddOrderScrollViewer.Visibility = Visibility.Hidden;
 
             string queryString = "SELECT * FROM Comenzi";
             ExecuteQuery(queryString, OrdersDataGrid);
@@ -496,7 +500,7 @@ namespace WpfAppCarService
 
             for (var i = 0; i < materialsSize; i++)
             {
-                DataRowView row = (DataRowView)DisplayOrderMaterialsDataGrid.SelectedItems[i];
+                DataRowView row = (DataRowView) DisplayOrderMaterialsDataGrid.SelectedItems[i];
                 string textId = row["Id"].ToString();
 
                 Console.WriteLine(textId); // a luat bine
@@ -523,7 +527,7 @@ namespace WpfAppCarService
 
             for (var i = 0; i < operationsSize; i++)
             {
-                DataRowView row = (DataRowView)DisplayOrderOperationsDataGrid.SelectedItems[i];
+                DataRowView row = (DataRowView) DisplayOrderOperationsDataGrid.SelectedItems[i];
                 string textId = row["Id"].ToString();
                 int id = Convert.ToInt32(textId);
 
@@ -536,7 +540,7 @@ namespace WpfAppCarService
 
             for (var i = 0; i < mechanicsSize; i++)
             {
-                DataRowView row = (DataRowView)DisplayOrderMechanicsDataGrid.SelectedItems[i];
+                DataRowView row = (DataRowView) DisplayOrderMechanicsDataGrid.SelectedItems[i];
                 string textId = row["Id"].ToString();
                 int id = Convert.ToInt32(textId);
 
@@ -549,7 +553,7 @@ namespace WpfAppCarService
 
             for (var i = 0; i < imagesSize; i++)
             {
-                DataRowView row = (DataRowView)DisplayOrderImagesDataGrid.SelectedItems[i];
+                DataRowView row = (DataRowView) DisplayOrderImagesDataGrid.SelectedItems[i];
                 string textId = row["Id"].ToString();
                 int id = Convert.ToInt32(textId);
 
@@ -577,7 +581,6 @@ namespace WpfAppCarService
         {
             foreach (var item in e.RemovedItems)
                 DisplayOrderMaterialsDataGrid.SelectedItems.Add(item);
-
         }
 
         private void DisplayOrderMechanicsDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -603,5 +606,112 @@ namespace WpfAppCarService
             foreach (var item in e.RemovedItems)
                 DisplayOrderOrdersDataGrid.SelectedItems.Add(item);
         }
+
+        private void AddChassisButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddNewChassisStackPanel.Visibility = Visibility.Visible;
+            ChassisDataGrid.Visibility = Visibility.Collapsed;
+            DisplayAllChassisStackPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void ViewAllChassisButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddNewChassisStackPanel.Visibility = Visibility.Hidden;
+            DisplayAllChassisStackPanel.Visibility = Visibility.Visible;
+
+            string queryString = "SELECT * FROM Sasiuri";
+            ExecuteQuery(queryString, ChassisDataGrid);
+        }
+
+        private void AddChassisCodeTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            ValidateAddChassisField(ChassisCodePattern, AddChassisCodeTextBox);
+        }
+
+        private void AddChassisNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            ValidateAddChassisField(ChassisNamePattern, AddChassisNameTextBox);
+        }
+
+        private void ValidateAddChassisField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            AddNewChassisButton.IsEnabled = isValidExpression;
+            AddChassisDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void AddNewChassisButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var chassisCode = AddChassisCodeTextBox.Text;
+            var chassisName = AddChassisNameTextBox.Text;
+
+            if (!FieldsCompleted(chassisName, chassisCode))
+            {
+                AddChassisDisplayInfoTextBlock.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                AddNewChassisButton.IsEnabled = true;
+                Sasiu sasiu = new Sasiu()
+                {
+                    CodSasiu = chassisCode,
+                    Denumire = chassisName
+                };
+
+                _client.AddChassis(sasiu);
+
+                AddChassisDisplayInfoTextBlock.Text = @"Chassis added.";
+                AddChassisDisplayInfoTextBlock.Visibility = Visibility.Visible;
+            }
+        }
+
+        private bool FieldsCompleted(string chassisName, string chassisCode)
+        {
+            return !string.IsNullOrEmpty(chassisCode) && !string.IsNullOrEmpty(chassisName);
+        }
+
+        private void NewChassisButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddChassisNameTextBox.Text = "";
+            AddChassisCodeTextBox.Text = "";
+        }
+
+        private void DeleteChassisButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedChassis = ChassisDataGrid.SelectedItems;
+            int chassisSize = selectedChassis.Count;
+
+            for (var i = 0; i < chassisSize; i++)
+            {
+                DataRowView row = (DataRowView)ChassisDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                _client.DeleteChassis(id);
+            }
+        }
+
+        private void UpdateChassisButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedChassis = ChassisDataGrid.SelectedItems;
+            int chassisSize = selectedChassis.Count;
+
+            for (var i = 0; i < chassisSize; i++)
+            {
+                DataRowView row = (DataRowView)ChassisDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Sasiu chassis = _client.FindChassisById(id);
+
+                chassis.CodSasiu = row["CodSasiu"].ToString();
+                chassis.Denumire = row["Denumire"].ToString();
+
+                _client.UpdateChassis(chassis);
+            }
+        }
+        
     }
 }

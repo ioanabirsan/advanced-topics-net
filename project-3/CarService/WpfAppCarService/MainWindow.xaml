@@ -310,13 +310,13 @@
                         <!-- View all orders -->
                         <DataGrid Name="OrdersDataGrid"
                                   ItemsSource="{Binding}"
-                                  FontWeight="Normal" 
+                                  FontWeight="Normal"
                                   Margin="0 50 0 50" Padding="20" ColumnWidth="*" Height="500"
                                   VerticalScrollBarVisibility="Visible"
                                   Visibility="Hidden"
                                   AlternatingRowBackground="AliceBlue" BorderThickness="2" />
 
-                        <ScrollViewer VerticalScrollBarVisibility="Visible" Height="650">
+                        <ScrollViewer Name="AddOrderScrollViewer" VerticalScrollBarVisibility="Visible" Height="650">
                             <StackPanel Name="AddOrderStackPanel" Background="AliceBlue" Margin="0 30 0 30"
                                         Loaded="AddOrderStackPanel_OnLoaded">
                                 <Grid>
@@ -326,7 +326,7 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <DataGrid Name="DisplayOrderCarsDataGrid" 
+                                    <DataGrid Name="DisplayOrderCarsDataGrid"
                                               Grid.Column="0"
                                               ItemsSource="{Binding}"
                                               FontWeight="Normal" Height="150"
@@ -411,7 +411,8 @@
                                     <StackPanel Grid.Column="0">
                                         <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Materials</TextBlock>
                                         <DataGrid Name="DisplayOrderMaterialsDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}" SelectionChanged="DisplayOrderMaterialsDataGrid_OnSelectionChanged"
+                                                  ItemsSource="{Binding}"
+                                                  SelectionChanged="DisplayOrderMaterialsDataGrid_OnSelectionChanged"
                                                   FontWeight="Normal" Height="150"
                                                   Margin="20 0 20 20" Padding="10" ColumnWidth="*"
                                                   VerticalScrollBarVisibility="Visible"
@@ -421,7 +422,8 @@
                                     <StackPanel Grid.Column="1">
                                         <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Mechanics</TextBlock>
                                         <DataGrid Name="DisplayOrderMechanicsDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}" SelectionChanged="DisplayOrderMechanicsDataGrid_OnSelectionChanged"
+                                                  ItemsSource="{Binding}"
+                                                  SelectionChanged="DisplayOrderMechanicsDataGrid_OnSelectionChanged"
                                                   FontWeight="Normal" Height="150"
                                                   Margin="20 0 20 20" Padding="10" ColumnWidth="*"
                                                   VerticalScrollBarVisibility="Visible"
@@ -438,7 +440,8 @@
                                     <StackPanel Grid.Column="0">
                                         <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Operations</TextBlock>
                                         <DataGrid Name="DisplayOrderOperationsDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}" SelectionChanged="DisplayOrderOperationsDataGrid_OnSelectionChanged"
+                                                  ItemsSource="{Binding}"
+                                                  SelectionChanged="DisplayOrderOperationsDataGrid_OnSelectionChanged"
                                                   FontWeight="Normal" Height="150"
                                                   Margin="20 0 20 20" Padding="10" ColumnWidth="*"
                                                   VerticalScrollBarVisibility="Visible"
@@ -448,7 +451,8 @@
                                     <StackPanel Grid.Column="1">
                                         <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Images</TextBlock>
                                         <DataGrid Name="DisplayOrderImagesDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}" SelectionChanged="DisplayOrderImagesDataGrid_OnSelectionChanged"
+                                                  ItemsSource="{Binding}"
+                                                  SelectionChanged="DisplayOrderImagesDataGrid_OnSelectionChanged"
                                                   FontWeight="Normal" Height="150"
                                                   Margin="20 0 20 20" Padding="10" ColumnWidth="*"
                                                   VerticalScrollBarVisibility="Visible"
@@ -465,7 +469,8 @@
                                     <StackPanel Grid.Column="0">
                                         <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Orders</TextBlock>
                                         <DataGrid Name="DisplayOrderOrdersDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}" SelectionChanged="DisplayOrderOrdersDataGrid_OnSelectionChanged"
+                                                  ItemsSource="{Binding}"
+                                                  SelectionChanged="DisplayOrderOrdersDataGrid_OnSelectionChanged"
                                                   FontWeight="Normal"
                                                   Margin="20 0 20 20" Padding="10" ColumnWidth="*"
                                                   VerticalScrollBarVisibility="Visible"
@@ -487,7 +492,100 @@
             </TabItem>
 
             <TabItem Header="Chassis" Padding="40 10 40 10" Width="200" Background="DarkTurquoise" FontWeight="Bold">
-                <Label>Chassis</Label>
+                <Border Padding="20">
+
+                    <StackPanel>
+                        <Grid Name="ChassisGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="AddChassisButton"
+                                    Click="AddChassisButton_OnClick"
+                                    Padding="10" Margin="0 0 50 0"
+                                    Grid.Column="0" Content="Add"
+                                    Background="DarkTurquoise" FontWeight="DemiBold" />
+                            <Button x:Name="ViewAllChassisButton"
+                                    Click="ViewAllChassisButton_OnClick"
+                                    Padding="10" Margin="50 0 0 0"
+                                    Grid.Column="1" Content="View all"
+                                    Background="DarkTurquoise" FontWeight="DemiBold" />
+                        </Grid>
+
+                        <!-- View all chassis -->
+                        <StackPanel Name="DisplayAllChassisStackPanel" Visibility="Hidden">
+                            <DataGrid Name="ChassisDataGrid"
+                                      ItemsSource="{Binding}" 
+                                      FontWeight="Normal"
+                                      Margin="200 50 200 10" Padding="20" ColumnWidth="*" Height="400"
+                                      VerticalScrollBarVisibility="Visible"
+                                      Visibility="Hidden"
+                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+
+                            <StackPanel Orientation="Horizontal" >
+                                <Button x:Name="UpdateChassisButton" 
+                                        Click="UpdateChassisButton_OnClick"
+                                        Padding="3" Margin="200 10 20 10" Height="30" Width="80"
+                                        Content="Update"
+                                        Background="DarkTurquoise" FontWeight="DemiBold" />
+
+                                <Button x:Name="DeleteChassisButton" 
+                                        Click="DeleteChassisButton_OnClick"
+                                        Padding="3" Margin="0 10 0 10" Height="30" Width="80"
+                                        Content="Delete"
+                                        Background="DarkTurquoise" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Name="AddNewChassisStackPanel"
+                                    Visibility="Hidden"
+                                    Margin="250 50 250 50"
+                                    Background="AliceBlue">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Code</TextBlock>
+                                    <TextBox DockPanel.Dock="Top" x:Name="AddChassisCodeTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddChassisCodeTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
+                                    <TextBox DockPanel.Dock="Top" x:Name="AddChassisNameTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddChassisNameTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="AddNewChassisButton"
+                                        Click="AddNewChassisButton_OnClick"
+                                        Padding="3" Margin="20 10 10 20" Height="30" Width="80"
+                                        Content="Add"
+                                        Background="DarkTurquoise" FontWeight="DemiBold" />
+
+                                <Button x:Name="NewChassisButton"
+                                        Click="NewChassisButton_OnClick"
+                                        Padding="3" Margin="0 10 10 20" Height="30" Width="80"
+                                        Content="New"
+                                        Background="DarkTurquoise" FontWeight="DemiBold" />
+                                <TextBlock Name="AddChassisDisplayInfoTextBlock"
+                                           FontSize="12" Padding="3" FontWeight="Bold" Margin="0 10 10 20"/>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </StackPanel>
+                </Border>
             </TabItem>
 
             <TabItem Header="Details" Padding="40 10 40 10" Width="200" Background="LightBlue" FontWeight="Bold">

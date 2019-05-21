@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -31,6 +32,16 @@ namespace CarService.Models.Auto
         [Key, ForeignKey("Client")]
         [DataMember]
         public int ClientId { get; set; }
+
+        [DataMember]
+        public virtual Sasiu Sasiu { get; set; }
+
+        [DataMember]
+        public virtual Client Client { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DataMember]
+        public virtual List<Comanda> Comenzi { get; set; }
 
     }
 }
