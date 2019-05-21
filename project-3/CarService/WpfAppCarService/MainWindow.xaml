@@ -50,7 +50,7 @@
                         <DataGrid x:Name="CustomersDataGrid"
                                   ItemsSource="{Binding}"
                                   FontWeight="Normal"
-                                  Margin="100 50 100 50"
+                                  Margin="0 50 0 50"
                                   Padding="10" ColumnWidth="*" Height="500"
                                   VerticalScrollBarVisibility="Visible"
                                   Visibility="Hidden"
@@ -60,7 +60,7 @@
 
                         <StackPanel x:Name="AddCustomerStackPanel"
                                     Visibility="Hidden"
-                                    Margin="300 50 300 50"
+                                    Margin="300 50 300 20"
                                     Background="AliceBlue">
                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 0">Name</TextBlock>
                             <TextBox x:Name="AddCustomerNameTextBox"
@@ -78,9 +78,9 @@
                             <TextBox x:Name="AddCustomerAddressTextBox"
                                      VerticalContentAlignment="Center"
                                      PreviewTextInput="AddCustomerAddressTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 10"/>
+                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10"/>
 
-                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 0 20 0">City</TextBlock>
+                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">City</TextBlock>
                             <TextBox x:Name="AddCustomerCityTextBox"
                                      VerticalContentAlignment="Center"
                                      PreviewTextInput="AddCustomerCityTextBox_OnPreviewTextInput"

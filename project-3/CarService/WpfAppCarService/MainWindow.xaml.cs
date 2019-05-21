@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
@@ -27,10 +28,13 @@ namespace WpfAppCarService
             }
         };
 
-        private string EmailPattern = @"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$";
-        private string NamePattern = @"^[A-Z][A-Za-z -]{2,14}$";
         private string AutoNumberPattern = @"^([A-Z]{2}[0-9]{3}[A-Z]{3})|([A-Z]{2}[0-9]{8})$";
         private string ChassisSeriesPattern = @"^[A-Z0-9]{6}[0-9][A-Z][A-Z0-9]{1,17}$";
+        private string EmailPattern = @"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$";
+        private string NamePattern = @"^[A-Z][A-Za-z -]{2,14}$";
+        private string AddressPattern = @"^[A-Za-z -.,0-9]{5,50}$";
+        private string CityPattern = @"[A-Z][a-z]{3,9}$";
+        private string CountyPattern = @"[A-Z][a-z]{3,9}$";
         private string PhoneNumberPattern = @"^\d{13}$";
 
         public MainWindow()
@@ -42,6 +46,7 @@ namespace WpfAppCarService
         {
             CustomersDataGrid.Visibility = Visibility.Collapsed;
             AddCustomerStackPanel.Visibility = Visibility.Collapsed;
+            AddCustomerButtonsStackPanel.Visibility = Visibility.Collapsed;
 
             SearchCustomerButtonsStackPanel.Visibility = Visibility.Visible;
             SearchCustomerDataGrid.Visibility = Visibility.Visible;
@@ -255,6 +260,7 @@ namespace WpfAppCarService
         private void AddCustomerButton_OnClick(object sender, RoutedEventArgs e)
         {
             AddCustomerStackPanel.Visibility = Visibility.Visible;
+            AddCustomerButtonsStackPanel.Visibility = Visibility.Visible;
 
             SearchCustomerButtonsStackPanel.Visibility = Visibility.Hidden;
             SearchCustomersInputGrid.Visibility = Visibility.Collapsed;
@@ -266,52 +272,117 @@ namespace WpfAppCarService
 
         private void AddCustomerNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateField(NamePattern, AddCustomerNameTextBox);
         }
 
+        private void ValidateField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            AddNewCustomerButton.IsEnabled = isValidExpression;
+            AddCustomerDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+        
         private void AddCustomerFirstNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateField(NamePattern, AddCustomerFirstNameTextBox);
         }
 
         private void AddCustomerAddressTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateField(AddressPattern, AddCustomerAddressTextBox);
         }
 
         private void AddCustomerCityTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateField(CityPattern, AddCustomerCityTextBox);
         }
 
         private void AddCustomerCountyTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateField(CountyPattern, AddCustomerCountyTextBox);
         }
 
         private void AddCustomerPhoneNumberTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateField(PhoneNumberPattern, AddCustomerPhoneNumberTextBox);
         }
 
         private void AddCustomerEmailCheckbox_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AddCustomerEmailTextBox.IsEnabled = AddCustomerEmailCheckbox.IsChecked == true;
         }
 
         private void AddCustomerEmailTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateField(EmailPattern, AddCustomerEmailTextBox);
+
+            bool invalidExpression = _client.ExistsCustomer(AddCustomerEmailTextBox.Text);
+            AddNewCustomerButton.IsEnabled = !invalidExpression;
+            AddCustomerDisplayInfoTextBlock.Text = invalidExpression ? "Email is taken." : string.Empty;
         }
 
         private void AddNewCustomerButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            string name = AddCustomerNameTextBox.Text;
+            string firstName = AddCustomerFirstNameTextBox.Text;
+            string address = AddCustomerAddressTextBox.Text;
+            string city = AddCustomerCityTextBox.Text;
+            string county = AddCustomerCountyTextBox.Text;
+            string phoneNumber = AddCustomerPhoneNumberTextBox.Text;
+            string email = AddCustomerEmailTextBox.Text;
+
+            if (!FieldsCompleted(name, firstName, address, city, county, phoneNumber))
+            {
+                AddCustomerDisplayInfoTextBlock.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                AddNewCustomerButton.IsEnabled = true;
+                List<Auto> cars = new List<Auto>();
+                Client client = new Client()
+                {
+                    Nume = name,
+                    Prenume = firstName,
+                    Adresa = address,
+                    Localitate = city,
+                    Judet = county,
+                    Telefon = phoneNumber,
+                    Email = email,
+                    Automobile = cars.ToArray()
+                };
+
+                _client.AddCustomer(client);
+
+                AddCustomerDisplayInfoTextBlock.Text = @"Client added.";
+                AddCustomerDisplayInfoTextBlock.Visibility = Visibility.Visible;
+            }
         }
 
         private void NewCustomerButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AddCustomerDisplayInfoTextBlock.Visibility = Visibility.Hidden;
+            AddNewCustomerButton.IsEnabled = false;
+
+            AddCustomerNameTextBox.Text = "";
+            AddCustomerFirstNameTextBox.Text = "";
+            AddCustomerAddressTextBox.Text = "";
+            AddCustomerCityTextBox.Text = "";
+            AddCustomerCountyTextBox.Text = "";
+            AddCustomerPhoneNumberTextBox.Text = "";
+            AddCustomerEmailTextBox.Text = "";
+        }
+
+        private bool FieldsCompleted(string name, string firstName, string address, string city, string county,
+            string phoneNumber)
+        {
+            return !string.IsNullOrEmpty(name)
+                   && !string.IsNullOrEmpty(firstName)
+                   && !string.IsNullOrEmpty(address)
+                   && !string.IsNullOrEmpty(city)
+                   && !string.IsNullOrEmpty(county)
+                   && !string.IsNullOrEmpty(phoneNumber);
         }
     }
 }
