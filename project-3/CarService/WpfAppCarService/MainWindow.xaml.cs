@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -36,6 +37,10 @@ namespace WpfAppCarService
         private string CityPattern = @"[A-Z][a-z]{3,9}$";
         private string CountyPattern = @"[A-Z][a-z]{3,9}$";
         private string PhoneNumberPattern = @"^\d{13}$";
+        private decimal _totalCost = 0m;
+        private decimal _serviceFee = 50m;
+        private string OrderDescriptionPattern = @"^[A-Z][A-Za-z -,.0-9]{3,1023}$";
+        private string OrderKmPattern = @"^[1-9][0-9]*$";
 
         public MainWindow()
         {
@@ -89,7 +94,7 @@ namespace WpfAppCarService
             dataGrid.ItemsSource = dataTable.DefaultView;
             dataGrid.CanUserAddRows = false;
             dataGrid.Visibility = Visibility.Visible;
-            dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            //dataGrid.Columns[0].Visibility = Visibility.Hidden;
             dataGrid.ColumnHeaderHeight = 50;
             dataGrid.CellStyle = _dataGridCellStyle;
         }
@@ -200,8 +205,8 @@ namespace WpfAppCarService
         private void AddCustomerCarChassisSeriesTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             ValidateAddCarField(ChassisSeriesPattern, AddCustomerCarChassisSeriesTextBox);
-            
-            DataRowView row = (DataRowView)DisplayChassisDataGrid.SelectedItem;
+
+            DataRowView row = (DataRowView) DisplayChassisDataGrid.SelectedItem;
             string codSasiu = row["CodSasiu"].ToString();
 
             string chassisSeries = AddCustomerCarChassisSeriesTextBox.Text;
@@ -218,9 +223,9 @@ namespace WpfAppCarService
             string phoneNumber = SearchCustomerPhoneNumberTextBox.Text;
             var customer = _client.FindCustomer(name, firstName, phoneNumber);
 
-            DataRowView row = (DataRowView)DisplayChassisDataGrid.SelectedItem;
+            DataRowView row = (DataRowView) DisplayChassisDataGrid.SelectedItem;
             string codSasiu = row["CodSasiu"].ToString();
-            
+
             Sasiu sasiu = _client.FindChassisByCode(codSasiu);
 
             string autoNumber = AddCustomerCarAutoNumberTextBox.Text;
@@ -284,7 +289,7 @@ namespace WpfAppCarService
             AddNewCustomerButton.IsEnabled = isValidExpression;
             AddCustomerDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
-        
+
         private void AddCustomerFirstNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             ValidateAddCustomerField(NamePattern, AddCustomerFirstNameTextBox);
@@ -386,24 +391,217 @@ namespace WpfAppCarService
                    && !string.IsNullOrEmpty(phoneNumber);
         }
 
+        private void ValidateAddOrderField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            AddNewOrderButton.IsEnabled = isValidExpression;
+        }
+
         private void InServiceCheckbox_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AddOrderKmTextBox.IsEnabled = InServiceCheckbox.IsChecked == true;
         }
 
         private void AddOrderDescriptionTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateAddOrderField(OrderDescriptionPattern, AddOrderDescriptionTextBox);
         }
 
         private void AddOrderKmTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidateAddOrderField(OrderKmPattern, AddOrderKmTextBox);
         }
 
         private void AddNewOrderButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            DataRowView row = (DataRowView) DisplayOrderCarsDataGrid.SelectedItem;
+            string autoIdText = row["Id"].ToString();
+            int autoId = Convert.ToInt32(autoIdText);
+
+            string startDate = OrderStartDatePicker.Text;
+            string endDate = OrderEndDatePicker.Text;
+            string description = AddOrderDescriptionTextBox.Text;
+            object state = AddOrderStateCombobox.SelectedItem;
+
+            AddNewOrderButton.IsEnabled = true;
+            Comanda order = new Comanda()
+            {
+                AutoId = autoId,
+                DataFinalizare = Convert.ToDateTime(endDate),
+                DataProgramare = Convert.ToDateTime(startDate),
+                DataSystem = DateTime.Now,
+                Descriere = description,
+                KmBord = Convert.ToInt32(AddOrderKmTextBox.Text),
+                StareComanda = getOrderState(Convert.ToString(state)),
+                ValoarePiese = _totalCost
+            };
+
+            _client.AddOrder(order);
+
+            string getOrdersQuery = $"SELECT * FROM Comenzi WHERE AutoId = {autoId}";
+            ExecuteQuery(getOrdersQuery, DisplayOrderOrdersDataGrid);
+        }
+
+        private StareComanda getOrderState(string state)
+        {
+            switch (state)
+            {
+                case "Waiting":
+                    return StareComanda.InAsteptare;
+                case "Executed":
+                    return StareComanda.Executata;
+                case "Rejected":
+                    return StareComanda.Refuzata;
+                default:
+                    return StareComanda.Necunoscuta;
+            }
+        }
+
+        private void AddOrderStackPanel_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string getCars = "SELECT * FROM Automobile";
+            ExecuteQuery(getCars, DisplayOrderCarsDataGrid);
+
+            string getMaterials = "SELECT Id, Denumire FROM Materiale";
+            ExecuteQuery(getMaterials, DisplayOrderMaterialsDataGrid);
+
+            string getOperations = "SELECT Id, Denumire FROM Operatii";
+            ExecuteQuery(getOperations, DisplayOrderOperationsDataGrid);
+
+            string getMechanics = "SELECT Id, Nume, Prenume FROM Mecanici";
+            ExecuteQuery(getMechanics, DisplayOrderMechanicsDataGrid);
+
+            string getImages = "SELECT Id, Titlu, Data FROM Imagini";
+            ExecuteQuery(getImages, DisplayOrderImagesDataGrid);
+
+            string getOrders = "SELECT Id, Descriere, StareComanda FROM Comenzi";
+            ExecuteQuery(getOrders, DisplayOrderOrdersDataGrid);
+        }
+
+        private void AddOrderDetailsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            List<Material> materials = new List<Material>();
+            List<Operatie> operations = new List<Operatie>();
+            List<Mecanic> mechanics = new List<Mecanic>();
+            List<Imagine> images = new List<Imagine>();
+
+            DataRowView selectedRow = (DataRowView) DisplayOrderOrdersDataGrid.SelectedItem;
+            string autoIdText = selectedRow["Id"].ToString();
+            int orderId = Convert.ToInt32(autoIdText);
+
+            IList selectedMaterials = DisplayOrderMaterialsDataGrid.SelectedItems;
+            int materialsSize = selectedMaterials.Count;
+
+            for (var i = 0; i < materialsSize; i++)
+            {
+                DataRowView row = (DataRowView)DisplayOrderMaterialsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+
+                Console.WriteLine(textId); // a luat bine
+
+                int id = Convert.ToInt32(textId);
+
+                Material material = _client.FindMaterialById(id);
+                _totalCost += material.Pret;
+
+                material.Cantitate -= 1;
+                _client.UpdateMaterial(material);
+
+                materials.Add(material);
+
+                // merge bine
+                foreach (var item in materials)
+                {
+                    Console.WriteLine(item.Denumire, material.Id);
+                }
+            }
+
+            IList selectedOperations = DisplayOrderOperationsDataGrid.SelectedItems;
+            int operationsSize = selectedOperations.Count;
+
+            for (var i = 0; i < operationsSize; i++)
+            {
+                DataRowView row = (DataRowView)DisplayOrderOperationsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Operatie operation = _client.FindOperationById(id);
+                operations.Add(operation);
+            }
+
+            IList selectedMechanics = DisplayOrderMechanicsDataGrid.SelectedItems;
+            int mechanicsSize = selectedMechanics.Count;
+
+            for (var i = 0; i < mechanicsSize; i++)
+            {
+                DataRowView row = (DataRowView)DisplayOrderMechanicsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Mecanic mecanic = _client.FindMecanicById(id);
+                mechanics.Add(mecanic);
+            }
+
+            IList selectedImages = DisplayOrderImagesDataGrid.SelectedItems;
+            int imagesSize = selectedImages.Count;
+
+            for (var i = 0; i < imagesSize; i++)
+            {
+                DataRowView row = (DataRowView)DisplayOrderImagesDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Imagine image = _client.FindImageById(id);
+                images.Add(image);
+            }
+
+            DetaliuComanda orderDetails = new DetaliuComanda()
+            {
+                ComandaId = orderId,
+                Imagini = images.ToArray(),
+                Mecanici = mechanics.ToArray(),
+                Materiale = materials.ToArray(),
+                Operatii = operations.ToArray()
+            };
+
+            _client.AddOrderDetails(orderDetails);
+
+            Comanda order = _client.FindOrderById(orderId);
+            order.ValoarePiese = _totalCost + _serviceFee;
+            _client.UpdateOrder(order);
+        }
+
+        private void DisplayOrderMaterialsDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.RemovedItems)
+                DisplayOrderMaterialsDataGrid.SelectedItems.Add(item);
+
+        }
+
+        private void DisplayOrderMechanicsDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.RemovedItems)
+                DisplayOrderMechanicsDataGrid.SelectedItems.Add(item);
+        }
+
+        private void DisplayOrderOperationsDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.RemovedItems)
+                DisplayOrderOperationsDataGrid.SelectedItems.Add(item);
+        }
+
+        private void DisplayOrderImagesDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.RemovedItems)
+                DisplayOrderImagesDataGrid.SelectedItems.Add(item);
+        }
+
+        private void DisplayOrderOrdersDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.RemovedItems)
+                DisplayOrderOrdersDataGrid.SelectedItems.Add(item);
         }
     }
 }
