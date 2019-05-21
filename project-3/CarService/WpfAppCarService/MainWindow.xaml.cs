@@ -80,7 +80,8 @@ namespace WpfAppCarService
 
         private void AddOrderButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AddOrderStackPanel.Visibility = Visibility.Visible;
+            OrdersDataGrid.Visibility = Visibility.Collapsed;
         }
 
         private void ApplyStyle(DataTable dataTable, DataGrid dataGrid)
@@ -272,10 +273,10 @@ namespace WpfAppCarService
 
         private void AddCustomerNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ValidateField(NamePattern, AddCustomerNameTextBox);
+            ValidateAddCustomerField(NamePattern, AddCustomerNameTextBox);
         }
 
-        private void ValidateField(string pattern, TextBox textBox)
+        private void ValidateAddCustomerField(string pattern, TextBox textBox)
         {
             var regex = new Regex(pattern);
             var isValidExpression = regex.IsMatch(textBox.Text);
@@ -286,27 +287,27 @@ namespace WpfAppCarService
         
         private void AddCustomerFirstNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ValidateField(NamePattern, AddCustomerFirstNameTextBox);
+            ValidateAddCustomerField(NamePattern, AddCustomerFirstNameTextBox);
         }
 
         private void AddCustomerAddressTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ValidateField(AddressPattern, AddCustomerAddressTextBox);
+            ValidateAddCustomerField(AddressPattern, AddCustomerAddressTextBox);
         }
 
         private void AddCustomerCityTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ValidateField(CityPattern, AddCustomerCityTextBox);
+            ValidateAddCustomerField(CityPattern, AddCustomerCityTextBox);
         }
 
         private void AddCustomerCountyTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ValidateField(CountyPattern, AddCustomerCountyTextBox);
+            ValidateAddCustomerField(CountyPattern, AddCustomerCountyTextBox);
         }
 
         private void AddCustomerPhoneNumberTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ValidateField(PhoneNumberPattern, AddCustomerPhoneNumberTextBox);
+            ValidateAddCustomerField(PhoneNumberPattern, AddCustomerPhoneNumberTextBox);
         }
 
         private void AddCustomerEmailCheckbox_OnClick(object sender, RoutedEventArgs e)
@@ -316,7 +317,7 @@ namespace WpfAppCarService
 
         private void AddCustomerEmailTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ValidateField(EmailPattern, AddCustomerEmailTextBox);
+            ValidateAddCustomerField(EmailPattern, AddCustomerEmailTextBox);
 
             bool invalidExpression = _client.ExistsCustomer(AddCustomerEmailTextBox.Text);
             AddNewCustomerButton.IsEnabled = !invalidExpression;
@@ -383,6 +384,26 @@ namespace WpfAppCarService
                    && !string.IsNullOrEmpty(city)
                    && !string.IsNullOrEmpty(county)
                    && !string.IsNullOrEmpty(phoneNumber);
+        }
+
+        private void InServiceCheckbox_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddOrderDescriptionTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddOrderKmTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AddNewOrderButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
