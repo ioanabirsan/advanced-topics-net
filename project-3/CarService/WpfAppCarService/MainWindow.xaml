@@ -756,7 +756,7 @@
                             </TabItem>
 
                             <TabItem Header="Mechanics" Padding="20 10 20 10" Width="150" Background="LightBlue"
-                                     FontWeight="Bold">
+                                     FontWeight="Bold" Name="MechanicsTabItem" Loaded="MechanicsTabItem_OnLoaded">
                                 <StackPanel Background="AliceBlue">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -766,13 +766,13 @@
                                         <StackPanel Grid.Column="0">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMecanicNameTextBox"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMecanicNameTextBox_OnPreviewTextInput"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">First Name</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMecanicFirstNameTextBox"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMecanicFirstNameTextBox_OnPreviewTextInput"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                     </Grid>
@@ -780,12 +780,12 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="AddMecanicButton"
                                                 Padding="3" Margin="20 10 10 20" Height="30" Width="80"
-                                                Content="Add"
+                                                Content="Add" Click="AddMecanicButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="NewMecanicButton"
                                                 Padding="3" Margin="0 10 10 20" Height="30" Width="80"
-                                                Content="New"
+                                                Content="New" Click="NewMecanicButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                         <TextBlock Name="AddMecanicDisplayInfoTextBlock"
                                                    FontSize="12" Padding="3" FontWeight="Bold" Margin="0 10 10 20" />
@@ -806,13 +806,13 @@
 
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateMecanicButton"
-                                                Click="UpdateChassisButton_OnClick"
+                                                Click="UpdateMecanicButton_OnClick"
                                                 Padding="3" Margin="50 10 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="DeleteMecanicButton"
-                                                Click="DeleteChassisButton_OnClick"
+                                                Click="DeleteMecanicButton_OnClick"
                                                 Padding="3" Margin="0 10 0 10" Height="30" Width="80"
                                                 Content="Delete"
                                                 Background="LightBlue" FontWeight="DemiBold" />
@@ -822,7 +822,7 @@
                             </TabItem>
 
                             <TabItem Header="Operations" Padding="20 10 20 10" Width="150" Background="LightBlue"
-                                     FontWeight="Bold">
+                                     FontWeight="Bold" Name="OperationsTabItem" Loaded="OperationsTabItem_OnLoaded">
                                 <StackPanel Background="AliceBlue">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -831,13 +831,15 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
-                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationNameTextBox"
+                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationNameTextBox" 
+                                                     PreviewTextInput="AddOperationNameTextBox_OnPreviewTextInput"
                                                      VerticalContentAlignment="Center"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Execution Time</TextBlock>
-                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationExecutionTimeTextBox"
+                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationExecutionTimeTextBox" 
+                                                     PreviewTextInput="AddOperationExecutionTimeTextBox_OnPreviewTextInput"
                                                      VerticalContentAlignment="Center"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
@@ -846,12 +848,12 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="AddOperationButton"
                                                 Padding="3" Margin="20 10 10 20" Height="30" Width="80"
-                                                Content="Add"
+                                                Content="Add" Click="AddOperationButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="NewOperationButton"
                                                 Padding="3" Margin="0 10 10 20" Height="30" Width="80"
-                                                Content="New"
+                                                Content="New" Click="NewOperationButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                         <TextBlock Name="AddOperationDisplayInfoTextBlock"
                                                    FontSize="12" Padding="3" FontWeight="Bold" Margin="0 10 10 20" />
@@ -872,13 +874,13 @@
 
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateOperationsButton"
-                                                Click="UpdateChassisButton_OnClick"
+                                                Click="UpdateOperationsButton_OnClick"
                                                 Padding="3" Margin="50 10 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="DeleteOperationsButton"
-                                                Click="DeleteChassisButton_OnClick"
+                                                Click="DeleteOperationsButton_OnClick"
                                                 Padding="3" Margin="0 10 0 10" Height="30" Width="80"
                                                 Content="Delete"
                                                 Background="LightBlue" FontWeight="DemiBold" />

@@ -43,6 +43,7 @@ namespace WpfAppCarService
         private string OrderKmPattern = @"^[1-9][0-9]*$";
         private string ChassisCodePattern = @"^[0-9][A-Z]$";
         private string ChassisNamePattern = @"^[A-Z][A-Za-z0-9 -]{3,24}$";
+        private string OperationNamePattern = "^[A-Z][A-Za-z ]{3,255}$";
 
         public MainWindow()
         {
@@ -685,7 +686,7 @@ namespace WpfAppCarService
 
             for (var i = 0; i < chassisSize; i++)
             {
-                DataRowView row = (DataRowView)ChassisDataGrid.SelectedItems[i];
+                DataRowView row = (DataRowView) ChassisDataGrid.SelectedItems[i];
                 string textId = row["Id"].ToString();
                 int id = Convert.ToInt32(textId);
 
@@ -700,7 +701,7 @@ namespace WpfAppCarService
 
             for (var i = 0; i < chassisSize; i++)
             {
-                DataRowView row = (DataRowView)ChassisDataGrid.SelectedItems[i];
+                DataRowView row = (DataRowView) ChassisDataGrid.SelectedItems[i];
                 string textId = row["Id"].ToString();
                 int id = Convert.ToInt32(textId);
 
@@ -712,6 +713,200 @@ namespace WpfAppCarService
                 _client.UpdateChassis(chassis);
             }
         }
-        
+
+        private void AddOperationNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex(OperationNamePattern);
+            var isValidExpression = regex.IsMatch(AddOperationNameTextBox.Text);
+
+            AddOperationButton.IsEnabled = isValidExpression;
+            AddOperationDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void AddOperationExecutionTimeTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(AddOperationExecutionTimeTextBox.Text))
+            {
+                var isValidExpression = Convert.ToDecimal(AddOperationExecutionTimeTextBox.Text) > 0;
+                AddOperationButton.IsEnabled = isValidExpression;
+                AddOperationDisplayInfoTextBlock.Text =
+                    !isValidExpression ? "Value must be bigger than 0." : string.Empty;
+            }
+        }
+
+        private void AddOperationButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            string name = AddOperationNameTextBox.Text;
+            string executionTime = AddOperationExecutionTimeTextBox.Text;
+
+            if (!FieldsCompleted(name, executionTime))
+            {
+                AddOperationDisplayInfoTextBlock.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                AddOperationButton.IsEnabled = true;
+                Operatie operation = new Operatie()
+                {
+                    Denumire = name,
+                    TimpExecutie = Convert.ToDecimal(executionTime)
+                };
+
+                _client.AddOperation(operation);
+
+                AddOperationDisplayInfoTextBlock.Text = @"Operation added.";
+                AddOperationDisplayInfoTextBlock.Visibility = Visibility.Visible;
+
+                OperationsTabItem_OnLoaded(sender, e);
+            }
+        }
+
+        private void NewOperationButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddOperationDisplayInfoTextBlock.Visibility = Visibility.Hidden;
+            AddOperationNameTextBox.Text = "";
+            AddOperationExecutionTimeTextBox.Text = "";
+        }
+
+        private void UpdateOperationsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedOperations = OperationsDataGrid.SelectedItems;
+            int operationsSize = selectedOperations.Count;
+
+            for (var i = 0; i < operationsSize; i++)
+            {
+                DataRowView row = (DataRowView) OperationsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Operatie operation = _client.FindOperationById(id);
+                operation.Denumire = row["Denumire"].ToString();
+                operation.TimpExecutie = Convert.ToDecimal(row["TimpExecutie"].ToString());
+
+                _client.UpdateOperation(operation);
+            }
+
+            OperationsTabItem_OnLoaded(sender, e);
+        }
+
+        private void DeleteOperationsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedOperations = OperationsDataGrid.SelectedItems;
+            int operationsSize = selectedOperations.Count;
+
+            for (var i = 0; i < operationsSize; i++)
+            {
+                DataRowView row = (DataRowView) OperationsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                _client.DeleteOperation(id);
+            }
+
+            OperationsTabItem_OnLoaded(sender, e);
+        }
+
+        private void OperationsTabItem_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string getOperations = "SELECT * FROM Operatii";
+            ExecuteQuery(getOperations, OperationsDataGrid);
+        }
+
+        private void MechanicsTabItem_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string getMechanics = "SELECT * FROM Mecanici";
+            ExecuteQuery(getMechanics, MechanicsDataGrid);
+        }
+
+        private void AddMecanicNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            ValidateMecanicField(NamePattern, AddMecanicFirstNameTextBox);
+        }
+
+        private void AddMecanicFirstNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            ValidateMecanicField(NamePattern, AddMecanicNameTextBox);
+        }
+
+        private void ValidateMecanicField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            AddMecanicButton.IsEnabled = isValidExpression;
+            AddMecanicDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void AddMecanicButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            string name = AddMecanicNameTextBox.Text;
+            string firstName = AddMecanicFirstNameTextBox.Text;
+
+            if (!FieldsCompleted(name, firstName))
+            {
+                AddMecanicDisplayInfoTextBlock.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                AddMecanicButton.IsEnabled = true;
+                Mecanic mechanic = new Mecanic()
+                {
+                    Nume = name,
+                    Prenume = firstName
+                };
+
+                _client.AddMecanic(mechanic);
+
+                AddMecanicDisplayInfoTextBlock.Text = @"Mecanic added.";
+                AddMecanicDisplayInfoTextBlock.Visibility = Visibility.Visible;
+            }
+
+            MechanicsTabItem_OnLoaded(sender, e);
+        }
+
+        private void NewMecanicButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddMecanicDisplayInfoTextBlock.Visibility = Visibility.Hidden;
+            AddMecanicFirstNameTextBox.Text = "";
+            AddMecanicNameTextBox.Text = "";
+        }
+
+        private void UpdateMecanicButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedMechanics = MechanicsDataGrid.SelectedItems;
+            int mechanicsSize = selectedMechanics.Count;
+
+            for (var i = 0; i < mechanicsSize; i++)
+            {
+                DataRowView row = (DataRowView)MechanicsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Mecanic mecanic = _client.FindMecanicById(id);
+                mecanic.Nume = row["Nume"].ToString();
+                mecanic.Prenume = row["Prenume"].ToString();
+
+                _client.UpdateMecanic(mecanic);
+            }
+
+            MechanicsTabItem_OnLoaded(sender, e);
+        }
+
+        private void DeleteMecanicButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedMechanics = MechanicsDataGrid.SelectedItems;
+            int mechanicsSize = selectedMechanics.Count;
+
+            for (var i = 0; i < mechanicsSize; i++)
+            {
+                DataRowView row = (DataRowView)MechanicsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                _client.DeleteMecanic(id);
+            }
+
+            MechanicsTabItem_OnLoaded(sender, e);
+        }
     }
 }
