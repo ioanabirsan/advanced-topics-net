@@ -1037,12 +1037,12 @@ namespace WpfAppCarService
 
         private void AddImageTitleTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            
+            ValidateImageField(ImageTitlePattern, AddImageTitleTextBox);
         }
 
         private void AddImageDescriptionTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-           
+           ValidateImageField(ImageDescriptionPattern, AddImageDescriptionTextBox);
         }
 
         // https://www.godo.dev/tutorials/wpf-load-external-image/
@@ -1105,17 +1105,58 @@ namespace WpfAppCarService
 
         private void NewImageButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AddImageDisplayInfoTextBlock.Visibility = Visibility.Hidden;
+            AddImageDescriptionTextBox.Text = "";
+            AddImageTitleTextBox.Text = "";
+            ImagePhoto.Source = null;
         }
 
         private void UpdateImageButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            IList selectedImages = ImagesDataGrid.SelectedItems;
+            int imagesSize = selectedImages.Count;
+
+            for (var i = 0; i < imagesSize; i++)
+            {
+                DataRowView row = (DataRowView)ImagesDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Imagine image = _client.FindImageById(id);
+                image.Descriere = row["Descriere"].ToString();
+                image.Data = Convert.ToDateTime(row["Data"].ToString());
+                image.Titlu = row["Titlu"].ToString();
+
+                _client.UpdateImageAsync(image);
+            }
+
+            ImagesTabItem_OnLoaded(sender, e);
         }
 
         private void DeleteImageButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            IList selectedImages = ImagesDataGrid.SelectedItems;
+            int imagesSize = selectedImages.Count;
+
+            for (var i = 0; i < imagesSize; i++)
+            {
+                DataRowView row = (DataRowView)ImagesDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                _client.DeleteImage(id);
+            }
+
+            ImagesTabItem_OnLoaded(sender, e);
+        }
+
+        private void ValidateImageField(string pattern, TextBox textBox)
+        {
+            var regex = new Regex(pattern);
+            var isValidExpression = regex.IsMatch(textBox.Text);
+
+            AddImageButton.IsEnabled = isValidExpression;
+            AddImageDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
     }
 }

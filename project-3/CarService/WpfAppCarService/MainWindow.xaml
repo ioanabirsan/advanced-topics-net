@@ -653,7 +653,7 @@
                                         <DataGrid Name="ImagesDataGrid"
                                                   ItemsSource="{Binding}"
                                                   FontWeight="Normal"
-                                                  Margin="50 20 50 10" Padding="20" ColumnWidth="*" Height="150"
+                                                  Margin="50 0 50 10" Padding="20" ColumnWidth="*" Height="200"
                                                   VerticalScrollBarVisibility="Visible"
                                                   AlternatingRowBackground="AliceBlue" BorderThickness="2" />
                                     </StackPanel>
@@ -661,13 +661,13 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateImageButton"
                                                 Click="UpdateImageButton_OnClick"
-                                                Padding="3" Margin="50 10 20 10" Height="30" Width="80"
+                                                Padding="3" Margin="50 0 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="DeleteImageButton"
                                                 Click="DeleteImageButton_OnClick"
-                                                Padding="3" Margin="0 10 0 10" Height="30" Width="80"
+                                                Padding="3" Margin="0 0 0 10" Height="30" Width="80"
                                                 Content="Delete"
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                     </StackPanel>
