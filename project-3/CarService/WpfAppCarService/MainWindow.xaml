@@ -489,7 +489,7 @@
                                 <DataGrid Name="OrdersDataGrid"
                                           ItemsSource="{Binding}"
                                           FontWeight="Normal"
-                                          Margin="20 50 20 20" Padding="20" ColumnWidth="*" Height="500"
+                                          Margin="20 50 20 20" Padding="20" ColumnWidth="*" Height="450"
                                           VerticalScrollBarVisibility="Visible"
                                           AlternatingRowBackground="AliceBlue" BorderThickness="2" />
                             </StackPanel>
