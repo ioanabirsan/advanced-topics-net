@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using CarService;
+using Microsoft.Win32;
 
 namespace WpfAppCarService
 {
@@ -29,6 +32,9 @@ namespace WpfAppCarService
             }
         };
 
+        private decimal _totalCost = 0m;
+        private decimal _serviceFee = 50m;
+
         private string AutoNumberPattern = @"^([A-Z]{2}[0-9]{3}[A-Z]{3})|([A-Z]{2}[0-9]{8})$";
         private string ChassisSeriesPattern = @"^[A-Z0-9]{6}[0-9][A-Z][A-Z0-9]{1,17}$";
         private string EmailPattern = @"^[a-zA-Z0-9_.-]+@[a-z.]+.[a-z]+$";
@@ -37,13 +43,14 @@ namespace WpfAppCarService
         private string CityPattern = @"[A-Z][a-z]{3,9}$";
         private string CountyPattern = @"[A-Z][a-z]{3,9}$";
         private string PhoneNumberPattern = @"^\d{13}$";
-        private decimal _totalCost = 0m;
-        private decimal _serviceFee = 50m;
         private string OrderDescriptionPattern = @"^[A-Z][A-Za-z -,.0-9]{3,1023}$";
         private string OrderKmPattern = @"^[1-9][0-9]*$";
         private string ChassisCodePattern = @"^[0-9][A-Z]$";
         private string ChassisNamePattern = @"^[A-Z][A-Za-z0-9 -]{3,24}$";
         private string OperationNamePattern = "^[A-Z][A-Za-z ]{3,255}$";
+        private string MaterialNamePattern = @"^[A-Za-z ]{3,50}$";
+        private string ImageTitlePattern = @"^[a-z0-9]{1,11}.[a-z]{3}$";
+        private string ImageDescriptionPattern = @"^(\w)|(\s){5,256}$";
 
         public MainWindow()
         {
@@ -907,6 +914,208 @@ namespace WpfAppCarService
             }
 
             MechanicsTabItem_OnLoaded(sender, e);
+        }
+
+        private void MaterialsTabItem_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string getMaterials = "SELECT * FROM Materiale";
+            ExecuteQuery(getMaterials, MaterialsDataGrid);
+        }
+
+        private void AddMaterialNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex(MaterialNamePattern);
+            var isValidExpression = regex.IsMatch(AddMaterialNameTextBox.Text);
+
+            AddMaterialButton.IsEnabled = isValidExpression;
+            AddMaterialDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void ValidateMaterialInputValue(TextBox input)
+        {
+            if (!string.IsNullOrEmpty(input.Text))
+            {
+                bool isValidExpression = Convert.ToDecimal(input.Text) > 0;
+                AddMaterialButton.IsEnabled = isValidExpression;
+                AddMaterialDisplayInfoTextBlock.Text = !isValidExpression ? "Value must be bigger than 0." : string.Empty;
+            }
+        }
+
+        private void AddMaterialQuantityTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            ValidateMaterialInputValue(AddMaterialQuantityTextBox);
+        }
+
+        private void AddMaterialPriceTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            ValidateMaterialInputValue(AddMaterialPriceTextBox);
+        }
+
+        private void AddMaterialButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            string name = AddMaterialNameTextBox.Text;
+            string quantityText = AddMaterialQuantityTextBox.Text;
+            string priceText = AddMaterialPriceTextBox.Text;
+            string dateSupplyText = AddMaterialDatePicker.Text;
+
+            if (!FieldsCompleted(name, quantityText, priceText))
+            {
+                AddMaterialDisplayInfoTextBlock.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                Material material = new Material()
+                {
+                    Denumire = name,
+                    Cantitate = Convert.ToDecimal(quantityText),
+                    DataAprovizionare = Convert.ToDateTime(dateSupplyText),
+                    Pret = Convert.ToDecimal(priceText)
+                };
+
+                _client.AddMaterial(material);
+
+                AddMaterialDisplayInfoTextBlock.Text = @"Material added.";
+                AddMaterialDisplayInfoTextBlock.Visibility = Visibility.Visible;
+            }
+
+            MaterialsTabItem_OnLoaded(sender, e);
+        }
+
+        private void NewMaterialButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddMaterialDisplayInfoTextBlock.Visibility = Visibility.Hidden;
+            AddMaterialNameTextBox.Text = "";
+            AddMaterialPriceTextBox.Text = "";
+            AddMaterialQuantityTextBox.Text = "";
+        }
+
+        private void UpdateMaterialsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedMaterials = MaterialsDataGrid.SelectedItems;
+            int materialsSize = selectedMaterials.Count;
+
+            for (var i = 0; i < materialsSize; i++)
+            {
+                DataRowView row = (DataRowView)MaterialsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Material material = _client.FindMaterialById(id);
+                material.Denumire = row["Denumire"].ToString();
+                material.DataAprovizionare = Convert.ToDateTime(row["DataAprovizionare"].ToString());
+                material.Cantitate = Convert.ToDecimal(row["Cantitate"].ToString());
+                material.Pret = Convert.ToDecimal(row["Pret"].ToString());
+
+                _client.UpdateMaterial(material);
+            }
+
+            MaterialsTabItem_OnLoaded(sender, e);
+        }
+
+        private void DeleteMaterialsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedMaterials = MaterialsDataGrid.SelectedItems;
+            int materialsSize = selectedMaterials.Count;
+
+            for (var i = 0; i < materialsSize; i++)
+            {
+                DataRowView row = (DataRowView)MaterialsDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                _client.DeleteMaterial(id);
+            }
+
+            MaterialsTabItem_OnLoaded(sender, e);
+        }
+
+        private void ImagesTabItem_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string getImages = "SELECT Id, Titlu, Descriere FROM Imagini";
+            ExecuteQuery(getImages, ImagesDataGrid);
+        }
+
+        private void AddImageTitleTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            
+        }
+
+        private void AddImageDescriptionTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+           
+        }
+
+        // https://www.godo.dev/tutorials/wpf-load-external-image/
+        private void UploadImageButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Select a picture",
+                Filter = @"jpg files(*.jpg)|*.jpg| PNG files(*.png)|*.png| All Files(*.*)|*.*"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                ImagePhoto.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
+        }
+
+        private void AddImageButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            string title = AddImageTitleTextBox.Text;
+            string description = AddImageDescriptionTextBox.Text;
+            DateTime date = Convert.ToDateTime(AddImageDatePicker.Text);
+            
+            byte[] photo = GetJPGFromImageControl(ImagePhoto.Source as BitmapImage);
+
+            if (!FieldsCompleted(title, description))
+            {
+                AddImageDisplayInfoTextBlock.Text = @"Must complete mandatory fields.";
+            }
+            else
+            {
+                AddImageButton.IsEnabled = true;
+                Imagine image = new Imagine()
+                {
+                    Data = date,
+                    Descriere = description,
+                    Titlu = title,
+                    Foto = photo
+                };
+
+                _client.AddImage(image);
+
+                AddImageDisplayInfoTextBlock.Text = @"Image added.";
+                AddImageDisplayInfoTextBlock.Visibility = Visibility.Visible;
+            }
+
+            ImagesTabItem_OnLoaded(sender, e);
+        }
+
+        //https://stackoverflow.com/questions/553611/wpf-image-to-byte
+        private byte[] GetJPGFromImageControl(BitmapImage imageC)
+        {
+            MemoryStream memStream = new MemoryStream();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageC));
+            encoder.Save(memStream);
+
+            return memStream.ToArray();
+        }
+
+        private void NewImageButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void UpdateImageButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DeleteImageButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

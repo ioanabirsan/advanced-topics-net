@@ -594,7 +594,7 @@
                         <TabControl Name="ManageDetailsTabControl" Margin="100 50 100 50" Height="650">
 
                             <TabItem Header="Images" Padding="20 10 20 10" Width="150" Background="LightBlue"
-                                     FontWeight="Bold">
+                                     FontWeight="Bold" Name="ImagesTabItem" Loaded="ImagesTabItem_OnLoaded">
                                 <StackPanel Background="AliceBlue">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -605,13 +605,13 @@
                                         <StackPanel Grid.Column="0">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Title</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddImageTitleTextBox"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" PreviewTextInput="AddImageTitleTextBox_OnPreviewTextInput"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Description</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddImageDescriptionTextBox"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" PreviewTextInput="AddImageDescriptionTextBox_OnPreviewTextInput"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="2">
@@ -625,21 +625,21 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UploadImageButton"
                                                 Padding="3" Margin="20 10 10 20" Height="30" Width="80"
-                                                Content="Upload"
+                                                Content="Upload" Click="UploadImageButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                         <Border BorderThickness="1"
                                                 BorderBrush="LightBlue">
-                                            <Image Name="UploadImage" Height="200" Width="300" Stretch="Fill"/>
+                                            <Image Name="ImagePhoto" Height="200" Width="300" Stretch="Fill"/>
                                         </Border>
 
                                         <Button x:Name="AddImageButton"
                                                 Padding="3" Margin="20 10 10 20" Height="30" Width="80"
-                                                Content="Add"
+                                                Content="Add" Click="AddImageButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="NewImageButton"
                                                 Padding="3" Margin="0 10 10 20" Height="30" Width="80"
-                                                Content="New"
+                                                Content="New" Click="NewImageButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                         <TextBlock Name="AddImageDisplayInfoTextBlock"
                                                    FontSize="12" Padding="3" FontWeight="Bold" Margin="0 10 10 20" />
@@ -660,13 +660,13 @@
 
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateImageButton"
-                                                Click="UpdateChassisButton_OnClick"
+                                                Click="UpdateImageButton_OnClick"
                                                 Padding="3" Margin="50 10 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="DeleteImageButton"
-                                                Click="DeleteChassisButton_OnClick"
+                                                Click="DeleteImageButton_OnClick"
                                                 Padding="3" Margin="0 10 0 10" Height="30" Width="80"
                                                 Content="Delete"
                                                 Background="LightBlue" FontWeight="DemiBold" />
@@ -676,7 +676,7 @@
                             </TabItem>
 
                             <TabItem Header="Materials" Padding="20 10 20 10" Width="150" Background="LightBlue"
-                                     FontWeight="Bold">
+                                     FontWeight="Bold" Name="MaterialsTabItem" Loaded="MaterialsTabItem_OnLoaded">
                                 <StackPanel Background="AliceBlue">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -688,19 +688,19 @@
                                         <StackPanel Grid.Column="0">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMaterialNameTextBox"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMaterialNameTextBox_OnPreviewTextInput"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Quantity</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMaterialQuantityTextBox"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMaterialQuantityTextBox_OnPreviewTextInput"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="2">
                                             <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Price</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMaterialPriceTextBox"
-                                                     VerticalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMaterialPriceTextBox_OnPreviewTextInput"
                                                      FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="3">
@@ -714,12 +714,12 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="AddMaterialButton"
                                                 Padding="3" Margin="20 10 10 20" Height="30" Width="80"
-                                                Content="Add"
+                                                Content="Add" Click="AddMaterialButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="NewMaterialButton"
                                                 Padding="3" Margin="0 10 10 20" Height="30" Width="80"
-                                                Content="New"
+                                                Content="New" Click="NewMaterialButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                         <TextBlock Name="AddMaterialDisplayInfoTextBlock"
                                                    FontSize="12" Padding="3" FontWeight="Bold" Margin="0 10 10 20" />
@@ -740,13 +740,13 @@
 
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateMaterialsButton"
-                                                Click="UpdateChassisButton_OnClick"
+                                                Click="UpdateMaterialsButton_OnClick"
                                                 Padding="3" Margin="50 10 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
                                         <Button x:Name="DeleteMaterialsButton"
-                                                Click="DeleteChassisButton_OnClick"
+                                                Click="DeleteMaterialsButton_OnClick"
                                                 Padding="3" Margin="0 10 0 10" Height="30" Width="80"
                                                 Content="Delete"
                                                 Background="LightBlue" FontWeight="DemiBold" />
