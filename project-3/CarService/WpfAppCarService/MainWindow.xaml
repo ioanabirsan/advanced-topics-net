@@ -16,572 +16,571 @@
         <TabControl Name="MainControl">
 
             <!-- Customers -->
-            <TabItem Header="Customers" Padding="40 10 40 10" Width="200" Background="CornflowerBlue" FontWeight="Bold">
+            <TabItem Header="Customers" Name="CustomersTabItem" Loaded="CustomersTabItem_OnLoaded"
+                     Padding="40 10 40 10" Width="200" Background="CornflowerBlue" FontWeight="Bold">
                 <Border Padding="30">
 
-                    <StackPanel>
-                        <Grid x:Name="CustomersGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                    <StackPanel Background="AliceBlue">
 
-                            <!-- Customers buttons -->
-                            <Button x:Name="SearchCustomerButton"
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="SearchCustomerButton"
                                     Click="SearchCustomerButton_OnClick"
-                                    Padding="10" Margin="0 0 100 0"
-                                    Grid.Column="0" Content="Search"
-                                    Background="CornflowerBlue" FontWeight="DemiBold" />
-                            <Button x:Name="AddCustomerButton"
-                                    Click="AddCustomerButton_OnClick"
-                                    Padding="10" Margin="50 0 50 0"
-                                    Grid.Column="1" Content="Add"
-                                    Background="CornflowerBlue" FontWeight="DemiBold" />
-                            <Button x:Name="ViewAllCustomersButton"
-                                    Click="ViewAllCustomersButton_OnClick"
-                                    Padding="10" Margin="100 0 0 0"
-                                    Grid.Column="2" Content="View all"
-                                    Background="CornflowerBlue" FontWeight="DemiBold" />
-                        </Grid>
-
-                        <!-- Display all customers -->
-
-                        <DataGrid x:Name="CustomersDataGrid"
-                                  ItemsSource="{Binding}"
-                                  FontWeight="Normal"
-                                  Margin="0 50 0 50"
-                                  Padding="10" ColumnWidth="*" Height="500"
-                                  VerticalScrollBarVisibility="Visible"
-                                  Visibility="Hidden"
-                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-
-                        <!-- Add new customer -->
-
-                        <StackPanel x:Name="AddCustomerStackPanel"
-                                    Visibility="Hidden"
-                                    Margin="300 50 300 20"
-                                    Background="AliceBlue">
-                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 0">Name</TextBlock>
-                            <TextBox x:Name="AddCustomerNameTextBox"
-                                     VerticalContentAlignment="Center"
-                                     PreviewTextInput="AddCustomerNameTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
-
-                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">First Name</TextBlock>
-                            <TextBox x:Name="AddCustomerFirstNameTextBox"
-                                     VerticalContentAlignment="Center"
-                                     PreviewTextInput="AddCustomerFirstNameTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
-
-                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">Address</TextBlock>
-                            <TextBox x:Name="AddCustomerAddressTextBox"
-                                     VerticalContentAlignment="Center"
-                                     PreviewTextInput="AddCustomerAddressTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
-
-                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">City</TextBlock>
-                            <TextBox x:Name="AddCustomerCityTextBox"
-                                     VerticalContentAlignment="Center"
-                                     PreviewTextInput="AddCustomerCityTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
-
-                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">County</TextBlock>
-                            <TextBox x:Name="AddCustomerCountyTextBox"
-                                     VerticalContentAlignment="Center"
-                                     PreviewTextInput="AddCustomerCountyTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
-
-                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">Phone Number</TextBlock>
-                            <TextBox x:Name="AddCustomerPhoneNumberTextBox"
-                                     VerticalContentAlignment="Center"
-                                     PreviewTextInput="AddCustomerPhoneNumberTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
-
-                            <CheckBox x:Name="AddCustomerEmailCheckbox"
-                                      VerticalContentAlignment="Center"
-                                      Click="AddCustomerEmailCheckbox_OnClick"
-                                      FontSize="12" Padding="3" Margin="20 0 20 0">
-                                Email
-                            </CheckBox>
-                            <TextBox x:Name="AddCustomerEmailTextBox"
-                                     VerticalContentAlignment="Center"
-                                     PreviewTextInput="AddCustomerEmailTextBox_OnPreviewTextInput"
-                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20"
-                                     IsEnabled="False" />
+                                    Padding="10" Margin="20 20 10 10"
+                                    Content="Search" Background="CornflowerBlue" FontWeight="DemiBold" Width="100" />
+                            <Button Name="BackCustomerButton"
+                                    Click="BackCustomerButton_OnClick"
+                                    Padding="10" Margin="0 20 0 10"
+                                    Content="Back" Background="CornflowerBlue" FontWeight="DemiBold" Width="100" />
                         </StackPanel>
 
-                        <!-- Add Customer and New Customer Buttons -->
-                        <StackPanel Name="AddCustomerButtonsStackPanel"
-                                    Background="AliceBlue"
-                                    Orientation="Horizontal"
-                                    Margin="300 0 300 0">
-                            <Button Name="AddNewCustomerButton"
-                                    DockPanel.Dock="Bottom"
-                                    Content="Add"
-                                    Click="AddNewCustomerButton_OnClick"
-                                    Background="CornflowerBlue"
-                                    IsEnabled="False"
-                                    Padding="3" Margin="20 0 5 0" />
-                            <Button Name="NewCustomerButton"
-                                    DockPanel.Dock="Bottom"
-                                    Click="NewCustomerButton_OnClick"
-                                    Content="New"
-                                    Background="CornflowerBlue"
-                                    Padding="3" />
-                            <TextBlock Name="AddCustomerDisplayInfoTextBlock"
-                                       FontSize="12" Padding="3" FontWeight="Bold" />
-                        </StackPanel>
+                        <StackPanel Name="ManageCustomersStackPanel">
 
-                        <!-- Search customer -->
-
-                        <Grid x:Name="SearchCustomersInputGrid"
-                              Visibility="Hidden"
-                              Background="AliceBlue"
-                              Margin="0 40 0 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <!-- Name -->
-                            <StackPanel Grid.Column="0">
-                                <TextBlock FontSize="12" FontWeight="Bold" Padding="3">Name</TextBlock>
-                                <TextBox x:Name="SearchCustomerNameTextBox"
-                                         VerticalContentAlignment="Center"
-                                         PreviewTextInput="SearchCustomerNameTextBox_OnPreviewTextInput"
-                                         FontSize="12" FontWeight="Normal" Padding="2" Margin="0 0 5 0" />
-                            </StackPanel>
-
-                            <!-- First Name -->
-                            <StackPanel Grid.Column="1">
-                                <TextBlock FontSize="12" FontWeight="Bold" Padding="3">First name</TextBlock>
-                                <TextBox x:Name="SearchCustomerFirstNameTextBox"
-                                         VerticalContentAlignment="Center"
-                                         PreviewTextInput="SearchCustomerFirstNameTextBox_OnPreviewTextInput"
-                                         FontSize="12" FontWeight="Normal" Padding="2" Margin="0 0 5 0" />
-                            </StackPanel>
-
-                            <!-- Phone Number -->
-                            <StackPanel Grid.Column="2">
-                                <TextBlock FontSize="12" FontWeight="Bold" Padding="3">Phone number</TextBlock>
-                                <TextBox x:Name="SearchCustomerPhoneNumberTextBox"
-                                         VerticalContentAlignment="Center"
-                                         PreviewTextInput="SearchCustomerPhoneNumberTextBox_OnPreviewTextInput"
-                                         FontSize="12" FontWeight="Normal" Padding="2" Margin="0 0 5 0" />
-                            </StackPanel>
-
-                            <!-- Email -->
-                            <StackPanel Grid.Column="3">
-                                <CheckBox x:Name="SearchCustomerEmailCheckbox"
-                                          VerticalContentAlignment="Center"
-                                          Click="SearchCustomerEmailCheckbox_OnClick"
-                                          FontSize="12" Padding="3">
-                                    Email
-                                </CheckBox>
-                                <TextBox x:Name="SearchCustomerEmailTextBox"
-                                         VerticalContentAlignment="Center"
-                                         PreviewTextInput="SearchCustomerEmailTextBox_OnPreviewTextInput"
-                                         FontSize="12" FontWeight="Normal" Padding="2" IsEnabled="False" />
-                            </StackPanel>
-                        </Grid>
-
-                        <!-- Find Customers and New Customer Search Buttons -->
-                        <StackPanel Name="SearchCustomerButtonsStackPanel"
-                                    Background="AliceBlue"
-                                    Orientation="Horizontal" Margin="0 20">
-                            <Button Name="FindCustomerButton"
-                                    Content="Find"
-                                    Click="FindCustomerButton_OnClick"
-                                    Background="CornflowerBlue"
-                                    IsEnabled="False"
-                                    Width="80" Padding="3" Margin="0 0 5 0" />
-                            <Button Name="FindNewCustomerButton"
-                                    Click="FindNewCustomerButton_OnClick"
-                                    Content="New"
-                                    Background="CornflowerBlue"
-                                    Width="80" Padding="3" Margin="0 0 5 0" />
-                            <TextBlock Name="SearchDisplayInfoTextBlock"
-                                       FontSize="12" Padding="3" FontWeight="Bold" />
-                        </StackPanel>
-
-                        <!-- Display searched customer information grid -->
-                        <DataGrid x:Name="SearchCustomerDataGrid"
-                                  ItemsSource="{Binding}"
-                                  FontWeight="Normal"
-                                  Margin="200 10 200 10"
-                                  Padding="10" ColumnWidth="*"
-                                  VerticalScrollBarVisibility="Visible"
-                                  Height="150"
-                                  Visibility="Hidden"
-                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-
-
-                        <Grid x:Name="AddCustomerCarInputGrid"
-                              Visibility="Hidden"
-                              Background="AliceBlue"
-                              Margin="0 40 0 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <!-- Car Number -->
-                            <StackPanel Grid.Column="0">
-                                <TextBlock FontSize="12" FontWeight="Bold" Padding="3">Number</TextBlock>
-                                <TextBox DockPanel.Dock="Top" x:Name="AddCustomerCarAutoNumberTextBox"
-                                         VerticalContentAlignment="Center"
-                                         PreviewTextInput="AddCustomerCarAutoNumberTextBox_OnPreviewTextInput"
-                                         FontSize="12" FontWeight="Normal" Padding="2" Margin="0 0 5 0" />
-                            </StackPanel>
-
-                            <!-- Chassis Series -->
-                            <StackPanel Grid.Column="1">
-                                <TextBlock FontSize="12" FontWeight="Bold" Padding="3">Chassis series</TextBlock>
-                                <TextBox DockPanel.Dock="Top" x:Name="AddCustomerCarChassisSeriesTextBox"
-                                         VerticalContentAlignment="Center"
-                                         PreviewTextInput="AddCustomerCarChassisSeriesTextBox_OnPreviewTextInput"
-                                         FontSize="12" FontWeight="Normal" Padding="2" />
-                            </StackPanel>
-                        </Grid>
-
-                        <!-- Display chassis information grid -->
-                        <DataGrid x:Name="DisplayChassisDataGrid"
-                                  ItemsSource="{Binding}"
-                                  FontWeight="Normal"
-                                  Margin="200 20 200 20"
-                                  Padding="10" ColumnWidth="*"
-                                  VerticalScrollBarVisibility="Visible"
-                                  Height="150"
-                                  Visibility="Hidden"
-                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-
-                        <!-- Add Car and New Car Buttons -->
-                        <StackPanel Name="AddCustomerCarButtonsStackPanel"
-                                    Background="AliceBlue"
-                                    Orientation="Horizontal">
-                            <Button Name="AddCustomerCarButton"
-                                    DockPanel.Dock="Bottom"
-                                    Content="Add"
-                                    Click="AddCustomerCarButton_OnClick"
-                                    Background="CornflowerBlue"
-                                    IsEnabled="False"
-                                    Padding="3" Margin="0 0 5 0" />
-                            <Button Name="AddNewCustomerCarButton"
-                                    DockPanel.Dock="Bottom"
-                                    Click="AddNewCustomerCarButton_OnClick"
-                                    Content="New"
-                                    Background="CornflowerBlue"
-                                    Padding="3" Margin="0 0 5 0" />
-                            <TextBlock Name="AddCarDisplayInfoTextBlock"
-                                       FontSize="12" Padding="3" FontWeight="Bold" />
-                        </StackPanel>
-
-                    </StackPanel>
-
-                </Border>
-            </TabItem>
-
-            <TabItem Header="Orders" Padding="40 10 40 10" Width="200" Background="DeepSkyBlue" FontWeight="Bold">
-                <Border Padding="40">
-
-                    <StackPanel>
-
-                        <Grid Name="OrdersGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="AddOrderButton"
-                                    Click="AddOrderButton_OnClick"
-                                    Padding="10" Margin="0 0 50 0"
-                                    Grid.Column="0" Content="Add"
-                                    Background="DeepSkyBlue" FontWeight="DemiBold" />
-                            <Button x:Name="ViewAllOrdersButton"
-                                    Click="ViewAllOrdersButton_OnClick"
-                                    Padding="10" Margin="50 0 0 0"
-                                    Grid.Column="1" Content="View all"
-                                    Background="DeepSkyBlue" FontWeight="DemiBold" />
-                        </Grid>
-
-                        <!-- View all orders -->
-                        <DataGrid Name="OrdersDataGrid"
-                                  ItemsSource="{Binding}"
-                                  FontWeight="Normal"
-                                  Margin="0 50 0 50" Padding="20" ColumnWidth="*" Height="500"
-                                  VerticalScrollBarVisibility="Visible"
-                                  Visibility="Hidden"
-                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-
-                        <ScrollViewer Name="AddOrderScrollViewer" VerticalScrollBarVisibility="Visible" Height="650">
-                            <StackPanel Name="AddOrderStackPanel" Background="AliceBlue" Margin="0 30 0 30"
-                                        Loaded="AddOrderStackPanel_OnLoaded">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <DataGrid Name="DisplayOrderCarsDataGrid"
-                                              Grid.Column="0"
-                                              ItemsSource="{Binding}"
-                                              FontWeight="Normal" Height="150"
-                                              Margin="20 20 20 20" Padding="10" ColumnWidth="*"
-                                              VerticalScrollBarVisibility="Visible"
-                                              AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 0 5">Start Date</TextBlock>
-                                        <DatePicker Height="25" HorizontalAlignment="Left"
-                                                    Name="OrderStartDatePicker"
-                                                    VerticalAlignment="Top" Width="230" Margin="20 20 0 20" />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="2">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 0 5">End Date</TextBlock>
-                                        <DatePicker Height="25" HorizontalAlignment="Left"
-                                                    Name="OrderEndDatePicker"
-                                                    VerticalAlignment="Top" Width="230" Margin="20 20 0 20" />
-                                    </StackPanel>
-                                </Grid>
-
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="2*" />
-                                        <ColumnDefinition Width="2*" />
-                                        <ColumnDefinition Width="2*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <CheckBox Name="InServiceCheckbox"
-                                              Grid.Column="0"
-                                              VerticalContentAlignment="Center"
-                                              Click="InServiceCheckbox_OnClick"
-                                              FontSize="12" Padding="3" Margin="20 0 20 40" Content="In service" />
-
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Km</TextBlock>
-                                        <TextBox DockPanel.Dock="Top" x:Name="AddOrderKmTextBox"
-                                                 VerticalContentAlignment="Center"
-                                                 PreviewTextInput="AddOrderKmTextBox_OnPreviewTextInput"
-                                                 FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="2">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Description</TextBlock>
-                                        <TextBox DockPanel.Dock="Top" x:Name="AddOrderDescriptionTextBox"
-                                                 VerticalContentAlignment="Center"
-                                                 PreviewTextInput="AddOrderDescriptionTextBox_OnPreviewTextInput"
-                                                 FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="3">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">State</TextBlock>
-                                        <ComboBox Name="AddOrderStateCombobox" Margin="20 0 20 20" FontWeight="Normal"
-                                                  FontSize="12">
-                                            <ComboBoxItem>Executed</ComboBoxItem>
-                                            <ComboBoxItem IsSelected="True">None</ComboBoxItem>
-                                            <ComboBoxItem>Rejected</ComboBoxItem>
-                                            <ComboBoxItem>Waiting</ComboBoxItem>
-                                        </ComboBox>
-                                    </StackPanel>
-
-                                    <Button x:Name="AddNewOrderButton"
-                                            Click="AddNewOrderButton_OnClick"
-                                            Padding="3" Margin="20 0 20 20" Height="30" Width="80"
-                                            Grid.Column="4" Content="Add"
-                                            Background="DeepSkyBlue" FontWeight="DemiBold" />
-                                </Grid>
-
-                                <Separator Margin="20 10 20 10" BorderBrush="DeepSkyBlue" BorderThickness="0 2 0 0" />
-
-                                <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Order Details</TextBlock>
-
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Materials</TextBlock>
-                                        <DataGrid Name="DisplayOrderMaterialsDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}"
-                                                  SelectionChanged="DisplayOrderMaterialsDataGrid_OnSelectionChanged"
-                                                  FontWeight="Normal" Height="150"
-                                                  Margin="20 0 20 20" Padding="10" ColumnWidth="*"
-                                                  VerticalScrollBarVisibility="Visible"
-                                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Mechanics</TextBlock>
-                                        <DataGrid Name="DisplayOrderMechanicsDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}"
-                                                  SelectionChanged="DisplayOrderMechanicsDataGrid_OnSelectionChanged"
-                                                  FontWeight="Normal" Height="150"
-                                                  Margin="20 0 20 20" Padding="10" ColumnWidth="*"
-                                                  VerticalScrollBarVisibility="Visible"
-                                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-                                    </StackPanel>
-                                </Grid>
-
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Operations</TextBlock>
-                                        <DataGrid Name="DisplayOrderOperationsDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}"
-                                                  SelectionChanged="DisplayOrderOperationsDataGrid_OnSelectionChanged"
-                                                  FontWeight="Normal" Height="150"
-                                                  Margin="20 0 20 20" Padding="10" ColumnWidth="*"
-                                                  VerticalScrollBarVisibility="Visible"
-                                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="1">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Images</TextBlock>
-                                        <DataGrid Name="DisplayOrderImagesDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}"
-                                                  SelectionChanged="DisplayOrderImagesDataGrid_OnSelectionChanged"
-                                                  FontWeight="Normal" Height="150"
-                                                  Margin="20 0 20 20" Padding="10" ColumnWidth="*"
-                                                  VerticalScrollBarVisibility="Visible"
-                                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-                                    </StackPanel>
-                                </Grid>
-
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Grid.Column="0">
-                                        <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Orders</TextBlock>
-                                        <DataGrid Name="DisplayOrderOrdersDataGrid" SelectionMode="Extended"
-                                                  ItemsSource="{Binding}"
-                                                  SelectionChanged="DisplayOrderOrdersDataGrid_OnSelectionChanged"
-                                                  FontWeight="Normal"
-                                                  Margin="20 0 20 20" Padding="10" ColumnWidth="*"
-                                                  VerticalScrollBarVisibility="Visible"
-                                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-                                    </StackPanel>
-
-                                    <Button x:Name="AddOrderDetailsButton"
-                                            Click="AddOrderDetailsButton_OnClick"
-                                            Padding="3" Margin="0 0 20 20" Height="30" Width="80"
-                                            Grid.Column="1" Content="Add"
-                                            Background="DeepSkyBlue" FontWeight="DemiBold" />
-                                </Grid>
-                            </StackPanel>
-                        </ScrollViewer>
-
-                    </StackPanel>
-
-                </Border>
-            </TabItem>
-
-            <TabItem Header="Chassis" Padding="40 10 40 10" Width="200" Background="DarkTurquoise" FontWeight="Bold">
-                <Border Padding="20">
-
-                    <StackPanel>
-                        <Grid Name="ChassisGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="AddChassisButton"
-                                    Click="AddChassisButton_OnClick"
-                                    Padding="10" Margin="0 0 50 0"
-                                    Grid.Column="0" Content="Add"
-                                    Background="DarkTurquoise" FontWeight="DemiBold" />
-                            <Button x:Name="ViewAllChassisButton"
-                                    Click="ViewAllChassisButton_OnClick"
-                                    Padding="10" Margin="50 0 0 0"
-                                    Grid.Column="1" Content="View all"
-                                    Background="DarkTurquoise" FontWeight="DemiBold" />
-                        </Grid>
-
-                        <!-- View all chassis -->
-                        <StackPanel Name="DisplayAllChassisStackPanel" Visibility="Hidden">
-                            <DataGrid Name="ChassisDataGrid"
-                                      ItemsSource="{Binding}"
-                                      FontWeight="Normal"
-                                      Margin="200 50 200 10" Padding="20" ColumnWidth="*" Height="400"
-                                      VerticalScrollBarVisibility="Visible"
-                                      Visibility="Hidden"
-                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
-
-                            <StackPanel Orientation="Horizontal">
-                                <Button x:Name="UpdateChassisButton"
-                                        Click="UpdateChassisButton_OnClick"
-                                        Padding="3" Margin="200 10 20 10" Height="30" Width="80"
-                                        Content="Update"
-                                        Background="DarkTurquoise" FontWeight="DemiBold" />
-
-                                <Button x:Name="DeleteChassisButton"
-                                        Click="DeleteChassisButton_OnClick"
-                                        Padding="3" Margin="0 10 0 10" Height="30" Width="80"
-                                        Content="Delete"
-                                        Background="DarkTurquoise" FontWeight="DemiBold" />
-                            </StackPanel>
-                        </StackPanel>
-
-                        <StackPanel Name="AddNewChassisStackPanel"
-                                    Visibility="Hidden"
-                                    Margin="250 50 250 50"
-                                    Background="AliceBlue">
+                            <Separator Margin="20 10 20 10" BorderBrush="CornflowerBlue" BorderThickness="0 2 0 0" />
+                            <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">New customers</TextBlock>
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
                                 <StackPanel Grid.Column="0">
-                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Code</TextBlock>
-                                    <TextBox DockPanel.Dock="Top" x:Name="AddChassisCodeTextBox"
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">Name</TextBlock>
+                                    <TextBox x:Name="AddCustomerNameTextBox"
                                              VerticalContentAlignment="Center"
-                                             PreviewTextInput="AddChassisCodeTextBox_OnPreviewTextInput"
-                                             FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                             PreviewTextInput="AddCustomerNameTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
                                 </StackPanel>
-
                                 <StackPanel Grid.Column="1">
-                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
-                                    <TextBox DockPanel.Dock="Top" x:Name="AddChassisNameTextBox"
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">First Name</TextBlock>
+                                    <TextBox x:Name="AddCustomerFirstNameTextBox"
                                              VerticalContentAlignment="Center"
-                                             PreviewTextInput="AddChassisNameTextBox_OnPreviewTextInput"
-                                             FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                             PreviewTextInput="AddCustomerFirstNameTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">Address</TextBlock>
+                                    <TextBox x:Name="AddCustomerAddressTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddCustomerAddressTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="3">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">City</TextBlock>
+                                    <TextBox x:Name="AddCustomerCityTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddCustomerCityTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">County</TextBlock>
+                                    <TextBox x:Name="AddCustomerCountyTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddCustomerCountyTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">Phone Number</TextBlock>
+                                    <TextBox x:Name="AddCustomerPhoneNumberTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddCustomerPhoneNumberTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 10" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <CheckBox x:Name="AddCustomerEmailCheckbox"
+                                              VerticalContentAlignment="Center"
+                                              Click="AddCustomerEmailCheckbox_OnClick"
+                                              FontSize="12" Padding="3" Margin="20 0 20 0">
+                                        Email
+                                    </CheckBox>
+                                    <TextBox x:Name="AddCustomerEmailTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddCustomerEmailTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20"
+                                             IsEnabled="False" />
                                 </StackPanel>
                             </Grid>
 
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="AddNewChassisButton"
-                                        Click="AddNewChassisButton_OnClick"
-                                        Padding="3" Margin="20 10 10 20" Height="30" Width="80"
+                                <Button Name="AddNewCustomerButton"
+                                        DockPanel.Dock="Bottom"
                                         Content="Add"
-                                        Background="DarkTurquoise" FontWeight="DemiBold" />
-
-                                <Button x:Name="NewChassisButton"
-                                        Click="NewChassisButton_OnClick"
-                                        Padding="3" Margin="0 10 10 20" Height="30" Width="80"
-                                        Content="New"
-                                        Background="DarkTurquoise" FontWeight="DemiBold" />
-                                <TextBlock Name="AddChassisDisplayInfoTextBlock"
-                                           FontSize="12" Padding="3" FontWeight="Bold" Margin="0 10 10 20" />
+                                        Click="AddNewCustomerButton_OnClick"
+                                        Background="CornflowerBlue"
+                                        IsEnabled="False"
+                                        Padding="3" Margin="20 0 10 10" Width="80" />
+                                <Button Name="NewCustomerButton"
+                                        DockPanel.Dock="Bottom"
+                                        Click="NewCustomerButton_OnClick"
+                                        Content="New" Margin="0 0 0 10"
+                                        Background="CornflowerBlue" Padding="3" Width="80" />
+                                <TextBlock Name="AddCustomerDisplayInfoTextBlock"
+                                           FontSize="12" Padding="3" FontWeight="Bold" />
                             </StackPanel>
 
+                            <Separator Margin="20 10 20 10" BorderBrush="CornflowerBlue" BorderThickness="0 2 0 0" />
+                            <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">View All</TextBlock>
+
+                            <StackPanel>
+                                <DataGrid x:Name="CustomersDataGrid"
+                                          ItemsSource="{Binding}"
+                                          FontWeight="Normal"
+                                          Margin="20 10 20 20"
+                                          Padding="10" ColumnWidth="*" Height="250"
+                                          VerticalScrollBarVisibility="Visible"
+                                          AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="UpdateCustomersButton"
+                                        Click="UpdateCustomersButton_OnClick"
+                                        Padding="3" Margin="20 0 20 10" Height="30" Width="80"
+                                        Content="Update"
+                                        Background="CornflowerBlue" FontWeight="DemiBold" />
+
+                                <Button x:Name="DeleteCustomersButton"
+                                        Click="DeleteCustomersButton_OnClick"
+                                        Padding="3" Margin="0 0 0 10" Height="30" Width="80"
+                                        Content="Delete"
+                                        Background="CornflowerBlue" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Name="SearchCustomersStackPanel">
+
+                            <Separator Margin="20 10 20 10" BorderBrush="CornflowerBlue" BorderThickness="0 2 0 0" />
+
+                            <Grid Name="SearchCustomersInputGrid"
+                                  Background="AliceBlue"
+                                  Margin="0 10 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 0">Name</TextBlock>
+                                    <TextBox Name="SearchCustomerNameTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="SearchCustomerNameTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 10 0" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="0 0 20 0">First name</TextBlock>
+                                    <TextBox x:Name="SearchCustomerFirstNameTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="SearchCustomerFirstNameTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="0 0 10 0" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="0 0 20 0">Phone number</TextBlock>
+                                    <TextBox Name="SearchCustomerPhoneNumberTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="SearchCustomerPhoneNumberTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="0 0 10 0" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="3">
+                                    <CheckBox Name="SearchCustomerEmailCheckbox"
+                                              VerticalContentAlignment="Center"
+                                              Click="SearchCustomerEmailCheckbox_OnClick"
+                                              FontSize="12" Padding="3" Margin="0 0 20 0">
+                                        Email
+                                    </CheckBox>
+                                    <TextBox Name="SearchCustomerEmailTextBox"
+                                             VerticalContentAlignment="Center" Margin="0 0 20 0"
+                                             PreviewTextInput="SearchCustomerEmailTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" IsEnabled="False" />
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 20">
+                                <Button Name="FindCustomerButton"
+                                        Content="Find"
+                                        Click="FindCustomerButton_OnClick"
+                                        Background="CornflowerBlue"
+                                        IsEnabled="False"
+                                        Width="80" Padding="3" Margin="20 0 10 0" />
+                                <Button Name="FindNewCustomerButton"
+                                        Click="FindNewCustomerButton_OnClick"
+                                        Content="New"
+                                        Background="CornflowerBlue"
+                                        Width="80" Padding="3" Margin="0 0 0 0" />
+                                <TextBlock Name="SearchDisplayInfoTextBlock"
+                                           FontSize="12" Padding="3" FontWeight="Bold" />
+                            </StackPanel>
+
+                            <DataGrid Name="SearchCustomerDataGrid"
+                                      ItemsSource="{Binding}"
+                                      FontWeight="Normal"
+                                      Margin="200 10 200 10" Padding="10" ColumnWidth="*"
+                                      VerticalScrollBarVisibility="Visible" Height="150"
+                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+
+                            <Separator Margin="20 10 20 10" BorderBrush="CornflowerBlue" BorderThickness="0 2 0 0" />
+                            <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Add Customer Car</TextBlock>
+
+                            <Grid Name="AddCustomerCarInputGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 0 20 0">Number</TextBlock>
+                                    <TextBox DockPanel.Dock="Top" x:Name="AddCustomerCarAutoNumberTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddCustomerCarAutoNumberTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 10 0" />
+
+                                    <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 10 0 0">Chassis series</TextBlock>
+                                    <TextBox DockPanel.Dock="Top" x:Name="AddCustomerCarChassisSeriesTextBox"
+                                             VerticalContentAlignment="Center"
+                                             PreviewTextInput="AddCustomerCarChassisSeriesTextBox_OnPreviewTextInput"
+                                             FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 10 0" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <DataGrid Name="DisplayChassisDataGrid"
+                                              ItemsSource="{Binding}"
+                                              FontWeight="Normal"
+                                              Margin="200 20 200 20"
+                                              Padding="10" ColumnWidth="*"
+                                              VerticalScrollBarVisibility="Visible" Height="150"
+                                              AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel Name="AddCustomerCarButtonsStackPanel"
+                                        Background="AliceBlue"
+                                        Orientation="Horizontal">
+                                <Button Name="AddCustomerCarButton"
+                                        DockPanel.Dock="Bottom"
+                                        Content="Add" Width="80"
+                                        Click="AddCustomerCarButton_OnClick"
+                                        Background="CornflowerBlue"
+                                        IsEnabled="False"
+                                        Padding="3" Margin="20 0 10 0" />
+                                <Button Name="AddNewCustomerCarButton"
+                                        DockPanel.Dock="Bottom"
+                                        Click="AddNewCustomerCarButton_OnClick"
+                                        Content="New" Width="80"
+                                        Background="CornflowerBlue"
+                                        Padding="3" Margin="0 0 0 0" />
+                                <TextBlock Name="AddCarDisplayInfoTextBlock"
+                                           FontSize="12" Padding="3" FontWeight="Bold" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Border>
+            </TabItem>
+
+            <TabItem Header="Orders" Name="OrdersTabItem" Loaded="OrdersTabItem_OnLoaded"
+                     Padding="40 10 40 10" Width="200" Background="DeepSkyBlue" FontWeight="Bold">
+                <Border Padding="40">
+
+                    <StackPanel Background="AliceBlue">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="ViewAllOrdersButton"
+                                    Click="ViewAllOrdersButton_OnClick"
+                                    Padding="10" Margin="20 20 10 10"
+                                    Content="View all" Background="DeepSkyBlue" FontWeight="DemiBold" Width="100" />
+                            <Button Name="AddOrderButton"
+                                    Click="AddOrderButton_OnClick"
+                                    Padding="10" Margin="0 20 10 10"
+                                    Content="Back" Background="DeepSkyBlue" FontWeight="DemiBold" Width="100" />
+                        </StackPanel>
+
+                        <StackPanel Name="ManageOrdersStackPanel">
+
+                            <Separator Margin="20 10 20 10" BorderBrush="DeepSkyBlue" BorderThickness="0 2 0 0" />
+                            <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Add Order</TextBlock>
+
+                            <ScrollViewer Name="AddOrderScrollViewer" VerticalScrollBarVisibility="Visible" Height="550">
+                                <StackPanel Name="AddOrderStackPanel" Loaded="AddOrderStackPanel_OnLoaded">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <DataGrid Name="DisplayOrderCarsDataGrid"
+                                                  Grid.Column="0"
+                                                  ItemsSource="{Binding}"
+                                                  FontWeight="Normal" Height="150"
+                                                  Margin="20 20 20 20" Padding="10" ColumnWidth="*"
+                                                  VerticalScrollBarVisibility="Visible"
+                                                  AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 0 5">Start Date</TextBlock>
+                                            <DatePicker Height="25" HorizontalAlignment="Left"
+                                                        Name="OrderStartDatePicker"
+                                                        VerticalAlignment="Top" Width="230" Margin="20 20 0 20" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 0 5">End Date</TextBlock>
+                                            <DatePicker Height="25" HorizontalAlignment="Left"
+                                                        Name="OrderEndDatePicker"
+                                                        VerticalAlignment="Top" Width="230" Margin="20 20 0 20" />
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <CheckBox Name="InServiceCheckbox"
+                                                  Grid.Column="0"
+                                                  VerticalContentAlignment="Center"
+                                                  Click="InServiceCheckbox_OnClick"
+                                                  FontSize="12" Padding="5" Margin="20 0 20 40" Content="In service" />
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 0 20 5">Km</TextBlock>
+                                            <TextBox DockPanel.Dock="Top" x:Name="AddOrderKmTextBox"
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddOrderKmTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 0 20 5">Description</TextBlock>
+                                            <TextBox DockPanel.Dock="Top" x:Name="AddOrderDescriptionTextBox"
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddOrderDescriptionTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="3">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 0 20 5">State</TextBlock>
+                                            <ComboBox Name="AddOrderStateCombobox" Margin="20 0 20 20" Padding="5"
+                                                      FontWeight="Normal"
+                                                      FontSize="12">
+                                                <ComboBoxItem>Executed</ComboBoxItem>
+                                                <ComboBoxItem IsSelected="True">None</ComboBoxItem>
+                                                <ComboBoxItem>Rejected</ComboBoxItem>
+                                                <ComboBoxItem>Waiting</ComboBoxItem>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <Button Name="AddNewOrderButton"
+                                                Click="AddNewOrderButton_OnClick"
+                                                Padding="3" Margin="20 0 20 20" Height="30" Width="80"
+                                                Grid.Column="4" Content="Add"
+                                                Background="DeepSkyBlue" FontWeight="DemiBold" />
+                                    </Grid>
+
+                                    <Separator Margin="20 10 20 10" BorderBrush="DeepSkyBlue" BorderThickness="0 2 0 0" />
+                                    <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Order Details</TextBlock>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Materials</TextBlock>
+                                            <DataGrid Name="DisplayOrderMaterialsDataGrid" SelectionMode="Extended"
+                                                      ItemsSource="{Binding}"
+                                                      SelectionChanged="DisplayOrderMaterialsDataGrid_OnSelectionChanged"
+                                                      FontWeight="Normal" Height="200"
+                                                      Margin="20 0 20 20" Padding="10" ColumnWidth="*"
+                                                      VerticalScrollBarVisibility="Visible"
+                                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Mechanics</TextBlock>
+                                            <DataGrid Name="DisplayOrderMechanicsDataGrid" SelectionMode="Extended"
+                                                      ItemsSource="{Binding}"
+                                                      SelectionChanged="DisplayOrderMechanicsDataGrid_OnSelectionChanged"
+                                                      FontWeight="Normal" Height="200"
+                                                      Margin="20 0 20 20" Padding="10" ColumnWidth="*"
+                                                      VerticalScrollBarVisibility="Visible"
+                                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Operations</TextBlock>
+                                            <DataGrid Name="DisplayOrderOperationsDataGrid" SelectionMode="Extended"
+                                                      ItemsSource="{Binding}"
+                                                      SelectionChanged="DisplayOrderOperationsDataGrid_OnSelectionChanged"
+                                                      FontWeight="Normal" Height="200"
+                                                      Margin="20 0 20 20" Padding="10" ColumnWidth="*"
+                                                      VerticalScrollBarVisibility="Visible"
+                                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Images</TextBlock>
+                                            <DataGrid Name="DisplayOrderImagesDataGrid" SelectionMode="Extended"
+                                                      ItemsSource="{Binding}"
+                                                      SelectionChanged="DisplayOrderImagesDataGrid_OnSelectionChanged"
+                                                      FontWeight="Normal" Height="200"
+                                                      Margin="20 0 20 20" Padding="10" ColumnWidth="*"
+                                                      VerticalScrollBarVisibility="Visible" 
+                                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 0 20 5">Orders</TextBlock>
+                                            <DataGrid Name="DisplayOrderOrdersDataGrid" SelectionMode="Extended"
+                                                      ItemsSource="{Binding}"
+                                                      SelectionChanged="DisplayOrderOrdersDataGrid_OnSelectionChanged"
+                                                      FontWeight="Normal"
+                                                      Margin="20 0 20 20" Padding="10" ColumnWidth="*"
+                                                      VerticalScrollBarVisibility="Visible" Height="200"
+                                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                                        </StackPanel>
+
+                                        <Button x:Name="AddOrderDetailsButton"
+                                                Click="AddOrderDetailsButton_OnClick"
+                                                Padding="3" Margin="0 0 20 20" Height="30" Width="80"
+                                                Grid.Column="1" Content="Add"
+                                                Background="DeepSkyBlue" FontWeight="DemiBold" />
+                                    </Grid>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+
+                        <StackPanel Name="DisplayOrdersStackPanel">
+                            <StackPanel>
+                                <DataGrid Name="OrdersDataGrid"
+                                          ItemsSource="{Binding}"
+                                          FontWeight="Normal"
+                                          Margin="20 50 20 20" Padding="20" ColumnWidth="*" Height="500"
+                                          VerticalScrollBarVisibility="Visible"
+                                          AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="UpdateOrdersButton"
+                                        Click="UpdateOrdersButton_OnClick"
+                                        Padding="3" Margin="20 0 20 10" Height="30" Width="80"
+                                        Content="Update"
+                                        Background="DeepSkyBlue" FontWeight="DemiBold" />
+
+                                <Button x:Name="DeleteOrdersButton"
+                                        Click="DeleteOrdersButton_OnClick"
+                                        Padding="3" Margin="0 0 0 10" Height="30" Width="80"
+                                        Content="Delete"
+                                        Background="DeepSkyBlue" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Border>
+            </TabItem>
+
+            <TabItem Header="Chassis" Name="ChassisTabItem" Loaded="ChassisTabItem_OnLoaded"
+                     Padding="40 10 40 10" Width="200" Background="DarkTurquoise" FontWeight="Bold">
+                <Border Padding="20">
+
+                    <StackPanel Background="AliceBlue">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Code</TextBlock>
+                                <TextBox DockPanel.Dock="Top" x:Name="AddChassisCodeTextBox"
+                                         VerticalContentAlignment="Center"
+                                         PreviewTextInput="AddChassisCodeTextBox_OnPreviewTextInput"
+                                         FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Name</TextBlock>
+                                <TextBox DockPanel.Dock="Top" x:Name="AddChassisNameTextBox"
+                                         VerticalContentAlignment="Center"
+                                         PreviewTextInput="AddChassisNameTextBox_OnPreviewTextInput"
+                                         FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="AddNewChassisButton"
+                                    Click="AddNewChassisButton_OnClick"
+                                    Padding="3" Margin="20 10 10 20" Height="30" Width="80"
+                                    Content="Add"
+                                    Background="DarkTurquoise" FontWeight="DemiBold" />
+
+                            <Button x:Name="NewChassisButton"
+                                    Click="NewChassisButton_OnClick"
+                                    Padding="3" Margin="0 10 10 20" Height="30" Width="80"
+                                    Content="New"
+                                    Background="DarkTurquoise" FontWeight="DemiBold" />
+                            <TextBlock Name="AddChassisDisplayInfoTextBlock"
+                                       FontSize="12" Padding="5" FontWeight="Bold" Margin="0 10 10 20" />
+                        </StackPanel>
+
+                        <Separator Margin="20 10 20 10" BorderBrush="DarkTurquoise" BorderThickness="0 2 0 0" />
+                        <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Chassis</TextBlock>
+
+                        <StackPanel>
+                            <DataGrid Name="ChassisDataGrid"
+                                      ItemsSource="{Binding}"
+                                      FontWeight="Normal"
+                                      Margin="200 20 200 20" Padding="20" ColumnWidth="*" Height="400"
+                                      VerticalScrollBarVisibility="Visible"
+                                      AlternatingRowBackground="AliceBlue" BorderThickness="2" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="UpdateChassisButton"
+                                    Click="UpdateChassisButton_OnClick"
+                                    Padding="3" Margin="200 0 20 10" Height="30" Width="80"
+                                    Content="Update"
+                                    Background="DarkTurquoise" FontWeight="DemiBold" />
+
+                            <Button x:Name="DeleteChassisButton"
+                                    Click="DeleteChassisButton_OnClick"
+                                    Padding="3" Margin="0 0 0 10" Height="30" Width="80"
+                                    Content="Delete"
+                                    Background="DarkTurquoise" FontWeight="DemiBold" />
                         </StackPanel>
 
                     </StackPanel>
@@ -603,19 +602,21 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Title</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 10 20 5">Title</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddImageTitleTextBox"
-                                                     VerticalContentAlignment="Center" PreviewTextInput="AddImageTitleTextBox_OnPreviewTextInput"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddImageTitleTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Description</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 10 20 5">Description</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddImageDescriptionTextBox"
-                                                     VerticalContentAlignment="Center" PreviewTextInput="AddImageDescriptionTextBox_OnPreviewTextInput"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddImageDescriptionTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="2">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 0 5">Date</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 10 0 5">Date</TextBlock>
                                             <DatePicker Height="25" HorizontalAlignment="Left"
                                                         Name="AddImageDatePicker"
                                                         VerticalAlignment="Top" Width="250" Margin="20 0 0 20" />
@@ -629,7 +630,7 @@
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                         <Border BorderThickness="1"
                                                 BorderBrush="LightBlue">
-                                            <Image Name="ImagePhoto" Height="200" Width="300" Stretch="Fill"/>
+                                            <Image Name="ImagePhoto" Height="200" Width="300" Stretch="Fill" />
                                         </Border>
 
                                         <Button x:Name="AddImageButton"
@@ -646,14 +647,13 @@
                                     </StackPanel>
 
                                     <Separator Margin="20 10 20 10" BorderBrush="LightBlue" BorderThickness="0 2 0 0" />
-
                                     <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Images</TextBlock>
 
                                     <StackPanel>
                                         <DataGrid Name="ImagesDataGrid"
                                                   ItemsSource="{Binding}"
                                                   FontWeight="Normal"
-                                                  Margin="50 0 50 10" Padding="20" ColumnWidth="*" Height="200"
+                                                  Margin="20 0 20 10" Padding="20" ColumnWidth="*" Height="200"
                                                   VerticalScrollBarVisibility="Visible"
                                                   AlternatingRowBackground="AliceBlue" BorderThickness="2" />
                                     </StackPanel>
@@ -661,7 +661,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateImageButton"
                                                 Click="UpdateImageButton_OnClick"
-                                                Padding="3" Margin="50 0 20 10" Height="30" Width="80"
+                                                Padding="3" Margin="20 0 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
@@ -686,25 +686,28 @@
                                             <ColumnDefinition Width="2*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Name</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMaterialNameTextBox"
-                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMaterialNameTextBox_OnPreviewTextInput"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddMaterialNameTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Quantity</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Quantity</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMaterialQuantityTextBox"
-                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMaterialQuantityTextBox_OnPreviewTextInput"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddMaterialQuantityTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="2">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Price</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Price</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMaterialPriceTextBox"
-                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMaterialPriceTextBox_OnPreviewTextInput"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddMaterialPriceTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="3">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 0 5">Date Supply</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 0 5">Date Supply</TextBlock>
                                             <DatePicker Height="25" HorizontalAlignment="Left"
                                                         Name="AddMaterialDatePicker"
                                                         VerticalAlignment="Top" Width="250" Margin="20 0 0 20" />
@@ -726,14 +729,13 @@
                                     </StackPanel>
 
                                     <Separator Margin="20 10 20 10" BorderBrush="LightBlue" BorderThickness="0 2 0 0" />
-
                                     <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Materials</TextBlock>
 
                                     <StackPanel>
                                         <DataGrid Name="MaterialsDataGrid"
                                                   ItemsSource="{Binding}"
                                                   FontWeight="Normal"
-                                                  Margin="50 20 50 10" Padding="20" ColumnWidth="*" Height="300"
+                                                  Margin="20 20 20 10" Padding="20" ColumnWidth="*" Height="300"
                                                   VerticalScrollBarVisibility="Visible"
                                                   AlternatingRowBackground="AliceBlue" BorderThickness="2" />
                                     </StackPanel>
@@ -741,7 +743,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateMaterialsButton"
                                                 Click="UpdateMaterialsButton_OnClick"
-                                                Padding="3" Margin="50 10 20 10" Height="30" Width="80"
+                                                Padding="3" Margin="20 10 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
@@ -764,16 +766,18 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Name</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMecanicNameTextBox"
-                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMecanicNameTextBox_OnPreviewTextInput"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddMecanicNameTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">First Name</TextBlock>
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">First Name</TextBlock>
                                             <TextBox DockPanel.Dock="Top" x:Name="AddMecanicFirstNameTextBox"
-                                                     VerticalContentAlignment="Center" PreviewTextInput="AddMecanicFirstNameTextBox_OnPreviewTextInput"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     VerticalContentAlignment="Center"
+                                                     PreviewTextInput="AddMecanicFirstNameTextBox_OnPreviewTextInput"
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                     </Grid>
 
@@ -792,14 +796,13 @@
                                     </StackPanel>
 
                                     <Separator Margin="20 10 20 10" BorderBrush="LightBlue" BorderThickness="0 2 0 0" />
-
                                     <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Mechanics</TextBlock>
 
                                     <StackPanel>
                                         <DataGrid Name="MechanicsDataGrid"
                                                   ItemsSource="{Binding}"
                                                   FontWeight="Normal"
-                                                  Margin="50 20 50 10" Padding="20" ColumnWidth="*" Height="300"
+                                                  Margin="20 20 20 10" Padding="20" ColumnWidth="*" Height="300"
                                                   VerticalScrollBarVisibility="Visible"
                                                   AlternatingRowBackground="AliceBlue" BorderThickness="2" />
                                     </StackPanel>
@@ -807,7 +810,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateMecanicButton"
                                                 Click="UpdateMecanicButton_OnClick"
-                                                Padding="3" Margin="50 10 20 10" Height="30" Width="80"
+                                                Padding="3" Margin="20 10 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 
@@ -830,18 +833,18 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Name</TextBlock>
-                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationNameTextBox" 
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Name</TextBlock>
+                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationNameTextBox"
                                                      PreviewTextInput="AddOperationNameTextBox_OnPreviewTextInput"
                                                      VerticalContentAlignment="Center"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                         <StackPanel Grid.Column="1">
-                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="3" Margin="20 20 20 5">Execution Time</TextBlock>
-                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationExecutionTimeTextBox" 
+                                            <TextBlock FontSize="12" FontWeight="Bold" Padding="5" Margin="20 20 20 5">Execution Time</TextBlock>
+                                            <TextBox DockPanel.Dock="Top" x:Name="AddOperationExecutionTimeTextBox"
                                                      PreviewTextInput="AddOperationExecutionTimeTextBox_OnPreviewTextInput"
                                                      VerticalContentAlignment="Center"
-                                                     FontSize="12" FontWeight="Normal" Padding="2" Margin="20 0 20 20" />
+                                                     FontSize="12" FontWeight="Normal" Padding="5" Margin="20 0 20 20" />
                                         </StackPanel>
                                     </Grid>
 
@@ -856,11 +859,10 @@
                                                 Content="New" Click="NewOperationButton_OnClick"
                                                 Background="LightBlue" FontWeight="DemiBold" />
                                         <TextBlock Name="AddOperationDisplayInfoTextBlock"
-                                                   FontSize="12" Padding="3" FontWeight="Bold" Margin="0 10 10 20" />
+                                                   FontSize="12" Padding="5" FontWeight="Bold" Margin="0 10 10 20" />
                                     </StackPanel>
 
                                     <Separator Margin="20 10 20 10" BorderBrush="LightBlue" BorderThickness="0 2 0 0" />
-
                                     <TextBlock FontSize="16" FontWeight="Bold" Padding="3" Margin="0 0 20 10">Operations</TextBlock>
 
                                     <StackPanel>
@@ -875,7 +877,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Button x:Name="UpdateOperationsButton"
                                                 Click="UpdateOperationsButton_OnClick"
-                                                Padding="3" Margin="50 10 20 10" Height="30" Width="80"
+                                                Padding="3" Margin="20 10 20 10" Height="30" Width="80"
                                                 Content="Update"
                                                 Background="LightBlue" FontWeight="DemiBold" />
 

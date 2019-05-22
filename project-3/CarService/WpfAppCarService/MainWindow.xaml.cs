@@ -59,54 +59,21 @@ namespace WpfAppCarService
 
         private void SearchCustomerButton_OnClick(object sender, RoutedEventArgs e)
         {
-            CustomersDataGrid.Visibility = Visibility.Collapsed;
-            AddCustomerStackPanel.Visibility = Visibility.Collapsed;
-            AddCustomerButtonsStackPanel.Visibility = Visibility.Collapsed;
-
-            SearchCustomerButtonsStackPanel.Visibility = Visibility.Visible;
-            SearchCustomerDataGrid.Visibility = Visibility.Visible;
-            AddCustomerCarButtonsStackPanel.Visibility = Visibility.Visible;
-            SearchCustomersInputGrid.Visibility = Visibility.Visible;
-            AddCustomerCarInputGrid.Visibility = Visibility.Visible;
-            DisplayChassisDataGrid.Visibility = Visibility.Visible;
+            ManageCustomersStackPanel.Visibility = Visibility.Collapsed;
+            SearchCustomersStackPanel.Visibility = Visibility.Visible;
         }
 
-        private void ViewAllCustomersButton_OnClick(object sender, RoutedEventArgs e)
+        private void CustomersTabItem_OnLoaded(object sender, RoutedEventArgs e)
         {
-            SearchCustomerButtonsStackPanel.Visibility = Visibility.Hidden;
-            SearchCustomersInputGrid.Visibility = Visibility.Collapsed;
-            DisplayChassisDataGrid.Visibility = Visibility.Collapsed;
-            SearchCustomerDataGrid.Visibility = Visibility.Hidden;
-            AddCustomerCarInputGrid.Visibility = Visibility.Hidden;
-            DisplayChassisDataGrid.Visibility = Visibility.Hidden;
-            AddCustomerStackPanel.Visibility = Visibility.Hidden;
-
             string queryString = "SELECT * FROM Clienti";
             ExecuteQuery(queryString, CustomersDataGrid);
         }
-
-        private void ViewAllOrdersButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            SearchCustomerButtonsStackPanel.Visibility = Visibility.Hidden;
-            AddOrderStackPanel.Visibility = Visibility.Hidden;
-            AddOrderScrollViewer.Visibility = Visibility.Hidden;
-
-            string queryString = "SELECT * FROM Comenzi";
-            ExecuteQuery(queryString, OrdersDataGrid);
-        }
-
-        private void AddOrderButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            AddOrderStackPanel.Visibility = Visibility.Visible;
-            OrdersDataGrid.Visibility = Visibility.Collapsed;
-        }
-
+        
         private void ApplyStyle(DataTable dataTable, DataGrid dataGrid)
         {
             dataGrid.ItemsSource = dataTable.DefaultView;
             dataGrid.CanUserAddRows = false;
             dataGrid.Visibility = Visibility.Visible;
-            //dataGrid.Columns[0].Visibility = Visibility.Hidden;
             dataGrid.ColumnHeaderHeight = 50;
             dataGrid.CellStyle = _dataGridCellStyle;
         }
@@ -275,19 +242,6 @@ namespace WpfAppCarService
             AddCarDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
         }
 
-        private void AddCustomerButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            AddCustomerStackPanel.Visibility = Visibility.Visible;
-            AddCustomerButtonsStackPanel.Visibility = Visibility.Visible;
-
-            SearchCustomerButtonsStackPanel.Visibility = Visibility.Hidden;
-            SearchCustomersInputGrid.Visibility = Visibility.Collapsed;
-            DisplayChassisDataGrid.Visibility = Visibility.Collapsed;
-            SearchCustomerDataGrid.Visibility = Visibility.Hidden;
-            AddCustomerCarInputGrid.Visibility = Visibility.Hidden;
-            DisplayChassisDataGrid.Visibility = Visibility.Hidden;
-        }
-
         private void AddCustomerNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             ValidateAddCustomerField(NamePattern, AddCustomerNameTextBox);
@@ -376,6 +330,8 @@ namespace WpfAppCarService
                 AddCustomerDisplayInfoTextBlock.Text = @"Client added.";
                 AddCustomerDisplayInfoTextBlock.Visibility = Visibility.Visible;
             }
+
+            CustomersTabItem_OnLoaded(sender, e);
         }
 
         private void NewCustomerButton_OnClick(object sender, RoutedEventArgs e)
@@ -454,6 +410,22 @@ namespace WpfAppCarService
 
             string getOrdersQuery = $"SELECT * FROM Comenzi WHERE AutoId = {autoId}";
             ExecuteQuery(getOrdersQuery, DisplayOrderOrdersDataGrid);
+
+            OrdersTabItem_OnLoaded(sender, e);
+        }
+        private StareComanda getOrderState(int state)
+        {
+            switch (state)
+            {
+                case 1:
+                    return StareComanda.InAsteptare;
+                case 2:
+                    return StareComanda.Executata;
+                case 3:
+                    return StareComanda.Refuzata;
+                default:
+                    return StareComanda.Necunoscuta;
+            }
         }
 
         private StareComanda getOrderState(string state)
@@ -615,22 +587,6 @@ namespace WpfAppCarService
                 DisplayOrderOrdersDataGrid.SelectedItems.Add(item);
         }
 
-        private void AddChassisButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            AddNewChassisStackPanel.Visibility = Visibility.Visible;
-            ChassisDataGrid.Visibility = Visibility.Collapsed;
-            DisplayAllChassisStackPanel.Visibility = Visibility.Hidden;
-        }
-
-        private void ViewAllChassisButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            AddNewChassisStackPanel.Visibility = Visibility.Hidden;
-            DisplayAllChassisStackPanel.Visibility = Visibility.Visible;
-
-            string queryString = "SELECT * FROM Sasiuri";
-            ExecuteQuery(queryString, ChassisDataGrid);
-        }
-
         private void AddChassisCodeTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             ValidateAddChassisField(ChassisCodePattern, AddChassisCodeTextBox);
@@ -673,6 +629,8 @@ namespace WpfAppCarService
                 AddChassisDisplayInfoTextBlock.Text = @"Chassis added.";
                 AddChassisDisplayInfoTextBlock.Visibility = Visibility.Visible;
             }
+
+            ChassisTabItem_OnLoaded(sender, e);
         }
 
         private bool FieldsCompleted(string chassisName, string chassisCode)
@@ -699,6 +657,8 @@ namespace WpfAppCarService
 
                 _client.DeleteChassis(id);
             }
+
+            ChassisTabItem_OnLoaded(sender, e);
         }
 
         private void UpdateChassisButton_OnClick(object sender, RoutedEventArgs e)
@@ -719,6 +679,8 @@ namespace WpfAppCarService
 
                 _client.UpdateChassis(chassis);
             }
+
+            ChassisTabItem_OnLoaded(sender, e);
         }
 
         private void AddOperationNameTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -1157,6 +1119,124 @@ namespace WpfAppCarService
 
             AddImageButton.IsEnabled = isValidExpression;
             AddImageDisplayInfoTextBlock.Text = !isValidExpression ? "The expression is not valid." : string.Empty;
+        }
+
+        private void ChassisTabItem_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string getChassis = "SELECT * FROM Sasiuri";
+            ExecuteQuery(getChassis, ChassisDataGrid);
+        }
+
+        private void UpdateCustomersButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedCustomers = CustomersDataGrid.SelectedItems;
+            int customersSize = selectedCustomers.Count;
+
+            for (var i = 0; i < customersSize; i++)
+            {
+                DataRowView row = (DataRowView)CustomersDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Client client = _client.FindCustomerById(id);
+                client.Nume = row["Nume"].ToString();
+                client.Prenume = row["Prenume"].ToString();
+                client.Adresa = row["Adresa"].ToString();
+                client.Localitate = row["Localitate"].ToString();
+                client.Judet = row["Judet"].ToString();
+                client.Telefon = row["Telefon"].ToString();
+                client.Email = row["Email"].ToString();
+
+                _client.UpdateClient(client);
+            }
+
+            CustomersTabItem_OnLoaded(sender, e);
+        }
+
+        private void DeleteCustomersButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedCustomers = CustomersDataGrid.SelectedItems;
+            int customersSize = selectedCustomers.Count;
+
+            for (var i = 0; i < customersSize; i++)
+            {
+                DataRowView row = (DataRowView)CustomersDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                _client.DeleteClient(id);
+            }
+
+            CustomersTabItem_OnLoaded(sender, e);
+        }
+
+        private void BackCustomerButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ManageCustomersStackPanel.Visibility = Visibility.Visible;
+        }
+
+        private void UpdateOrdersButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedOrders = OrdersDataGrid.SelectedItems;
+            int ordersSize = selectedOrders.Count;
+
+            for (var i = 0; i < ordersSize; i++)
+            {
+                DataRowView row = (DataRowView)OrdersDataGrid.SelectedItems[i];
+
+                int state = Convert.ToInt32(row["StareComanda"].ToString());
+                StareComanda orderState = getOrderState(state);
+
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                Comanda command = _client.FindOrderById(id);
+                command.Descriere = row["Descriere"].ToString();
+                command.StareComanda = orderState;
+                command.KmBord = Convert.ToInt32(row["KmBord"].ToString());
+                command.DataFinalizare = Convert.ToDateTime(row["DataFinalizare"].ToString());
+                command.DataProgramare = Convert.ToDateTime(row["DataProgramare"].ToString());
+                command.ValoarePiese = Convert.ToDecimal(row["ValoarePiese"].ToString());
+
+                _client.UpdateOrder(command);
+            }
+
+            OrdersTabItem_OnLoaded(sender, e);
+        }
+
+        private void DeleteOrdersButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            IList selectedOrders = OrdersDataGrid.SelectedItems;
+            int ordersSize = selectedOrders.Count;
+
+            for (var i = 0; i < ordersSize; i++)
+            {
+                DataRowView row = (DataRowView)OrdersDataGrid.SelectedItems[i];
+                string textId = row["Id"].ToString();
+                int id = Convert.ToInt32(textId);
+
+                _client.DeleteOrder(id);
+            }
+
+            OrdersTabItem_OnLoaded(sender, e);
+        }
+
+        private void OrdersTabItem_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string queryString = "SELECT * FROM Comenzi";
+            ExecuteQuery(queryString, OrdersDataGrid);
+        }
+
+        private void AddOrderButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ManageOrdersStackPanel.Visibility = Visibility.Visible;
+            DisplayOrdersStackPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void ViewAllOrdersButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            DisplayOrdersStackPanel.Visibility = Visibility.Visible;
+            ManageOrdersStackPanel.Visibility = Visibility.Collapsed;
         }
     }
 }
