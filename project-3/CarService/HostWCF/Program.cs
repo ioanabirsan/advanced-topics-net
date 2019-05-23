@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using ObjectWCF;
+using ServiceWCF;
 
 namespace HostWCF
 {

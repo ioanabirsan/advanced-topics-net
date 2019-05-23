@@ -59,9 +59,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ObjectWCF\ObjectWCF.csproj">
-      <Project>{4a72f496-6ccf-4881-a936-67e0e57098f3}</Project>
-      <Name>ObjectWCF</Name>
+    <ProjectReference Include="..\ServiceWCF\ServiceWCF.csproj">
+      <Project>{2818a18a-ed6e-4663-84b6-33d71317cfe8}</Project>
+      <Name>ServiceWCF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
